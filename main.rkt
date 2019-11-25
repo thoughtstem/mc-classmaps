@@ -9,4 +9,4 @@
 
 (module+ test
  (render 
-  (preview-classmaps) #:to "out"))
+  (classmaps-index) #:to "out"))

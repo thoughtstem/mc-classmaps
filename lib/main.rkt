@@ -58,8 +58,15 @@
           (coa-stories)
           (coa-mottos)))) 
 
+(define (class-launch-map-v2)
+  (classmap "Class Launch Map (v2)"
+    (list (coach-story)
+          (coa-stories)
+          (coa-mottos)))) 
+
 (define all-classmaps 
-  (list (class-launch-map)))
+  (list (class-launch-map)
+        (class-launch-map-v2)))
 
 
 ;MOVE TO lib/rendering
@@ -85,7 +92,9 @@
       opacity: 1;
     }
   }
-  (card-header (classmap-name cm))
+  (card-header 
+    class: "bg-info text-white"
+    (classmap-name cm))
   (card-body
    (row
     (col

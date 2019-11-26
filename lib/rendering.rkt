@@ -13,12 +13,10 @@
     (map classmap->html (flatten cms))))
 
 (define (classmap->html 
-           #:start (start #f) #:end (end #f)
            cm)
  (define content-id (gensym 'content-id))
    (enclose
      (card
-      (include-js "https://momentjs.com/downloads/moment.min.js") ;Misplaced. Move this...
       (js-runtime) ;Misplaced. Move...
       @style/inline{
         .fade {
@@ -99,7 +97,8 @@
     (game-mode->html content-id m)))
   (script ([originalModeMinutes (mode-minutes m)]
            [originalClassMinutes class-minutes]
-           [construct @js{setTimeout(()=>@(call 'updateMinutes 60),1)}])
+           [construct @js{setTimeout(()=>@(call 'updateMinutes 60),1)}] ;Two brittle things here: The timeout constructor trick and the hard-coded 60.  
+           )
     (function (updateMinutes total)
       @js{var newScale = @total / @originalClassMinutes}
       @js{var newMinutes = Math.floor(@originalModeMinutes * newScale)}

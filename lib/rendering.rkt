@@ -1,12 +1,21 @@
 #lang at-exp racket
 
 (provide classmaps->html
-         classmap->html)
+         classmap->html
+         mode->html
+         game-icon
+         story-icon)
 
 (require website-js 
          website-js/components/form-row
          website-js/components/time-select
          "./base.rkt")
+
+(define (game-icon)
+  (i class: "fas fa-chess-knight"))
+
+(define (story-icon)
+  (i class: "fas fa-book"))
 
 (define (classmaps->html . cms)
   (row
@@ -88,8 +97,8 @@
         (set-var endTime @js{moment(t, "h:mm a")})
         (on-change startTime endTime)))))
 
-(define (mode->html #:content-id content-id 
-                    #:class-minutes class-minutes
+(define (mode->html #:content-id (content-id "")
+                    #:class-minutes (class-minutes 60)
            m)
  (enclose
   (span id: (ns 'mode)
@@ -131,7 +140,7 @@
       'data-toggle: "tooltip"
       'data-placement: "right"
       'title: (game-mode-name g)
-      (i class: "fas fa-chess-knight")
+      (game-icon)
       " "
       (game-mode-name g)))
     (template id: (~a id "-content")
@@ -153,7 +162,7 @@
       'data-toggle: "tooltip"
       'data-placement: "left"
       'title: (story-mode-name s)
-      (i class: "fas fa-book")
+      (story-icon) 
       " "
       (story-mode-name s)))
 

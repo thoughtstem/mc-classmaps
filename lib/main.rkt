@@ -11,7 +11,7 @@
 
 ;MOVE TO lib/game-modes
 
-(provide coa-mottos)
+(provide coa-mottos all-games)
 
 (define (coa-mottos)
   (game-mode "Code of Awesomeness Mottos" 10
@@ -20,11 +20,15 @@
       (ipsum 50))))
 
 
+(define (all-games)
+  (list
+    (coa-mottos)))
+
 ;END 
 
 ;MOVE TO lib/story-modes
 
-(provide coa-stories coach-story)
+(provide coa-stories coach-story all-stories)
 
 (define (coa-stories)
   (story-mode "Code of Awesomeness Stories" 10
@@ -37,6 +41,12 @@
     (div
       (p "Tell your coach story")
       (ipsum 50))))
+
+(define (all-stories)
+  (list 
+    (coach-story)
+    (coa-stories)
+    ))
 
 ;END 
 
@@ -100,7 +110,7 @@
           (coa-stories)
           (coa-mottos)))) 
 
-(define all-classmaps 
+(define (all-classmaps)
   (list (class-launch-map)
         (class-launch-map-v2)))
 

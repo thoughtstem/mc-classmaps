@@ -9,8 +9,9 @@
          "./base.rkt")
 
 (define (classmaps->html . cms)
-  (card-group
-    (map classmap->html (flatten cms))))
+  (row
+    (map (compose col classmap->html) 
+         (flatten cms))))
 
 (define (classmap->html 
            cm)

@@ -3,10 +3,11 @@
 (provide (all-from-out mc-classmaps/site)
          (all-from-out mc-classmaps/lib))
 
-(require website 
+(require website/bootstrap
          mc-classmaps/site
          mc-classmaps/lib)
 
 (module+ test
  (render 
-  (classmaps-index) #:to "out"))
+  (bootstrap (classmaps-index)) 
+  #:to "out"))

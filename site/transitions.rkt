@@ -1,6 +1,8 @@
 #lang at-exp racket
 
-(provide transitions-tab-pane)
+(provide transitions-tab-pane
+         game-to-story
+         story-to-game)
 
 (require website/bootstrap
          mc-classmaps/lib)

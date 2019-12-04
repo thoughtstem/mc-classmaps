@@ -7,7 +7,7 @@
          mc-classmaps/site
          mc-classmaps/lib)
 
-(module+ test
+(module+ main
  (render 
   (bootstrap (classmaps-index)) 
   #:to "out"))

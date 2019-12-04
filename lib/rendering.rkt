@@ -4,7 +4,8 @@
          classmap->html
          mode->html
          game-icon
-         story-icon)
+         story-icon
+         mode->content-card)
 
 (require website-js 
          website-js/components/form-row
@@ -185,7 +186,7 @@
     }, 100)
     })
 
-(define (mode->content-card s)
+(define (mode->content-card s #:fade? (fade? #t))
  (define mode-data (if (story-mode? s)
                       story-mode-data
                       game-mode-data))
@@ -206,7 +207,7 @@
                (i class: "fas fa-chess-knight")))
 
  (card
-  class: (~a "fade" " " bg-color " " text-color)
+  class: (~a (if fade? "fade" "") " " bg-color " " text-color)
   (card-header icon " " (mode-name s))
   (card-body
    (mode-data s))))

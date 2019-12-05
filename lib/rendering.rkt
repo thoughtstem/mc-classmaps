@@ -13,10 +13,12 @@
          "./base.rkt")
 
 (define (game-icon)
-  (i class: "fas fa-chess-knight"))
+  (i class: "fas fa-dice"))
+;other options: fa-knight, fa-pawn, fa-trophy
 
 (define (story-icon)
   (i class: "fas fa-book"))
+;other options: fa-scroll, fa-book-open
 
 (define (classmaps->html . cms)
   (row

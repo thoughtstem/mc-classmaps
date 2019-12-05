@@ -8,74 +8,47 @@
 
 (provide all-classmaps 
          class-launch-map
-         day-2-map
-         day-3-map
-         day-4-map
-         day-5-map
-         day-6-map
-         day-7-map
-         day-8-map)
+         final-jam-map)
 
-(define (game-with-minutes min mode)
-  (struct-copy game-mode mode
-               [minutes min]))
 
-(define (story-with-minutes min mode)
-  (struct-copy story-mode mode
-               [minutes min]))
+
 
 (define (class-launch-map)
   (classmap "Class Launch Map"
     (list (coach-story)
           (name-memory-game)
-          (class-intro-story)
+          (class-intro)
           (story-with-minutes 12 (coa-stories))
-          (coa-mottos-game)
+          (coa-mottos-creation)
           (hello-world-story)
           (hello-world-beginner-game)
-          (meta-story)))) 
+          (meta-story-one-word))))
 
-(define (class-launch-map-v2)
-  (classmap "Class Launch Map (v2)"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
+(define (coa-focus-map)
+  (classmap "Code of Awesomeness Focus Map"
+    (list (coa-focus)
+          (game-with-minutes 25 (code-anatomy))
+          (meta-story-reflect "the Code you chose to focus on")
+          (game-with-minutes 15 (disintegrating-code))
+          (meta-story-deep-reflect "the Code you chose to focus on")
+          )))
 
-(define (day-2-map)
-  (classmap "Day 2 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
-(define (day-3-map)
-  (classmap "Day 3 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
-(define (day-4-map)
-  (classmap "Day 4 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
-(define (day-5-map)
-  (classmap "Day 5 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
-(define (day-6-map)
-  (classmap "Day 6 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
-(define (day-7-map)
-  (classmap "Day 7 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
-(define (day-8-map)
-  (classmap "Day 8 Map"
-    (list (coach-story)
-          (coa-stories)
-          (coa-mottos-game)))) 
+(define (final-jam-map)
+  (classmap "Final Jam Map"
+    (list (lock-story-mode (intro-jam))
+          (game-with-minutes 25 (final-jam))
+          (lock-game-mode (scoring-jam))
+          (lock-game-mode (market-time))
+          (lock-story-mode (meta-story-badges))))) 
+
+;===========================
+
+
+
+
 
 (define (all-classmaps)
-  (list (class-launch-map)))
+  (list (class-launch-map)
+        (coa-focus-map)
+        (final-jam-map)
+        ))

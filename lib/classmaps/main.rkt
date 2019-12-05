@@ -18,61 +18,64 @@
 
 (define (game-with-minutes min mode)
   (struct-copy game-mode mode
-                         [minutes min]))
+               [minutes min]))
+
+(define (story-with-minutes min mode)
+  (struct-copy story-mode mode
+               [minutes min]))
 
 (define (class-launch-map)
   (classmap "Class Launch Map"
     (list (coach-story)
-          (coa-stories)
-          (coa-mottos)
-          (game-with-minutes 35 (hello-world-game))
-
-          #;
-          (struct-copy game-mode (hello-world-game)
-                       [minutes 30])))) 
+          (name-memory-game)
+          (class-intro-story)
+          (story-with-minutes 12 (coa-stories))
+          (coa-mottos-game)
+          (hello-world-story)
+          (hello-world-beginner-game)
+          (meta-story)))) 
 
 (define (class-launch-map-v2)
   (classmap "Class Launch Map (v2)"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 
 (define (day-2-map)
   (classmap "Day 2 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 (define (day-3-map)
   (classmap "Day 3 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 (define (day-4-map)
   (classmap "Day 4 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 (define (day-5-map)
   (classmap "Day 5 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 (define (day-6-map)
   (classmap "Day 6 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 (define (day-7-map)
   (classmap "Day 7 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 (define (day-8-map)
   (classmap "Day 8 Map"
     (list (coach-story)
           (coa-stories)
-          (coa-mottos)))) 
+          (coa-mottos-game)))) 
 
 (define (all-classmaps)
-  (list (class-launch-map)
-        (class-launch-map-v2)))
+  (list (class-launch-map)))

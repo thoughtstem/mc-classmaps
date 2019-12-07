@@ -7,17 +7,36 @@
 (require website/bootstrap
          mc-classmaps/lib)
 
+(define (into-icon)
+  (i class: "fas fa-sign-in-alt"))
+
+(define (outof-icon)
+  (i class: "fas fa-sign-out-alt"))
+
 (define (transitions-tab-pane)
  (tab-pane id: "transitions" class: "p-3" 
   (h3 "Transitions")
-  (p "Because there are only two acceptable classroom modalities, there are only 4 kinds of transitions coaches must be fluent in.  These are explained in the tabs below.  We also include a tab about attention getters -- which are tools to aid with transitions.")
+  (p "Because there are only two acceptable classroom modalities, there are four primary kinds of transitions coaches must be fluent in.  In addition, there are transistions into and out of class. All of these transitions are simplified into three or fewer steps to enable you to start using them with high mastery in your first class.  Check them out in the tabs below.")
+
+  @hr
+  
+  (h5 "A Note on Attention Getters: ")
+  (p "Having the student's attention is required in order to transisition effectively.  Conveniently, most "(b "Class Launch Maps") " include the " @b{Code of Awesomeness Mottos} " Game Mode, where the class generates their very own call and response -- a perfect attention getter! Use these often.")
+  (p "The attention getter rule of thumb is: If it works, it's fine.  If you " (link-to "https://www.google.com/search?q=attention%20getters" "google for attention getters") ", you'll find hundreds.  Most of them are based on the highly effective call/response model. Find your favorite or build a repertoire of dozens.  That's up to you.")
+  @p{Here's a video with several:}
+  @html/inline{
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/78eiLtQjmss" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+}
+
+  @hr
 
   (tabify
    @active-tab-nav-link[href: "#s-g"]{@(story-icon) Story to @(game-icon) Game }
    @tab-nav-link[href: "#g-s"]{@(game-icon) Game to @(story-icon) Story}
    @tab-nav-link[href: "#g-g"]{@(game-icon) Game to @(game-icon) Game}
    @tab-nav-link[href: "#s-s"]{@(story-icon) Story to @(story-icon) Story}
-   @tab-nav-link[href: "#attention"]{Attention Getters}
+   @tab-nav-link[href: "#into"]{@(into-icon) Into Class}
+   @tab-nav-link[href: "#outof"]{@(outof-icon) Out Of Class}
 
    (active-tab-pane id: "s-g" 
      (container class: "p-3"
@@ -31,9 +50,12 @@
    (tab-pane id: "s-s" 
     (container class: "p-3"
      (story-to-story)))
-   (tab-pane id: "attention" 
+   (tab-pane id: "into" 
     (container class: "p-3"
-     (attention-getters))))))
+     (into-class)))
+   (tab-pane id: "outof" 
+    (container class: "p-3"
+     (outof-class))))))
 
 
 (define (story-to-game)
@@ -42,8 +64,8 @@
     @p{Transitioning from Story Mode to Game Mode involves:
       @ul{
         @li{Ending the current story.}
-        @li{Raising the energy level.}
         @li{Explaining the upcoming game.}
+        @li{Raising the energy level.}
         @li{Preparing students for flow state.}
       }
     }
@@ -64,15 +86,6 @@
 
   ))
 
-(define (attention-getters)
-  (list 
-    (h3 "Attention Getters")
-    @p{The most effective attention getters are the ones you set up on the first day of class.  For this reason, most @b{Class Launch Maps} include some kind of call and response creation (see @b{Code of Awesomeness Mottos} Game Mode).  Coaches are encouraged to use these as attention getters in subsequent classes.}
-    @p{The attention getter rule of thumb is: If it works, it's fine.  If you @(link-to "https://www.google.com/search?q=attention%20getters" "google for attention getters"), you'll find hundreds.  Most of them are based on the highly effective call/response model. Find your one favorite or build a repertoire of dozens.  That's up to the coach.}
-    @p{Here's a video with several:}
-    @html/inline{
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/78eiLtQjmss" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-      }))
 
 (define (game-to-story)
   (list 
@@ -125,6 +138,36 @@
     @p{If done correctly, students should not feel that the @(story-icon) Story Mode ever ended -- just that it happened to contain more than one story.}
     ))
 
+
+
+(define (into-class)
+  (list 
+   @h3{@(into-icon) Transitioning Into Class}
+
+   @p{Create a starting-class ritual for yourself and your students. Whether you arrive to a room where all students are waiting for you, or students join you one by one, create a ritual on the very first class and stick with it.}
+
+   @p{This ritual will help students "get into the right headspace" for class and sustain a sense cohesion through a class where you may be doing wildly different things day-to-day.}
+   
+   @p{Start-Class rituals @b{must} include:}
+   @ul{
+      @li{Taking of attendance (and reporting as needed).}}
+
+   @p{Start-Class rituals @i{can} include:}
+   @ul{
+      @li{Staggered, independant tasks like having a snack or putting your lunch bag by the door}
+      @li{Coding warmups}
+      @li{Group check-ins ("How was everyone's day?" "Anyone do anything cool over the last week?")}
+      @li{Attention Getters}
+      }
+
+
+    ))
+
+
+(define (outof-class)
+  (list 
+    @h3{@(outof-icon) Transitioning Out of Class}
+    ))
 
 
 

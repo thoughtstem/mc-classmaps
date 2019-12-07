@@ -14,7 +14,7 @@
 
 (define (game-icon)
   (i class: "fas fa-dice"))
-;other options: fa-knight, fa-pawn, fa-trophy
+;other options: fa-chess-knight, fa-pawn, fa-trophy
 
 (define (story-icon)
   (i class: "fas fa-book"))
@@ -205,8 +205,8 @@
                       "text-white"))
 
  (define icon (if (story-mode? s)
-               (i class: "fas fa-book")
-               (i class: "fas fa-chess-knight")))
+               story-icon
+               game-icon))
 
  (card
   class: (~a (if fade? "fade" "") " " bg-color " " text-color)

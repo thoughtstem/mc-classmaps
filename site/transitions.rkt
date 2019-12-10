@@ -149,7 +149,7 @@
    @p{This routine will help students "get into the right headspace" for class and sustain a sense cohesion through a class where you may be doing wildly different things day-to-day. Students will also become more independant as they grow accustomed the the routine, giving you time to finish setting up, take attendance, check in with HQ or deal with anything else that arises.}
 
    @p{A recommended Start-Class routine to begin with is:}
-   ul{
+   @ul{
       @li{Have a specific location for students to go and @b{sit}.}
       @li{Talk to them about their day (@b{Story Mode!})}
       @li{Take @b{attendance} as each student arrives.  Submit attendance and start with classmap when ready.}}

@@ -144,15 +144,23 @@
   (list 
    @h3{@(into-icon) Transitioning Into Class}
 
-   @p{Create a starting-class @b{ritual} for yourself and your students. Whether you arrive to a room where all students are waiting for you, or students join you one by one, create a ritual on the very first class and stick with it.}
+   @p{Create a starting-class @b{routine} for yourself and your students. Whether you arrive to a room where all students are waiting for you, or students join you one by one, create a routine on the very first class and stick with it.}
 
-   @p{This ritual will help students "get into the right headspace" for class and sustain a sense cohesion through a class where you may be doing wildly different things day-to-day. Students will also become more independant as they grow accustomed the the rituals, giving you time to finish setting up, take attendance, check in with HQ or deal with anything else that arises.}
+   @p{This routine will help students "get into the right headspace" for class and sustain a sense cohesion through a class where you may be doing wildly different things day-to-day. Students will also become more independant as they grow accustomed the the routine, giving you time to finish setting up, take attendance, check in with HQ or deal with anything else that arises.}
+
+   @p{A recommended Start-Class routine to begin with is:}
+   ul{
+      @li{Have a specific location for students to go and @b{sit}.}
+      @li{Talk to them about their day (@b{Story Mode!})}
+      @li{Take @b{attendance} as each student arrives.  Submit attendance and start with classmap when ready.}}
+
+   @p{As you develop your own favorite routines, keep in mind:}
    
-   @p{Start-Class rituals @b{must} include:}
+   @p{Start-Class routines @b{must} include:}
    @ul{
       @li{Taking of attendance (and reporting as needed).}}
 
-   @p{Start-Class rituals @i{can} include:}
+   @p{Start-Class routines @i{can} include:}
    @ul{
       @li{Staggered, independant tasks like having a snack or putting your lunch bag by the door}
       @li{Coding warmups}
@@ -170,13 +178,13 @@
 
     @p{End of class dismissal must always be @b{safe} and @b{organized}. All students must be released to an adult (a parent/guardian, or staff of another program) unless explicitly stated otherwise on the roster or by MetaCoders HQ staff.}
 
-    @p{Create an ending-class @b{ritual} to help you achieve this goal. Whether you walk the students to a dismissal location or release them from the room; create this ritual on the very first day and stick with it.}
+    @p{Create an ending-class @b{routine} to help you achieve this goal. Whether you walk the students to a dismissal location or release them from the room; create this routine on the very first day and stick with it.}
 
-    @p{End-Class rituals @b{must} include:}
+    @p{End-Class routines @b{must} include:}
    @ul{
       @li{Safe and organized dismissal to an adult for every student.}}
 
-   @p{End-Class rituals @i{can} include:}
+   @p{End-Class routines @i{can} include:}
    @ul{
       @li{Lining up at the door}
       @li{Sitting on "the rug" or at a specific table}

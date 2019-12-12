@@ -5,12 +5,14 @@
          mode->html
          game-icon
          story-icon
-         mode->content-card)
+         mode->content-card
+         tag->html)
 
 (require website-js 
          website-js/components/form-row
          website-js/components/time-select
-         "./base.rkt")
+         "./base.rkt"
+         "./tags/main.rkt")
 
 (define (game-icon)
   (i class: "fas fa-dice"))
@@ -51,6 +53,7 @@
           id: (ns 'minutes-display)
           "60 minutes"))
       (card-body
+       (h6 class: "card-title text-muted" (i (classmap-summary cm)))
        (time-picker-widget #:on-change (callback 'timeChange))  
        (row
         (col id: (ns 'modes)
@@ -147,9 +150,7 @@
       " "
       (game-mode-name g)))
     (template id: (~a id "-content")
-      (mode->content-card g)))
-   
-      ))
+      (mode->content-card g)))))
 
 (define (story-mode->html content-id s)
  (define id (gensym 'story-mode))
@@ -189,12 +190,15 @@
     })
 
 (define (mode->content-card s #:fade? (fade? #t))
- (define mode-data (if (story-mode? s)
-                      story-mode-data
-                      game-mode-data))
- (define mode-name (if (story-mode? s)
-                      story-mode-name
-                      game-mode-name))
+  (define mode-data (if (story-mode? s)
+                        story-mode-data
+                        game-mode-data))
+  (define mode-name (if (story-mode? s)
+                        story-mode-name
+                        game-mode-name))
+  (define mode-summary (if (story-mode? s)
+                           story-mode-summary
+                           game-mode-summary))
 
  (define bg-color (if (story-mode? s)
                       ""
@@ -212,5 +216,20 @@
   class: (~a (if fade? "fade" "") " " bg-color " " text-color)
   (card-header icon " " (mode-name s))
   (card-body
+   (h6 class: "card-title text-muted" (i (mode-summary s)))
    (mode-data s))))
+
+
+(define (tag->html t)
+  (badge-pill-warning 
+    style: (properties cursor: "pointer")
+    'title: (tag-desc t)
+    'data-toggle: "tooltip"
+    'data-placement: "top"
+    (tag-name t)))
+
+
+
+
+
 

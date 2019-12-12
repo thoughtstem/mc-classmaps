@@ -11,12 +11,24 @@
  game-with-minutes
  story-with-minutes
  lock-story-mode
- lock-game-mode)
+ lock-game-mode
+ story-text
+ game-info
+ supplies-list
+ game-instructions
+ steps)
 
-(require website/bootstrap)
+(require website/bootstrap
+         website/util)
 
-(struct game-mode  (name minutes data lock-length?))
-(struct story-mode (name minutes data lock-length?))
+;TODO
+;update all game-modes...
+;update classmaps struc
+;create classmap constructor?
+;update all classmaps...
+
+(struct game-mode  (name minutes summary data tags lock-length?))
+(struct story-mode (name minutes summary data tags lock-length?))
 (struct classmap   (name modes))
 
 (define (mode-minutes m)
@@ -27,11 +39,18 @@
 (define (classmap-minutes cm)
   (apply + (map mode-minutes (classmap-modes cm))))
 
-(define (make-game-mode n m d [l #f])
-  (game-mode n m d l))
+;constructors
+(define game-info? element?)
+(define story-text? element?)
 
-(define (make-story-mode n m d [l #f])
-  (story-mode n m d l))
+
+(define/contract (make-game-mode name minutes summary data (tags '()))
+  (->* (string? number? string? game-info?) ((or/c empty? (listof string?))) game-mode?)
+  (game-mode name minutes summary data tags #f))
+
+(define/contract (make-story-mode name minutes summary data (tags '()))
+  (->* (string? number? string? story-text?) ((or/c empty? (listof string?))) story-mode?)
+  (story-mode name minutes summary data tags #f))
 
 ;classmap helper functions
 
@@ -50,4 +69,161 @@
 (define (lock-game-mode mode)
   (struct-copy game-mode mode
                [lock-length? #t]))
+
+;helper helper functions
+
+(define (only #:if conditional #:do f)
+  (lambda (x)
+    (if (conditional x)
+        (f x)
+        x)))
+
+(define maybe-p-ify (only #:if string? #:do p))
+
+
+
+;functions/structs for creating games and stories
+
+;strings, elements -> element
+(define (story-text . content)
+  (div (map maybe-p-ify content)))
+
+(define supplies-list? element?)
+(define game-instructions? element?)
+
+;potentially make supplies optional?
+;or creat (no-supplies) func
+(define/contract (game-info supplies instructions)
+  (-> supplies-list? game-instructions? element?)
+  (div
+   supplies
+   instructions))
+
+;strings -> element (unordered list)
+(define (supplies-list . stuff)
+  (define list-content
+    (if (empty? stuff)
+        (ul
+         (li "no required supplies"))
+        (ul
+         (map li stuff))))
+  (div
+   (h5 "NEED:")
+   list-content)
+  )
+
+;strings -> ol element
+(define (steps . stuff)
+  (ol
+   (map li stuff)))
+
+
+;strings, steps -> element
+(define (game-instructions . content)
+    (div
+     (map maybe-p-ify content)))
+
+;TESTS
+
+(module+ test
+  (require rackunit)
+
+  ;=== STORY MODE STUFF ===
+
+  (define test-story
+    (make-story-mode "Test Story" 1 "summary"
+                     (story-text "blah")))
+
+  ;story-text function
+  (check-elements-equal?
+   (story-text "Once upon a time there was a test."
+               "It passed."
+               "The villagers rejoiced!"
+               "The end.")
+   (div
+    (p "Once upon a time there was a test.")
+    (p "It passed.")
+    (p "The villagers rejoiced!")
+    (p "The end.")))
+
+  (check-elements-equal?
+   (story-text "Here is another story"
+               (p "this should not be double wrapped"))
+   (div
+    (p "Here is another story")
+    (p "this should not be double wrapped")))
+
+  (check-elements-equal?
+   (story-text (p "this should not be double wrapped")
+               "this should come last")
+   (div
+    (p "this should not be double wrapped")
+    (p "this should come last")
+    ))
+
+
+  ;=== GAME MODE STUFF ===
+
+  (define test-game
+    (make-game-mode "Test Game" 1 "summary"
+                    (game-info
+                     (supplies-list "stuff" "things")
+                     (game-instructions
+                      "Play the game."))))
+  
+  ;game-info
+  (check-elements-equal?
+   (game-info
+    (supplies-list "stuff" "more stuff")
+    (game-instructions
+     "To play this game you must be a black belt in karate and have PhD in astrophysics"
+     (steps "Fly to the moon"
+            "Kick a new crater into the moon's surface"
+            "Laugh")))
+
+   (div
+    (supplies-list "stuff" "more stuff")
+    (game-instructions
+     "To play this game you must be a black belt in karate and have PhD in astrophysics"
+     (steps "Fly to the moon"
+            "Kick a new crater into the moon's surface"
+            "Laugh")))
+
+   )
+
+  ;supplies-list
+  (check-elements-equal?
+   (supplies-list "paper" "computers")
+   (ul
+    (li "paper")
+    (li "computers")))
+  
+  (check-elements-equal?
+   (supplies-list)
+   (ul
+    (li "no required supplies")))
+
+  ;game-instructions
+  (check-elements-equal?
+   (game-instructions
+    "This game is rock paper scissors, you know it.")
+   (div
+    (p "This game is rock paper scissors, you know it.")))
+
+  (check-elements-equal?
+   (game-instructions
+    (steps "Fly to the moon"
+           "Kick a new crater into the moon's surface"
+           "Laugh"))
+   (div
+    (ol
+     (li "Fly to the moon")
+     (li "Kick a new crater into the moon's surface")
+     (li "Laugh"))))
+  
+  )
+
+
+  
+
 

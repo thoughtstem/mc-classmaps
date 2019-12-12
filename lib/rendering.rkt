@@ -189,12 +189,15 @@
     })
 
 (define (mode->content-card s #:fade? (fade? #t))
- (define mode-data (if (story-mode? s)
-                      story-mode-data
-                      game-mode-data))
- (define mode-name (if (story-mode? s)
-                      story-mode-name
-                      game-mode-name))
+  (define mode-data (if (story-mode? s)
+                        story-mode-data
+                        game-mode-data))
+  (define mode-name (if (story-mode? s)
+                        story-mode-name
+                        game-mode-name))
+  (define mode-summary (if (story-mode? s)
+                           story-mode-summary
+                           game-mode-summary))
 
  (define bg-color (if (story-mode? s)
                       ""
@@ -212,5 +215,6 @@
   class: (~a (if fade? "fade" "") " " bg-color " " text-color)
   (card-header icon " " (mode-name s))
   (card-body
+   (h6 class: "card-title text-muted" (i (mode-summary s)))
    (mode-data s))))
 

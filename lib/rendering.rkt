@@ -51,6 +51,7 @@
           id: (ns 'minutes-display)
           "60 minutes"))
       (card-body
+       (h6 class: "card-title text-muted" (i (classmap-summary cm)))
        (time-picker-widget #:on-change (callback 'timeChange))  
        (row
         (col id: (ns 'modes)

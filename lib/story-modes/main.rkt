@@ -176,3 +176,8 @@
    (rethinking-bugs)
    ))
 
+(module+ test
+  (require rackunit)
+
+  (all-stories))
+

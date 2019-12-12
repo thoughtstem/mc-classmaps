@@ -22,14 +22,12 @@
          website/util)
 
 ;TODO
-;update all game-modes...
 ;update classmaps struc
-;create classmap constructor?
 ;update all classmaps...
 
 (struct game-mode  (name minutes summary data tags lock-length?))
 (struct story-mode (name minutes summary data tags lock-length?))
-(struct classmap   (name modes))
+(struct classmap   (name summary modes))
 
 (define (mode-minutes m)
   (if (story-mode? m)

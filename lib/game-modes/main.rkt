@@ -297,33 +297,4 @@
 (module+ test
   (require rackunit)
 
-  ;class launch
-   (coa-mottos-creation)
-   (name-memory-game)
-   (hello-world-beginner-game)
-   ;code on comp games
-   (code-anatomy)
-   (disintegrating-code)
-   (reverse-engineering)
-   (building-up)
-   (code-carousel)
-   (code-relay)
-   (code-olympics)
-   (create-a-challenge)
-   (reverse-translation)
-   (mind-meld)
-   (build-a-bug-workshop)
-   (code-connect-four)
-   ;unplugged games
-   (specificity-game)
-   ;lang games
-   (whaddya-call-that)
-   (whaddya-call-that-partners)
-   (find-the-portkey)
-   ;final jam
-   (final-jam)
-   (scoring-jam)
-   ;misc games
-   (market-time)
-   (add-pair-programming (example-game))
-  )
+  (all-games))

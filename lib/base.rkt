@@ -17,6 +17,7 @@
  supplies-list
  game-instructions
  steps
+ with-tags
  tips)
 
 (require website/bootstrap
@@ -30,6 +31,11 @@
 (struct story-mode (name minutes summary data tags lock-length?))
 (struct classmap   (name summary modes))
 
+(define (with-tags ts s)
+  (if (story-mode? s)
+    (struct-copy story-mode s [tags ts])
+    (struct-copy game-mode  s [tags ts])))
+
 (define (mode-minutes m)
   (if (story-mode? m)
     (story-mode-minutes m)
@@ -38,7 +44,6 @@
 (define (classmap-minutes cm)
   (apply + (map mode-minutes (classmap-modes cm))))
 
-;constructors
 (define game-info? element?)
 (define story-text? element?)
 
@@ -139,8 +144,6 @@
 (module+ test
   (require rackunit)
 
-  ;STORY MODE STUFF
-
   (define test-story
     (make-story-mode "Test Story" 1 "summary"
                      @story-text{blah blah blah}))
@@ -223,8 +226,5 @@
      (li "Laugh"))))
   
   )
-
-
-  
 
 

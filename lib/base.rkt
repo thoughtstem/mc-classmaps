@@ -17,11 +17,20 @@
  supplies-list
  game-instructions
  steps
- with-tags
- tips)
+ (contract-out 
+  [with-tags 
+    (-> (listof tag?) (or/c story-mode? game-mode?) (or/c story-mode? game-mode?))])
+
+ tips
+ vocab
+ mode-name
+ mode-summary
+ mode-tags
+ mode-data)
 
 (require website/bootstrap
-         website/util)
+         website/util
+         "./tags/main.rkt")
 
 ;TODO
 ;update classmaps struc
@@ -30,6 +39,30 @@
 (struct game-mode  (name minutes summary data tags lock-length?))
 (struct story-mode (name minutes summary data tags lock-length?))
 (struct classmap   (name summary modes))
+
+(define (mode-name x)
+  (if (game-mode? x)
+    (game-mode-name x)
+    (story-mode-name x)))
+
+(define (mode-summary x)
+  (if (game-mode? x)
+    (game-mode-summary x)
+    (story-mode-summary x)))
+
+(define (mode-tags x)
+  (if (game-mode? x)
+    (game-mode-tags x)
+    (story-mode-tags x)))
+
+(define (mode-data x)
+  (if (game-mode? x)
+    (game-mode-data x)
+    (story-mode-data x)))
+
+;For now this just makes words bold.  In the future, we may want to collect vocabulary words from stories and do something more interesting with them.  Possibly make a struct later.
+(define (vocab word)
+  (b class: "vocab" word))
 
 (define (with-tags ts s)
   (if (story-mode? s)

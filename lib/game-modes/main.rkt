@@ -40,7 +40,7 @@
 
 (define (disintegrating-code)
   (with-tags
-      (list code memorization)
+      (list coding memorization)
   (game-mode "Disintegrating Code" 15
              "Write the code multiple times, but with fewer and fewer hints each time."
              (game-info
@@ -70,7 +70,7 @@
 
 (define (code-anatomy)
   (with-tags
-      (list code memorization)
+      (list coding memorization)
   (game-mode "Code Anatomy" 15
              "Work as a team to label different parts of the code, then recall the code using only those terms."
              (game-info

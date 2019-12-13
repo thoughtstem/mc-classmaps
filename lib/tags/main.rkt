@@ -51,7 +51,19 @@
 
   (define debugging 
     (tag "debugging"
-         "Related to concepts and strategies for debugging.")))
+         "Related to concepts and strategies for debugging."))
+
+  (define code-of-awesomeness
+    (tag "code of awesomeness"
+         "Stories for introducing the Codes."))
+
+  (define coding
+    (tag "coding"
+         "Modes that involve working with code."))
+
+  (define memorization
+    (tag "memorization"
+         "Games that work on code memorization as a path to fluency.")))
 
 
 

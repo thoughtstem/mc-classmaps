@@ -29,7 +29,7 @@
 
 (define (coa-stories)
   (with-tags 
-    (list fable multi)
+    (list fable multi code-of-awesomeness)
     (story-mode "Code of Awesomeness Fables" 15
                 "Introduce the Code of Awesomeness Codes with these fables."
                 @story-text{Read the following stories and discuss:
@@ -49,7 +49,7 @@
 
 (define (overcome-the-unknown-fable)
   (with-tags 
-    (list fable)
+    (list fable code-of-awesomeness)
     (story-mode "Overcome the Unknown Fable" 5
                 "A Code of Awesomeness fable."
                 (story-text "Once upon a time..."))))
@@ -58,7 +58,7 @@
 
 
 (define (bug-hunter-fable)
-  (with-tags (list fable)
+  (with-tags (list fable code-of-awesomeness)
       (story-mode "Be a Bug Hunter Fable" 5
               "A Code of Awesomeness fable."
               (div @paras{Once, long ago, Woodpecker and Ostrich were competing to build the biggest house in the desert. They began in the Spring, knowing they would have to finish before the hot summer arrived, bringing wild winds and dangerous sandstorms.
@@ -75,13 +75,12 @@
 
   Ostrich gratefully accepted the help, and over that summer and fall, learned how to @b{be a bug hunter}. His new home was strong, sturdy, and bug-free. The two houses stood for years and years to come.
   
- @tips["Before you start, let the students pick the characters. You can these characteristics as guides: (Woodpecker) -- practical and level-headed.
-       (Ostrich) -- impulsive and anxious"
-       "For younger students, show how the houses grow throughout the story -- ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."]}))))
+ @tips["Before you start, let the students pick the characters. You can these characteristics as guides: (Woodpecker): practical and level-headed. (Ostrich): impulsive and anxious"
+       "For younger students, show how the houses grow throughout the story: ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."]}))))
 
 
 (define (energize-the-team-fable)
-  (with-tags (list fable)
+  (with-tags (list fable code-of-awesomeness)
     (story-mode "Energize the Team Fable" 5
                 "A Code of Awesomeness fable."
                 @story-text{Once upon a time...})))

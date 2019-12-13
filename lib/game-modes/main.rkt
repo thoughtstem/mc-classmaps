@@ -28,6 +28,7 @@
 
 (require website/bootstrap
          "../base.rkt"
+         "../tags/main.rkt"
          "../rendering.rkt")
 
 ;Language standardization:
@@ -38,22 +39,52 @@
 ;===== ON COMPUTER CODING GAMES =====
 
 (define (disintegrating-code)
+  (with-tags
+      (list code memorization)
   (game-mode "Disintegrating Code" 15
-             "Write the code mulitple times, but with fewer and fewer hints each time."
+             "Write the code multiple times, but with fewer and fewer hints each time."
              (game-info
-              (supplies-list "computers - 1 per player" "whiteboard and markers" "code" "timer")
+              (supplies-list "computers - 1 per player" "whiteboard and markers" "code card" "timer")
               (game-instructions
-               (steps "Coach writes the entire code on the board"
+               (steps "Coach writes the entire code & translation on the whiteboard"
                       "Players type up code as Coach does so"
-                      "...")))))
+                      "Players run code"
+                      "Players erase code"
+                      "Coach erases 1-4 words from the code on the whiteboard (leaving parens, hyphens, other symbols)"
+                      "Timer set for roughly 1 min per line of code"
+                      "Players type up code, remembering what goes into the blanks"
+                      "Round ends when timer goes off"
+                      "Players erase code"
+                      "Coach erases more words from code on the whiteboard"
+                      "Timer reset"
+                      "Players type up code"
+                      "Rounds continue until no words are left, only symbols"
+                      "Last round, everything but the translation is erased from the board"))
+              (tips "Replace erased words with blanks (______) for extra clarity."
+                    "For new coders, start by erasing one word that appears two or more times in the code."
+                    "Tag in an advanced student to play the Coach role!")))))
+
+;didn't work :(
+(define (code-with-tip c t)
+  (div (pre c) (p (~a " " t))))
 
 (define (code-anatomy)
+  (with-tags
+      (list code memorization)
   (game-mode "Code Anatomy" 15
-             "Team works together to label different parts of the code, then recall the code based on those names."
+             "Work as a team to label different parts of the code, then recall the code using only those terms."
              (game-info
-              (supplies-list "whiteboard and markers" "code" "timer")
+              (supplies-list "whiteboard and markers" "code card" "timer")
               (game-instructions
-               (steps "Play the game")))))
+               (steps "Coach writes the entire code & translation on the board"
+                      "Team works together to remember/guess where the LANG LINE is in the code, with the Coach's guidance"
+                      "Coach and Players label all parts of the code with terms like the ones below."
+                      "Coach erases all code, leaving the labels"
+                      "Team works together to remember the code that belongs to each label, rebuilding the code as it was"
+                      )
+               (h5 "Code Terms:")
+               (ul
+                (li (code-with-tip "#lang adventure" "<-- lang line"))))))))
 
 (define (reverse-engineering)
   (game-mode "Reverse Engineering" 20

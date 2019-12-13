@@ -17,7 +17,8 @@
  supplies-list
  game-instructions
  steps
- with-tags)
+ with-tags
+ tips)
 
 (require website/bootstrap
          website/util)
@@ -85,22 +86,26 @@
 
 
 
-;functions/structs for creating games and stories
+;===== functions/structs for creating games and stories ======
 
-;strings, elements -> element
-(define (story-text . content)
+;replaced with para to allow formatting
+#;(define (story-text . content)
   (div (map maybe-p-ify content)))
+
+(define (story-text . content)
+  (span (paras content)))
 
 (define supplies-list? element?)
 (define game-instructions? element?)
 
 ;potentially make supplies optional?
 ;or creat (no-supplies) func
-(define/contract (game-info supplies instructions)
-  (-> supplies-list? game-instructions? element?)
+(define/contract (game-info supplies instructions (tips-tricks ""))
+  (->* (supplies-list? game-instructions?) (element?) element?)
   (div
    supplies
-   instructions))
+   instructions
+   tips-tricks))
 
 ;strings -> element (unordered list)
 (define (supplies-list . stuff)
@@ -121,47 +126,41 @@
    (map li stuff)))
 
 
-;strings, steps -> element
+;strings, elements -> element
 (define (game-instructions . content)
     (div
      (map maybe-p-ify content)))
 
-;TESTS
+;strings, elements -> ul element
+(define (tips . t)
+  (div
+   (h5 "Tips & Tricks:")
+   (ul
+    (map li t))))
+
+;============ TESTS =============
 
 (module+ test
   (require rackunit)
 
   (define test-story
     (make-story-mode "Test Story" 1 "summary"
-                     (story-text "blah")))
+                     @story-text{blah blah blah}))
 
   ;story-text function
   (check-elements-equal?
-   (story-text "Once upon a time there was a test."
-               "It passed."
-               "The villagers rejoiced!"
-               "The end.")
-   (div
-    (p "Once upon a time there was a test.")
-    (p "It passed.")
-    (p "The villagers rejoiced!")
-    (p "The end.")))
+   @story-text{Once upon a time there was a test.
+               It passed.
+               The villagers rejoiced!
+               The end.}
+   (span
+    "Once upon a time there was a test.\nIt passed.\nThe villagers rejoiced!\nThe end."))
 
   (check-elements-equal?
-   (story-text "Here is another story"
-               (p "this should not be double wrapped"))
-   (div
-    (p "Here is another story")
-    (p "this should not be double wrapped")))
-
-  (check-elements-equal?
-   (story-text (p "this should not be double wrapped")
-               "this should come last")
-   (div
-    (p "this should not be double wrapped")
-    (p "this should come last")
-    ))
-
+   @story-text{Here is another story.
+               @b{this should be bold!}}
+   (span
+    "Here is another story.\n" (b "this should be bold!")))
 
   ;=== GAME MODE STUFF ===
 
@@ -195,14 +194,18 @@
   ;supplies-list
   (check-elements-equal?
    (supplies-list "paper" "computers")
-   (ul
-    (li "paper")
-    (li "computers")))
+   (div
+    (h5 "NEED:")
+    (ul
+     (li "paper")
+     (li "computers"))))
   
   (check-elements-equal?
    (supplies-list)
-   (ul
-    (li "no required supplies")))
+   (div
+    (h5 "NEED:")
+    (ul
+     (li "no required supplies"))))
 
   ;game-instructions
   (check-elements-equal?

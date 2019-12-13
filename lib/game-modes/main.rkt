@@ -232,7 +232,7 @@
              (game-info
               (supplies-list)
               (game-instructions "Note that time greatly depends on number of students. Coach steps into the role as the Shop Keeper and students can use their fake money to purchase small toys etc.")
-              )))
+              (tips "Organize your Market like an Arcade"))))
 
 (define (example-game)
   (game-mode "EXAMPLE GAME" 5

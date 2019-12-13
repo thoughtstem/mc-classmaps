@@ -33,18 +33,21 @@
 
 ;Language standardization:
 ; use TEAM instead of CLASS
-; use PLAYER instead of STUDENT
+; use Player instead of STUDENT
 
 
 ;===== ON COMPUTER CODING GAMES =====
 
 (define (disintegrating-code)
   (with-tags
-      (list code memorization)
+      (list code memorization k2 3rd-5th middle-school high-school)
   (game-mode "Disintegrating Code" 15
              "Write the code multiple times, but with fewer and fewer hints each time."
              (game-info
-              (supplies-list "computers - 1 per player" "whiteboard and markers" "code card" "timer")
+              (supplies-list "computers - 1 per Player"
+                             "whiteboard and markers"
+                             "timer"
+                             "code & translation")
               (game-instructions
                (steps "Coach writes the entire code & translation on the whiteboard"
                       "Players type up code as Coach does so"
@@ -54,53 +57,97 @@
                       "Timer set for roughly 1 min per line of code"
                       "Players type up code, remembering what goes into the blanks"
                       "Round ends when timer goes off"
-                      "Players erase code"
-                      "Coach erases more words from code on the whiteboard"
-                      "Timer reset"
-                      "Players type up code"
-                      "Rounds continue until no words are left, only symbols"
+                      "Repeat steps 4-9 until no words are left on the board, only symbols"
                       "Last round, everything but the translation is erased from the board"))
               (tips "Replace erased words with blanks (______) for extra clarity."
                     "For new coders, start by erasing one word that appears two or more times in the code."
-                    "Tag in an advanced student to play the Coach role!")))))
+                    "Tag in an advanced student to play the Coach role!"
+                    "For Ratchet code, draw symbols and erase those one at a time.")))))
 
-;didn't work :(
-(define (code-with-tip c t)
-  (div (pre c) (p (~a " " t))))
+
 
 (define (code-anatomy)
   (with-tags
-      (list code memorization)
-  (game-mode "Code Anatomy" 15
-             "Work as a team to label different parts of the code, then recall the code using only those terms."
-             (game-info
-              (supplies-list "whiteboard and markers" "code card" "timer")
-              (game-instructions
-               (steps "Coach writes the entire code & translation on the board"
-                      "Team works together to remember/guess where the LANG LINE is in the code, with the Coach's guidance"
-                      "Coach and Players label all parts of the code with terms like the ones below."
-                      "Coach erases all code, leaving the labels"
-                      "Team works together to remember the code that belongs to each label, rebuilding the code as it was"
-                      )
-               (h5 "Code Terms:")
-               (ul
-                (li (code-with-tip "#lang adventure" "<-- lang line"))))))))
+      (list code memorization teamwork unplugged k2 3rd-5th middle-school high-school)
+    (game-mode "Code Anatomy" 15
+               "Work as a team to label different parts of the code, then recall the code using only those terms."
+               (game-info
+                (supplies-list "whiteboard and markers"
+                               "code & translation")
+                (game-instructions
+                 (steps "Coach writes the entire code & translation on the board"
+                        "Team works together to remember/guess where the LANG LINE is in the code, with the Coach's guidance"
+                        "Coach and Players label all parts of the code with terms like the ones below."
+                        "Coach erases all code, leaving the labels"
+                        "Team works together to remember the code that belongs to each label, rebuilding the code as it was"
+                        "Repeat steps 4 and 5 until recall is easy"
+                        )
+                 (h5 "Code Terms:")
+                 (ul
+                  ;inline-pre text too dark
+                  (li (inline-pre "#lang _________") " lang line")
+                  (li (inline-pre "#:_______") " keyword")
+                  (li (inline-pre "(_________-game ...)") " game function call")
+                  (li (inline-pre "(basic-_______ ...)") " entity function call")
+                  (li (inline-pre "(define (______) ...)") " function definition")
+                  (li (inline-pre "(________)") " function call")
+                  (li (inline-pre "\"_______\"") " string")
+                  ;note: no ratchet terms described here
+                  ))
+                (tips "End this game with Players typing up the code solo or in pairs, referencing the labels and translation."
+                      "Add the timer for increased challenge or competition."
+                      "Coach can re-write the code every time, Players can take turns, or a Scribe may be designated within the Team.")))))
 
 (define (reverse-engineering)
-  (game-mode "Reverse Engineering" 20
-             "Coach shows the team a game, team works backwards to code that game."
-             (game-info
-              (supplies-list)
-              (game-instructions
-               (steps "Play the game")))))
+  (with-tags
+      (list coding teamwork review k2 3rd-5th middle-school high-school)
+    (game-mode "Reverse Engineering" 20
+               "Coach shows the team running code, who then work backwards to write the code."
+               (game-info
+                (supplies-list "1 computer"
+                               "whiteboard/paper and writing utensils"
+                               "pre-written code, ready to run")
+                (game-instructions
+                 (steps "Coach shows Team the result of running code -- hiding the code that created it"
+                        "Team works together to write on paper/whiteboard a detailed translation of the unseen code"
+                        "Team works together to write on paper/whiteboard the code to match the translation (and the result)"
+                        "Coach or Player types up the code on the computer"
+                        "Test the code"
+                        "Coach and Team assess: Is this an exact match to the example?"
+                        "If needed, edit translation and/or code and repeat steps 4-7"
+                        ))
+                (tips "For advanced Teams, skip step 3 and have Players write code solo, directly on computers."
+                      "Works best for code that only includes elements the Team has worked with before. However, with more advanced Teams, include new concepts for Players to try and figure out.")))))
+
 
 (define (building-up)
-  (game-mode "Building Up" 20
-             "Team works together to break a large translation task into the smallest possible steps, then follows the steps to code the game." 
-             (game-info
-              (supplies-list)
-              (game-instructions
-               (steps "Play the game")))))
+  (with-tags
+      (list coding teamwork review 3rd-5th middle-school high-school)
+    (game-mode "Building Up" 20
+               "Team works together to break a large translation task into the smallest possible steps, then follows the steps to code the game." 
+               (game-info
+                (supplies-list "computers - 1 per Player"
+                               "paper/whiteboard & writing utensils"
+                               "code & translation")
+                (game-instructions
+                 (steps "Coach shows Team the translation"
+                        "Team breaks down the translation into ordered steps, each step as small as possible while still resulting in working code (see example below)"
+                        "Each Player progresses through the steps, typing up code on a computer")
+                 (h5 "Example Steps:")
+                 (i "Translation: Code an adventure game with an NPC who has a quest to find their lost sword. Give the quest an ending cutscene including the NPC sprite and some text.")
+                 (ol
+                  (li "Code a basic adventure game")
+                  (li "Define an NPC")
+                  (li "Add NPC to game")
+                  (li "Give NPC a fetch quest for a sword")
+                  (li "Define a cutscene")
+                  (li "Add cutscene to game")
+                  (li "Add 1 page with text to cutscene")
+                  (li "Customize NPC sprite")
+                  (li "Add NPC sprite to cutscene")))
+                (tips "More beginner Players will likely need Coach's guidance breaking the translation down into the smallest steps possible."
+                      "Add the requirement to RUN the code after every step to practice frequent testing"
+                      "Can be made into a competition if each Player \"races\" through the steps, testing after each one. Players can \"sign off\" next to each step as completed with initials/signature/unique symbol. First Player to the end of the list wins!")))))
 
 (define (code-carousel)
   (game-mode "Code Carousel" 10
@@ -115,7 +162,7 @@
              "Race against each other or the clock to code!"
              (game-info
               (supplies-list)
-              (game-instructions "Can play with one large team, or divided into multiple teams (teams must be made up of at leat 2 players). Players line up and take turns racing to a computer at the end of the room, flipping over the next card, writing the code described on the card and running it, before racing back to tag the next member of their team."))))
+              (game-instructions "Can play with one large team, or divided into multiple teams (teams must be made up of at leat 2 Players). Players line up and take turns racing to a computer at the end of the room, flipping over the next card, writing the code described on the card and running it, before racing back to tag the next member of their team."))))
 
 (define (code-olympics)
   (game-mode "Code Olympics" 20
@@ -147,14 +194,14 @@
              (game-info
               (supplies-list)
               (game-instructions
-               "Team circles up, a hex card is passed around the circle and each player gets 10 seconds to look at it and attempt to memorize it. Hex card makes a round or two before the Coach collects it and replaces with a computer, whiteboard or paper. Team works together to re-write the code from memory."))))
+               "Team circles up, a hex card is passed around the circle and each Player gets 10 seconds to look at it and attempt to memorize it. Hex card makes a round or two before the Coach collects it and replaces with a computer, whiteboard or paper. Team works together to re-write the code from memory."))))
 
 (define (build-a-bug-workshop)
   (game-mode "Build a Bug Workshop" 10
              "Break your partner's code -- on purpose!"
              (game-info
               (supplies-list)
-              (game-instructions "Players partner up. Both players type up code on their computer. They swap computers and break their partner's code somehow. They swap back and try to debug. Can be made into a race!"))))
+              (game-instructions "Players partner up. Both Players type up code on their computer. They swap computers and break their partner's code somehow. They swap back and try to debug. Can be made into a race!"))))
 
 (define (code-connect-four)
   (game-mode "Connect Four" 30
@@ -167,7 +214,7 @@
 
 (define (specificity-game)
   (game-mode "Specificity Game (or How To Make a PB&J)" 15
-             "Player gives instructions to another player on how to do a task: talker cannot see doer. Doer has to follow all instructions exactly as given."
+             "Player gives instructions to another Player on how to do a task: talker cannot see doer. Doer has to follow all instructions exactly as given."
              (game-info
               (supplies-list)
               (game-instructions
@@ -192,7 +239,7 @@
              (game-info
               (supplies-list)
               (game-instructions
-               (steps "Each pair creates their own words for a set of shape combinations as defined by teh coach (drawn on a white board where everyone can see, projected, handed out on a worksheet, etc). Then, one partner instructs the other on how to draw an end picture (only they can see) using the words they created."
+               (steps "Each pair creates their own words for a set of shape combinations as defined by teh Coach (drawn on a white board where everyone can see, projected, handed out on a worksheet, etc). Then, one partner instructs the other on how to draw an end picture (only they can see) using the words they created."
                       "This game should include a few end pictures and the shapes to define them.")))))
 
 (define (find-the-portkey)
@@ -200,7 +247,7 @@
              "Harry Potter reference is mandatory"
              (game-info
               (supplies-list)
-              (game-instructions"Two or more teams create their own, secret language to accomplish the goal of directing a teammate to a specific object in the room. Once language is developed, each team sends away a player (their 'wizard') while the rest of the players in the room pick a 'portkey' -- an object already in the room. The 'wizards' return, and each team takes turns giving their wizard a one-sentence instruction guiding them towards the 'portkey.' The first team to get their 'wizard' to touch the 'portkey' wins."))))
+              (game-instructions"Two or more teams create their own, secret language to accomplish the goal of directing a teammate to a specific object in the room. Once language is developed, each team sends away a Player (their 'wizard') while the rest of the Players in the room pick a 'portkey' -- an object already in the room. The 'wizards' return, and each team takes turns giving their wizard a one-sentence instruction guiding them towards the 'portkey.' The first team to get their 'wizard' to touch the 'portkey' wins."))))
 
 ;===== CLASS LAUNCH GAMES =====
 
@@ -233,7 +280,7 @@
              (game-info
               (supplies-list)
               (game-instructions
-               "In a circle, each player introduces themselves and says a quick fact about themselves, as well as reviewing the names and facts of all students who have gone before them.")
+               "In a circle, each Player introduces themselves and says a quick fact about themselves, as well as reviewing the names and facts of all students who have gone before them.")
               )))
 
 ;look thru https://www.ultimatecampresource.com/ice-breakers/name-games/
@@ -250,7 +297,7 @@
 
 (define (scoring-jam)
   (game-mode "Final Jam Scoring & Awarding" 10
-             "Students score their own creation using the following formula with the coach's guidance."
+             "Students score their own creation using the following formula with the Coach's guidance."
              (game-info
               (supplies-list)
               (game-instructions "DO IT"))))
@@ -282,7 +329,7 @@
              (game-info
               (supplies-list)
               (game-instructions
-               "Play the game below, but use pair programming techniques. Partner up the players and have them play as a team, replacing every mention of a single player in the game below with that partnership:"
+               "Play the game below, but use pair programming techniques. Partner up the Players and have them play as a team, replacing every mention of a single Player in the game below with that partnership:"
               
               (mode->content-card 
                #:fade? #f

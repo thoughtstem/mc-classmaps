@@ -55,15 +55,44 @@
 
   (define code-of-awesomeness
     (tag "code of awesomeness"
-         "Stories for introducing the Codes."))
+         "Directly related to the Codes."))
 
   (define coding
     (tag "coding"
-         "Modes that involve working with code."))
+         "Involves working with code."))
 
   (define memorization
     (tag "memorization"
-         "Games that work on code memorization as a path to fluency.")))
+         "Utilizes code memorization as a path to fluency."))
+
+  (define teamwork
+    (tag "teamwork"
+         "Emphasizes teamwork."))
+
+  (define k2
+    (tag "young elementary"
+         "Works exceptionally well for younger elementary students."))
+
+  (define 3rd-5th
+    (tag "upper elementary"
+         "Works exceptionally well for upper elementary students."))
+
+  (define middle-school
+    (tag "middle school"
+         "Works exceptionally well for middle school students."))
+
+  (define high-school
+    (tag "high school"
+         "Works exceptionally well for high school students."))
+
+  (define review
+    (tag "review"
+         "Great for reviewing code previously learned."))
+
+  (define unplugged
+    (tag "unplugged"
+         "No computers required."))
+  )
 
 
 

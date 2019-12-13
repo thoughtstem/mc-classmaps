@@ -3,7 +3,8 @@
 (provide story-mode-tab-pane
          story-mode-main-points)
 
-(require website-js
+(require website/bootstrap
+         mc-classmaps/lib/mode-search
          mc-classmaps/lib)
 
 (define (story-mode-tab-pane)
@@ -16,94 +17,7 @@
       (card-body
         (story-mode-main-points))))
   @h3[class: "pt-3"]{The Story Mode database}
-  (search)))
-
-(define (search)
-  (define (search-button t #:on-click (on-click (noop)))
-    (enclose
-      (badge-pill-success id: (id "main")
-        on-click: (call 'clicked)
-        style: (properties cursor: "pointer" 'user-select: "none")
-        (tag-name t))
-      (script ([selected 'true]
-               [main (id "main")])
-        (function (clicked)
-          @js{@selected = !@selected}
-          
-          (call 'render)
-          (on-click (tag-name t) @js{@selected}))
-
-        (function (nextClass)
-          @js{
-            if(@selected)
-              return "badge badge-pill badge-success"
-            else
-              return "badge badge-pill badge-danger"
-          })
-          
-        (function (render)
-          @js{@getEl{@main}.className = @nextClass()}
-          ))))
-
-  (enclose
-    (div
-      (div
-        (label "Click to filter by tags:"))
-      (map (curry search-button #:on-click (callback 'search))
-           (all-tags))
-      (row ;card-group ;apply (curry responsive-row #:columns 6)
-             (map story-listing 
-               (all-stories)))) 
-
-    (script ()
-      (function (search t show)
-        (log 't)
-        (log 'show)
-
-        @js{
-          if(show){
-            $('.tag-' + t).fadeIn()
-          }else{
-            $('.tag-' + t).fadeOut()
-          }
-        }
-        ))))
-
-(define (story-modal s)
-  (modal id: (id "exampleModal")
-    (modal-dialog
-      (modal-content
-        (modal-header 
-          (h5 (story-mode-name s))
-          (span 
-            'data-dismiss: "modal"
-            (i class: "fas fa-times")))
-        (modal-body
-          (map tag->html (story-mode-tags s))
-          (hr)
-          (story-mode-data s))))))
-
-
-(define (story-listing s)
- (define (tag->class t) (~a "tag-" (tag-name t)))
- (enclose
-  (col-2 class: (~a (string-join (map tag->class (story-mode-tags s)) " ") " pt-2" )
-   (card 
-    'data-toggle: "modal" 'data-target: (id# "exampleModal")
-    class: "bg-light h-100"
-    (card-header 
-     'title: (story-mode-name s)
-     'data-toggle: "tooltip"
-     'data-placement: "top"
-     (story-icon) 
-     " "
-     (story-mode-name s))
-    (card-body 
-      (map tag->html (story-mode-tags s))))
-   (story-modal s))
-   
-   (script ()
-     )))
+  (search (all-tags) (all-stories))))
 
 (define (story-mode-main-points)
   @div{

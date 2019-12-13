@@ -23,7 +23,8 @@
 (require website/bootstrap
          "../base.rkt"
          "../tags/main.rkt"
-         "../rendering.rkt")
+         "../rendering.rkt"
+         (rename-in "./texts/badge-story.rkt" [story badge-story]))
 
 ;==== CLASS FRAME STORIES ==================
 
@@ -114,11 +115,6 @@
                 "Review all Codes and choose one to focus in on for the day."
                 @story-text{Review all Code of Awesomeness codes and mottos. Coach or team chooses one in particular to focus on today...})))
 
-(define (badge-story)
-  (with-tags (list meta-classroom badges)
-    (story-mode "Badge Story" 5
-                "The importance of badges and what they mean, in prep for awarding the first badge(s)!"
-                @story-text{A more in-depth look at what badges represent...})))
 
 
 ;======== META STORIES/REFLECTIONS =========

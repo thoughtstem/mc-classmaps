@@ -4,6 +4,7 @@
          game-mode-main-points)
 
 (require website/bootstrap
+         mc-classmaps/lib/mode-search
          mc-classmaps/lib)
 
 (define (game-mode-tab-pane)
@@ -14,7 +15,7 @@
       (card-body
         (game-mode-main-points))))
   @h3[class: "pt-3"]{The Game Mode database}
-  (map mode->html (all-games))))
+  (search (all-tags) (all-games))))
 
 (define (game-mode-main-points)
  @div{

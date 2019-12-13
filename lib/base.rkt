@@ -88,7 +88,7 @@
   (div (map maybe-p-ify content)))
 
 (define (story-text . content)
-  (span (paras content)))
+  (span (apply paras content)))
 
 (define supplies-list? element?)
 (define game-instructions? element?)
@@ -129,6 +129,7 @@
 ;strings, elements -> ul element
 (define (tips . t)
   (div
+   (hr)
    (h5 "Tips & Tricks:")
    (ul
     (map li t))))
@@ -151,13 +152,12 @@
                The villagers rejoiced!
                The end.}
    (span
-    "Once upon a time there was a test.\nIt passed.\nThe villagers rejoiced!\nThe end."))
+    "Once upon a time there was a test." (br) "It passed." (br)"The villagers rejoiced!" (br)"The end."))
 
   (check-elements-equal?
-   @story-text{Here is another story.
-               @b{this should be bold!}}
+   @story-text{Here is another story. @b{this should be bold!}}
    (span
-    "Here is another story.\n" (b "this should be bold!")))
+    "Here is another story. " (b "this should be bold!")))
 
   ;=== GAME MODE STUFF ===
 

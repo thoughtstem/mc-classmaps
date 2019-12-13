@@ -53,10 +53,10 @@
 (define (bug-hunter-fable)
   (story-mode "Be a Bug Hunter Fable" 5
               "A Code of Awesomeness fable."
-              @story-text{Once, long ago, Woodpecker and Ostrich were competing to build the biggest house in the desert. They began in the Spring, knowing they would have to finish before the hot summer arrived, bringing wild winds and dangerous sandstorms.
-                          
+              (div @paras{Once, long ago, Woodpecker and Ostrich were competing to build the biggest house in the desert. They began in the Spring, knowing they would have to finish before the hot summer arrived, bringing wild winds and dangerous sandstorms.
+                   
  Now, the branches they were building with occasionally housed a termite or two. Whenever @b{Woodpecker} found a termite while building her house, she stopped building to track it down. This made her house grow a little slower. Meanwhile @b{Ostrich} was scared that he would fall behind in the contest if he stopped too long, so he kept building and ignored the termites. His house grew quickly.
-
+ 
  Woodpecker and Ostrich worked for many days. Both houses grew bigger and bigger, but everyone could see that Ostrich was winning the contest. But the Spring wasn't over yet, and the houses weren't finished...
 
  Woodpecker and Ostrich worked for many, @i{many} days. Woodpecker's house was gaining on Ostrich's. Ostrich was spending less and less time @i{building} and more and more time @i{fixing} the crumbling walls the termites were eating. Meanwhile, Woodpecker's house grew at the the same, steady pace.
@@ -67,9 +67,9 @@
 
 Ostrich gratefully accepted the help, and over that summer and fall, learned how to @b{be a bug hunter}. His new home was strong, sturdy, and bug-free. The two houses stood for years and years to come.
 
-
- @tips["Before you start, let the students pick the characters. You can these characteristics as guides:  Character A (Woodpecker) -- practical and level-headed. Character B (Ostrich) -- impulsive and anxious"
-       "For younger students, show how the houses grow throughout the story -- ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."]}))
+ @tips["Before you start, let the students pick the characters. You can these characteristics as guides: (Woodpecker) -- practical and level-headed.
+       (Ostrich) -- impulsive and anxious"
+       "For younger students, show how the houses grow throughout the story -- ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."]})))
 
 (define (energize-the-team-fable)
   (story-mode "Energize the Team Fable" 5

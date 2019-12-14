@@ -53,18 +53,17 @@
         ))))
 
 (define (mode-modal s)
-  (modal id: (id "exampleModal")
-    (modal-dialog
+  (modal id: (id "exampleModal") 
+    (modal-dialog class: "modal-lg"
       (modal-content
         (modal-header 
           (h5 (mode-name s))
+          (i (mode-summary s)) 
           (span 
             'data-dismiss: "modal"
             (i class: "fas fa-times")))
         (modal-body
           (map tag->html (mode-tags s))
-          (hr)
-          (mode-summary s)
           (hr)
           (mode-data s))))))
 
@@ -72,7 +71,7 @@
 (define (listing s)
  (define (tag->class t) (~a "tag-" (tag-name t)))
  (enclose
-  (col-2 class: (~a (string-join (map tag->class (mode-tags s)) " ") " pt-2" )
+  (col-3 class: (~a (string-join (map tag->class (mode-tags s)) " ") " pt-2" )
    (card 
     'data-toggle: "modal" 'data-target: (id# "exampleModal")
     class: (~a (if (story-mode? s) "bg-light" (~a "bg-dark text-white")) " h-100")
@@ -84,7 +83,9 @@
      " "
      (mode-name s))
     (card-body 
-      (map tag->html (mode-tags s))))
+      (map tag->html (mode-tags s))
+      (hr)
+      (i (mode-summary s))))
    (mode-modal s))
    
    (script ()

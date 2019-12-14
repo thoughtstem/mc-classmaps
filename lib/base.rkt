@@ -26,10 +26,14 @@
  mode-name
  mode-summary
  mode-tags
- mode-data)
+ mode-data
+ 
+ comprehension-questions
+ creativity-questions)
 
 (require website/bootstrap
          website/util
+         website-js/components/accordion-cards
          "./tags/main.rkt")
 
 ;TODO
@@ -171,6 +175,23 @@
    (h5 "Tips & Tricks:")
    (ul
     (map li t))))
+
+
+(define (comprehension-questions . content)
+ (list
+  (accordion-card
+   #:header "Comprehension Questions"
+    (card-text
+     (ul
+      (map li content))))))
+
+(define (creativity-questions . content)
+ (list
+  (accordion-card
+    #:header "Creativity Questions"
+    (card-text
+      (ul
+       (map li content))))))
 
 ;============ TESTS =============
 

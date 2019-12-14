@@ -92,6 +92,18 @@
   (define unplugged
     (tag "unplugged"
          "No computers required."))
+
+  (define partners
+    (tag "partners"
+         "Partnering up is required or recommended."))
+
+  (define competitive
+    (tag "competitive"
+         "Competition is inherent."))
+
+  (define competitive-option
+    (tag "competitive option"
+         "Competition is not required, but can be added easily."))
   )
 
 

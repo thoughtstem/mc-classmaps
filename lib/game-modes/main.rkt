@@ -40,7 +40,7 @@
 
 (define (disintegrating-code)
   (with-tags
-      (list code memorization k2 3rd-5th middle-school high-school)
+      (list coding memorization k2 3rd-5th middle-school high-school)
   (game-mode "Disintegrating Code" 15
              "Write the code multiple times, but with fewer and fewer hints each time."
              (game-info
@@ -68,15 +68,15 @@
 
 (define (code-anatomy)
   (with-tags
-      (list code memorization teamwork unplugged k2 3rd-5th middle-school high-school)
+      (list coding memorization teamwork unplugged k2 3rd-5th middle-school high-school)
     (game-mode "Code Anatomy" 15
                "Work as a team to label different parts of the code, then recall the code using only those terms."
                (game-info
                 (supplies-list "whiteboard and markers"
                                "code & translation")
                 (game-instructions
-                 (steps "Coach writes the entire code & translation on the board"
-                        "Team works together to remember/guess where the LANG LINE is in the code, with the Coach's guidance"
+                 (setup "Write the entire code & translation on the board")
+                 (steps "Team works together to remember/guess where the lang line is in the code, with the Coach's guidance"
                         "Coach and Players label all parts of the code with terms like the ones below."
                         "Coach erases all code, leaving the labels"
                         "Team works together to remember the code that belongs to each label, rebuilding the code as it was"
@@ -95,21 +95,23 @@
                   ;note: no ratchet terms described here
                   ))
                 (tips "End this game with Players typing up the code solo or in pairs, referencing the labels and translation."
-                      "Add the timer for increased challenge or competition."
-                      "Coach can re-write the code every time, Players can take turns, or a Scribe may be designated within the Team.")))))
+                      "Add the timer (with a shorter time each round) for increased challenge."
+                      "Coach can re-write the code every time, Players can take turns, or a Scribe may be designated within the Team."
+                      "Set up can easily be delegated to a Player.")))))
 
 
 (define (reverse-engineering)
   (with-tags
-      (list coding teamwork review k2 3rd-5th middle-school high-school)
+      (list coding teamwork review competitive-option k2 3rd-5th middle-school high-school)
     (game-mode "Reverse Engineering" 20
-               "Coach shows the team running code, who then work backwards to write the code."
+               "Coach shows the Team running code, who then work backwards to write the code."
                (game-info
                 (supplies-list "1 computer"
                                "whiteboard/paper and writing utensils"
-                               "pre-written code, ready to run")
+                               "code")
                 (game-instructions
-                 (steps "Coach shows Team the result of running code -- hiding the code that created it"
+                 (setup "Type in or copy/pastes code from site. Run the code, then adjust the windows so you can see the result of the running code but NOT the code itself.")
+                 (steps "Coach shows Team the result of running code"
                         "Team works together to write on paper/whiteboard a detailed translation of the unseen code"
                         "Team works together to write on paper/whiteboard the code to match the translation (and the result)"
                         "Coach or Player types up the code on the computer"
@@ -118,24 +120,25 @@
                         "If needed, edit translation and/or code and repeat steps 4-7"
                         ))
                 (tips "For advanced Teams, skip step 3 and have Players write code solo, directly on computers."
-                      "Works best for code that only includes elements the Team has worked with before. However, with more advanced Teams, include new concepts for Players to try and figure out.")))))
+                      "Works best for code that only includes elements the Team has worked with before. However, with more advanced Teams, include new concepts for Players to try and figure out."
+                      "Split a Team into two and have them compete to finish the fastest! Only recommended for older/more mature Players.")))))
 
 
 (define (building-up)
   (with-tags
-      (list coding teamwork review 3rd-5th middle-school high-school)
+      (list coding teamwork review competitive-option 3rd-5th middle-school high-school)
     (game-mode "Building Up" 20
                "Team works together to break a large translation task into the smallest possible steps, then follows the steps to code the game." 
                (game-info
                 (supplies-list "computers - 1 per Player"
                                "paper/whiteboard & writing utensils"
-                               "code & translation")
+                               "code goal")
                 (game-instructions
-                 (steps "Coach shows Team the translation"
-                        "Team breaks down the translation into ordered steps, each step as small as possible while still resulting in working code (see example below)"
+                 (steps "Coach shows Team the code goal"
+                        "Team breaks down the code goal into ordered steps, each step as small as possible while still resulting in working code (see example below)"
                         "Each Player progresses through the steps, typing up code on a computer")
                  (h5 "Example Steps:")
-                 (i "Translation: Code an adventure game with an NPC who has a quest to find their lost sword. Give the quest an ending cutscene including the NPC sprite and some text.")
+                 (i "Code goal: Code an adventure game with an NPC who has a quest to find their lost sword. Give the quest an ending cutscene including the NPC sprite and some text.")
                  (ol
                   (li "Code a basic adventure game")
                   (li "Define an NPC")
@@ -146,24 +149,58 @@
                   (li "Add 1 page with text to cutscene")
                   (li "Customize NPC sprite")
                   (li "Add NPC sprite to cutscene")))
-                (tips "More beginner Players will likely need Coach's guidance breaking the translation down into the smallest steps possible."
+                (tips "The code goal might need to remain visible through the entire process -- ex: written on the whiteboard or on the top of the paper."
+                 "More beginner Players will likely need Coach's guidance breaking the code goal down into the smallest steps possible."
                       "Add the requirement to RUN the code after every step to practice frequent testing"
                       "Can be made into a competition if each Player \"races\" through the steps, testing after each one. Players can \"sign off\" next to each step as completed with initials/signature/unique symbol. First Player to the end of the list wins!")))))
 
 (define (code-carousel)
+  (with-tags
+      (list coding partners teamwork review 3rd-5th middle-school high-school)
   (game-mode "Code Carousel" 10
              "Players work in pairs translating english prompt into code, rotating to a new computer every 30 seconds."
              (game-info
-              (supplies-list)
+              (supplies-list "computers - 1 per 2 Players"
+                             "code goal")
               (game-instructions
-               (steps "Play the game")))))
+               (setup "Place all computers in a larger circle or line to make very clear which computer to move to next. Be sure to clarify the direction of travel with Players before the game begins.")
+               (steps "Players pair up"
+                      "Coach shows Team the code goal"
+                      "Coach sets timer for 15-30 seconds"
+                      "Each pair of Players code together on 1 computer"
+                      "When timer goes off, all pairs move to the next computer (see tip below on how to make this an easy process)"
+                      "Coach resets timer"
+                      "Pairs pick up with the code in front of them"
+                      "Repeat steps 5-7 until all computers have code that meets the goal"))
+              (tips "If possible, the code goal might need to remain visible through the entire process -- ex: written on a whiteboard -- to help the Players keep track of the goal"
+                    "For younger teams that need guidance on how to work well together, have each pair swap who types (or \"drives\") each time they rotate."
+                    "It is likely that some computers will end up with completed code before others. Decide in advance what pairs should do when they end up at a completed computer -- keep adding more code? Engage with the completed, running code product? If they finish at a given computer, do they pull the computer out of the rotation and get to watch the rest of the game play out?"
+                   )))))
 
 (define (code-relay)
-  (game-mode "Code Relay" 15
-             "Race against each other or the clock to code!"
-             (game-info
-              (supplies-list)
-              (game-instructions "Can play with one large team, or divided into multiple teams (teams must be made up of at leat 2 Players). Players line up and take turns racing to a computer at the end of the room, flipping over the next card, writing the code described on the card and running it, before racing back to tag the next member of their team."))))
+  (with-tags
+      (list coding teamwork competitive 3rd-5th middle-school high-school)
+    (game-mode "Code Relay" 15
+               "Race against each other (or the clock) to complete the coding challenges!"
+               (game-info
+                (supplies-list "computers - 1 per Team (see below)"
+                               "moderate amount of space for fast movement"
+                               "multiple stacks of the same number of code cards"
+                               "timer")
+                (game-instructions
+                 "You can play this game as one large Team, or divided into multiple smaller Teams (teams must be made up of at least 2 Players). If playing as one team, use the timer to add the competition element."
+                  (setup "Place computers in a line on one side of the room. Place a stack of code cards, english side up, next to each computer.")
+                 (steps "Each Team lines up, across the room from one of the computers"
+                        "On Coach's signal the first Player on each Team races over to the computer"
+                        "Player translates the english prompt to code"
+                        "Player runs the code, making sure it works"
+                        "Player returns to their Team, sending the next Player racing over the the computer"
+                        "Repeat steps 3-5 until the one Team successfully codes all cards in their deck"))
+                (tips "Choose how Players can move quickly but safely: this can range from a strict heel-toe walk to a full-out sprint, depending on the age of the players, size of the playing space, and obstacles around the space."
+                      "If players get stuck, Coach can either offer help, or allow them to return the card to the bottom of the deck and pick a new one. For a \"penalty\" for either of these actions, the Coach can use the timer and enforce a 5-10 second freeze before continuing."
+                      "If correctly interpreting the challenge may be a problem, limit the number of teams to the number of Coaches, placing one Coach by each computer to check.")))))
+
+;paused here
 
 (define (code-olympics)
   (game-mode "Code Olympics" 20

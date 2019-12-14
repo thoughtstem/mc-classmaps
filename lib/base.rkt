@@ -26,15 +26,13 @@
  mode-name
  mode-summary
  mode-tags
- mode-data)
+ mode-data
+ setup)
 
 (require website/bootstrap
          website/util
          "./tags/main.rkt")
 
-;TODO
-;update classmaps struc
-;update all classmaps...
 
 (struct game-mode  (name minutes summary data tags lock-length?))
 (struct story-mode (name minutes summary data tags lock-length?))
@@ -89,7 +87,7 @@
   (->* (string? number? string? story-text?) ((or/c empty? (listof string?))) story-mode?)
   (story-mode name minutes summary data tags #f))
 
-;classmap helper functions
+;==== classmap helper functions =====
 
 (define (game-with-minutes min mode)
   (struct-copy game-mode mode
@@ -119,7 +117,7 @@
 
 
 
-;===== functions/structs for creating games and stories ======
+;===== game and story mode helper functions ======
 
 ;replaced with para to allow formatting
 #;(define (story-text . content)
@@ -137,6 +135,7 @@
   (->* (supplies-list? game-instructions?) (element?) element?)
   (div
    supplies
+   (h5 "How to Play:")
    instructions
    tips-tricks))
 
@@ -149,7 +148,7 @@
         (ul
          (map li stuff))))
   (div
-   (h5 "NEED:")
+   (h5 "Need:")
    list-content)
   )
 
@@ -171,6 +170,10 @@
    (h5 "Tips & Tricks:")
    (ul
     (map li t))))
+
+(define/contract (setup s)
+  (-> string? element?)
+  (p (b "Set Up: ") s))
 
 ;============ TESTS =============
 

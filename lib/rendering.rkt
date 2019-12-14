@@ -212,8 +212,7 @@
                story-icon
                game-icon))
 
- (card
-  class: (~a (if fade? "fade" "") " " bg-color " " text-color)
+ (card class: (~a (if fade? "fade" "") " " bg-color " " text-color)
   (card-header icon " " (mode-name s))
   (card-body
    (h6 class: "card-title text-muted" (i (mode-summary s)))

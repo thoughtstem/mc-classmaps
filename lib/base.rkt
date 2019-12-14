@@ -27,10 +27,14 @@
  mode-summary
  mode-tags
  mode-data
- setup)
+ setup
+ comprehension-questions
+ creativity-questions) 
+
 
 (require website/bootstrap
          website/util
+         website-js/components/accordion-cards
          "./tags/main.rkt")
 
 
@@ -175,6 +179,22 @@
   (-> string? element?)
   (p (b "Set Up: ") s))
 
+(define (comprehension-questions . content)
+ (list
+  (accordion-card
+   #:header "Comprehension Questions"
+    (card-text
+     (ul
+      (map li content))))))
+
+(define (creativity-questions . content)
+ (list
+  (accordion-card
+    #:header "Creativity Questions"
+    (card-text
+      (ul
+       (map li content))))))
+
 ;============ TESTS =============
 
 (module+ test
@@ -231,7 +251,7 @@
   (check-elements-equal?
    (supplies-list "paper" "computers")
    (div
-    (h5 "NEED:")
+    (h5 "Need:")
     (ul
      (li "paper")
      (li "computers"))))
@@ -239,7 +259,7 @@
   (check-elements-equal?
    (supplies-list)
    (div
-    (h5 "NEED:")
+    (h5 "Need:")
     (ul
      (li "no required supplies"))))
 
@@ -256,10 +276,16 @@
            "Kick a new crater into the moon's surface"
            "Laugh"))
    (div
+    (h5 "How to Play:")
     (ol
      (li "Fly to the moon")
      (li "Kick a new crater into the moon's surface")
      (li "Laugh"))))
+
+  (check-elements-equal?
+   (set-up "save the world.")
+   (div
+    (p (b "Set Up: ") "save the world.")))
   
   )
 

@@ -177,7 +177,7 @@
 
 (define/contract (setup s)
   (-> string? element?)
-  (p (b "Set Up: ") s))
+  (p (i (b "Set Up: ") s)))
 
 (define (comprehension-questions . content)
  (list
@@ -239,6 +239,7 @@
 
    (div
     (supplies-list "stuff" "more stuff")
+    (h5 "How to Play:")
     (game-instructions
      "To play this game you must be a black belt in karate and have PhD in astrophysics"
      (steps "Fly to the moon"
@@ -276,16 +277,14 @@
            "Kick a new crater into the moon's surface"
            "Laugh"))
    (div
-    (h5 "How to Play:")
     (ol
      (li "Fly to the moon")
      (li "Kick a new crater into the moon's surface")
      (li "Laugh"))))
 
   (check-elements-equal?
-   (set-up "save the world.")
-   (div
-    (p (b "Set Up: ") "save the world.")))
+   (setup "save the world.")
+    (p (i (b "Set Up: ") "save the world.")))
   
   )
 

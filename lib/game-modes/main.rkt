@@ -40,7 +40,7 @@
 
 (define (disintegrating-code)
   (with-tags
-      (list code memorization k2 3rd-5th middle-school high-school)
+      (list coding memorization k2 3rd-5th middle-school high-school)
   (game-mode "Disintegrating Code" 15
              "Write the code multiple times, but with fewer and fewer hints each time."
              (game-info
@@ -68,7 +68,7 @@
 
 (define (code-anatomy)
   (with-tags
-      (list code memorization teamwork unplugged k2 3rd-5th middle-school high-school)
+      (list coding memorization teamwork unplugged k2 3rd-5th middle-school high-school)
     (game-mode "Code Anatomy" 15
                "Work as a team to label different parts of the code, then recall the code using only those terms."
                (game-info

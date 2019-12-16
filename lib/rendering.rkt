@@ -3,24 +3,16 @@
 (provide classmaps->html
          classmap->html
          mode->html
-         game-icon
-         story-icon
          mode->content-card
-         tag->html)
+         tag->html
+         (all-from-out "./icons.rkt"))
 
 (require website-js 
          website-js/components/form-row
          website-js/components/time-select
          "./base.rkt"
+         "./icons.rkt"
          "./tags/main.rkt")
-
-(define (game-icon)
-  (i class: "fas fa-dice"))
-;other options: fa-chess-knight, fa-pawn, fa-trophy
-
-(define (story-icon)
-  (i class: "fas fa-book"))
-;other options: fa-scroll, fa-book-open
 
 (define (classmaps->html . cms)
   (row

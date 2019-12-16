@@ -27,13 +27,13 @@
  mode-summary
  mode-tags
  mode-data
- 
  question-section
  embedded-story
  embedded-stories
  comprehension-questions
  creativity-questions
- coach-fills-in)
+ coach-fills-in
+ setup) 
 
 (require website/bootstrap
          website/util
@@ -41,9 +41,6 @@
          "./tags/main.rkt"
          "./icons.rkt")
 
-;TODO
-;update classmaps struc
-;update all classmaps...
 
 (struct game-mode  (name minutes summary data tags lock-length?))
 (struct story-mode (name minutes summary data tags lock-length?))
@@ -98,7 +95,7 @@
   (->* (string? number? string? story-text?) ((or/c empty? (listof string?))) story-mode?)
   (story-mode name minutes summary data tags #f))
 
-;classmap helper functions
+;==== classmap helper functions =====
 
 (define (game-with-minutes min mode)
   (struct-copy game-mode mode
@@ -128,7 +125,7 @@
 
 
 
-;===== functions/structs for creating games and stories ======
+;===== game and story mode helper functions ======
 
 ;replaced with para to allow formatting
 #;(define (story-text . content)
@@ -146,6 +143,7 @@
   (->* (supplies-list? game-instructions?) (element?) element?)
   (div
    supplies
+   (h5 "How to Play:")
    instructions
    tips-tricks))
 
@@ -158,7 +156,7 @@
         (ul
          (map li stuff))))
   (div
-   (h5 "NEED:")
+   (h5 "Need:")
    list-content)
   )
 
@@ -199,6 +197,10 @@
     (li s-or-list)
     (li (p (first s-or-list))
         (p style: (properties color: "gray") (second s-or-list)))))
+
+(define/contract (setup s)
+  (-> string? element?)
+  (p (i (b "Set Up: ") s)))
 
 (define (comprehension-questions . content)
  (list
@@ -263,6 +265,7 @@
 
    (div
     (supplies-list "stuff" "more stuff")
+    (h5 "How to Play:")
     (game-instructions
      "To play this game you must be a black belt in karate and have PhD in astrophysics"
      (steps "Fly to the moon"
@@ -275,7 +278,7 @@
   (check-elements-equal?
    (supplies-list "paper" "computers")
    (div
-    (h5 "NEED:")
+    (h5 "Need:")
     (ul
      (li "paper")
      (li "computers"))))
@@ -283,7 +286,7 @@
   (check-elements-equal?
    (supplies-list)
    (div
-    (h5 "NEED:")
+    (h5 "Need:")
     (ul
      (li "no required supplies"))))
 
@@ -304,6 +307,10 @@
      (li "Fly to the moon")
      (li "Kick a new crater into the moon's surface")
      (li "Laugh"))))
+
+  (check-elements-equal?
+   (setup "save the world.")
+    (p (i (b "Set Up: ") "save the world.")))
   
   )
 

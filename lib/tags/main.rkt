@@ -71,7 +71,7 @@
 
   (define teamwork
     (tag "teamwork"
-         "Emphasizes teamwork."))
+         "Builds teamwork skills."))
 
   (define k2
     (tag "young elementary"
@@ -115,7 +115,11 @@
 
   (define software-engineering
     (tag "software engineering"
-         "Uses authentic software engineering language.  Designed to communicate ideas, values, or concepts related to the construction of large software systems.")))
+         "Uses authentic software engineering language.  Designed to communicate ideas, values, or concepts related to the construction of large software systems."))
+  (define communication
+    (tag "communication"
+         "Builds communication skills."))
+  )
 
 
 

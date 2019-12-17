@@ -68,7 +68,7 @@
 
 (define (code-anatomy)
   (with-tags
-      (list coding memorization teamwork unplugged k2 3rd-5th middle-school high-school)
+      (list coding memorization communication teamwork unplugged k2 3rd-5th middle-school high-school)
     (game-mode "Code Anatomy" 15
                "Work as a team to label different parts of the code, then recall the code using only those terms."
                (game-info
@@ -102,18 +102,18 @@
 
 (define (reverse-engineering)
   (with-tags
-      (list coding teamwork review competitive-option k2 3rd-5th middle-school high-school)
+      (list coding teamwork communication review competitive-option k2 3rd-5th middle-school high-school)
     (game-mode "Reverse Engineering" 20
                "Coach shows the Team running code, who then work backwards to write the code."
                (game-info
-                (supplies-list "1 computer"
+                (supplies-list "computers - 1 per Team"
                                "whiteboard/paper and writing utensils"
                                "code")
                 (game-instructions
-                 (setup "Type in or copy/pastes code from site. Run the code, then adjust the windows so you can see the result of the running code but NOT the code itself.")
-                 (steps "Coach shows Team the result of running code"
-                        "Team works together to write on paper/whiteboard a detailed translation of the unseen code"
-                        "Team works together to write on paper/whiteboard the code to match the translation (and the result)"
+                 (setup "Type in or copy/paste implementation from site. Run the code, then adjust the windows so you can see the result of the running code but NOT the implementation itself.")
+                 (steps "Coach shows Team the result of running implementation"
+                        "Team works together to write a detailed specification of the unseen code on paper/whiteboard "
+                        "Team works together to write the code to implement the specification (and get the result they see) on paper/whiteboard"
                         "Coach or Player types up the code on the computer"
                         "Test the code"
                         "Coach and Team assess: Is this an exact match to the example?"
@@ -126,19 +126,19 @@
 
 (define (building-up)
   (with-tags
-      (list coding teamwork review competitive-option 3rd-5th middle-school high-school)
+      (list coding teamwork communication review competitive-option 3rd-5th middle-school high-school)
     (game-mode "Building Up" 20
                "Team works together to break a large translation task into the smallest possible steps, then follows the steps to code the game." 
                (game-info
                 (supplies-list "computers - 1 per Player"
                                "paper/whiteboard & writing utensils"
-                               "code goal")
+                               "specification")
                 (game-instructions
-                 (steps "Coach shows Team the code goal"
-                        "Team breaks down the code goal into ordered steps, each step as small as possible while still resulting in working code (see example below)"
+                 (steps "Coach shows Team the specification"
+                        "Team breaks down the specification into ordered steps, each step as small as possible while still resulting in working code (see example below)"
                         "Each Player progresses through the steps, typing up code on a computer")
                  (h5 "Example Steps:")
-                 (i "Code goal: Code an adventure game with an NPC who has a quest to find their lost sword. Give the quest an ending cutscene including the NPC sprite and some text.")
+                 (i "Specification: Code an adventure game with an NPC who has a quest to find their lost sword. Give the quest an ending cutscene including the NPC sprite and some text.")
                  (ol
                   (li "Code a basic adventure game")
                   (li "Define an NPC")
@@ -149,32 +149,32 @@
                   (li "Add 1 page with text to cutscene")
                   (li "Customize NPC sprite")
                   (li "Add NPC sprite to cutscene")))
-                (tips "The code goal might need to remain visible through the entire process -- ex: written on the whiteboard or on the top of the paper."
-                 "More beginner Players will likely need Coach's guidance breaking the code goal down into the smallest steps possible."
+                (tips "The specification might need to remain visible through the entire process -- ex: written on the whiteboard or on the top of the paper."
+                 "More beginner Players will likely need Coach's guidance breaking the specification down into the smallest steps possible."
                       "Add the requirement to RUN the code after every step to practice frequent testing"
                       "Can be made into a competition if each Player \"races\" through the steps, testing after each one. Players can \"sign off\" next to each step as completed with initials/signature/unique symbol. First Player to the end of the list wins!")))))
 
 (define (code-carousel)
   (with-tags
-      (list coding partners teamwork review 3rd-5th middle-school high-school)
+      (list coding partners communication teamwork review 3rd-5th middle-school high-school)
   (game-mode "Code Carousel" 10
              "Players work in pairs translating english prompt into code, rotating to a new computer every 30 seconds."
              (game-info
               (supplies-list "computers - 1 per 2 Players"
-                             "code goal")
+                             "specification")
               (game-instructions
                (setup "Place all computers in a larger circle or line to make very clear which computer to move to next. Be sure to clarify the direction of travel with Players before the game begins.")
                (steps "Players pair up"
-                      "Coach shows Team the code goal"
+                      "Coach shows Team the specification"
                       "Coach sets timer for 15-30 seconds"
                       "Each pair of Players code together on 1 computer"
                       "When timer goes off, all pairs move to the next computer (see tip below on how to make this an easy process)"
                       "Coach resets timer"
                       "Pairs pick up with the code in front of them"
                       "Repeat steps 5-7 until all computers have code that meets the goal"))
-              (tips "If possible, the code goal might need to remain visible through the entire process -- ex: written on a whiteboard -- to help the Players keep track of the goal"
+              (tips "If possible, the specification might need to remain visible through the entire process -- ex: written on a whiteboard -- to help the Players keep track of the goal"
                     "For younger teams that need guidance on how to work well together, have each pair swap who types (or \"drives\") each time they rotate."
-                    "It is likely that some computers will end up with completed code before others. Decide in advance what pairs should do when they end up at a completed computer -- keep adding more code? Engage with the completed, running code product? If they finish at a given computer, do they pull the computer out of the rotation and get to watch the rest of the game play out?"
+                    "It is likely that some computers will end up with completed implementation before others. Decide in advance what pairs should do when they end up at a completed computer -- keep adding more code? Engage with the completed, running implementation? If they finish at a given computer, do they pull the computer out of the rotation and get to watch the rest of the game play out?"
                    )))))
 
 (define (code-relay)
@@ -183,7 +183,7 @@
     (game-mode "Code Relay" 15
                "Race against each other (or the clock) to complete the coding challenges!"
                (game-info
-                (supplies-list "computers - 1 per Team (see below)"
+                (supplies-list "computers - 1 per Team"
                                "moderate amount of space for fast movement"
                                "multiple stacks of the same number of code cards"
                                "timer")
@@ -192,61 +192,132 @@
                   (setup "Place computers in a line on one side of the room. Place a stack of code cards, english side up, next to each computer.")
                  (steps "Each Team lines up, across the room from one of the computers"
                         "On Coach's signal the first Player on each Team races over to the computer"
-                        "Player translates the english prompt to code"
-                        "Player runs the code, making sure it works"
+                        "Player translates the specification into code"
+                        "Player runs the implementation, making sure it works"
                         "Player returns to their Team, sending the next Player racing over the the computer"
                         "Repeat steps 3-5 until the one Team successfully codes all cards in their deck"))
                 (tips "Choose how Players can move quickly but safely: this can range from a strict heel-toe walk to a full-out sprint, depending on the age of the players, size of the playing space, and obstacles around the space."
                       "If players get stuck, Coach can either offer help, or allow them to return the card to the bottom of the deck and pick a new one. For a \"penalty\" for either of these actions, the Coach can use the timer and enforce a 5-10 second freeze before continuing."
                       "If correctly interpreting the challenge may be a problem, limit the number of teams to the number of Coaches, placing one Coach by each computer to check.")))))
 
-;paused here
 
 (define (code-olympics)
-  (game-mode "Code Olympics" 20
-             "Small teams travel from 'event' to 'event' -- completing a Game Mode at each station. Potential for awards!"
-             (game-info
-              (supplies-list)
-              (game-instructions
-               (steps "Play the game")))))
+  (with-tags
+      (list coding teamwork competitive review 3rd-5th middle-school high-school)
+    (game-mode "Code Olympics" 25
+               "Small teams travel from 'event' to 'event' -- completing a Game Mode at each station."
+               (game-info
+                (supplies-list "3-5 distinct stations around the space"
+                               "all supplies for chosen Games"
+                               "timer")
+                (game-instructions
+                 (setup "Choose 3-5 other Games to be the events (see below for recommendations). Set up a station around the room for each event.")
+                 (steps "Players divide into Teams (the number of Teams should be equal to or less than the number of events)"
+                        "Coach explains each event"
+                        "Coach assigns each Team an event to start with"
+                        "Coach sets timer for round length"
+                        "Teams start at first event"
+                        "When timer goes off, Teams rotate to the next event"
+                        "Continue until all Teams have attempted each event")
+                 (h5 "Recommended Events:")
+                 (i "The best Game Modes for the Olympics are games that: A) your team will be familiar with, B) can run without your help, C) Players can self-identify when they have succeeded D) can take approximately the same (short) amount of time to play. Here are some suggestions:")
+                 (ul
+                  (li "Code Relay")
+                  (li "Reverse Engineering")
+                  (li "Connect Four")
+                  (li "a straight-forward team de-bugging task")
+                  (li "a straight-forward team memorization task")
+                  (li "a straight-forward team translation task")))
+                (tips "Set the timer for a length of time where completion of the event is likely, while limiting the possibility of down time between completion and the next round."
+                      "Have fun with the Olympics theme -- have each Team choose a 'home country,' create fun names for each event, play the role of the Games Announcer..."
+                      "The competition element can be downplayed or emphasized. If the Team has the maturity to handle the competion: keep track of the 'winners' in each event (who finishes the event fastest, or gets through the most cards, or creates the most complex game...). Announce Gold, Silver and Bronze for each event. Paper and pen is recommended to keep track throughout the multiple rounds.")))))
 
 (define (create-a-challenge)
-  (game-mode "Create a Challenge" 10
-             "Team works together to define the english/stimulus side of a translation challenge, before taking on that challenge themselves."
-             (game-info
-              (supplies-list)
-              (game-instructions
-               (steps "Play the game")))))
+  (with-tags
+      (list coding teamwork communication review k2 3rd-5th middle-school high-school)
+    (game-mode "Create a Challenge" 10
+               "The Team works together to design specification for a coding challenge, before taking on that challenge themselves."
+               (game-info
+                (supplies-list "whiteboard/paper and writing utensils"
+                               "computers - 1 per Player")
+                (game-instructions
+                 (steps "Team designs an achievable specification"
+                        "The finalized specification is written down where everyone can see"
+                        "Team designates a time limit and sets the timer"
+                        "Players code an implementation on individual computers"))
+                (tips "Ideally, a Team could run this game entirely by themselves without the Coach's help! But most teams, especially those with younger or inexperienced Players, will need the Coach's guidance to work well as a team and find a specification and time limit that is a good balance of challenging and acheivable. Experienment with when to step in and when to let the Team figure it out."
+                      "Teams with a wide range in skill and experience can easily be split into smaller Teams, each running this game independently of the other Team(s).")))))
 
 (define (reverse-translation)
-  (game-mode "Reverse Translation" 5
-             "Players see code, translate what that code does into english as specifically as possible."
-             (game-info
-              (supplies-list)
-              (game-instructions
-               (steps "Play the game")))))
+  (with-tags
+      (list coding communication unplugged review competitive-option k2 3rd-5th middle-school high-school)
+      (game-mode "Reverse Translation" 5
+                 "Starting with just an implementation, the Team translates it back to a specification with as much detail as possible."
+                 (game-info
+                  (supplies-list "code card")
+                  (game-instructions
+                   "Break up larger Teams into smaller groups for this Game so that all members of the Team have a chance to see the code card and voice their opinions."
+                   (steps "Coach gives the Team a code card, implementation-side up"
+                          "Without flipping the card, Team translates the code into english, describing what the code will do when run"
+                          "Coach guides the Players to give as much detail as possible"))
+                  (tips "Optional final step: Team tests their hypothesis by typing up the code and running it."
+                        "If a projector is available, project the code where everyone can see it."
+                        "Add a competitive element by splitting the larger Team into two or more Teams, showing all Teams the same code (pass around the card, write on a whiteboard, project from computer), set the timer for discussion, and then have each team present their case. Whomever is most detailed in their translation gets a point."
+                        "Enforce equal input within a Team by having Players raise hands and wait to be called on or take turns around a circle sharing details about the code.")))))
 
 (define (mind-meld)
-  (game-mode "Mind Meld" 10
-             "Can you meld your mind into ONE?!"
-             (game-info
-              (supplies-list)
-              (game-instructions
-               "Team circles up, a hex card is passed around the circle and each Player gets 10 seconds to look at it and attempt to memorize it. Hex card makes a round or two before the Coach collects it and replaces with a computer, whiteboard or paper. Team works together to re-write the code from memory."))))
+  (with-tags
+      (list coding memorization teamwork review 3rd-5th middle-school high-school)
+    (game-mode "Mind Meld" 10
+               "Can your whole Team think with ONE MIND?!"
+               (game-info
+                (supplies-list "code card"
+                               "computer - 1 per Team")
+                (game-instructions
+                 (steps "Team sits in a circle"
+                        "Coach hands the code card to first Player"
+                        "Team counts down in unison from 10 to 1 as the Player attempts to memorize the code"
+                        "Player passes code card to their left"
+                        "Repeat steps 3-4 until every Player has seen the code card twice"
+                        "Coach takes the code card away"
+                        "Coach gives the Team a computer"
+                        "Coach sets a timer"
+                        "Team attempts to type up the code, exactly as it appeared on the card"
+                        "When time is up or Team is done, Coach returns the card"
+                        "Team checks their accuracy against the original code card"))
+                (tips "The fun of this game largely comes from the lack of preparation. Planning what each Player will memorize in advance or spending too much time memorizing the code can take the challenge out of the game! Multiple attempts, failures and \"almosts\" before finally succeeding is what makes any game satifying."
+                      "The computer in the game can be replaced or preceded by whiteboard/paper. After writing the code on paper, the Team can either type it in, or skip the computer entirely and go straight to comparing their code to the card. This can be quite a bit harder!"
+                      "For Teams that are still building their basic teamwork skills, the Coach can assign a Scribe or Typist when the team is rebuilding to code. The Player in this role should be taking the input from the Team, not just writing their own ideas! Other solutions to this problem is all Players take turns writing/typing or the Coach takes on this role.")))))
 
 (define (build-a-bug-workshop)
-  (game-mode "Build a Bug Workshop" 10
-             "Break your partner's code -- on purpose!"
-             (game-info
-              (supplies-list)
-              (game-instructions "Players partner up. Both Players type up code on their computer. They swap computers and break their partner's code somehow. They swap back and try to debug. Can be made into a race!"))))
+  (with-tags
+      (list partners debugging review competitive-option k2 3rd-5th middle-school high-school)
+    (game-mode "Build a Bug Workshop" 10
+               "Players purposely break and debug code in this partnered game."
+               (game-info
+                (supplies-list "computers - 1 per Player")
+                (game-instructions
+                 (setup "Each Player needs complete, working code on their computer to start this game. Either tack it on to a game like Disintegrating Code, or preface the game by typing up code from reference, specification, or each Player's own imagination! Just be sure all code works before starting this game.")
+                 (steps "Players pair up"
+                        "Players swap computers, each with complete working code"
+                        "Players put a bug in their partner's code -- causing an error"
+                        "Players swap back computers and debug their now-broken code"))
+                (tips "For some friendly competition, turn the game into a race: who can debug their code faster?"
+                      "Start this game with a discussion about the bugs they have come across so far -- spelling errors, missing paretheses, wrong keywords -- to spark creativity about the kind of errors to plant in their partner's code.")))))
 
 (define (code-connect-four)
-  (game-mode "Connect Four" 30
-             "Not the board game"
-             (game-info
-              (supplies-list)
-              (game-instructions "Coach sets up a 4x4 grid of hex cards (code-side-up for easier, english-side-up for harder). Players must write code that fills four of cards in a horizontal/vertical/diagonal line"))))
+  (with-tags
+      (list coding review competitive-option 3rd-5th middle-school high-school)
+    (game-mode "Connect Four" 30
+               "Players creatively connect different code cards to create a custom specification and write the resulting code."
+               (game-info
+                (supplies-list "9 or 16 code cards"
+                               "computers - 1 per Player")
+                (game-instructions
+                 (setup "Choose a set of 9 or 16 code cards with as few overlaps or contradictions as possible and arrange them into a 3x3 or 4x4 grid in a centralized location. Place the cards with the inmplementation-side (code) up for an easier game and specification-side up for a harder game.")
+               
+                 "Players write code independently, each trying to build an end product that matches multiple code cards on the grid -- forming a vertical, horizontal or diagonal line of cards on the grid.")
+                (tips "Can eaily be made inot a race against the clock or other Players on the team.")))))
 
 ;===== UNPLUGGED GAMES =======
 

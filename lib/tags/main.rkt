@@ -67,7 +67,7 @@
 
   (define teamwork
     (tag "teamwork"
-         "Emphasizes teamwork."))
+         "Builds teamwork skills."))
 
   (define k2
     (tag "young elementary"
@@ -104,6 +104,10 @@
   (define competitive-option
     (tag "competitive option"
          "Competition is not required, but can be added easily."))
+
+  (define communication
+    (tag "communication"
+         "Builds communication skills."))
   )
 
 

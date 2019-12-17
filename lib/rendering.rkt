@@ -21,7 +21,6 @@
 
 (define (classmap->html 
            cm)
- (define content-id (gensym 'content-id))
    (enclose
      (card
       (js-runtime) ;Misplaced. Move...
@@ -51,10 +50,10 @@
         (col id: (ns 'modes)
          (map (curry mode->html 
                      #:class-minutes (classmap-minutes cm)
-                     #:content-id content-id) 
+                     #:content-id (id 'contentId)) 
           (classmap-modes cm)))
 
-        (col id: content-id))))
+        (col id: (id 'contentId)))))
      (script ([minutesDisplay (ns 'minutes-display)])
        (function (timeChange s e)
          @js{var diff = moment.duration(@e .diff(@s)).asMinutes()}
@@ -145,12 +144,11 @@
       (mode->content-card g)))))
 
 (define (story-mode->html content-id s)
- (define id (gensym 'story-mode))
- (define local-content-id
-   (~a id "-content"))
- (list
+ (enclose
   (card-group
-    'onClick: (display-content local-content-id content-id)
+    'onClick: 
+    (call 'showStory)
+      ;(display-content local-content-id content-id)
    (card
     class: "bg-light"
     (card-header 
@@ -169,8 +167,24 @@
      (span class: "mode-minutes"
         (story-mode-minutes s)) " minutes"))
    
-   (template id: local-content-id 
-     (mode->content-card s)))))
+   (template id: (id 'localContentId)
+     (mode->content-card s)))
+  (script ([localContentId (id 'localContentId)]
+           [contentId content-id])
+   (function (showStory)
+    @js{
+      $(@getEl{@contentId}).html("")
+    }
+
+    (inject-component 
+     @localContentId
+     @contentId)
+
+    @js{
+      $(document.getElementById(@contentId).childNodes[0]).addClass("in");
+    })
+     
+     )))
 
 (define (display-content local-content-id content-id)
   @~a{

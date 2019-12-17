@@ -20,6 +20,7 @@
   (classmap "Class Launch Map"
             "Start your session by introducing yourself, getting to know the students, setting up your Code of Awesomeness and writing the hello world code!"
     (list (coach-story)
+          (boids-story)
           (name-memory-game)
           (class-intro)
           (story-with-minutes 12 (coa-stories))
@@ -52,7 +53,7 @@
   (classmap "All About Bugs"
             "Dive into Story-Mode and get to know BUGS!"
     (list (first-bug-story)
-          (y2k-bug-story)
+          (mars-orbiter-bug-story)
           (game-with-minutes 15 (add-pair-programming (build-a-bug-workshop)))
           (rethinking-bugs)
           (build-a-bug-workshop)

@@ -33,7 +33,8 @@
  comprehension-questions
  creativity-questions
  coach-fills-in
- setup) 
+ setup
+ quotation) 
 
 (require website/bootstrap
          website/util
@@ -220,6 +221,9 @@
 
 (define (coach-fills-in . content)
   (span (b "[ Coach fills in: " (u content) " ]")))
+
+(define (quotation . content)
+  (i content))
 
 ;============ TESTS =============
 

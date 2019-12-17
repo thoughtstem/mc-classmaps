@@ -3,22 +3,16 @@
 (provide classmaps->html
          classmap->html
          mode->html
-         game-icon
-         story-icon
-         mode->content-card)
+         mode->content-card
+         tag->html
+         (all-from-out "./icons.rkt"))
 
 (require website-js 
          website-js/components/form-row
          website-js/components/time-select
-         "./base.rkt")
-
-(define (game-icon)
-  (i class: "fas fa-dice"))
-;other options: fa-chess-knight, fa-pawn, fa-trophy
-
-(define (story-icon)
-  (i class: "fas fa-book"))
-;other options: fa-scroll, fa-book-open
+         "./base.rkt"
+         "./icons.rkt"
+         "./tags/main.rkt")
 
 (define (classmaps->html . cms)
   (row
@@ -27,7 +21,6 @@
 
 (define (classmap->html 
            cm)
- (define content-id (gensym 'content-id))
    (enclose
      (card
       (js-runtime) ;Misplaced. Move...
@@ -51,15 +44,16 @@
           id: (ns 'minutes-display)
           "60 minutes"))
       (card-body
+       (h6 class: "card-title text-muted" (i (classmap-summary cm)))
        (time-picker-widget #:on-change (callback 'timeChange))  
        (row
         (col id: (ns 'modes)
          (map (curry mode->html 
                      #:class-minutes (classmap-minutes cm)
-                     #:content-id content-id) 
+                     #:content-id (id 'contentId)) 
           (classmap-modes cm)))
 
-        (col id: content-id))))
+        (col id: (id 'contentId)))))
      (script ([minutesDisplay (ns 'minutes-display)])
        (function (timeChange s e)
          @js{var diff = moment.duration(@e .diff(@s)).asMinutes()}
@@ -147,17 +141,14 @@
       " "
       (game-mode-name g)))
     (template id: (~a id "-content")
-      (mode->content-card g)))
-   
-      ))
+      (mode->content-card g)))))
 
 (define (story-mode->html content-id s)
- (define id (gensym 'story-mode))
- (define local-content-id
-   (~a id "-content"))
- (list
+ (enclose
   (card-group
-    'onClick: (display-content local-content-id content-id)
+    'onClick: 
+    (call 'showStory)
+      ;(display-content local-content-id content-id)
    (card
     class: "bg-light"
     (card-header 
@@ -176,8 +167,24 @@
      (span class: "mode-minutes"
         (story-mode-minutes s)) " minutes"))
    
-   (template id: local-content-id 
-     (mode->content-card s)))))
+   (template id: (id 'localContentId)
+     (mode->content-card s)))
+  (script ([localContentId (id 'localContentId)]
+           [contentId content-id])
+   (function (showStory)
+    @js{
+      $(@getEl{@contentId}).html("")
+    }
+
+    (inject-component 
+     @localContentId
+     @contentId)
+
+    @js{
+      $(document.getElementById(@contentId).childNodes[0]).addClass("in");
+    })
+     
+     )))
 
 (define (display-content local-content-id content-id)
   @~a{
@@ -189,12 +196,15 @@
     })
 
 (define (mode->content-card s #:fade? (fade? #t))
- (define mode-data (if (story-mode? s)
-                      story-mode-data
-                      game-mode-data))
- (define mode-name (if (story-mode? s)
-                      story-mode-name
-                      game-mode-name))
+  (define mode-data (if (story-mode? s)
+                        story-mode-data
+                        game-mode-data))
+  (define mode-name (if (story-mode? s)
+                        story-mode-name
+                        game-mode-name))
+  (define mode-summary (if (story-mode? s)
+                           story-mode-summary
+                           game-mode-summary))
 
  (define bg-color (if (story-mode? s)
                       ""
@@ -208,9 +218,23 @@
                story-icon
                game-icon))
 
- (card
-  class: (~a (if fade? "fade" "") " " bg-color " " text-color)
+ (card class: (~a (if fade? "fade" "") " " bg-color " " text-color)
   (card-header icon " " (mode-name s))
   (card-body
+   (h6 class: "card-title text-muted" (i (mode-summary s)))
    (mode-data s))))
+
+
+(define (tag->html t)
+  (badge-pill-warning 
+    style: (properties cursor: "pointer")
+    'title: (tag-desc t)
+    'data-toggle: "tooltip"
+    'data-placement: "top"
+    (tag-name t)))
+
+
+
+
+
 

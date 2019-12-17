@@ -12,23 +12,69 @@
  story-with-minutes
  lock-story-mode
  lock-game-mode
- story-text)
+ story-text
+ game-info
+ supplies-list
+ game-instructions
+ steps
+ (contract-out 
+  [with-tags 
+    (-> (listof tag?) (or/c story-mode? game-mode?) (or/c story-mode? game-mode?))])
+
+ tips
+ vocab
+ mode-name
+ mode-summary
+ mode-tags
+ mode-data
+ question-section
+ embedded-story
+ embedded-stories
+ comprehension-questions
+ creativity-questions
+ coach-fills-in
+ setup
+ quotation) 
 
 (require website/bootstrap
-         website/util)
+         website/util
+         website-js/components/accordion-cards
+         "./tags/main.rkt"
+         "./icons.rkt")
 
-;TODO
-;update all story-modes to reflect changes
-;update game-mode struct
-;update game-mode constructor
-;update all game-modes...
-;update classmaps struc
-;create classmap constructor?
-;update all classmaps...
 
-(struct game-mode  (name minutes data lock-length?))
-(struct story-mode (name minutes summary data lock-length?))
-(struct classmap   (name modes))
+(struct game-mode  (name minutes summary data tags lock-length?))
+(struct story-mode (name minutes summary data tags lock-length?))
+(struct classmap   (name summary modes))
+
+(define (mode-name x)
+  (if (game-mode? x)
+    (game-mode-name x)
+    (story-mode-name x)))
+
+(define (mode-summary x)
+  (if (game-mode? x)
+    (game-mode-summary x)
+    (story-mode-summary x)))
+
+(define (mode-tags x)
+  (if (game-mode? x)
+    (game-mode-tags x)
+    (story-mode-tags x)))
+
+(define (mode-data x)
+  (if (game-mode? x)
+    (game-mode-data x)
+    (story-mode-data x)))
+
+;For now this just makes words bold.  In the future, we may want to collect vocabulary words from stories and do something more interesting with them.  Possibly make a struct later.
+(define (vocab word)
+  (b class: "vocab" word))
+
+(define (with-tags ts s)
+  (if (story-mode? s)
+    (struct-copy story-mode s [tags ts])
+    (struct-copy game-mode  s [tags ts])))
 
 (define (mode-minutes m)
   (if (story-mode? m)
@@ -38,16 +84,19 @@
 (define (classmap-minutes cm)
   (apply + (map mode-minutes (classmap-modes cm))))
 
-;constructors
+(define game-info? element?)
+(define story-text? element?)
 
-(define (make-game-mode n m d [l #f])
-  (game-mode n m d l))
 
-(define/contract (make-story-mode name minutes summary data)
-  (-> string? number? string? element? story-mode?)
-  (story-mode name minutes summary data #f))
+(define/contract (make-game-mode name minutes summary data (tags '()))
+  (->* (string? number? string? game-info?) ((or/c empty? (listof string?))) game-mode?)
+  (game-mode name minutes summary data tags #f))
 
-;classmap helper functions
+(define/contract (make-story-mode name minutes summary data (tags '()))
+  (->* (string? number? string? story-text?) ((or/c empty? (listof string?))) story-mode?)
+  (story-mode name minutes summary data tags #f))
+
+;==== classmap helper functions =====
 
 (define (game-with-minutes min mode)
   (struct-copy game-mode mode
@@ -65,56 +114,208 @@
   (struct-copy game-mode mode
                [lock-length? #t]))
 
-;multi-use functions
+;helper helper functions
+
+(define (only #:if conditional #:do f)
+  (lambda (x)
+    (if (conditional x)
+        (f x)
+        x)))
+
+(define maybe-p-ify (only #:if string? #:do p))
 
 
-;functions for creating games and stories
 
-(define (story-text . content)
-  (define (maybe-p-ify x)
-    (if (string? x)
-        (p x)
-        x))
+;===== game and story mode helper functions ======
+
+;replaced with para to allow formatting
+#;(define (story-text . content)
   (div (map maybe-p-ify content)))
 
-;TESTS
+(define (story-text . content)
+  (span (apply paras content)))
+
+(define supplies-list? element?)
+(define game-instructions? element?)
+
+;potentially make supplies optional?
+;or creat (no-supplies) func
+(define/contract (game-info supplies instructions (tips-tricks ""))
+  (->* (supplies-list? game-instructions?) (element?) element?)
+  (div
+   supplies
+   (h5 "How to Play:")
+   instructions
+   tips-tricks))
+
+;strings -> element (unordered list)
+(define (supplies-list . stuff)
+  (define list-content
+    (if (empty? stuff)
+        (ul
+         (li "no required supplies"))
+        (ul
+         (map li stuff))))
+  (div
+   (h5 "Need:")
+   list-content)
+  )
+
+;strings -> ol element
+(define (steps . stuff)
+  (ol
+   (map li stuff)))
+
+
+;strings, elements -> element
+(define (game-instructions . content)
+    (div
+     (map maybe-p-ify content)))
+
+;strings, elements -> ul element
+(define (tips . t)
+  (div
+   (hr)
+   (h5 "Tips & Tricks:")
+   (ul
+    (map li t))))
+
+(require website-js/components/accordion-cards)
+(define (question-section . content)
+  (accordion-cards content))
+
+
+(define (embedded-story story)
+   (accordion-card #:header (list (story-icon) " " (story-mode-name story))
+      (story-mode-data story)))
+
+(define (embedded-stories . stories)
+  (accordion-cards
+    (map embedded-story (flatten stories))))
+
+(define (li-qa s-or-list)
+  (if (string? s-or-list)
+    (li s-or-list)
+    (li (p (first s-or-list))
+        (p style: (properties color: "gray") (second s-or-list)))))
+
+(define/contract (setup s)
+  (-> string? element?)
+  (p (i (b "Set Up: ") s)))
+
+(define (comprehension-questions . content)
+ (list
+  (accordion-card
+   #:header "Closed-Ended Questions"
+    (card-text
+     (ul
+      (map li-qa content))))))
+
+(define (creativity-questions . content)
+ (list
+  (accordion-card
+    #:header "Open-Ended Questions"
+    (card-text
+      (ul
+       (map li-qa content))))))
+
+(define (coach-fills-in . content)
+  (span (b "[ Coach fills in: " (u content) " ]")))
+
+(define (quotation . content)
+  (i content))
+
+;============ TESTS =============
 
 (module+ test
   (require rackunit)
 
   (define test-story
     (make-story-mode "Test Story" 1 "summary"
-                     (story-text "blah")))
-
-  ;=== STORY MODE STUFF
+                     @story-text{blah blah blah}))
 
   ;story-text function
   (check-elements-equal?
-   (story-text "Once upon a time there was a test."
-                                "It passed."
-                                "The villagers rejoiced!"
-                                "The end.")
-   (div
-    (p "Once upon a time there was a test.")
-    (p "It passed.")
-    (p "The villagers rejoiced!")
-    (p "The end.")))
+   @story-text{Once upon a time there was a test.
+               It passed.
+               The villagers rejoiced!
+               The end.}
+   (span
+    "Once upon a time there was a test." (br) "It passed." (br)"The villagers rejoiced!" (br)"The end."))
 
   (check-elements-equal?
-   (story-text "Here is another story"
-               (p "this should not be double wrapped"))
-   (div
-    (p "Here is another story")
-    (p "this should not be double wrapped")))
+   @story-text{Here is another story. @b{this should be bold!}}
+   (span
+    "Here is another story. " (b "this should be bold!")))
 
-  (check-elements-equal?
-   (story-text (p "this should not be double wrapped")
-               "this should come last")
-   (div
-    (p "this should not be double wrapped")
-    (p "this should come last")
-    ))
-  )
+  ;=== GAME MODE STUFF ===
+
+  (define test-game
+    (make-game-mode "Test Game" 1 "summary"
+                    (game-info
+                     (supplies-list "stuff" "things")
+                     (game-instructions
+                      "Play the game."))))
   
+  ;game-info
+  (check-elements-equal?
+   (game-info
+    (supplies-list "stuff" "more stuff")
+    (game-instructions
+     "To play this game you must be a black belt in karate and have PhD in astrophysics"
+     (steps "Fly to the moon"
+            "Kick a new crater into the moon's surface"
+            "Laugh")))
+
+   (div
+    (supplies-list "stuff" "more stuff")
+    (h5 "How to Play:")
+    (game-instructions
+     "To play this game you must be a black belt in karate and have PhD in astrophysics"
+     (steps "Fly to the moon"
+            "Kick a new crater into the moon's surface"
+            "Laugh")))
+
+   )
+
+  ;supplies-list
+  (check-elements-equal?
+   (supplies-list "paper" "computers")
+   (div
+    (h5 "Need:")
+    (ul
+     (li "paper")
+     (li "computers"))))
+  
+  (check-elements-equal?
+   (supplies-list)
+   (div
+    (h5 "Need:")
+    (ul
+     (li "no required supplies"))))
+
+  ;game-instructions
+  (check-elements-equal?
+   (game-instructions
+    "This game is rock paper scissors, you know it.")
+   (div
+    (p "This game is rock paper scissors, you know it.")))
+
+  (check-elements-equal?
+   (game-instructions
+    (steps "Fly to the moon"
+           "Kick a new crater into the moon's surface"
+           "Laugh"))
+   (div
+    (ol
+     (li "Fly to the moon")
+     (li "Kick a new crater into the moon's surface")
+     (li "Laugh"))))
+
+  (check-elements-equal?
+   (setup "save the world.")
+    (p (i (b "Set Up: ") "save the world.")))
+  
+  )
 
 

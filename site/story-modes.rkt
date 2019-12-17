@@ -4,17 +4,20 @@
          story-mode-main-points)
 
 (require website/bootstrap
+         mc-classmaps/lib/mode-search
          mc-classmaps/lib)
 
 (define (story-mode-tab-pane)
  (tab-pane id: "story-modes" class: "p-3" 
+  (include-js "https://d3js.org/d3.v5.min.js")
+
   @h3{@(story-icon) Story Modes}
   (card
     (card-text
       (card-body
         (story-mode-main-points))))
   @h3[class: "pt-3"]{The Story Mode database}
-  (map mode->html (all-stories))))
+  (search (all-tags) (all-stories))))
 
 (define (story-mode-main-points)
   @div{

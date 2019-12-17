@@ -20,6 +20,10 @@
     (tag "multi-story"
          "Contains multiple stories within one story."))
 
+  (define databases 
+    (tag "databases"
+         "Involves the concept of databases."))
+
   (define fable 
     (tag "fable"
          "Communicates morals about coding or language learning \"coded\" in the form of an alegory, usually with animal characters -- e.g. Aesop's Fables."))

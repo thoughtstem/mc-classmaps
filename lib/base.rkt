@@ -27,15 +27,19 @@
  mode-summary
  mode-tags
  mode-data
- setup
+ question-section
+ embedded-story
+ embedded-stories
  comprehension-questions
- creativity-questions) 
-
+ creativity-questions
+ coach-fills-in
+ setup) 
 
 (require website/bootstrap
          website/util
          website-js/components/accordion-cards
-         "./tags/main.rkt")
+         "./tags/main.rkt"
+         "./icons.rkt")
 
 
 (struct game-mode  (name minutes summary data tags lock-length?))
@@ -175,6 +179,25 @@
    (ul
     (map li t))))
 
+(require website-js/components/accordion-cards)
+(define (question-section . content)
+  (accordion-cards content))
+
+
+(define (embedded-story story)
+   (accordion-card #:header (list (story-icon) " " (story-mode-name story))
+      (story-mode-data story)))
+
+(define (embedded-stories . stories)
+  (accordion-cards
+    (map embedded-story (flatten stories))))
+
+(define (li-qa s-or-list)
+  (if (string? s-or-list)
+    (li s-or-list)
+    (li (p (first s-or-list))
+        (p style: (properties color: "gray") (second s-or-list)))))
+
 (define/contract (setup s)
   (-> string? element?)
   (p (i (b "Set Up: ") s)))
@@ -182,18 +205,21 @@
 (define (comprehension-questions . content)
  (list
   (accordion-card
-   #:header "Comprehension Questions"
+   #:header "Closed-Ended Questions"
     (card-text
      (ul
-      (map li content))))))
+      (map li-qa content))))))
 
 (define (creativity-questions . content)
  (list
   (accordion-card
-    #:header "Creativity Questions"
+    #:header "Open-Ended Questions"
     (card-text
       (ul
-       (map li content))))))
+       (map li-qa content))))))
+
+(define (coach-fills-in . content)
+  (span (b "[ Coach fills in: " (u content) " ]")))
 
 ;============ TESTS =============
 

@@ -7,9 +7,14 @@
          "../../base.rkt"
          "../../rendering.rkt"
          "../../game-modes/main.rkt"
-         "../../story-modes/main.rkt")
+         "../../story-modes/main.rkt"
+         "../../tags/main.rkt"
+         (except-in 2htdp/image frame))
 
-(provide computational-thinking-for-young-elementary-pack)
+(provide 
+  computational-thinking-for-young-elementary-pack
+  computational-thinking-for-kinder-pack
+  )
 
 (define (story-stub title time . notes)
   (story-mode title time "" 
@@ -45,6 +50,36 @@
        ))
     (tips )))))
 
+(define (patterns-on-the-board-game)
+ (with-tags
+  (list k2 middle-school high-school)
+  (game-mode "Visual Pattern Recognition" 15
+   "The Coach comes up with a pattern and the team tries to guess the completion"
+   (game-info
+    (supplies-list)
+    (game-instructions
+     (steps 
+       "Coach writes the first few terms in some pattern."
+       "Team tries to guess the completion(s)."))
+    (tips 
+       @p{
+         @(write-img
+            (circle 10 'solid 'red)) 
+         @(write-img
+            (circle 10 'solid 'green)) 
+         @(write-img
+            (circle 10 'solid 'blue)) 
+         @(write-img
+            (circle 10 'solid 'red)) 
+         @(write-img
+            (circle 10 'solid 'green)) 
+         @(write-img
+            (overlay
+              (text "?" 12 'yellow)
+              (square 20 'solid 'black)) )
+       } 
+     )))))
+
 (define (inputs/outputs:depth-1 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "Intro to Inputs/Outputs"
             ""
@@ -59,6 +94,7 @@
             ""
             (list
               intro
+              #;
               (code-the-coach-with-errors) 
             
              )))
@@ -68,7 +104,7 @@
             ""
             (list
               intro
-              (patterns-on-the-board) 
+              (patterns-on-the-board-game) 
             
               )))
 

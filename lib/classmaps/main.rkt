@@ -4,7 +4,8 @@
          "../base.rkt"
          "../rendering.rkt"
          "../game-modes/main.rkt"
-         "../story-modes/main.rkt")
+         "../story-modes/main.rkt"
+         "./academic/main.rkt")
 
 (provide all-classmaps 
          class-launch-map
@@ -20,7 +21,6 @@
   (classmap "Class Launch Map"
             "Start your session by introducing yourself, getting to know the students, setting up your Code of Awesomeness and writing the hello world code!"
     (list (coach-story)
-          (boids-story)
           (name-memory-game)
           (class-intro)
           (story-with-minutes 12 (coa-stories))
@@ -49,6 +49,7 @@
           (market-time)
           (meta-story-badges))))
 
+;What bugs are, and how we think about them.  
 (define (bugs-map)
   (classmap "All About Bugs"
             "Dive into Story-Mode and get to know BUGS!"
@@ -76,18 +77,19 @@
 ; Final Jam With Review
 ; All Unplugged
 ; Developer Role Play
-; 
 
-
-
+(define (8-week-starter-pack)
+ (list (class-launch-map)
+       (coa-focus-map)
+       (first-badge-map)
+       (bugs-map)
+       (final-jam-map)))
 
 (define (all-classmaps)
-  (list (class-launch-map)
-        (coa-focus-map)
-        (first-badge-map)
-        (bugs-map)
-        (final-jam-map)
-        ))
+ (flatten
+  (list 
+   (8-week-starter-pack)
+   (computational-thinking-for-young-elementary-pack))))
 
 (module+ test
   (require rackunit)

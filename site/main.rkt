@@ -18,6 +18,7 @@
  (page index.html
   (content
     (container
+     (include-p5-js) 
      (tabify 
       (active-tab-nav-link href: "#classmaps" "Classmaps")
       (tab-nav-link href: "#story-modes" (story-icon )" Story Modes")

@@ -11,6 +11,7 @@
          all-stories
 
          (all-from-out "./authentic-engineer-stories/main.rkt")
+         (all-from-out "./young-engineer-stories/main.rkt")
          (all-from-out "./badge-story/main.rkt")
          (all-from-out "./class-intro/main.rkt")
          (all-from-out "./coa-fables/main.rkt")
@@ -23,6 +24,7 @@
          "../base.rkt"
          "../tags/main.rkt"
          "../rendering.rkt"
+         "./young-engineer-stories/main.rkt"
          "./authentic-engineer-stories/main.rkt"
          "./badge-story/main.rkt"
          "./class-intro/main.rkt"
@@ -72,7 +74,8 @@
          (mars-orbiter-bug-story)
          ;metacognitive stories
          (rethinking-bugs)
-         (boids-story))))
+         (boids-story)
+         (youtube-story))))
      string<?
      #:key story-mode-name ))
 

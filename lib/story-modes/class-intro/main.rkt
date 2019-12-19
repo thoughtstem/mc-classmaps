@@ -4,7 +4,6 @@
 
 (require 
  website/bootstrap
- website-js/components/accordion-cards
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
  mc-classmaps/lib/rendering)

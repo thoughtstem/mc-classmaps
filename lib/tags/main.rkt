@@ -116,9 +116,18 @@
   (define software-engineering
     (tag "software engineering"
          "Uses authentic software engineering language.  Designed to communicate ideas, values, or concepts related to the construction of large software systems."))
+  
   (define communication
     (tag "communication"
          "Builds communication skills."))
+
+  (define name-game
+    (tag "name game"
+         "Icebreaker to get to know students and student names."))
+
+  (define language-creation
+    (tag "language creation games"
+         "Works with language by creating new words as a key part of the game."))
   )
 
 

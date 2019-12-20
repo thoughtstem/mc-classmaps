@@ -133,9 +133,9 @@
     (tag "name game"
          "Icebreaker to get to know students and student names."))
 
-  (define language-creation
-    (tag "language creation games"
-         "Works with language by creating new words as a key part of the game."))
+  (define language
+    (tag "language games"
+         "Builds skills and experience working with language creation and acquisition."))
   )
 
 

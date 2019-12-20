@@ -343,11 +343,10 @@
               (supplies-list "whiteboard or other way to display drawings to the whole group"
                              "writing utensils")
               (game-instructions
-               (setup )
                (steps "Team works together to create words for shape combinations (defining) then a leader instructs them to draw a picture (only they can see) using those words."
                       "This game should include a few end pictures and the shapes to define them.")
                (h5 "Shapes and Pictures to Try!")
-               ))))
+               )))))
 
 (define (whaddya-call-that-partners)
   (game-mode "Whaddya Call That?! Partner Version" 20

@@ -25,12 +25,14 @@
          example-game
          name-and-motion
          name-alliteration
-         all-games)
+         all-games
+         (all-from-out "./pattern-games/main.rkt"))
 
 (require website/bootstrap
          "../base.rkt"
          "../tags/main.rkt"
-         "../rendering.rkt")
+         "../rendering.rkt"
+         "./pattern-games/main.rkt")
 
 ;Language standardization:
 ; use TEAM instead of CLASS

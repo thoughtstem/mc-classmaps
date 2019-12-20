@@ -113,13 +113,8 @@
       ))))
 
 (define (game-mode->html content-id g)
- (define id (gensym 'game-mode))
- (define local-content-id
-   (~a id "-content"))
-
- (list
-  (card-group
-    'onClick: (display-content local-content-id content-id)
+ (enclose
+  (card-group on-click: (call 'showGame) 
    (card class: "order-last order-sm-first"
     'data-toggle: "modal" 
     'data-target: (~a "#" id)
@@ -140,15 +135,29 @@
       (game-icon)
       " "
       (game-mode-name g)))
-    (template id: (~a id "-content")
-      (mode->content-card g)))))
+    (template id: (id 'localContentId)
+      (mode->content-card g)))
+  
+  (script ([localContentId (id 'localContentId)]
+           [contentId content-id])
+   (function (showGame)
+    @js{
+      $(@getEl{@contentId}).html("")
+    }
+
+    (inject-component 
+     @localContentId
+     @contentId)
+
+    @js{
+      $(document.getElementById(@contentId).childNodes[0]).addClass("in");
+    })
+     
+     )))
 
 (define (story-mode->html content-id s)
  (enclose
-  (card-group
-    'onClick: 
-    (call 'showStory)
-      ;(display-content local-content-id content-id)
+  (card-group on-click: (call 'showStory)
    (card
     class: "bg-light"
     (card-header 
@@ -169,6 +178,7 @@
    
    (template id: (id 'localContentId)
      (mode->content-card s)))
+
   (script ([localContentId (id 'localContentId)]
            [contentId content-id])
    (function (showStory)

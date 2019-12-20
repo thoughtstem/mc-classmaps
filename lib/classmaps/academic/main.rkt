@@ -3,7 +3,8 @@
 ;A place to define more "academic" classmaps and classmap sequences.
 ;Good for use in in-school programs and more academically-focussed after-school programs
 
-(require website/bootstrap
+(require website-js
+         website-js/components/accordion-cards
          "../../base.rkt"
          "../../rendering.rkt"
          "../../game-modes/main.rkt"
@@ -13,8 +14,7 @@
 
 (provide 
   computational-thinking-for-young-elementary-pack
-  computational-thinking-for-kinder-pack
-  )
+  computational-thinking-for-kinder-pack)
 
 (define (story-stub title time . notes)
   (story-mode title time "" 
@@ -74,16 +74,17 @@
    (game-info
     (supplies-list)
     (game-instructions
+     (steps
       (div
-        (div
-          "Discuss the following operations and what they mean:" 
-          (ul
-            (map op operations meanings))))
+       (div
+        "Discuss the following operations and what they mean:" 
+        (ul
+         (map op operations meanings))))
       "Do some examples"
       "Pick a Bot (usually the Coach, if it is the first time playing the game)"
       "Team tries to get the Bot to accomplish the following goal(s), using only the permitted language"
       (ul
-        (map li goals)))
+       (map li goals))))
     (tips
       "Switch out who is the bot"
       "Pick two bots and two goals, have two teams (in parallel) try to get their bot to achieve their goal"
@@ -123,51 +124,6 @@
                      "Bot #2 turns 90 degrees to the right")
     #:goals  (list "Get from point A to point B")))
 
-
-(define (patterns-on-the-board-game)
- (define (??)
-  (overlay
-   (text "?" 12 'yellow)
-   (square 20 'solid 'black)))
-
- (with-tags
-  (list k2 middle-school high-school)
-  (game-mode "Visual Pattern Recognition" 15
-   "The Coach comes up with a pattern and the team tries to guess the completion"
-   (game-info
-    (supplies-list)
-    (game-instructions
-     (steps 
-       "Coach writes the first few terms in some pattern."
-       "Team tries to guess the completion(s)."))
-    (tips 
-       @p{
-         @(write-img
-            (beside
-              (circle 10 'solid 'red)
-              (circle 10 'solid 'green)
-              (circle 10 'solid 'blue) 
-              (circle 10 'solid 'red) 
-              (circle 10 'solid 'green) 
-              (??)))
-       } 
-       @p{
-         @(write-img
-           (above
-            (beside
-              (circle 10 'solid 'red)
-              (circle 10 'solid 'green)
-              (circle 10 'solid 'blue))
-            (beside
-              (circle 10 'solid 'yellow)
-              (circle 10 'solid 'red) 
-              (circle 10 'solid 'green))
-            (beside
-              (circle 10 'solid 'blue)
-              (circle 10 'solid 'yellow) 
-              (??))))
-       } 
-     )))))
 
 (define (inputs/outputs:depth-1 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "Intro to Inputs/Outputs"
@@ -209,17 +165,14 @@
                 "???")
               (meta-story-one-word))))
             
-(define (pattern-recognition:depth-1 #:intro intro)
+(define (pattern-recognition-demo-day #:intro intro)
   (classmap "Intro to Pattern Recognition"
             ""
             (list
               intro
               (patterns-on-the-board-game) 
-              (story-stub "Pattern in a story (what's next??)" 15
-                "e.g. Going on a Bear Hunt")
-              (game-stub "Basic Coding Game" 15
-                "???")
-              (meta-story-one-word))))
+              (transformers-game) 
+              )))
 
 (define (inputs/outputs:depth-2 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "More On Inputs and Outputs"
@@ -351,12 +304,8 @@
 
 (define (computational-thinking-for-young-elementary-pack)
   (list 
-    (pattern-recognition:depth-1
-      #:intro (coach-story))
 
-    ;Consider a literal "decoding" game.
-    ; Make your own code (encode something)
-  ))
+    ))
 
 (define (computational-thinking-for-upper-elementary-pack)
   (list 

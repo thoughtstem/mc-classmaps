@@ -136,6 +136,14 @@
   (define language
     (tag "language games"
          "Builds skills and experience working with language creation and acquisition."))
+
+  (define intro-new-code
+    (tag "intro new code"
+         "Great for introducing new coding concepts that the students have yet to work with."))
+
+  (define simple
+    (tag "simple"
+         "Especially easy and straight-forward."))
   )
 
 

@@ -1,7 +1,7 @@
 #lang at-exp racket
 
 ;A place to define more "academic" classmaps and classmap sequences.
-;Good for use in in-school programs and more academically-focussed after-school programs
+;Good for use in in-school programs and more academically-focused after-school programs
 
 (require website/bootstrap
          "../../base.rkt"
@@ -147,17 +147,20 @@
        } 
      )))))
 
+; refactor games above into lib/game-modes
+;=========== MAPS ===============
+
 (define (inputs/outputs:depth-1 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "Intro to Inputs/Outputs"
             ""
             (list
               intro
+              
               (code-the-coach) 
               (story-stub "Human Inputs and Outputs" 15
                 "Talk about 5 senses (input), and speaking/signing/writing/coding (outputs)")
 
-              (game-stub "Basic Coding Game" 15
-                "???")
+              (what-does-this-do)
 
               (meta-story-one-word)
               )))

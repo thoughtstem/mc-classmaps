@@ -46,7 +46,7 @@
     (list (badge-story)
           (game-with-minutes 20 (code-anatomy))
           (game-with-minutes 15 (add-pair-programming (create-a-challenge)))
-          (market-time)
+          (game-with-minutes 15 (market-time))
           (meta-story-badges))))
 
 ;What bugs are, and how we think about them.  

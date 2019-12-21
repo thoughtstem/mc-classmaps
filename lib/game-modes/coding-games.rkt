@@ -13,6 +13,8 @@
          mind-meld
          build-a-bug-workshop
          code-connect-four
+         try-it-first
+         what-does-this-do
          coding-games)
 
 (require website/bootstrap
@@ -26,7 +28,7 @@
 
 (define (disintegrating-code)
   (with-tags
-      (list coding memorization k2 3rd-5th middle-school high-school)
+      (list coding memorization intro-new-code k2 3rd-5th middle-school high-school)
   (game-mode "Disintegrating Code" 15
              "Write the code multiple times, but with fewer and fewer hints each time."
              (game-info
@@ -54,7 +56,7 @@
 
 (define (code-anatomy)
   (with-tags
-      (list coding memorization communication teamwork unplugged k2 3rd-5th middle-school high-school)
+      (list coding memorization intro-new-code communication teamwork unplugged k2 3rd-5th middle-school high-school)
     (game-mode "Code Anatomy" 15
                "Work as a team to label different parts of the code, then recall the code using only those terms."
                (game-info
@@ -303,22 +305,63 @@
                  (setup "Choose a set of 9 or 16 code cards with as few overlaps or contradictions as possible and arrange them into a 3x3 or 4x4 grid in a centralized location. Place the cards with the inmplementation-side (code) up for an easier game and specification-side up for a harder game.")
                
                  "Players write code independently, each trying to build an end product that matches multiple code cards on the grid -- forming a vertical, horizontal or diagonal line of cards on the grid.")
-                (tips "Can eaily be made inot a race against the clock or other Players on the team.")))))
+                (tips "Can easily be made into a race against the clock or other Players on the team.")))))
+
+(define (try-it-first)
+  (with-tags
+      (list coding simple intro-new-code k2 3rd-5th middle-school high-school)
+    (game-mode "Try It First" 10
+               "Players try to figure out how to code a new specification with no hints before getting hints/the answer."
+               (game-info
+                (supplies-list "computers - 1 per Player"
+                               "code card"
+                               "whiteboard/projector"
+                               "timer")
+                (game-instructions
+                 (steps "Coach announces the specification"
+                        "Coach sets timer for 1-5 minutes"
+                        "Players attempt to figure out how to code the specification"
+                        "When timer goes off, Coach writes the implementation on whiteboard/projected screen"
+                        "Coach resets timer"
+                        "Players try the code as shown"))
+                (tips "Great for introducing new material once Players are getting comfortable with the code structures. Many Players will need a lot of coaching, cheerleading, and \"just give it a shot!\" encouragement to try something they don't know the answer to!"
+                      "When showing the correct answer, ask the Team to help you. If any Players figured it out, have them tell you what to write."
+                      "Variation: Over the allotted time, slowly fill in the code. This works well for Players who are getting stuck -- at least they can add something."
+                      "For the full effect, do not give any answers until the first timer goes off. Offer support but ask Players to try things out, without giving them the answers.")))))
+
+(define (what-does-this-do)
+  (with-tags
+      (list coding simple intro-new-code k2 3rd-5th middle-school high-school)
+    (game-mode "What Does This Do?" 5
+               "Players type up and run code, before explaining the result in detail."
+               (game-info
+                (supplies-list "computers - 1 per Player"
+                               "code"
+                               "whiteboard/projector or alternative way to show Team the code"
+                               "timer")
+                (game-instructions
+                 (steps "Coach writes up/displays code"
+                        "Coach does NOT say what the code does"
+                        "Coach sets timer for 1-5 minutes"
+                        "Players type up the code and run it"
+                        "When timer goes off, Coach asks Players to share what they observed about the code"))
+                (tips "Keep the experimentation phase \"top secret\" -- have Players be secretive about what they find until the timer goes off and you all share! This keeps faster Players from spoiling the game for slower typists."
+                      "Varitation: Players discuss their hypotheses for what the code will do prior to trying it.")))))
 
 
 ;==== for class launch ====
 
-(define (hello-world-beginner-game)
+(define (hello-world-beginner-game (g (disintegrating-code)))
   (game-mode "Hello World Game" 10
              "The first coding game of most courses"
              (game-info
               (supplies-list)
               (game-instructions
-               "Run Disintegrating code, using the Hello World kata in your #lang"
+               "Run the game below, using the Hello World code card in your #lang"
 
                (mode->content-card 
                 #:fade? #f
-                (disintegrating-code))
+                g)
                ))))
 
 
@@ -329,7 +372,6 @@
 (define (coding-games)
   (list
    (hello-world-beginner-game)
-   ;code on comp games
    (code-anatomy)
    (disintegrating-code)
    (reverse-engineering)
@@ -342,6 +384,8 @@
    (mind-meld)
    (build-a-bug-workshop)
    (code-connect-four)
+   (try-it-first)
+   (what-does-this-do)
    ))
 
 

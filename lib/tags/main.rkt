@@ -144,6 +144,10 @@
   (define simple
     (tag "simple"
          "Especially easy and straight-forward."))
+
+  (define patterns
+    (tag "patterns"
+         "Builds pattern recognition and matching skills."))
   )
 
 

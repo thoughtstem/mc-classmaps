@@ -290,7 +290,8 @@
                         "Players swap computers, each with complete working code"
                         "Players put a bug in their partner's code -- causing an error"
                         "Players swap back computers and debug their now-broken code"))
-                (tips "For some friendly competition, turn the game into a race: who can debug their code faster?"
+                (tips "Players can swap seats instead of computers to prevent dropping of computers."
+                 "For some friendly competition, turn the game into a race: who can debug their code faster?"
                       "Start this game with a discussion about the bugs they have come across so far -- spelling errors, missing paretheses, wrong keywords -- to spark creativity about the kind of errors to plant in their partner's code.")))))
 
 (define (code-connect-four)

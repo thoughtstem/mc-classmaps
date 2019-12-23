@@ -32,24 +32,28 @@
 ;all code-the-bot variations renamed "person-bot..." and moved to ../../game-modes/language-games.rkt
 ;pattern-recognition game renamed pattern-prediction and moved to ../../game-modes/unplugged-games.rkt
 
-(define (inputs/outputs:depth-1 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
+(define (inputs/outputs:depth-1 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?"))
+                                #:unplugged-game-min (unplugged-min 20))
   (classmap "Intro to Inputs/Outputs"
-            "A computer-light classmap introducting the basics of inputs/outputs."
+            "An unplugged/plugged classmap introducting the basics of inputs/outputs."
             (list
               intro
               
-              (game-with-minutes 20 (person-bot)) 
+              (game-with-minutes unplugged-min (person-bot)) 
               (story-stub "Human Inputs and Outputs" 15
                 "Talk about 5 senses (input), and speaking/signing/writing/coding (outputs)")
 
-              (game-with-minutes 15 (what-does-this-do)) 
+              (game-with-minutes (- 60 (+ 5 5 15 unplugged-min)) ;calculates the remaining min in the hour after all other modes
+                                 (what-does-this-do)) 
 
               (meta-story-one-word)
               )))
 
+
+
 (define (bugs:depth-1 #:intro intro)
   (classmap "Intro to Bugs"
-            "A computer-light classmap introducting the basics of bugs."
+            "A unplugged/plugged classmap introducting the basics of bugs."
             (list
               intro
               (game-with-minutes 20 (add-game-focus "bugs"(person-bot))) 
@@ -60,7 +64,7 @@
 
 (define (language:depth-1 #:intro intro)
   (classmap "Intro to Code is Language"
-            "A computer-light classmap introducting the basics of coding as a language."
+            "A unplugged/plugged classmap introducting the basics of coding as a language."
             (list
               intro
               (game-with-minutes 20 (person-bot-language-focus))
@@ -71,7 +75,7 @@
             
 (define (inputs/outputs:depth-2 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "More On Inputs and Outputs"
-            "A computer-light classmap on inputs/outputs."
+            "A unplugged/plugged classmap on inputs/outputs."
             (list
               intro
               (game-with-minutes 20 (person-bot:shapes-and-size))
@@ -86,7 +90,7 @@
 
 (define (bugs:depth-2 #:intro intro)
   (classmap "More On Bugs"
-            "A computer-light classmap on debugging skills."
+            "A unplugged/plugged classmap on debugging skills."
             (list
               intro
               (game-with-minutes 20 (person-bot:point))
@@ -98,7 +102,7 @@
             
 (define (language:depth-2 #:intro intro)
   (classmap "More on to Code is Language"
-            "A computer-light classmap on coding as a language."
+            "A unplugged/plugged classmap on coding as a language."
             (list
               intro
               (game-with-minutes 20 (person-bot:point))
@@ -190,7 +194,12 @@
   ))
 
 (define (computational-thinking-for-young-elementary-pack)
-  (list 
+  (list
+
+   ;is this the solution we want? end up with 2 slightly different classmaps with the same name
+   (inputs/outputs:depth-1 
+      #:intro (coach-story)
+      #:unplugged-game-min 15)
 
     ))
 

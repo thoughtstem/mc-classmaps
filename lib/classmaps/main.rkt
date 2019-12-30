@@ -91,6 +91,7 @@
    (8-week-starter-pack)
    (computational-thinking-for-kinder-pack)
    (computational-thinking-for-young-elementary-pack)
+   (computational-thinking-for-upper-elementary-pack)
    )))
 
 (module+ test

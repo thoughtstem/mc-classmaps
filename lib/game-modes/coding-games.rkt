@@ -15,6 +15,7 @@
          code-connect-four
          try-it-first
          what-does-this-do
+         open-code-review
          coding-games)
 
 (require website/bootstrap
@@ -349,6 +350,21 @@
                 (tips "Keep the experimentation phase \"top secret\" -- have Players be secretive about what they find until the timer goes off and you all share! This keeps faster Players from spoiling the game for slower typists."
                       "Varitation: Players discuss their hypotheses for what the code will do prior to trying it.")))))
 
+(define (open-code-review)
+  (with-tags
+      (list coding simple review k2 3rd-5th middle-school high-school)
+    (game-mode "Open Code Review" 5
+               "Players have free time to review what they have learned so far. Works well as an opening warmup."
+               (game-info
+                (supplies-list "computers - 1 per Player"
+                               "timer")
+                (game-instructions
+                 (steps "Coach sets timer for the duration of Mode"
+                        "Players have free time to code, reviewing what they have learned so far."))
+                (tips "This is not a time for Players to ask Coach how to do NEW things, but experienmentation should be welcome and encouraged."
+                      "Perfect to give extra setup or prep time for Coach -- since Players should be able to do this game with minimal Coach intervention.")
+                ))))
+
 
 ;==== for class launch ====
 
@@ -387,6 +403,7 @@
    (code-connect-four)
    (try-it-first)
    (what-does-this-do)
+   (open-code-review)
    ))
 
 

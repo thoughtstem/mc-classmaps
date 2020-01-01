@@ -35,6 +35,7 @@
 
 
 ;kinder classmap model
+;CLASS IS 40 MIN
 
 ;----------------------
 ;| 5 min intro S
@@ -56,6 +57,7 @@
 
 
 ;young elem classmap model
+;CLASS IS 50 MIN
 
 ;----------------------
 ;| 5 min intro S
@@ -85,8 +87,8 @@
               intro
               
               (game-with-minutes 20 (person-bot)) 
-              (story-stub "Human Inputs and Outputs" 15
-                "Talk about 5 senses (input), and speaking/signing/writing/coding (outputs)")
+
+              (story-with-minutes 15 (human-input-output-story))
 
               (game-with-minutes 15 (what-does-this-do)) 
 

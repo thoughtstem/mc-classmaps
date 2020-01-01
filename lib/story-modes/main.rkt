@@ -18,7 +18,8 @@
          (all-from-out "./game-jam/main.rkt")
          (all-from-out "./reflection-stories/main.rkt")
          (all-from-out "./historical-stories/main.rkt")
-         (all-from-out "./metacognitive-stories/main.rkt"))
+         (all-from-out "./metacognitive-stories/main.rkt")
+         (all-from-out "./code-concept-stories/main.rkt"))
 
 (require website/bootstrap
          "../base.rkt"
@@ -32,7 +33,8 @@
          "./game-jam/main.rkt"
          "./reflection-stories/main.rkt"
          "./historical-stories/main.rkt"
-         "./metacognitive-stories/main.rkt")
+         "./metacognitive-stories/main.rkt"
+         "./code-concept-stories/main.rkt")
 
 ;==== CLASS FRAME STORIES ==================
 
@@ -75,7 +77,9 @@
          ;metacognitive stories
          (rethinking-bugs)
          (boids-story)
-         (youtube-story))))
+         (youtube-story)
+         ;code concept stories
+         (human-input-output-story))))
      string<?
      #:key story-mode-name ))
 

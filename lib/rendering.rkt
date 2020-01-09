@@ -165,13 +165,18 @@
       "bg-light"
       "bg-dark text-white"))
 
+  (define card-height
+    (sub1 (* 10 
+             (max (mode-minutes m) 5))))
+
   (enclose
     (card-group on-click: (call 'showMode)
                 style: (properties cursor: "pointer")
                 (card
                   class: card-class
                   (card-header 
-                    class: "text-truncate h-100"
+                    style: (properties height: card-height)
+                    class: "text-truncate"
                     'title: (mode-name m)
                     (mode-icon m)
                     " "
@@ -180,9 +185,7 @@
                 (card
                   class: card-class
                   (card-header 
-                    style: (properties height: 
-                                       (sub1 (* 10 
-                                                (max (mode-minutes m) 5))))
+                    style: (properties height: card-height)
                     (span class: "mode-minutes"
                           (i class: "fa fa-clock-o") " ~" (mode-minutes m) "min") ))
 

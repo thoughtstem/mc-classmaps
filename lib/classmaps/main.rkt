@@ -19,15 +19,15 @@
 
 (define (class-launch-map)
   (classmap "Class Launch Map"
-            "Start your session by introducing yourself, getting to know the students, setting up your Code of Awesomeness and writing the hello world code!"
-    (list (coach-story)
-          (name-memory-game)
-          (class-intro)
-          (story-with-minutes 12 (coa-stories))
-          (coa-mottos-creation)
-          (hello-world-story)
-          (hello-world-beginner-game)
-          (meta-story-one-word))))
+            "Start your session by introducing yourself, getting to know the students, introducing the first Code of Awesomeness and writing the Hello World code of your language!"
+    (list (coach-story) ;5
+          (name-memory-game) ;5
+          (class-intro) ;5
+          (overcome-the-unknown-fable) ;15
+          (coa-mottos-creation) ;10 --- 40 min in
+          (hello-world-story) ;5  
+          (hello-world-beginner-game) ;10 -- 55
+          (meta-story-one-word)))) ; 5
 
 ;add tip: feel free to change around the amount of time of the game modes, 
 (define (coa-focus-map)

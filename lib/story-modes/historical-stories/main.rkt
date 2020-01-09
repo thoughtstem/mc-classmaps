@@ -12,6 +12,8 @@
 
 ;===== HISTORY STORIES ===
 
+;not a 5 minute story, needs editing
+
 (define (hello-world-story)
   (with-tags (list historical cultural)
     (story-mode "Hello World Story" 5

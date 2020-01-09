@@ -11,7 +11,7 @@
 
 (define (class-intro)
   (with-tags (list meta-classroom)
-    (story-mode "Class Introduction Story" 3
+    (story-mode "Class Introduction Story" 5
                 "Set up the big-picture goals and norms for the course."
 
                 @story-text{

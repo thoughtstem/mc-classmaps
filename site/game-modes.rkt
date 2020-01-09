@@ -7,8 +7,8 @@
          mc-classmaps/lib/mode-search
          mc-classmaps/lib)
 
-(define (game-mode-tab-pane)
- (tab-pane id: "game-modes" class: "p-3" 
+(define (game-mode-tab-pane (pane tab-pane))
+ (pane id: "game-modes" class: "p-3" 
   @h3{@(game-icon) Game Modes}
   (card
     (card-text

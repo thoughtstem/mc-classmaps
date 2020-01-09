@@ -1,6 +1,8 @@
 #lang at-exp racket
 
-(provide human-input-output-story)
+(provide human-input-output-story
+         debugging-a-pizza
+         debugging-a-cat) 
 
 (require 
  website/bootstrap
@@ -8,6 +10,212 @@
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
  mc-classmaps/lib/rendering)
+
+
+(define standard-debugging-questions
+  (list
+    (comprehension-questions
+      "What was the hypothesis?"
+      "What does ___ do to test it?") 
+    (creativity-questions
+      "What reasonable hypotheses might ___ form now?")))
+
+;Wrap the story in a debugging-related frame...  Can reuse with an i/o frame...
+;   Possibly interleave questions in the story (not hard, because the sub-story structure can be fixed)
+
+(define (debugging-a-pizza 
+          #:intro (intro "")
+          #:intermission (intermission "")
+          #:outro (outro "")
+          #:ch1-questions (ch1-questions #f)
+          #:ch2-questions (ch2-questions #f)
+          #:ch3-questions (ch3-questions #f))
+
+  (story-mode "Debugging the Pizza" 15
+              "___ uses a debugging process to figure out why the pizza suddenly tastes like soap." 
+              @story-text{
+                @intro
+                @(embedded-stories (debugging-a-pizza:ch1 ch1-questions)) 
+                @intermission
+                @(embedded-stories (debugging-a-pizza:ch2 ch2-questions)) 
+                @(embedded-stories (debugging-a-pizza:ch3 ch3-questions)) 
+                @outro
+              }))
+
+(define (debugging-a-pizza:ch1 questions) 
+  (story-mode "Debugging the Pizza - Intro" 5
+              "___ discovers that pizza no longer tastes good.  It's the end of the world." 
+              @story-text{
+              Wednesday is ___'s favorite day -- because it's pizza night.  Every Wednesday, instead of cooking, ___'s dad orders a different kind of pizza.  It's not that ___ doesn't like her dad's cooking.  It's just that pizza is her favorite food and always will be, forever.  Cheese, pepperoni, vegitable, meatball -- the kind of pizza didn't matter.  They were @i{all} her favorites.
+
+              Her mouth has been watering all day.  When the doorbell rings, she calls, "Dad!  The pizza is here." He takes forever to come downstairs.  It feels like it takes years for him to pay the pizza delivery man, and another few years before he finally places the giant pizza box on the kitchen table and announces:
+
+              "Dinner is served."
+
+              ___ snatches up a slice and takes it to her room to eat it while she plays video games with her twin brother.  She has a video game controller in one hand and a slice of pizza in the other.  So does her brother.
+
+              "Ready to lose?" says her brother, starting a racing game with his free hand and taking a bite with the other.
+
+              "I never lose," she replies as she takes her first big bite of pizza.
+
+              She chews as the race begins.  At first, her car surges ahead -- but suddenly she freezes, no longer chewing.  The taste in her mouth is @b{terrible}!   It's as if someone covered the whole pizza in soap.  She drops her video game conroller.
+
+              "Shomthong's wong with my pizza!" she mumbles with her mouth full.  
+              
+              Dropping the video game controller on the floor, she runs to the bathroom, hearing her brother call after her:
+
+              "You're just mad because you know I'm going to win!"  
+
+              ___ spits out the bite of pizza and examines the slice carefully under the bathroom light.  It looks normal.  She sniffs it.  It smells normal.  She takes a smaller bite this time.   
+
+              Sure enough, though, as she begins to chew, it tastes like her mouth is full of soap.  She has to spit the bite into the trash. 
+
+              She marches back into her room and switches off the video game.
+
+              "Hey!" her brother says.  He's almost done with his own slice of pizza by now.
+
+              "Taste this," she demands, giving him her slice.  "There's something wrong with my slice."
+
+              Cautiously, he tastes takes it, sniffs it, and bites into it. 
+
+              "It tastes fine to me," he says.  "I'll eat it if you don't want it."  [Need another beat...]
+
+              @i{What's happening?} she wonders. @i{I must debug my pizza...} 
+
+              @questions }))
+
+(define (debugging-a-pizza:ch2 questions) 
+  (story-mode "Debugging the Pizza - Debugging" 5
+              "___ makes several attempts to debug her pizza." 
+              @story-text{
+                @b{First Debugging Attempt}
+
+                ____'s first thought is that her brother is playing a trick on her.   "Is this another one of your pranks?" she demands.
+
+                His eyes go wide.  "Me prank @i{you}?  You're the one who always pranks @i{me}!"
+
+                "Yeah, that's true," she says.  
+
+                "Do you want me to pinky swear?" he asks, holding out his pinky.
+ 
+                "That won't be necessary," she says.  She can always tell when he's lying because he blushes when he does.  He was definitely telling the truth though.
+
+                @i{Hmmm,} she wonders, @i{Why would the pizza taste like soap to me but not to him?}
+
+                @standard-debugging-questions
+
+                @b{Another Debugging Attempt}
+
+                It occurs to ___ that although her brother might not be lying, he might simply be wrong and not know it.  Maybe he just doesn't @i{realize} that the pizza tastes bad.  One time, he spent an entire week eating nothing but pickles.  Another time, he drank an entire bottle of ketchup on a dare.
+
+                "I'll be back," she says, taking her pizza with her and marching to her dad's room.  As usual, he's doing work at his desk.  "Dad," she says, "I need you to try this pizza."
+
+                "___, you know I'm on a diet," he says.
+
+                "Dad! Please!" she begs.  "There's something wrong with it.  It tastes all weird."
+
+                Sighing, he takes the pizza, sniffs it, and takes a tiny bite.  ___ holds her breath as she waits -- expecting him to spit it out. 
+
+                Slowly, he swallows, sniffs the pizza again, and takes another bite.
+
+                "Dad!" she cries.  "What are you @i{doing}?"
+
+                "It tastes great," he says, turing back to his comptuer. "If you don't want it, just give it to your brother."
+
+                Stunned, she leaves the room, taking the mysterious pizza with her.
+
+                @standard-debugging-questions
+
+                @b{Yet Another Debugging Attempt}
+
+                Her brother might not be able to taste the difference between soap and pizza, but her dad was practically a professional chef.  He could taste food and tell you all of its ingredients without even seeing the recipe.
+                
+                There was only one conclusion she could draw.  The bug must not be in the pizza.  It must be in @i{her}!
+
+                Panicked, she ran to the kitchen.  She put the slice of pizza on the table and yanked the refrigerator door open.  She pulled out a jar of pickles, some leftover cake from her dad's birthday, and some leftover meatballs from yesterday's dinner.
+
+                One by one, she tasted each of them.  The bite of pickles tasted like pickles.  The bite of cake tasted like cake.  And the meatballs tasted like meatballs.
+
+                @i{Maybe I'm cured,} she thought.  But when she tasted the pizza again... it tasted like soap.  She had to spit it into the trashcan yet again.
+
+                @standard-debugging-questions
+
+                @questions
+              })) 
+
+(define (debugging-a-pizza:ch3 questions) 
+  (story-mode "Debugging the Pizza - Fixing the bug" 5
+              "___ finally debugs her pizza." 
+              @story-text{
+                @b{Final Debugging Attempt}
+
+                @i{This is my favorite food of all time,} thinks ____.  @i{There is no @b{way} I'm going to bed tonight without solving this mystery.}
+
+                Suddenly, it occurs to her that maybe it's not the @i{whole} pizza that tastes like soap -- but only part of it.  She puts the pizza on a plate and gets a knife from the drawer.  She cuts off a bit of the crust, a scrap of cheese, and a single pepperoni.
+
+
+                She puts the crust in her mouth and begins to chew, waiting for the soap taste.  But the crust tastes like crust.
+
+                She puts the pepperoni in her mouth and begins to chew, waiting for the soap taste.  But the pepperoni tastes like pepperoni.
+
+                She puts the scrap of cheese in her mouth and begins to chew, waiting for the soap taste.  But the cheese tastes like cheese -- or @i{almost} like it.  The taste of soap is faint, but it's there. 
+
+                With the fork, she takes all of the cheese off of the pizza, revealing the tomato sauce beneath.  She scoops up a bit of the sauce and puts it in her mouth.  The moment she does, she gags on the soap taste and must spit the sauce into the sink.
+
+                She looks very closely at the pizza and notices that there are little specks of green inside the red sauce.  They smell just fine, but she knows better than to put them in her mouth again.  Gross.   
+
+                She takes the cheeseless pizza upstairs to her dad's room again and says, "Dad, I figured it out.  It's the sauce."
+
+                "What's the sauce?"
+
+                "That's where the soap is.  What are these green things?"
+
+                Her dad takes the pizza and holds it under his desk lamp, looking very closely.  "It's cilantro." 
+
+                "What kind of soap is that?" she asks.  "And why did they put it on the pizza?"
+
+                "It's not soap," says her father, chuckling.  "It's a kind of spice.  It can @i{taste} like soap to some people, though.  It's genetic.  Your mom can't stand the stuff either.  You can ask her about it when she gets home."
+
+                "What is genetic?" ___ she says.  
+
+                "Inside everyone's body is something called a genetic code," he says.  "It's like a code that says what color hair you'll have, what color eyes, whether you'll be tall or short, and whether or not cilantro tastes like soap or not."
+                
+                "Does that mean there's a bug in my code?" she says.
+
+                Her father laughs.  "You could call it a bug, or you could call it a super power.  Basically, @i{your} tongue is able to detect a chemical in the cilantro that most people can't taste.  It's always there -- but people like me and your brother."
+
+                "I'll consider it a super power," she says.  "But can we @i{never} get pizza with cilantro again?  Please!"
+
+                Her father nods.  "I promise."
+                
+
+              }))
+
+
+
+
+
+
+(define (debugging-a-cat)
+  (story-mode "Debugging the Cat" 5
+              "___ uses a debugging process to figure out why the cat won't shut up."
+              ;The cat won't shut up.  But no one knows what it wants.  Food?  Nope.  Scritches?  Nope.  Is it sick?  Nope.  Weird noises that only it can hear...
+              @story-text{
+
+              Set up problem and why it matters.
+              
+              Try 1 - fail, but learn
+              Try 2 - fail, but learn
+              Try 3 - fail, but learn
+
+              ---
+
+              Epiphany
+
+                  
+              }))
+
+
 
 
 (define (human-input-output-story)

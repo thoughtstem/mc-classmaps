@@ -8,8 +8,8 @@
 (define (classmaps-index-content)
  (map classmap->html (all-classmaps)))
 
-(define (classmap-tab-pane)
- (active-tab-pane id: "classmaps" class: "p-3" 
+(define (classmap-tab-pane (pane tab-pane))
+ (pane id: "classmaps" class: "p-3" 
   (h3 "Classmaps")
   (classmaps-index-content)))
 

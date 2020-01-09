@@ -13,8 +13,8 @@
 (define (outof-icon)
   (i class: "fas fa-sign-out-alt"))
 
-(define (transitions-tab-pane)
- (tab-pane id: "transitions" class: "p-3" 
+(define (transitions-tab-pane (pane tab-pane))
+ (pane id: "transitions" class: "p-3" 
   (h3 "Transitions")
   (p "Because there are only two acceptable classroom modalities, there are four primary kinds of transitions coaches must be fluent in.  In addition, there are transistions into and out of class. All of these transitions are simplified into three or fewer steps to enable you to start using them with high mastery in your first class.  Check them out in the tabs below.")
 

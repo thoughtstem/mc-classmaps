@@ -12,7 +12,18 @@
          "../../tags/main.rkt"
          (except-in 2htdp/image frame))
 
-(provide 
+(provide inputs/outputs:depth-1
+         bugs:depth-1
+         bugs:depth-1:plugged
+         language:depth-1
+         inputs/outputs:depth-2
+         inputs/outputs:depth-2:plugged
+         bugs:depth-2
+         language:depth-2
+         language:depth-2:plugged
+         inputs/outputs:intermediate
+         bugs:intermediate
+         language:intermediate
   computational-thinking-for-young-elementary-pack
   computational-thinking-for-kinder-pack
   computational-thinking-for-upper-elementary-pack)

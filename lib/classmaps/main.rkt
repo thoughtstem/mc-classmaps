@@ -5,14 +5,17 @@
          "../rendering.rkt"
          "../game-modes/main.rkt"
          "../story-modes/main.rkt"
-         "./academic/main.rkt")
+         "./academic/main.rkt"
+         "../tags.rkt")
 
 (provide all-classmaps 
          class-launch-map
          coa-focus-map
          first-badge-map
          bugs-map
-         final-jam-map)
+         final-jam-map
+         coa:bug-hunter-map
+         (all-from-out "./academic/main.rkt"))
 
 ;classmap struct: add desc or tips
 
@@ -27,7 +30,17 @@
           (coa-mottos-creation) ;10 --- 40 min in
           (hello-world-story) ;5  
           (hello-world-beginner-game) ;10 -- 55
-          (meta-story-one-word)))) ; 5
+          (meta-story-reflect "One UNKNOWN we OVERCAME today")))) ; 5
+
+(define (coa:bug-hunter-map)
+  (classmap "Be a Bug Hunter Map"
+            "Add a new Code to your Team's Code of Awesomeness!"
+            (list (starting-review "the Code(s) in our Code of Awesomeness so far") ;5
+                  (story-with-minutes 15 (bug-hunter-fable)) ;15
+                  (coa-mottos-creation) ;10 -- 30
+                  (game-with-minutes 20 (code-anatomy)) ;20
+                  (meta-story-deep-reflect) ;10
+                  )))
 
 ;add tip: feel free to change around the amount of time of the game modes, 
 (define (coa-focus-map)
@@ -80,6 +93,7 @@
 
 (define (8-week-starter-pack)
  (list (class-launch-map)
+       (coa:bug-hunter-map)
        (coa-focus-map)
        (first-badge-map)
        (bugs-map)

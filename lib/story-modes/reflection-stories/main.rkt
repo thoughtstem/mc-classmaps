@@ -5,7 +5,8 @@
  meta-story-reflect
  meta-story-deep-reflect
  meta-story-next-time
- meta-story-badges)
+ meta-story-badges
+ starting-review)
 
 (require 
  website/bootstrap
@@ -87,7 +88,7 @@
     (story-mode "Meta Story: Badges" 5
                 "Badge ceremony!"
                 @story-text{
-                  It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask you how you've grown as a coder or a learner in the last three weeks.  If you can give me an answer, I'll give you this paper badge.  And that means that you'll be getting a real badge in the mail in the next few days.
+                  It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask you how you've grown as a coder or a learner in the last three weeks.  If you can give me an answer, I'll give you this paper badge.  And that means that you'll be getting a real badge in the mail in the future!
 
                   First up is, @(coach-fills-in "name of badge-earning student from roster")!
 
@@ -95,4 +96,17 @@
                      "Remind the students who didn't get badges that they'll be getting them soon."
                      "Strive to make the badge ceremony a time to reflect on the personal growth that everyone has experienced.  It's not about the badge; it's about what the badge represents.  Only you -- the coach -- can help nurture this attitude.")
                 })))
+
+(define (starting-review (thing-to-review "what we did last time"))
+  (with-tags
+      (list meta-classroom reflection)
+    (story-mode "Review" 5
+                "Look back at what we've learned or done in previous classes."
+                @story-text{
+                            Who can tell me anything they remember about:
+
+                            @thing-to-review
+
+                            @(tips "Guide the conversation with leading questions as needed."
+                                   "Add any follow up points that the students missed after their comments.")})))
 

@@ -70,6 +70,7 @@
          (meta-story-deep-reflect)
          (meta-story-next-time)
          (meta-story-badges)
+         (starting-review)
          ;history
          (hello-world-story)
          (first-bug-story)

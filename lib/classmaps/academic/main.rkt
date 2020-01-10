@@ -17,19 +17,6 @@
   computational-thinking-for-kinder-pack
   computational-thinking-for-upper-elementary-pack)
 
-(define (story-stub title time . notes)
-  (story-mode title time "" 
-    @div{
-      @notes
-    }))
-
-(define (game-stub title time . notes)
-  (game-mode title time "" 
-    @div{
-      @notes
-    }))
-
-
 ;all code-the-bot variations renamed "person-bot..." and moved to ../../game-modes/language-games.rkt
 ;pattern-recognition game renamed pattern-prediction and moved to ../../game-modes/unplugged-games.rkt
 
@@ -88,6 +75,7 @@
               
               (game-with-minutes 20 (person-bot)) 
 
+              ;TODO 1
               (story-with-minutes 15 (human-input-output-story))
 
               (game-with-minutes 15 (what-does-this-do)) 
@@ -101,9 +89,11 @@
             "A unplugged/plugged classmap introducing the basics of bugs."
             (list
               intro
-              (game-with-minutes 20 (add-game-focus "bugs"(person-bot))) 
-              (story-stub "What is a bug??" 15
-                "Introduce the concept of bugs...")
+              (game-with-minutes 20 (add-game-focus "bugs" (person-bot))) 
+
+              (debugging-a-pizza
+                #:intro "This is a story about a pizza mystery.  If you've heard it before, don't spoil the ending!") 
+
               (game-with-minutes 15 (disintegrating-code))
               (meta-story-reflect))))
 
@@ -113,8 +103,11 @@
             (list
               intro
               (game-with-minutes 20 (disintegrating-code))
-              (story-stub "What is a bug??" 15
-                "Introduce the concept of bugs...")
+
+              (debugging-a-pizza
+                #:intro "Does everyone remember the pizza debugging story?  We're going to go over it again, but this time we're going to focus on some details that people always miss the first time.")
+              
+
               (game-with-minutes 15 (build-a-bug-workshop))
               (meta-story-reflect))))
 

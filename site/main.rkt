@@ -7,24 +7,28 @@
          (all-from-out mc-classmaps/site/story-modes)
          (all-from-out mc-classmaps/site/classmaps))
 
-(require website/bootstrap
+(require website-js
          mc-classmaps/lib
          mc-classmaps/site/transitions
          mc-classmaps/site/game-modes
          mc-classmaps/site/story-modes
-         mc-classmaps/site/classmaps)
+         mc-classmaps/site/classmaps
+         mc-classmaps/site/sequences)
 
 (define (classmaps-index)
  (page index.html
   (content
     (container
      (include-p5-js) 
+     (js-runtime)
      (tabify 
-      (active-tab-nav-link href: "#classmaps" "Classmaps")
+      (active-tab-nav-link href: "#sequences" "Sequences")
+      (tab-nav-link href: "#classmaps" "Classmaps")
       (tab-nav-link href: "#story-modes" (story-icon )" Story Modes")
       (tab-nav-link href: "#game-modes" (game-icon) " Game Modes")
       (tab-nav-link href: "#transitions" "Transitions")
 
+      (sequences-tab-pane active-tab-pane)
       (classmap-tab-pane)
       (story-mode-tab-pane)
       (game-mode-tab-pane)

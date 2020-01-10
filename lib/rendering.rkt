@@ -12,6 +12,7 @@
 (require website-js 
          website-js/components/form-row
          website-js/components/time-select
+         (only-in website data-toggle:)
          "./base.rkt"
          "./icons.rkt"
          "./tags/main.rkt")

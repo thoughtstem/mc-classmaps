@@ -369,6 +369,8 @@
 ;==== for class launch ====
 
 (define (hello-world-beginner-game (g (disintegrating-code)))
+  (with-tags
+      (list coding simple intro-new-code k2 3rd-5th middle-school high-school)
   (game-mode "Hello World Game" 10
              "The first coding game of most courses"
              (game-info
@@ -379,7 +381,7 @@
                (mode->content-card 
                 #:fade? #f
                 g)
-               ))))
+               )))))
 
 
 

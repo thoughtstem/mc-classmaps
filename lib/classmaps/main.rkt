@@ -15,6 +15,7 @@
          bugs-map
          final-jam-map
          coa:bug-hunter-map
+         coa:team-map
          (all-from-out "./academic/main.rkt"))
 
 ;classmap struct: add desc or tips
@@ -59,7 +60,7 @@
                   (coa-mottos-creation) ;10 -- 30
 
                   ;SWAP OUT GAME
-                  (game-with-minutes 20 (code-anatomy)) ;25 -- 55
+                  (game-with-minutes 25 (add-pair-programming (try-it-first))) ;25 -- 55
                   (meta-story-one-word) ;5 -- 60
                   )))
 
@@ -105,12 +106,15 @@
 ; All Unplugged
 ; Developer Role Play
 
+;not the source of truth for sequences
 (define (8-week-starter-pack)
  (list (class-launch-map)
        (coa:bug-hunter-map)
        (first-badge-map)
-       (coa-focus-map)
+       (coa:team-map)
        (bugs-map)
+       (coa-focus-map)
+       
        (final-jam-map)))
 
 (define (all-classmaps)

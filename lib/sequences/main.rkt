@@ -19,10 +19,13 @@
     ;  Issue: https://github.com/thoughtstem/mc-classmaps/issues/12
     (list 
       (class-launch-map)
-      (coa-focus-map)
-      (first-badge-map)
-      (bugs-map)
-      (final-jam-map))))
+       (coa:bug-hunter-map)
+       (first-badge-map)
+       (coa:team-map)
+       (bugs-map)
+       (coa-focus-map)
+       ;missing -- Partner Practice Map
+       (final-jam-map))))
 
 (define (all-sequences)
   (list

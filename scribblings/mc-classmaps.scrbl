@@ -1,10 +1,10 @@
 #lang scribble/manual
 @require[@for-label[mc-classmaps
-                    racket/base]]
+                    (except-in racket/base sequence?)]]
 
 @title{mc-classmaps}
 @author{thoughtstem}
 
 @defmodule[mc-classmaps]
 
-Package Description Here
+Docs TBD

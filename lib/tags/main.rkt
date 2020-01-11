@@ -116,9 +116,38 @@
   (define software-engineering
     (tag "software engineering"
          "Uses authentic software engineering language.  Designed to communicate ideas, values, or concepts related to the construction of large software systems."))
+ 
+  (define young-engineer
+    (tag "young engineer"
+         "About young protagonists using code to solve problems relevant to young people."))
+  
+  (define interface-design
+    (tag "interface design"
+         "About coders writing interfaces or experiences for others."))
+  
   (define communication
     (tag "communication"
          "Builds communication skills."))
+
+  (define name-game
+    (tag "name game"
+         "Icebreaker to get to know students and student names."))
+
+  (define language
+    (tag "language games"
+         "Builds skills and experience working with language creation and acquisition."))
+
+  (define intro-new-code
+    (tag "intro new code"
+         "Great for introducing new coding concepts that the students have yet to work with."))
+
+  (define simple
+    (tag "simple"
+         "Especially easy and straight-forward."))
+
+  (define patterns
+    (tag "patterns"
+         "Builds pattern recognition and matching skills."))
   )
 
 

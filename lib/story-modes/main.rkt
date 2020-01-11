@@ -11,18 +11,21 @@
          all-stories
 
          (all-from-out "./authentic-engineer-stories/main.rkt")
+         (all-from-out "./young-engineer-stories/main.rkt")
          (all-from-out "./badge-story/main.rkt")
          (all-from-out "./class-intro/main.rkt")
          (all-from-out "./coa-fables/main.rkt")
          (all-from-out "./game-jam/main.rkt")
          (all-from-out "./reflection-stories/main.rkt")
          (all-from-out "./historical-stories/main.rkt")
-         (all-from-out "./metacognitive-stories/main.rkt"))
+         (all-from-out "./metacognitive-stories/main.rkt")
+         (all-from-out "./code-concept-stories/main.rkt"))
 
 (require website/bootstrap
          "../base.rkt"
          "../tags/main.rkt"
          "../rendering.rkt"
+         "./young-engineer-stories/main.rkt"
          "./authentic-engineer-stories/main.rkt"
          "./badge-story/main.rkt"
          "./class-intro/main.rkt"
@@ -30,7 +33,8 @@
          "./game-jam/main.rkt"
          "./reflection-stories/main.rkt"
          "./historical-stories/main.rkt"
-         "./metacognitive-stories/main.rkt")
+         "./metacognitive-stories/main.rkt"
+         "./code-concept-stories/main.rkt")
 
 ;==== CLASS FRAME STORIES ==================
 
@@ -66,13 +70,17 @@
          (meta-story-deep-reflect)
          (meta-story-next-time)
          (meta-story-badges)
+         (starting-review)
          ;history
          (hello-world-story)
          (first-bug-story)
          (mars-orbiter-bug-story)
          ;metacognitive stories
          (rethinking-bugs)
-         (boids-story))))
+         (boids-story)
+         (youtube-story)
+         ;code concept stories
+         (human-input-output-story))))
      string<?
      #:key story-mode-name ))
 

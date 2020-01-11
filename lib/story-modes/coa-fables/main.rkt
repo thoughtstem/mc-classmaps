@@ -18,7 +18,7 @@
 (define (coa-stories)
   (with-tags 
     (list fable multi code-of-awesomeness)
-    (story-mode "Code of Awesomeness Fables" 15
+    (story-mode "Code of Awesomeness Fables" 30
                 "A story comparision activity that introduces the Code of Awesomeness Codes with these fables.  The Code of Awesomeness is a chance to discuss critical values while learning to code.  It also (along with the Code of Awesomeness Game Modes) provides an opportunity to co-create call-and-response traditions within a group of students -- great for team-building and for forging a strong group identity."
 
                 @story-text{Read the following stories and discuss:
@@ -44,7 +44,7 @@
 (define (overcome-the-unknown-fable)
   (with-tags 
     (list fable code-of-awesomeness)
-    (story-mode "Overcome the Unknown Fable" 5
+    (story-mode "Overcome the Unknown Fable" 10
                 "A Code of Awesomeness fable about two fish who looked the same on the outside, but whose minds were very different on the inside."
                 @story-text{
                   Once upon a time, there were two small fish in one big pond -- or rather, it seemed like a big pond at the time.  They were both young and neither one of them was very good at things that fishes do -- like coding, and skiing, and martial arts, and creative writing, and parachuting, and making jewelry, and eating smaller fish.
@@ -144,7 +144,7 @@
 
 (define (bug-hunter-fable)
   (with-tags (list fable code-of-awesomeness)
-      (story-mode "Be a Bug Hunter Fable" 5
+      (story-mode "Be a Bug Hunter Fable" 10
               "A Code of Awesomeness fable about two animals who have different strategies for dealing with bugs."
               (div @paras{
                @tips["Before you start, let the students pick the characters. You can these characteristics as guides: (Woodpecker): practical and level-headed. (Ostrich): impulsive and anxious"
@@ -175,7 +175,7 @@
 
 (define (energize-the-team-fable)
   (with-tags (list fable code-of-awesomeness)
-    (story-mode "Teach the Team Fable" 5
+    (story-mode "Teach the Team Fable" 10
                 "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
                 @story-text{
                   Once upon a time, there were two young squirrels -- one brown, the other gray.  They were friends, but the brown squirrel always seemed to do better in school -- earning more acorns than the gray squirrel.

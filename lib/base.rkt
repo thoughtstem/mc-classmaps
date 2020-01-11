@@ -6,6 +6,7 @@
  (rename-out [make-story-mode story-mode])
  (except-out (struct-out story-mode) story-mode)
  (struct-out classmap)
+ (struct-out sequence)
  classmap-minutes
  mode-minutes
  game-with-minutes
@@ -34,7 +35,10 @@
  creativity-questions
  coach-fills-in
  setup
- quotation) 
+ quotation
+ 
+ story-stub
+ game-stub) 
 
 (require website/bootstrap
          website/util
@@ -46,6 +50,7 @@
 (struct game-mode  (name minutes summary data tags lock-length?))
 (struct story-mode (name minutes summary data tags lock-length?))
 (struct classmap   (name summary modes))
+(struct sequence   (name summary classmaps))
 
 (define (mode-name x)
   (if (game-mode? x)
@@ -317,5 +322,18 @@
     (p (i (b "Set Up: ") "save the world.")))
   
   )
+
+
+(define (story-stub title time . notes)
+  (make-story-mode title time "" 
+    @div{
+      @notes
+    }))
+
+(define (game-stub title time . notes)
+  (make-game-mode title time "" 
+    @div{
+      @notes
+    }))
 
 

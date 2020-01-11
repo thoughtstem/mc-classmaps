@@ -7,8 +7,8 @@
          mc-classmaps/lib/mode-search
          mc-classmaps/lib)
 
-(define (story-mode-tab-pane)
- (tab-pane id: "story-modes" class: "p-3" 
+(define (story-mode-tab-pane (pane tab-pane))
+ (pane id: "story-modes" class: "p-3" 
   (include-js "https://d3js.org/d3.v5.min.js")
 
   @h3{@(story-icon) Story Modes}

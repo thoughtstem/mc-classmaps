@@ -3,6 +3,7 @@
 (provide add-pair-programming
          add-game-focus
          example-game
+         preface-game-with-tips
          game-frames)
 
 (require website/bootstrap
@@ -26,6 +27,15 @@
                "No really, stop trying to play it."))))
 ;===============================
 
+
+(define (preface-game-with-tips t g)
+  (game-mode (~a (game-mode-name g) ": with extra tips") (game-mode-minutes g)
+             (game-mode-summary g)
+             (game-info
+              t
+              (mode->content-card 
+                  #:fade? #f
+                  g))))
 
 (define/contract (add-pair-programming g)
   (-> game-mode? game-mode?)
@@ -60,6 +70,10 @@
 
 (define (game-frames)
   (list
+   (preface-game-with-tips (tips "here you might note some REALLY important tips"
+                                 "like, don't let the kids start a fire"
+                                 "Or something.")
+                           (example-game))
    (add-pair-programming (example-game))
    (add-game-focus "stuff"(example-game))))
 

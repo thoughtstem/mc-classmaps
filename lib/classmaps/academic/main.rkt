@@ -33,45 +33,35 @@
 
 
 ;kinder classmap model
+;CLASS IS 30 MIN
+
+;----------------------
+;| 5 min intro S
+;----------------------
+; 5 min unplugged G   |
+;----------------------
+;| 5 min topic S
+;----------------------
+;                     |
+; 10 min plugged G    |
+;----------------------
+;| 5 min reflection S
+
+
+;young elem classmap model
 ;CLASS IS 40 MIN
 
 ;----------------------
 ;| 5 min intro S
 ;----------------------
 ;                     |
-;                     |
-; 20 min unplugged G  |
-;                     |
+; 10 min unplugged G  |
 ;----------------------
 ;|
-;| 15 min topic S
-;|
+;| 10 min topic S
 ;----------------------
 ;                     |
-; 15 min plugged G    |
-;                     |
-;----------------------
-;| 5 min reflection S
-
-
-;young elem classmap model
-;CLASS IS 50 MIN
-
-;----------------------
-;| 5 min intro S
-;----------------------
-;                     |
-; 20 min alterating   |
-;  unplugged/plugged G|
-;                     |
-;----------------------
-;|
-;| 15 min topic S
-;|
-;----------------------
-;                     |
-; 15 min plugged G    |
-;                     |
+; 10 min plugged G    |
 ;----------------------
 ;| 5 min reflection S
 
@@ -84,29 +74,52 @@
             (list
               intro
               
-              (game-with-minutes 20 (person-bot)) 
+              (game-with-minutes 10 (person-bot)) 
 
-              ;TODO 1
-              (story-with-minutes 15 (human-input-output-story))
+              (story-with-minutes 10 (human-input-output-story))
 
-              (game-with-minutes 15 (what-does-this-do)) 
+              (game-with-minutes 10 (what-does-this-do)) 
 
               (meta-story-one-word)
               )))
 
 
 (define (bugs:depth-1 #:intro intro)
-  (classmap "Intro to Bugs: unplugged/plugged games"
+  (classmap "Intro to Bugs"
             "A unplugged/plugged classmap introducing the basics of bugs."
             (list
               intro
-              (game-with-minutes 20 (add-game-focus "bugs" (person-bot))) 
+              (game-with-minutes 10 (preface-game-with-tips
+                                     (tips (ul (li "Give bots an " (b "error code")
+                                                   " -- specific phrase or motion when they have a bug")
+                                               (li "Increase " (b "difficulty")
+                                                   " -- (reccomended for younger groups) use 1 Player as the bot instead of the Coach/all Players, add a language restriction, etc.")
+                                               (li "Change the " (b "goal")
+                                                   " -- draw a house, put on a sweatshirt, complete a math problem, fold a paper airplane, etc.")
+                                               (li "Have the Bot Coders " (b "write")
+                                                   " all the instructions down at once before Bot begins to execute -- (reccomended for older groups) this can be done with multiple teams, and with multiple testing cycles.")))
+                                     (person-bot))) 
 
-              (debugging-a-pizza
-                #:intro "This is a story about a pizza mystery.  If you've heard it before, don't spoil the ending!") 
+              (story-with-minutes 10
+                                  (debugging-a-pizza
+                                   #:intro "This is a story about a pizza mystery.  If you've heard it before, don't spoil the ending!"))
 
-              (game-with-minutes 15 (disintegrating-code))
-              (meta-story-reflect))))
+              (game-with-minutes 10 (disintegrating-code))
+              (meta-story-reflect)))) 
+
+
+(define (language:depth-1 #:intro intro)
+  (classmap "Intro to Code is Language"
+            "A unplugged/plugged classmap introducing the basics of coding as a language."
+            (list
+              intro
+              (game-with-minutes 10 (person-bot-language-focus))
+              (story-stub "Coach tells story and leads discussion about language" 10
+                "Coding is a language to communicate with computers.")
+              (game-with-minutes 10 (disintegrating-code))
+              (meta-story-one-word))))
+
+;==== MODIFIED Depth 1, more coding game modes ====
 
 (define (bugs:depth-1:plugged #:intro intro)
   (classmap "Intro to Bugs: on-computer games only"
@@ -122,33 +135,50 @@
               (game-with-minutes 15 (build-a-bug-workshop))
               (meta-story-reflect))))
 
-(define (language:depth-1 #:intro intro)
-  (classmap "Intro to Code is Language"
-            "A unplugged/plugged classmap introducing the basics of coding as a language."
-            (list
-              intro
-              (game-with-minutes 20 (person-bot-language-focus))
-              (story-stub "Coach tells story and leads discussion about language" 15
-                "Coding is a language to communicate with computers.")
-              (game-with-minutes 15 (disintegrating-code))
-              (meta-story-one-word))))
 
 ;==== Depth 2 inputs/outputs, bugs, language =====
             
 (define (inputs/outputs:depth-2 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
-  (classmap "More On Inputs and Outputs: unplugged/plugged games"
+  (classmap "More On Inputs and Outputs"
             "A unplugged/plugged classmap on inputs/outputs."
             (list
               intro
-              (game-with-minutes 20 (person-bot:shapes-and-size))
-              (story-stub "The World Through Inputs and Outputs" 15
+              (game-with-minutes 10 (person-bot:shapes-and-size))
+              (story-stub "The World Through Inputs and Outputs" 10
                 "Cats/animals"
                 "Houses"
                 "Bottle/Cup"
                 "Fridge"
                 "Your Room")
-              (game-with-minutes 15 (try-it-first))
+              (game-with-minutes 10 (try-it-first))
               (meta-story-one-word))))
+
+
+(define (bugs:depth-2 #:intro intro)
+  (classmap "More On Bugs"
+            "A unplugged/plugged classmap on debugging skills."
+            (list
+              intro
+              (game-with-minutes 10 (person-bot:point))
+              (story-with-minutes 10 (bug-hunter-fable))
+              (game-with-minutes 10 (build-a-bug-workshop))
+              (meta-story-reflect)
+             )))
+            
+(define (language:depth-2 #:intro intro)
+  (classmap "More on to Code is Language"
+            "A unplugged/plugged classmap on coding as a language."
+            (list
+              intro
+              (game-with-minutes 10 (person-bot:point))
+              (story-stub "Tell a Story with Words Changed" 10
+                "Jimmy went on a *Bloop* Hunt")
+             (game-with-minutes 10 (disintegrating-code))
+              (meta-story-one-word))))
+
+
+
+;==== MODIFIED Depth 2: more coding game modes ====
 
 (define (inputs/outputs:depth-2:plugged #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "More On Inputs and Outputs: on-computer games only"
@@ -163,29 +193,6 @@
                 "Fridge"
                 "Your Room")
               (game-with-minutes 15 (try-it-first))
-              (meta-story-one-word))))
-
-(define (bugs:depth-2 #:intro intro)
-  (classmap "More On Bugs"
-            "A unplugged/plugged classmap on debugging skills."
-            (list
-              intro
-              (game-with-minutes 20 (person-bot:point))
-              (story-with-minutes 15 (bug-hunter-fable))
-              (game-with-minutes 7 (create-a-challenge))
-              (game-with-minutes 7 (build-a-bug-workshop))
-              (meta-story-reflect)
-             )))
-            
-(define (language:depth-2 #:intro intro)
-  (classmap "More on to Code is Language: unplugged/plugged games"
-            "A unplugged/plugged classmap on coding as a language."
-            (list
-              intro
-              (game-with-minutes 20 (person-bot:point))
-              (story-stub "Tell a Story with Words Changed" 15
-                "Jimmy went on a *Bloop* Hunt")
-             (game-with-minutes 15 (disintegrating-code))
               (meta-story-one-word))))
 
 (define (language:depth-2:plugged #:intro intro)

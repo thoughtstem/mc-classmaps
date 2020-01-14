@@ -23,7 +23,9 @@
 ;Wrap the story in a debugging-related frame...  Can reuse with an i/o frame...
 ;   Possibly interleave questions in the story (not hard, because the sub-story structure can be fixed)
 
-(define (debugging-a-pizza 
+
+
+(define (debugging-a-pizza
           #:intro (intro "")
           #:intermission (intermission "")
           #:outro (outro "")
@@ -32,9 +34,11 @@
           #:ch3-questions (ch3-questions #f))
 
   (story-mode "Debugging the Pizza" 15
-              "___ uses a debugging process to figure out why the pizza suddenly tastes like soap." 
+              "Mia uses a debugging process to figure out why the pizza suddenly tastes like soap." 
               @story-text{
+                @(debugging-a-pizza-tips)
                 @intro
+                @(embedded-stories (debugging-a-pizza:highlights))
                 @(embedded-stories (debugging-a-pizza:ch1 ch1-questions)) 
                 @intermission
                 @(embedded-stories (debugging-a-pizza:ch2 ch2-questions)) 
@@ -42,17 +46,52 @@
                 @outro
               }))
 
+(define (debugging-a-pizza-tips)
+  (tips "For a shorter story, take out some of the hypotheses/tests."
+        "Use the name of a student in the room instead of Mia."
+        "Ask students to create their own hypotheses -- even tests (you give the result)."))
+
+(define (debugging-a-pizza:highlights)
+  (story-mode "Debugging a Pizza: Story At A Glance" 5
+              "Plot points for ad-libbed telling of the Debugging a Pizza story."
+              @story-text{
+                          @ul[@li{Mia's excited -- tonight her dad is ordering pizza for dinner.}
+                              @li{But when she takes her first bite, it tastes like SOAP!}
+                              @li{Mia's brother tries it -- he thinks it's fine...}
+                              @li{Mia needs to figure out what is going on/debug her pizza.}
+                              @li{Debugging attempt #1 --
+                                @ol{@li{Hypothesis: Mia's brother is tricking her.}
+                                    @li{Test: Ask him (he's a very bad liar, she can always tell).}
+                                    @li{Result? He isn't tricking her.}}}
+                              @li{Debugging attempt #2 --
+                                 @ol{@li{Hypothesis: Mia's brother doesn't know better (he eats wierd stuff...)}
+                                     @li{Test: Mia's dad tries it.}
+                                     @li{Result? He thinks it's delicious.}}}
+                              @li{Debugging attempt #3 --
+                                  @ol{@li{Hypothesis: Mia's tastebuds are wrong.}
+                                      @li{Test: Mia tries other foods.}
+                                      @li{Result? Everything tastes normal... }}}
+                              @li{Debugging attempt #4 --
+                                  @ol{@li{Hypothesis: It's not all of the pizza, just one part.}
+                                      @li{Test: Mia tries each part of the pizza.}
+                                      @li{Result? It's the sauce! Specifically, green specks in the sauce...}}}
+                              @li{Mia asks her dad what the green specks are.}
+                              @li{It's cilantro! Some people, like Mia's mom, taste soap in cilantro -- it's genetic!}
+                              @li{Mia's dad promises never to get pizza with cilantro again.}
+                              ]
+ }))
+
 (define (debugging-a-pizza:ch1 questions) 
   (story-mode "Debugging the Pizza - Intro" 5
-              "___ discovers that pizza no longer tastes good.  It's the end of the world." 
+              "Mia discovers that pizza no longer tastes good.  It's the end of the world." 
               @story-text{
-              Wednesday is ___'s favorite day -- because it's pizza night.  Every Wednesday, instead of cooking, ___'s dad orders a different kind of pizza.  It's not that ___ doesn't like her dad's cooking.  It's just that pizza is her favorite food and always will be, forever.  Cheese, pepperoni, vegitable, meatball -- the kind of pizza didn't matter.  They were @i{all} her favorites.
+              Wednesday is Mia's favorite day -- because it's pizza night.  Every Wednesday, instead of cooking, Mia's dad orders a different kind of pizza.  It's not that Mia doesn't like her dad's cooking.  It's just that pizza is her favorite food and always will be, forever.  Cheese, pepperoni, vegetable, meatball -- the kind of pizza didn't matter.  They were @i{all} her favorites.
 
               Her mouth has been watering all day.  When the doorbell rings, she calls, "Dad!  The pizza is here." He takes forever to come downstairs.  It feels like it takes years for him to pay the pizza delivery man, and another few years before he finally places the giant pizza box on the kitchen table and announces:
 
               "Dinner is served."
 
-              ___ snatches up a slice and takes it to her room to eat it while she plays video games with her twin brother.  She has a video game controller in one hand and a slice of pizza in the other.  So does her brother.
+              Mia snatches up a slice and takes it to her room to eat it while she plays video games with her twin brother.  She has a video game controller in one hand and a slice of pizza in the other.  So does her brother.
 
               "Ready to lose?" says her brother, starting a racing game with his free hand and taking a bite with the other.
 
@@ -66,7 +105,7 @@
 
               "You're just mad because you know I'm going to win!"  
 
-              ___ spits out the bite of pizza and examines the slice carefully under the bathroom light.  It looks normal.  She sniffs it.  It smells normal.  She takes a smaller bite this time.   
+              Mia spits out the bite of pizza and examines the slice carefully under the bathroom light.  It looks normal.  She sniffs it.  It smells normal.  She takes a smaller bite this time.   
 
               Sure enough, though, as she begins to chew, it tastes like her mouth is full of soap.  She has to spit the bite into the trash. 
 
@@ -86,11 +125,11 @@
 
 (define (debugging-a-pizza:ch2 questions) 
   (story-mode "Debugging the Pizza - Debugging" 5
-              "___ makes several attempts to debug her pizza." 
+              "Mia makes several attempts to debug her pizza." 
               @story-text{
                 @b{First Debugging Attempt}
 
-                ____'s first thought is that her brother is playing a trick on her.   "Is this another one of your pranks?" she demands.
+                Mia_'s first thought is that her brother is playing a trick on her.   "Is this another one of your pranks?" she demands.
 
                 His eyes go wide.  "Me prank @i{you}?  You're the one who always pranks @i{me}!"
 
@@ -106,15 +145,15 @@
 
                 @b{Another Debugging Attempt}
 
-                It occurs to ___ that although her brother might not be lying, he might simply be wrong and not know it.  Maybe he just doesn't @i{realize} that the pizza tastes bad.  One time, he spent an entire week eating nothing but pickles.  Another time, he drank an entire bottle of ketchup on a dare.
+                It occurs to Mia that although her brother might not be lying, he might simply be wrong and not know it.  Maybe he just doesn't @i{realize} that the pizza tastes bad.  One time, he spent an entire week eating nothing but pickles.  Another time, he drank an entire bottle of ketchup on a dare.
 
                 "I'll be back," she says, taking her pizza with her and marching to her dad's room.  As usual, he's doing work at his desk.  "Dad," she says, "I need you to try this pizza."
 
-                "___, you know I'm on a diet," he says.
+                "Mia, you know I'm on a diet," he says.
 
                 "Dad! Please!" she begs.  "There's something wrong with it.  It tastes all weird."
 
-                Sighing, he takes the pizza, sniffs it, and takes a tiny bite.  ___ holds her breath as she waits -- expecting him to spit it out. 
+                Sighing, he takes the pizza, sniffs it, and takes a tiny bite.  Mia holds her breath as she waits -- expecting him to spit it out. 
 
                 Slowly, he swallows, sniffs the pizza again, and takes another bite.
 
@@ -145,11 +184,11 @@
 
 (define (debugging-a-pizza:ch3 questions) 
   (story-mode "Debugging the Pizza - Fixing the bug" 5
-              "___ finally debugs her pizza." 
+              "Mia finally debugs her pizza." 
               @story-text{
                 @b{Final Debugging Attempt}
 
-                @i{This is my favorite food of all time,} thinks ____.  @i{There is no @b{way} I'm going to bed tonight without solving this mystery.}
+                @i{This is my favorite food of all time,} thinks Mia_.  @i{There is no @b{way} I'm going to bed tonight without solving this mystery.}
 
                 Suddenly, it occurs to her that maybe it's not the @i{whole} pizza that tastes like soap -- but only part of it.  She puts the pizza on a plate and gets a knife from the drawer.  She cuts off a bit of the crust, a scrap of cheese, and a single pepperoni.
 
@@ -176,7 +215,7 @@
 
                 "It's not soap," says her father, chuckling.  "It's a kind of spice.  It can @i{taste} like soap to some people, though.  It's genetic.  Your mom can't stand the stuff either.  You can ask her about it when she gets home."
 
-                "What is genetic?" ___ she says.  
+                "What is genetic?" Mia she says.  
 
                 "Inside everyone's body is something called a genetic code," he says.  "It's like a code that says what color hair you'll have, what color eyes, whether you'll be tall or short, and whether or not cilantro tastes like soap or not."
                 
@@ -198,7 +237,7 @@
 
 (define (debugging-a-cat)
   (story-mode "Debugging the Cat" 5
-              "___ uses a debugging process to figure out why the cat won't shut up."
+              "Mia uses a debugging process to figure out why the cat won't shut up."
               ;The cat won't shut up.  But no one knows what it wants.  Food?  Nope.  Scritches?  Nope.  Is it sick?  Nope.  Weird noises that only it can hear...
               @story-text{
 
@@ -261,4 +300,5 @@
 (module+ test
   (require rackunit)
 
-  (human-input-output-story))
+  (human-input-output-story)
+  (debugging-a-pizza))

@@ -49,7 +49,8 @@
 (define (debugging-a-pizza-tips)
   (tips "For a shorter story, take out some of the hypotheses/tests."
         "Use the name of a student in the room instead of Mia."
-        "Ask students to create their own hypotheses -- even tests (you give the result)."))
+        "Ask students to create their own hypotheses -- even tests (you give the result)."
+        "Don't forget to engage with questions -- at the end and throughout!"))
 
 (define (debugging-a-pizza:highlights)
   (story-mode "Debugging a Pizza: Story At A Glance" 5

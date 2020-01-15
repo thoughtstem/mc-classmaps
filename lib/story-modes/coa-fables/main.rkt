@@ -40,106 +40,160 @@
                      "Which of the stories might be an alegory for more than one thing?  How so?"))
                })))
 
+; ===== OVERCOME THE UNKNOWN ====
 
 (define (overcome-the-unknown-fable)
+  (with-tags
+      (list fable code-of-awesomeness meta-cognition)
+  (story-mode "Overcome the Unknown Fable" 15
+              "A Code of Awesomeness fable about two fish who looked the same on the outside, but whose minds were very different on the inside."
+              @story-text{@(overcome-the-unknown:tips)
+                          @(embedded-stories (overcome-the-unknown-fable:highlights))
+                          @(embedded-stories (overcome-the-unknown-fable:prose))
+                          @(overcome-the-unknown-fable:questions)
+ })))
+
+(define (overcome-the-unknown:tips)
+  (tips "For younger audiences, use a whiteboard to track the size and journeys of the two fish."
+        "Yes, it is ridiculous that fish might code.  The authors know it, you know it, the audience knows it.  Use the ridiculousness to your advantage!"
+        "Don't forget to engage with questions -- at the end and throughout!"))
+
+(define (overcome-the-unknown-fable:highlights)
+  (with-tags
+      (list fable code-of-awesomeness meta-cognition)
+    (story-mode "Overcome the Unknown Fable: Story at a Glance" 10
+                "Plot points for ad-libbed telling of the Overcome the Unknown fable."
+                @story-text{
+                            @ul{@li{There are two fish, @b{Trout} and @b{Catfish}, who are the same except for the way they think and talk. For example:
+                                    @ul{@li{While @b{Trout} says: @i{"I hate when the bigger fish laugh at me when I do coding. One day, I’ll be the best around."}}
+                                        @li{@b{Catfish} says: @i{“I think I got better at coding today. If I keep it up, I’ll be the best around.”}}
+                                        @li{While @b{Trout} says: @i{"I lost the coding competition, so I'm switching to jewelry-making.  I hate losing."}}
+                                        @li{@b{Catfish} says: @i{"I lost the coding competition, so I'm going to practice even harder for the next one."}}}}
+                                @li{Both fish enter coding tournaments.}
+                                @li{@b{Trout} wins and laughs at all the smaller fish who lost.}
+                                @li{@b{Catfish} doesn't win, but talks to the other fish and learns what they did better than her.}
+                                @li{Both fish grow up and become the biggest fish in their pond}
+                                @li{@b{Catfish} decides to travel and learn more.}
+                                @li{@b{Catfish} competes with even bigger fish in bigger ponds. When she gets to be the biggest in the pond, she moves to an even bigger pond.}
+                                @li{@b{Catfish} grows into a gigantic fish.}
+                                @li{Meanwhile, @b{Trout} stays home and wins the same competition year after year. She laughs at the smaller fish.}
+                                @li{When @b{Catfish} comes home to see everyone, she is the biggest fish they have ever seen!}
+                                @li{@b{Trout} is upset, and she refuses to talk to @b{Catfish} at all.}
+                                @li{@b{Trout} stays in the small pond her whole life, one day losing to young fish. She retires from coding after that.}
+                                @li{@b{Catfish} travels the big ponds of the world, a medium-sized fish and one of the best fish coders ever.}}
+ })))
+
+
+(define (overcome-the-unknown-fable:prose)
   (with-tags 
-    (list fable code-of-awesomeness)
-    (story-mode "Overcome the Unknown Fable" 10
+    (list fable code-of-awesomeness meta-cognition)
+    (story-mode "Overcome the Unknown Fable: Full Text" 10
                 "A Code of Awesomeness fable about two fish who looked the same on the outside, but whose minds were very different on the inside."
                 @story-text{
-                  Once upon a time, there were two small fish in one big pond -- or rather, it seemed like a big pond at the time.  They were both young and neither one of them was very good at things that fishes do -- like coding, and skiing, and martial arts, and creative writing, and parachuting, and making jewelry, and eating smaller fish.
+                  Once upon a time, there were two small fish; Trout and Catfish. They both lived in one big pond -- at least it was a big pond for the two very small fish.  Both Trout and Catfish were young and neither one of them was very good at things that all fishes do -- like coding, and skiing, and martial arts, and creative writing, and parachuting, and making jewelry, and eating smaller fish.
 
-                  Although they were best friends, there was one big difference between them.  It wasn't their color.  (Both fishes were rainbow colored.)  It wasn't their dreams.  (Both small fishes dreamed of becoming the biggest fishes in the pond.)  
+                  Although Trout and Catfish were best friends, there was one big difference between them.  It wasn't their color.  (Both were rainbow-colored.)  It wasn't their dreams.  (Both dreamed of becoming the biggest fishes in the pond.)  
                   
-                  No, the difference -- that seemed so small when they were young -- was actually in the minds of the fish.  You wouldn't be able to see the difference from the outside.  But if you listened carefully to them talk, you might be able to @i{hear} it.
+                  No, the difference was actually in the @i{minds} of the fish.  You wouldn't be able to see the difference from the outside.  But if you listened carefully to them talk, you might be able to @i{hear} it.
 
-                  The first fish would often say things like this, "I hate when the bigger fish laugh at me when I do coding. One day, I'm going to be the best coder in the pond."                  
+                  Trout would often say things like: "I hate when the bigger fish laugh at me when I do coding. One day, I'm going to be the best coder in the pond."                  
 
-                  But the second fish would often say things like this, "I feel like I'm a tiny bit better at coding today than I was yesterday.  If I keep this up, one day, I'll be the best coder in the pond."
+                  Catfish would often say things like: "I feel like I'm a tiny bit better at coding today than I was yesterday.  If I keep this up, one day, I'll be the best coder in the pond."
 
                   Did you catch the difference?  Let's listen again.   
 
-                  The first fish once said something like this, "I lost the coding competition, so I'm switching to jewelry making because I'm better at that.  I hate losing."
+                  Trout once said: "I lost the coding competition, so I'm switching to jewelry-making because I'm better at that.  I hate losing." (She did @i{not}, in fact, switch to jewelry-making.)
 
-                  But the second fish once said something like this, "I lost the coding competition, so I'm going to practice even harder."
+                  Catfish once said: "I lost the coding competition, so I'm going to practice even harder for the next one."
 
-                  Did you catch the difference?  
+                  Did you catch the difference that time?
 
-                  One day, both fish had grown from tiny to medium-sized, the first fish said something like this, "Today, I beat a bunch of smaller fish in the coding competition and laughed at them.  Small fish are so basic."
+                  @(hr)
 
-                  The second fish said, "Today, I lost another coding tournament.  But it was a tough competition -- against some of the best coders in the entire pond."
+                  Time passed and both fish grew from tiny to medium-sized.  The difference between their minds grew, too. One day at their weekly brunch, Trout and Catfish discussed the coding tournaments they had competed in over the last week:
 
-                  The first fish said, "Did you get a trophy?  I got a trophy."
+                  "Yesterday, I beat a bunch of little minnows in the coding competition and laughed at them."  Said Trout.  "Small fish are so basic."
 
-                  The second fish said, "Not yet.  I don't go to tournaments for trophies."
+                  "Hmm."  Catfish said.  "Well, today, I lost my coding tournament.  But it was a tough competition -- against some of the best coders in the entire pond."
 
-                  One day, after both fish had grown to be the biggest in the whole pond -- bigger than the turtles and even bigger than the allegators.  They still looked the same: both rainbow, and both gigantic.  
+                  "How many trophies do you have?" Trout asked.  "I have six trophies!"
+
+                  "I don't remember," Catfish said. "Not many.  I don't go to tournaments for trophies."
+
+                  Trout sighed -- sometimes Catfish was very odd.
+
+                  @(hr)
+                  More time passed and now both Trout and Catfish had grown to be the biggest in the whole pond -- even bigger than the turtles! That difference inside of them had also grown so large that anyone who knew them could hear it in the way they talked:
+
+                  One day, after comparing herself to every other fish in the pond, Trout annouced: "We finally made it!  We're officially the biggest fish in the whole pond.  No one can beat @i{me} at coding." 
+
+                  Catfish said, "No one?"
+
+                  "I could beat you if I wanted to," Trout said, "but I don't want to make you look bad."
+
+                  "I don't mind if you make me look bad." Catfish said.
+
+                  "Look -- I'm just too busy to compete with you right now," said Trout.  "Maybe tomorrow."
+
+                  Catfish said, "Actually, I'm leaving today."
+
+                  "Leaving?  You're leaving the pond?" Trout said, surprised.  "But what about our dream of becoming the biggest fish in the whole pond?  We @i{finally} did it!"
+
+                  "It's just..." said Catfish, "don't you ever wonder if there are bigger ponds out there?"
+
+                  "No!" said Trout.  "I've spent my entire life becoming the biggest fish @i{here}.  If the next pond is even bigger, there might be even bigger fish!"
+
+                  "That's kind of what I'm hoping for," said Catfish.
+
+                  "What if they laugh at you?" asked Trout.
+
+                  "I suppose that might happen," said Catfish. "I'll take the risk."
+
+                  "What if they are better at coding than you?" said Trout.
+
+                  "Exactly!" said Catfish.  "I can become even better out there than I can in here."
+
+                  Trout humphed and swished away in a swarm of bubbles, saying over her shoulder, "Fine!  With you gone, I'll finally be the biggest fish of all!"
+
+                  @(hr)
+                  Later that day, Catfish bought plane tickets to a larger pond -- it was @i{ten times} larger, filled with @i{gigantic} fish. When Catfish arrived in the new pond -- those gigantic fish did sometimes laugh at her.  And the gigantic fish did code faster and better than her -- at least at first.  
+
+                  But slowly, Catfish grew, and kept entering coding tournaments, and the day that she became the biggest fish in that pond -- can you guess what she did?  She bought plane tickets to a new pond -- one @i{twenty} times bigger than her home pond, filled with @i{enormous} fish!
+
+                  Once again, Catfish was just one of the smaller fish, and at first Catfish lost every coding tournament.  But Catfish knew what she was doing.  For years, she moved from pond to pond, always knowing when to go -- once she had become the biggest in the old pond.  
+
+                  Many years later, Catfish decided to visit her home pond again.  When she swam off the plane into that tiny pond, all of the other fishes' mouths dropped open.  They had never in their entire lives dreamed that a fish could ever get @i{that big}.
+
+                  Trout pushed her way through the shocked crowd to the front, until she was nose to (much larger) nose with Catfish.
+
+                  "What are @i{you} doing back here?" Trout snapped. 
+
+                  "That's no way to treat an old friend," said Catfish.
+
+                  Trout humphed and swam away, saying over her shoulder, "Go back to your big ponds and leave me alone."
+
+                  @(hr)
+                  It's always sad when two former friends' have such different mindsets that they cannot get along. Trout stuck to her small pond, entering the same small tournaments and winning the small trophies over and over again.  She retired from tournaments early, the first time a young minnow beat her at a coding tournament.
                   
-                  But that difference inside of them had grown so large that anyone who listened to them talk could hear it:
-
-                  The first fish said one day, "We finally made it.  We're the biggest fish in the whole pond.  No one can beat me at coding anymore." 
-
-                  The second fish said, "No one?"
-
-                  The first fish said, "I could beat you if I wanted to, but I don't want to make you look bad."
-
-                  The second fish said, "I don't mind if you make me look bad."
-
-                  The first fish said, "Look -- I'm just too busy.  Maybe tomorrow."
-
-                  The second fish said, "Actually, I'm actually leaving today."
-
-                  Surprised, the first fish said, "Leaving?  You're leaving the pond?  But what about our dream of becoming the biggest fish in the whole pond?"
-
-                  The second fish said, "It's just... don't you ever wonder if there are bigger ponds out there?"
-
-                  "No!" said the first fish.  "I've spent my entire life becoming the biggest fish.  What if the next pond is even bigger and there are even bigger fish?"
-
-                  "That's kind of what I'm hoping for," said the second fish.
-
-                  "What if they laugh at you?" asked the first fish.
-
-                  "I don't mind when people laugh," said the second fish.
-
-                  "What if they are better at coding than you?" said the first fish.
-
-                  "That's what I'm hoping for," said the second fish.
-
-                  In a humph, the first fish swam away, saying over its shoulder, "Fine!  With you gone, I'll finally be the biggest."
-
-                  That day, the second fish bought plane tickets to a larger pond -- ten times bigger, filled with gigantic fish. When the second fish arrived in the new pond -- those gigantic fish did sometimes laugh.  And the gigantic fish did beat the second fish at coding -- at least at first.  
-
-                  But slowly, the second fish grew, and kept entering coding tournaments, and the day that it became the biggest fish in that pond -- can you guess what it did?  It bought plane tickets to a new pond -- one ten times bigger, filled with @i{even bigger} fish.
-
-                  Once again, it was hard, and at first the second fish lost every coding tournament.  But the second fish knew what it was doing.  For years, it moved from pond to pond, always moving to a new pond once it had become the biggest in the old pond.  
-
-                  One day, it decided to visit its home pond again.  When it hopped off the plane into that tiny pond, all of the other fish's mouths dropped open.  That second fish was the biggest one they had ever seen.
-
-                  When the first fish came to greet the second (now much larger) fish, it was quite grumpy, "What are @i{you} doing back?" 
-
-                  "That's no way to treat an old friend," said the second fish.
-
-                  But the first fish wouldn't listen.  It swam away, saying over its shoulder, "Go back to your big ponds and leave me alone."
-
-                  It's always sad when two fish have such different mindsets that they cannot get along.  That second fish, now a medium-sized fish in some of the world's biggest ponds world went on to become one of the most famous fish coders of all time, winning bigger and bigger tournaments and bigger and bigger trophies.  The first fish, although it was the biggest fish in that small pond went on to win many more tiny trophies in many tiny tournaments.  It retired from tournaments early, the moment some of the younger fishes began to beat it at coding.
-                  
-                  It died forgotten, in the biggest house of its small pond.
-
-                  @(question-section
-                     (comprehension-questions
-                       "Which fish had a better mindset?"
-                       "Which fish had a 'growth mindset' and which had a 'fixed mindset'?"
-                       "What adjectives would you use to describe the first fish's mindset versus the second?")
-                     (creativity-questions
-                       "In what ways are you like the first fish?"
-                       "In what ways are you like the second fish?"
-                       "How can we help each other be more like the first fish and less like the second fish?"
-                       "What could the second fish have said the the first fish to convince it to have a better mindset?"
-                       "How can you tell when someone has a mindset that's more like the first fish than the second?"))
-                  
+                  Catfish, on the other hand, grew to be a medium-sized fish in some of the biggest ponds in the whole world.  She went on to become one of the most famous fish coders of all time!  She traveled all over, competing in the biggest coding tournaments -- sometimes winning and sometimes losing, but always learning.
                 })))
 
+(define (overcome-the-unknown-fable:questions)
+  (question-section
+   (comprehension-questions
+    "Which fish had a better mindset?"
+    "Which fish had a 'growth mindset' and which had a 'fixed mindset'?"
+    "What adjectives would you use to describe Trout's mindset versus Catfish?")
+   (creativity-questions
+    "In what ways are you like Trout?"
+    "In what ways are you like Catfish?"
+    "How can we help each other be more like Catfish and less like Trout?"
+    "What could Catfish have said to Trout to convince it to think differently?"
+    "How can you tell when someone has a mindset that's more like Trout than Catfish?")))
 
+
+
+;==== BE A BUG HUNTER ====
 
 
 (define (bug-hunter-fable)

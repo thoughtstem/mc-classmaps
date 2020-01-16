@@ -13,6 +13,7 @@
          website-js/components/form-row
          website-js/components/time-select
          (only-in website data-toggle:)
+         (only-in website/bootstrap responsive-row)
          "./base.rkt"
          "./icons.rkt"
          "./tags/main.rkt")
@@ -27,9 +28,9 @@
     (card-body 
       (card-title (sequence-name s))
       (card-subtitle (sequence-summary s))
-      (card-group
-        (map classmap->summary-html
-             (sequence-classmaps s))))))
+      (apply (curry responsive-row #:columns 4 #:padding 0)
+                    (map classmap->summary-html
+                         (sequence-classmaps s))))))
 
 ;TODO: Make this link show a larger version of the classmap
 ;  1) Modal?
@@ -60,7 +61,7 @@
             )))
 
 (define (classmap->summary-html cm)
-  (card
+  (card class: "h-100"
     (card-header 
       (show-classmap cm))
     (card-body 

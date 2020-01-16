@@ -227,6 +227,8 @@
        }))))
 
 
+;=== TEACH THE TEAM ====
+
 (define (energize-the-team-fable)
   (with-tags (list fable code-of-awesomeness)
     (story-mode "Teach the Team Fable" 10

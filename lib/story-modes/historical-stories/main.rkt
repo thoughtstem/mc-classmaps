@@ -1,6 +1,7 @@
 #lang at-exp racket
 
 (provide hello-world-story
+         hello-world-story:detailed
          first-bug-story
          mars-orbiter-bug-story)
 
@@ -8,15 +9,100 @@
  website/bootstrap
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
- mc-classmaps/lib/rendering)
+ mc-classmaps/lib/rendering
+ website-js/components/accordion-cards)
 
-;===== HISTORY STORIES ===
-
-;not a 5 minute story, needs editing
+;===== HELLO WORLD STORIES ===
 
 (define (hello-world-story)
-  (with-tags (list historical cultural)
-    (story-mode "Hello World Story" 5
+  (with-tags
+      (list historical cultural)
+    (story-mode "\"Hello, World!\"" 5
+                "Why do we call the first code we write our Hello World program?"
+                @story-text{ @(embedded-stories (hello-world-story:highlights))
+                             @(embedded-stories (hello-world-story:prose))
+                             @(hello-world-story:code-examples)
+ })))
+
+(define (hello-world-story:highlights)
+  (story-mode "\"Hello, World!\": Story at a Glance" 5
+              "Plot points for ad-libbed telling of the \"Hello World!\" story."
+              (story-text (ul
+                           @li{The first program a coder writes in a new language is traditionally a @b{Hello World program.}}
+                           @li{This tradition comes from computer science textbooks written in the 1970's.}
+                           @li{A literal Hello World program prints out the words "Hello, World!" in the terminal.}
+                           @li{@i{If possible, show some sample Hello World programs in various languages: samples listed below.}}
+                           @li{Nowadays, a Hello World program can be more complex and powerful than it used to be, sometimes with even simplier code.}
+                           @li{Sometimes a Hello World program doesn't have anything to do with the words "Hello, World!" but it is still called that as the starting program in a new language.}))))
+
+
+
+(define (hello-world-story:prose)
+  (story-mode "\"Hello, World!\": Full Text" 5
+              "Why do we call the first code we write our Hello World program?"
+              @story-text{
+               In a moment we will be writing our first lines of code in our language.  We call these lines of code our @b{Hello World program} because of a tradition that started way back in the 1970's (that's 50 years ago!).  This piece of computer science history continues to influence coders today -- coders like you.
+
+               A computer science textbook published in 1978 entitled "The C Programming Language" included the following coding exercise:
+               
+               @pre{@code{main() {
+     printf(\"hello, world\\n\");
+}}}
+               Even before that, a textbook on the B programming language published in 1972 contained this example:
+
+               @pre{
+                    @code{
+                      main( ) {
+                        extern a, b, c;
+                        putchar(a); putchar(b); putchar(c); putchar('!*n');
+                      }
+                     
+                      a 'hell';
+                      b 'o, w';
+                      c 'orld';
+                    }
+                  }
+               These textbooks were so influential -- specifically "The C Programming Language" -- that these very coding execises started a computer science tradition that is still observed today: when learning a new language, the first program a coder writes outputs the words "Hello, World."
+
+               Now, that code might look completely different from one computer language to another (after all, "Hello, world" can look and sound very different in human languages, right?). For example:
+
+               @coach-fills-in{Project or otherwise display some of the eaxmples listed below.}
+
+               This "Hello, World" tradition is so embedded in coder-culture that even when the first program a coder writes has nothing to do with the words "Hello World" (maybe the code outputs an image, webpage, game, or even blinking LEDs in "the real world" instead of text on the screen!), a coder still might refer to this first program as their Hello World Program. 
+
+               So, as coders and members of this huge community and culture of other coders, we are @i{also} going to call our first program our Hello World Program.
+
+               Are you ready to try it?
+ }))
+
+(define (hello-world-story:code-examples)
+  (accordion-card #:header "Hello World Program Examples"
+                  (story-text
+                   "Here are example Hello World programs in a few different languages:"
+                   (hr)
+                   (ol (li (b "C") " (from the aforementioned 1970's textbook)"
+                           @pre{@code{main() {
+   printf(\"hello, world\\n\");
+   }}})
+                       (li (b "Racket") @pre{#lang racket
+ "Hello, World!"})
+                       (li (b "Python") @pre{print "Hello World"})
+                       (li (b "Javascript") @pre{console.log("Hello World");})
+                       (li (b "Java")
+                           (pre
+                            "class HelloWorld {
+  static public void main( String args[] ) {
+    System.out.println( \"Hello World!\" );
+  }
+}"))
+                       (li (b "Ruby") @pre{puts "Hello, world!"})
+                       (li (b "Typescript") @pre{alert('Hello world!');})
+                       (li "Find more " (link-to "http://helloworldcollection.de/" "in this online collection") ".")
+                       ))))
+
+(define (hello-world-story:detailed)
+  (with-tags (list historical cultural middle-school high-school)
+    (story-mode "Hello World History" 15
                 "About the phrase 'Hello World' in the computer science context, and why you'll see it again and again on your journey to become a coder."
                 @story-text{
                   Bev, age 19, arrives to her first college computer science class.  The instructor says, "Welcome!  Today, we're going to write a 'Hello, World' program."
@@ -80,6 +166,8 @@
                 }
                 )))
 
+;=== OTHER HISTORICAL STORIES ====
+
 (define (first-bug-story)
   (with-tags (list historical)
     (story-mode "The First Computer Bug..." 5
@@ -136,7 +224,7 @@
 
                   The software written to control the ship from Earth was enormous -- many million lines of code.   To get a feel for how big the source code for a space mission can be, here's a picture of a coder named Margaret Hamilton standing next to a printout of code she and her team wrote for a different spaceship:
 
-                  (img style: (properties width: "100%") src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Margaret_Hamilton_-_restoration.jpg/340px-Margaret_Hamilton_-_restoration.jpg")
+                  @(img style: (properties width: "100%") src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Margaret_Hamilton_-_restoration.jpg/340px-Margaret_Hamilton_-_restoration.jpg")
 
                   As you might expect, any giant piece of text written by human beings is going to have some mistakes in it.  The code that controlled communication with the Mars Climate Orbiter had one nasty bug that doomed its mission -- going entirely unnoticed until it was too late.  
 
@@ -163,5 +251,12 @@
                 })))
 
 
+(module+ test
+  (require rackunit)
+
+  (hello-world-story)
+  (hello-world-story:detailed)
+  (first-bug-story)
+  (mars-orbiter-bug-story))
 
 

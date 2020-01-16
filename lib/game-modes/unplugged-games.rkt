@@ -1,6 +1,6 @@
 #lang at-exp racket
 
-(provide unplugged-games
+(provide unplugged-games ;don't forget to add new games to this list if you want them to be tested!
          pattern-prediction
          person-bot)
 

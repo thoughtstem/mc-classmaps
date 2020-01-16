@@ -106,5 +106,7 @@
   (list
    (basic-sequence)
     (computational-thinking-for-kinder-sequence)
-    (computational-thinking-for-lower-elementary-sequence)
-    (computational-thinking-for-upper-elementary-sequence)))
+    ;taken out as not to clutter the live page with unfinished sequences that are not in use
+    ;(computational-thinking-for-lower-elementary-sequence)
+    ;(computational-thinking-for-upper-elementary-sequence)
+    ))

@@ -280,7 +280,7 @@
 
 (define (build-a-bug-workshop)
   (with-tags
-      (list partners debugging review competitive-option k2 3rd-5th middle-school high-school)
+      (list coding partners debugging review competitive-option k2 3rd-5th middle-school high-school)
     (game-mode "Build a Bug Workshop" 10
                "Players purposely break and debug code in this partnered game."
                (game-info

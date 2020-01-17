@@ -182,13 +182,13 @@
   (question-section
    (comprehension-questions
     "Which fish had a better mindset?"
-    "Which fish had a 'growth mindset' and which had a 'fixed mindset'?"
-    "What adjectives would you use to describe Trout's mindset versus Catfish?")
+    "What adjectives would you use to describe Trout's mindset versus Catfish?"
+    "Which fish had a 'growth mindset' and which had a 'fixed mindset'?")
    (creativity-questions
     "In what ways are you like Trout?"
     "In what ways are you like Catfish?"
     "How can we help each other be more like Catfish and less like Trout?"
-    "What could Catfish have said to Trout to convince it to think differently?"
+    "What could Catfish have said to Trout to convince her to think differently?"
     "How can you tell when someone has a mindset that's more like Trout than Catfish?")))
 
 

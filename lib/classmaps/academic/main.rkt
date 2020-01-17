@@ -90,14 +90,14 @@
             (list
               intro
               (game-with-minutes 10 (preface-game-with-tips
-                                     (tips (ul (li "Give bots an " (b "error code")
+                                     (tips (list "Give bots an " (b "error code")
                                                    " -- specific phrase or motion when they have a bug")
-                                               (li "Increase " (b "difficulty")
+                                               (list "Increase " (b "difficulty")
                                                    " -- (reccomended for younger groups) use 1 Player as the bot instead of the Coach/all Players, add a language restriction, etc.")
-                                               (li "Change the " (b "goal")
+                                               (list "Change the " (b "goal")
                                                    " -- draw a house, put on a sweatshirt, complete a math problem, fold a paper airplane, etc.")
-                                               (li "Have the Bot Coders " (b "write")
-                                                   " all the instructions down at once before Bot begins to execute -- (reccomended for older groups) this can be done with multiple teams, and with multiple testing cycles.")))
+                                               (list "Have the Bot Coders " (b "write")
+                                                   " all the instructions down at once before Bot begins to execute -- (reccomended for older groups) this can be done with multiple teams, and with multiple testing cycles."))
                                      (person-bot))) 
 
               (story-with-minutes 10
@@ -113,7 +113,7 @@
             "A unplugged/plugged classmap introducing the basics of coding as a language."
             (list
               intro
-              (game-with-minutes 10 (person-bot-language-focus))
+              (game-with-minutes 10 (whaddya-call-that))
               (story-stub "Coach tells story and leads discussion about language" 10
                 "Coding is a language to communicate with computers.")
               (game-with-minutes 10 (disintegrating-code))

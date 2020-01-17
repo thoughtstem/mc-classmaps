@@ -48,7 +48,7 @@
                       "Coach says: \"Draw a Pointy at the bottom of your page. Put a small Blorp on top of the Pointy. Then, put a Steve on the very top.\""
                       (write-image (bitmap "../images/wct-game-3.png")))
                
-               (h5 "Sample Pictures (with their constructor shapes)")
+               (h5 "Sample Pictures")
                (ul (li (write-image (bitmap "../images/wct-game-A.png")))
                    (li (write-image (bitmap "../images/wct-game-B.png")))
                    (li (write-image (bitmap "../images/wct-game-C.png")))

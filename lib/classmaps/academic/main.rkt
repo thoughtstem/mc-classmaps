@@ -74,11 +74,11 @@
             (list
               intro
               
-              (game-with-minutes 10 (person-bot)) 
+              (game-with-minutes  10 (person-bot)) 
 
               (story-with-minutes 10 (human-input-output-story))
 
-              (game-with-minutes 10 (what-does-this-do)) 
+              (game-with-minutes  10 (what-does-this-do)) 
 
               (meta-story-one-word)
               )))
@@ -113,10 +113,9 @@
             "A unplugged/plugged classmap introducing the basics of coding as a language."
             (list
               intro
-              (game-with-minutes 10 (whaddya-call-that))
-              (story-stub "Coach tells story and leads discussion about language" 10
-                "Coding is a language to communicate with computers.")
-              (game-with-minutes 10 (disintegrating-code))
+              (game-with-minutes  10 (whaddya-call-that))
+              (story-with-minutes 10 (a-path-in-your-brain-story))
+              (game-with-minutes  10 (disintegrating-code))
               (meta-story-one-word))))
 
 ;==== MODIFIED Depth 1, more coding game modes ====
@@ -421,4 +420,9 @@
     #:intro (story-stub "Review" 5 "What did we do last time?"))
    
   ))
+
+(module+ test
+  (require rackunit)
+
+  (computational-thinking-for-kinder-pack))
 

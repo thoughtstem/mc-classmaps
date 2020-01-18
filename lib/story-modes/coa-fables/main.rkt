@@ -201,7 +201,7 @@
       (story-mode "Be a Bug Hunter Fable" 10
               "A Code of Awesomeness fable about two animals who have different strategies for dealing with bugs."
               (div @paras{
-               @tips["Before you start, let the students pick the characters. You can these characteristics as guides: (Woodpecker): practical and level-headed. (Ostrich): impulsive and anxious"
+               @tips[(list "Before you start, you can let the students pick the characters. Use these characteristics as guides:" (ul (li "(Woodpecker): practical and level-headed.") (li "(Ostrich): impulsive and anxious")))
        "For younger students, show how the houses grow throughout the story: ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."]
 
               Once, long ago, Woodpecker and Ostrich were competing to build the biggest house in the desert. They began in the Spring, knowing they would have to finish before the hot summer arrived, bringing wild winds and dangerous sandstorms.

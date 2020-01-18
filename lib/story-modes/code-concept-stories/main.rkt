@@ -2,8 +2,7 @@
 
 (provide human-input-output-story
          debugging-a-pizza
-         debugging-a-cat
-         code-is-a-language-story) 
+         debugging-a-cat) 
 
 (require 
  website/bootstrap
@@ -305,44 +304,11 @@
 
 
 
-; ==== CODE AS A LANGUAGE stories =====
 
 
-(define (code-is-a-language-story)
-  (with-tags
-      (list language cs-concept k2 3rd-5th middle-school high-school)
-    (story-mode "Talking to Computers" 5
-                "Putting the LANGUAGE back in in programming language."
-                @story-text{@(code-is-a-language:tips)
-                            @(embedded-stories (code-is-a-language-story:highlights))
-                            @(embedded-stories (code-is-a-language-story:prose))
-                            @(code-is-a-language:questions)
- })))
-
-(define (code-is-a-language:tips)
-  (tips "Don't suck"))
-
-(define (code-is-a-language-story:highlights)
-  (story-mode "Talking to Computers: Story at a Glance" 5
-              "Plot points for ad-libbed telling of the Talking to Computers story."
-              (story-text
-                         (steps "tell a story"))))
-
-(define (code-is-a-language-story:prose)
-  (story-mode "Talking to Computers: Full Text" 5
-              "Putting the LANGUAGE back in in programming language."
-              @story-text{ TBD }))
-
-(define (code-is-a-language:questions)
-  (question-section
-   (comprehension-questions
-    "What color is the sky?")
-   (creativity-questions
-    "What is the meaning of life?")))
 
 (module+ test
   (require rackunit)
 
   (human-input-output-story)
-  (debugging-a-pizza)
-  (code-is-a-language-story))
+  (debugging-a-pizza))

@@ -148,6 +148,10 @@
   (define patterns
     (tag "patterns"
          "Builds pattern recognition and matching skills."))
+
+  (define cs-concept
+    (tag "cs-concept"
+         "Teaches a broad Computer Science concept."))
   )
 
 

@@ -12,6 +12,10 @@
  mc-classmaps/lib/rendering)
 
 
+
+
+; ==== DEBUGGING stories ====
+
 (define standard-debugging-questions
   (list
     (comprehension-questions
@@ -32,19 +36,20 @@
           #:ch1-questions (ch1-questions #f)
           #:ch2-questions (ch2-questions #f)
           #:ch3-questions (ch3-questions #f))
+  (with-tags
+      (list cs-concept k2 3rd-5th middle-school high-school)
 
-  (story-mode "Debugging the Pizza" 15
-              "Mia uses a debugging process to figure out why the pizza suddenly tastes like soap." 
-              @story-text{
-                @(debugging-a-pizza-tips)
-                @intro
-                @(embedded-stories (debugging-a-pizza:highlights))
-                @(embedded-stories (debugging-a-pizza:ch1 ch1-questions)) 
-                @intermission
-                @(embedded-stories (debugging-a-pizza:ch2 ch2-questions)) 
-                @(embedded-stories (debugging-a-pizza:ch3 ch3-questions)) 
-                @outro
-              }))
+    (story-mode "Debugging the Pizza" 15
+                "Mia uses a debugging process to figure out why the pizza suddenly tastes like soap." 
+                @story-text{
+                            @(debugging-a-pizza-tips)
+                            @intro
+                            @(embedded-stories (debugging-a-pizza:highlights))
+                            @(embedded-stories (debugging-a-pizza:ch1 ch1-questions)) 
+                            @intermission
+                            @(embedded-stories (debugging-a-pizza:ch2 ch2-questions)) 
+                            @(embedded-stories (debugging-a-pizza:ch3 ch3-questions)) 
+                            @outro})))
 
 (define (debugging-a-pizza-tips)
   (tips "For a shorter story, take out some of the hypotheses/tests."
@@ -238,7 +243,7 @@
 
 (define (debugging-a-cat)
   (story-mode "Debugging the Cat" 5
-              "Mia uses a debugging process to figure out why the cat won't shut up."
+              "____ uses a debugging process to figure out why the cat won't shut up."
               ;The cat won't shut up.  But no one knows what it wants.  Food?  Nope.  Scritches?  Nope.  Is it sick?  Nope.  Weird noises that only it can hear...
               @story-text{
 
@@ -256,11 +261,11 @@
               }))
 
 
-
+;==== INPUT/OUTPUT stories ====
 
 (define (human-input-output-story)
   (with-tags
-      (list k2 3rd-5th)
+      (list k2 3rd-5th cs-concept)
     (story-mode "Thinking about Inputs and Outputs" 5
                 "Learn about inputs and outputs on a computer, then map them on to a human!"
                 @story-text{
@@ -296,6 +301,10 @@
                                       @li{...}
                                       ]}]
  })))
+
+
+
+
 
 
 (module+ test

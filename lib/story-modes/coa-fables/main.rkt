@@ -182,13 +182,13 @@
   (question-section
    (comprehension-questions
     "Which fish had a better mindset?"
-    "Which fish had a 'growth mindset' and which had a 'fixed mindset'?"
-    "What adjectives would you use to describe Trout's mindset versus Catfish?")
+    "What adjectives would you use to describe Trout's mindset versus Catfish?"
+    "Which fish had a 'growth mindset' and which had a 'fixed mindset'?")
    (creativity-questions
     "In what ways are you like Trout?"
     "In what ways are you like Catfish?"
     "How can we help each other be more like Catfish and less like Trout?"
-    "What could Catfish have said to Trout to convince it to think differently?"
+    "What could Catfish have said to Trout to convince her to think differently?"
     "How can you tell when someone has a mindset that's more like Trout than Catfish?")))
 
 
@@ -201,7 +201,7 @@
       (story-mode "Be a Bug Hunter Fable" 10
               "A Code of Awesomeness fable about two animals who have different strategies for dealing with bugs."
               (div @paras{
-               @tips["Before you start, let the students pick the characters. You can these characteristics as guides: (Woodpecker): practical and level-headed. (Ostrich): impulsive and anxious"
+               @tips[(list "Before you start, you can let the students pick the characters. Use these characteristics as guides:" (ul (li "(Woodpecker): practical and level-headed.") (li "(Ostrich): impulsive and anxious")))
        "For younger students, show how the houses grow throughout the story: ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."]
 
               Once, long ago, Woodpecker and Ostrich were competing to build the biggest house in the desert. They began in the Spring, knowing they would have to finish before the hot summer arrived, bringing wild winds and dangerous sandstorms.

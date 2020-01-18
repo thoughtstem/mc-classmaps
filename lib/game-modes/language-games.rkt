@@ -10,6 +10,7 @@
          language-games)
 
 (require website/bootstrap
+         website-js/components/accordion-cards
          "../base.rkt"
          "../tags/main.rkt"
          "../rendering.rkt"
@@ -27,14 +28,33 @@
   (with-tags
       (list language teamwork communication unplugged 3rd-5th middle-school high-school)
   (game-mode "Whaddya Call That?!" 20
-             "Team works together to create a new language to help them draw a picture as described by Coach."
+             "Team works together to create their own language for unique shapes before using that language to communicate a picture to draw."
              (game-info
               (supplies-list "whiteboard or other way to display drawings to the whole group"
+                             "paper for each Player"
                              "writing utensils")
               (game-instructions
-               (steps "Team works together to create words for shape combinations (defining) then a leader instructs them to draw a picture (only they can see) using those words."
-                      "This game should include a few end pictures and the shapes to define them.")
-               (h5 "Shapes and Pictures to Try!")
+               (setup "Coach prepares or chooses a premade final picture and constructor shapes (see Samples below)")
+               (steps "Coach draws all the 'constructor shapes' where everyone can see them (ex. a whiteboard)"
+                      "Team works together to create a one-word name for each constructor shape, Coach notes the names"
+                      "Coach verbally describes a picture, using the defined words for the constructor shapes" 
+                      "Players draw the picture on their own papers"
+                      "Once all players are finished, Coach displays the correct picture"
+                      "Team can compare and share their results")
+               
+               (h5 "An Example with Pictures")
+               (steps (write-image (bitmap "../images/wct-game-1.png"))
+                      (write-image (bitmap "../images/wct-game-2.png"))
+                      "Coach says: \"Draw a Pointy at the bottom of your page. Put a small Blorp on top of the Pointy. Then, put a Steve on the very top.\""
+                      (write-image (bitmap "../images/wct-game-3.png")))
+               
+               (h5 "Sample Pictures")
+               (ul (li (write-image (bitmap "../images/wct-game-A.png")))
+                   (li (write-image (bitmap "../images/wct-game-B.png")))
+                   (li (write-image (bitmap "../images/wct-game-C.png")))
+                   (li (write-image (bitmap "../images/wct-game-D.png")))
+                   (li (write-image (bitmap "../images/wct-game-E.png"))))
+               
                )))))
 
 (define (whaddya-call-that-partners)

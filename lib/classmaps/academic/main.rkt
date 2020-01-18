@@ -15,7 +15,7 @@
 (provide inputs/outputs:depth-1
          bugs:depth-1
          bugs:depth-1:plugged
-         language:depth-1
+         metacognition:depth-1
          inputs/outputs:depth-2
          inputs/outputs:depth-2:plugged
          bugs:depth-2
@@ -107,10 +107,10 @@
               (game-with-minutes 10 (disintegrating-code))
               (meta-story-reflect)))) 
 
-
-(define (language:depth-1 #:intro intro)
-  (classmap "Intro to Code is Language"
-            "A unplugged/plugged classmap introducing the basics of coding as a language."
+;changed from language and code as language map
+(define (metacognition:depth-1 #:intro intro)
+  (classmap "Intro to Thinking Code"
+            "A unplugged/plugged classmap introducing the basics of learning how to code."
             (list
               intro
               (game-with-minutes  10 (whaddya-call-that))
@@ -360,7 +360,7 @@
     (bugs:depth-1
       #:intro (story-stub "Review" 5 "What did we do last time?")) 
    
-    (language:depth-1
+    (metacognition:depth-1
       #:intro (story-stub "Review" 5 "What did we do last time?")) 
 
     (inputs/outputs:depth-2
@@ -393,7 +393,7 @@
    (bugs:depth-1:plugged
       #:intro (story-stub "Review" 5 "What did we do last time?"))
    ;unplugged/plugged
-   (language:depth-1
+   (metacognition:depth-1
       #:intro (story-stub "Review" 5 "What did we do last time?"))
    ;all plugged
    (inputs/outputs:depth-2:plugged

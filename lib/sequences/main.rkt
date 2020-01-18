@@ -45,7 +45,7 @@
     (bugs:depth-1
       #:intro (story-stub "Review" 5 "What did we do last time?")) 
    
-    (language:depth-1
+    (metacognition:depth-1
       #:intro (story-stub "Review" 5 "What did we do last time?")) 
 
     (inputs/outputs:depth-2
@@ -72,7 +72,7 @@
      (bugs:depth-1:plugged
       #:intro (story-stub "Review" 5 "What did we do last time?"))
      ;unplugged/plugged
-     (language:depth-1
+     (metacognition:depth-1
       #:intro (story-stub "Review" 5 "What did we do last time?"))
      ;all plugged
      (inputs/outputs:depth-2:plugged

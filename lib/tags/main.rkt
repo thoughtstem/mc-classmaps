@@ -155,7 +155,7 @@
 
   (define active
     (tag "active"
-         "An active activity that involves most or all Players moving."))
+         "An active mode that involves most or all Players moving."))
   )
 
 

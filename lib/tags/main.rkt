@@ -152,6 +152,10 @@
   (define cs-concept
     (tag "cs-concept"
          "Teaches a broad Computer Science concept."))
+
+  (define active
+    (tag "active"
+         "An active activity that involves most or all Players moving."))
   )
 
 

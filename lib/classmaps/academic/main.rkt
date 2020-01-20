@@ -89,7 +89,7 @@
             "A unplugged/plugged classmap introducing the basics of bugs."
             (list
               intro
-              (game-with-minutes 10 (preface-game-with-tips
+              (game-with-minutes 10 (preface-game
                                      (tips (list "Give bots an " (b "error code")
                                                    " -- specific phrase or motion when they have a bug")
                                                (list "Increase " (b "difficulty")
@@ -113,7 +113,8 @@
             "A unplugged/plugged classmap introducing the basics of learning how to code."
             (list
               intro
-              (game-with-minutes  10 (whaddya-call-that))
+              (preface-game (p "You will play this game again in the More on Inputs and Outputs map, so keep that in mind when how much time you spend on each level.") 
+                            (chain-reaction))
               (story-with-minutes 10 (a-path-in-your-brain-story))
               (game-with-minutes  10 (disintegrating-code))
               (meta-story-one-word))))
@@ -142,7 +143,8 @@
             "A unplugged/plugged classmap on inputs/outputs."
             (list
               intro
-              (game-with-minutes 10 (person-bot:shapes-and-size))
+              (preface-game (p "Review the levels you got to last time you played this game or just jump right into the next level")
+                            (chain-reaction))
               (story-stub "The World Through Inputs and Outputs" 10
                 "Cats/animals"
                 "Houses"

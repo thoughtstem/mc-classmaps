@@ -61,7 +61,6 @@
       (class-mechanics-games)
       (language-games)
       (unplugged-games)
-      (game-frames)
       )))
    string<?
    #:key game-mode-name))

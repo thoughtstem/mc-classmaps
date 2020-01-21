@@ -6,7 +6,8 @@
  meta-story-deep-reflect
  meta-story-next-time
  meta-story-badges
- starting-review)
+ starting-review
+ review-stories)
 
 (require 
  website/bootstrap
@@ -15,6 +16,7 @@
  mc-classmaps/lib/rendering)
 
 ;======== META STORIES/REFLECTIONS =========
+
 
 (define (meta-story-one-word)
   (with-tags (list reflection)
@@ -28,12 +30,13 @@
 
 (define (meta-story-reflect (topic "what we all did and learned today."))
   (with-tags (list reflection)
+    
     (story-mode "Meta Story: Reflection" 5
                 "A chance to practice those metacognition skills."
                 @story-text{
                   We're going to reflect for a few minutes on:
 
-                  @(i @topic)
+                  @(i @(maybe-add-punct topic))
 
                   Raise your hand if you have a reflection you want to share...
 
@@ -55,7 +58,7 @@
                   
                   Our reflection topic, which I will write on the board, is:
                    
-                  @(i @topic)
+                  @(i @(maybe-add-punct topic))
 
                   Who would like to start us off?
 
@@ -80,7 +83,7 @@
 
                   Now, I want you to imagine thinking to yourself, "Hey, I have MetaCoders class today."  And I want you to imagine thinking the following:
 
-                  @thing-to-remember
+                  @(i @(maybe-add-punct thing-to-remember))
                 })))
 
 (define (meta-story-badges)
@@ -105,8 +108,21 @@
                 @story-text{
                             Who can tell me anything they remember about:
 
-                            @thing-to-review
+                            @(i @(maybe-add-punct thing-to-review))
 
                             @(tips "Guide the conversation with leading questions as needed."
                                    "Add any follow up points that the students missed after their comments.")})))
+
+(define (review-stories)
+  (list (meta-story-one-word)
+        (meta-story-reflect)
+        (meta-story-deep-reflect)
+        (meta-story-next-time)
+        (meta-story-badges)
+        (starting-review)))
+
+(module+ test
+  (require rackunit)
+  
+  (review-stories))
 

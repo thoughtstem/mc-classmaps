@@ -38,7 +38,9 @@
  quotation
  
  story-stub
- game-stub) 
+ game-stub
+
+ maybe-add-punct) 
 
 (require website/bootstrap
          website/util
@@ -128,6 +130,15 @@
         x)))
 
 (define maybe-p-ify (only #:if string? #:do p))
+
+;probably useful elsewhere -- pull out to some more general repo?
+(define (maybe-add-punct str)
+  (define (last-char s) (string-ref s (- (string-length s) 1)))
+  (if (string? str)
+      (if (char-punctuation? (last-char str))
+          str
+          (~a str "."))
+      str))
 
 
 

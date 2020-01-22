@@ -314,8 +314,8 @@
       (list meta-cognition cs-concept k2 3rd-5th middle-school high-school)
     (story-mode "Input/Output Systems in our World" 10
                 "Define a System and practice seeing everyday things as a System."
-                (story-text (embedded-stories (intro-to-systems-story:highlights))
-                            (intro-to-systems-story:tips)
+                (story-text (intro-to-systems-story:tips)
+                            (embedded-stories (intro-to-systems-story:highlights))
                             ))))
 
 (define (intro-to-systems-story:highlights)
@@ -328,7 +328,7 @@
                             " (define the words within this definition as needed!)")
                       (list "Pick an example system or two to explore (laptop, factory, restaurant, person...).")
                       (list "Guide the students through breaking the example system down into parts:"
-                            (ol (li "A " (b "laptop") " is a system of hardware and software parts -- "
+                            (ol (li "A " (b "laptop") " is a system of hardware and software -- "
                                     (i "CPU, RAM, screen, operating system, apps, keyboard..."))
                                 (li "A " (b "factory") " is a system of machines and/or people -- "
                                     (i "makers, assemblers, quality-checkers, testers..."))
@@ -336,27 +336,27 @@
                                     (i "customers, waiters, cooks, stoves, food, dishes..."))
                                 (li "A " (b "person") " is a system of systems! -- "
                                     (i "circulatory, digestive, nervous, immune, respiratory..."))))
-                      "An entire system can be defined by input/output, sometimes multiple inputs/outputs."
+                      "An entire system can be defined by its input(s) and output, sometimes multiple inputs/outputs."
                       (list "Guide the students through defining the input(s)/output(s) of the example:"
-                            (ol (li (b "Laptop") " -- input: power, data / output: data")
-                                (li (b "Assembly Line") " -- input: raw material / output: product")
-                                (li (b "Restaurant") " -- hungry customers / satisfied customers (hopefully!) OR money / food")
-                                (li (b "Person") " -- food, water / waste OR sensory information / thoughts, ideas ...")))
+                            (ol (li (b "Laptop") " -- inputs: power, user interaction (key strokes, mouse etc.) data (usb, internet, downloads) -> outputs: screen images, printed pages, sound, lights, data (usb, internet, uploads)")
+                                (li (b "Factory") " --  raw materials -> product")
+                                (li (b "Restaurant") " -- hungry customers, money -> satisfied customers (hopefully!), food")
+                                (li (b "Person") " -- food, water, sensory input -> waste, thoughts, ideas, words, movement ...")))
                       (list "Each " (i "part") " of a system can "(i "also") " be broken down into it's input/output(s).")
-                      (list "Guide the students through defining the input/outputs of the example:"
-                            (ol (li (b "Mouse") " -- physical movement / cursor movement, clicks, etc")
+                      (list "Guide the students through defining the input/outputs of the example. For example a laptop has:"
+                            (ol (li (b "Mouse") " -- physical movement -> cursor movement, clicks, etc")
                                 (li (b "Keyboard") " -- key presses / text, shortcuts, etc")
                                 (li (b "Screen") " -- code data / images")
-                                (li (b "CPU" " -- memory data / memory data"))
+                                (li (b "CPU") " -- (reading) memory data / (writing) memory data")
                                 (li "etc")))
                       "Repeat with other Systems.")
                )))
 
 (define (intro-to-systems-story:tips)
-  (tips (list "Drawing the system can help explain the different parts."
-              (accordion-card
-               #:header "Click for Example Diagram."
-               (write-image (bitmap "../../images/example-system-diagram.png"))))
+  (tips (list "Drawing the system can help explain the different parts. Here are some example diagrams: "
+              (ul (li
+                   (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:elevatorsystemdiagramgood.png?id=design%3Asystem_diagram" "Input/Output Diagram: Elevator"))
+                  (li (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design%3Asystem_diagram" "System Diagram: Toaster") ".")))
         "After this discussion, break students into smaller groups and have each group diagram a different thing as a system."
         "For older groups, you can go into systems inside systems: since each part of a system has an input/output and so do systems themselves, can't a system be part of a larger system?"
         "Try to break one of the games you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)")) 

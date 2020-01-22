@@ -19,10 +19,10 @@
          coding-games)
 
 (require website/bootstrap
+         website-js/components/accordion-cards
          "../base.rkt"
          "../tags/main.rkt"
-         "../rendering.rkt"
-         website-js/components/accordion-cards)
+         "../rendering.rkt")
 
 ;Language standardization:
 ; use TEAM instead of CLASS
@@ -72,7 +72,7 @@
                         "Team works together to remember the code that belongs to each label, rebuilding the code as it was"
                         "Repeat steps 4 and 5 until recall is easy"
                         )
-                 (accordion-card #:header "Code Terms for Racket Langs"
+                 (accordion-card #:header "Racket Langs: Code Terms"
                                  #:dark? #t
                                  (ul
                                   (li (gm-inline-pre "#lang ___________") " = lang line")
@@ -82,7 +82,7 @@
                                   (li (gm-inline-pre "(define (____) ...)") " = function definition")
                                   (li (gm-inline-pre "(_______________)") " = function call")
                                   (li (gm-inline-pre "\"______________\"") " = string")))
-                  (accordion-card #:header "Code Terms for Ratchet Langs"
+                  (accordion-card #:header "Ratchet Langs: Code Terms"
                                   #:dark? #t
                                   (ul (li (gm-inline-pre "[start-game-icon]") " = game function call")
                                       (li (gm-inline-pre "[first-sprite-icon]") " = avatar")

@@ -19,6 +19,7 @@
          coding-games)
 
 (require website/bootstrap
+         website-js/components/accordion-cards
          "../base.rkt"
          "../tags/main.rkt"
          "../rendering.rkt")
@@ -71,18 +72,22 @@
                         "Team works together to remember the code that belongs to each label, rebuilding the code as it was"
                         "Repeat steps 4 and 5 until recall is easy"
                         )
-                 (h5 "Code Terms:")
-                 (ul
-                  ;inline-pre text too dark
-                  (li (inline-pre "#lang _________") " lang line")
-                  (li (inline-pre "#:_______") " keyword")
-                  (li (inline-pre "(_________-game ...)") " game function call")
-                  (li (inline-pre "(basic-_______ ...)") " entity function call")
-                  (li (inline-pre "(define (______) ...)") " function definition")
-                  (li (inline-pre "(________)") " function call")
-                  (li (inline-pre "\"_______\"") " string")
-                  ;note: no ratchet terms described here
-                  ))
+                 (accordion-card #:header "Racket Langs: Code Terms"
+                                 #:dark? #t
+                                 (ul
+                                  (li (gm-inline-pre "#lang ___________") " = lang line")
+                                  (li (gm-inline-pre "#:_______________") " = keyword")
+                                  (li (gm-inline-pre "(_______-game ...)") " = game function call")
+                                  (li (gm-inline-pre "(basic-______ ...)") " = entity function call")
+                                  (li (gm-inline-pre "(define (____) ...)") " = function definition")
+                                  (li (gm-inline-pre "(_______________)") " = function call")
+                                  (li (gm-inline-pre "\"______________\"") " = string")))
+                  (accordion-card #:header "Ratchet Langs: Code Terms"
+                                  #:dark? #t
+                                  (ul (li (gm-inline-pre "[start-game-icon]") " = game function call")
+                                      (li (gm-inline-pre "[first-sprite-icon]") " = avatar")
+                                      (li "(name each list, what it creates)")
+                                      (li "(match parens)"))))
                 (tips "End this game with Players typing up the code solo or in pairs, referencing the labels and translation."
                       "Add the timer (with a shorter time each round) for increased challenge."
                       "Coach can re-write the code every time, Players can take turns, or a Scribe may be designated within the Team."

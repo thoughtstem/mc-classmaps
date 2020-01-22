@@ -8,6 +8,7 @@
          class-mechanics-games)
 
 (require website/bootstrap
+         website-js/components/accordion-cards
          "../base.rkt"
          "../tags/main.rkt"
          "../rendering.rkt")
@@ -28,40 +29,44 @@
               (supplies-list "Optional: Whiteboard or other writing materials for notes")
               (game-instructions
                "Make sure you have introduced whatever Code(s) you plan to create a Motto for with a story and discussion PRIOR to this game!"
-               (h5 "Version One: Quick and Easy")
-               (steps "Coach chooses a specific Code to create a Motto for"
-                      "Coach explains what a Code Motto is -- your team's very own response to a Code, that is fun, personal, and clarifies what that Code means to the team"
-                      "Coach introduces three options for a Motto (see Example Mottos below)"
-                      "Team votes, winning Motto is chosen by majority"
-                      "Practice Code/Motto Call/Response several times"
-                      "Repeat for additional Code(s) as desired")
-               (h5 "Version Two: Team Brainstorm")
-               (steps "Coach chooses a specific Code to create a Motto for"
-                      "Coach explains what a Code Motto is -- your team's very own response to a Code, that is fun, personal, and clarifies what that Code means to the team"
-                      "Coach introduces a couple Motto options (see Example Mottos below)"
-                      "Coach sets timer for 3 minutes"
-                      "Players brainstorm additional Motto options"
-                      "Coach or designated Player notes options"
-                      "Team votes on all options, winning Motto is chosen by majority"
-                      "Practice Code/Motto Call/Response several times"
-                      "Repeat for additional Code(s) as desired")
-               (h5 "Version Three: Team Brainstorm for Large Teams")
-               "Follow the same steps as Version Two, but break the Team into smaller groups prior to the brainstorming stage. Each group must decide on ONE option to present to the group. Entire Team votes on all options."
-               (h5 "Example Mottos")
-               (ul
-                (li "Overcome the Unknown"
-                    (steps "CHARGE!"
-                           "To infinity and beyond!"
-                           "To bodly go where no one's gone before!"
-                           "Into the UNKNOOOWNNN! (ala Frozen 2)"))
-                (li "Be a Bug Hunter"
-                    (steps "SMUSH!"
-                           "Gotta catch 'em all!"
-                           "Bug found? Don't frown!"))
-                (li "Teach the Team"
-                    (steps "Coders Assemble!"
-                           "Teamwork makes the dream work!"
-                           "Be a BOSS!"))))
+               (accordion-card #:header "Version One: Quick and Easy"
+                               #:dark? #t
+                               (steps "Coach chooses a specific Code to create a Motto for"
+                                      "Coach explains what a Code Motto is -- your team's very own response to a Code, that is fun, personal, and clarifies what that Code means to the team"
+                                      "Coach introduces three options for a Motto (see Example Mottos below)"
+                                      "Team votes, winning Motto is chosen by majority"
+                                      "Practice Code/Motto Call/Response several times"
+                                      "Repeat for additional Code(s) as desired"))
+               (accordion-card #:header "Version Two: Team Brainstorm"
+                               #:dark? #t
+                               (steps "Coach chooses a specific Code to create a Motto for"
+                                      "Coach explains what a Code Motto is -- your team's very own response to a Code, that is fun, personal, and clarifies what that Code means to the team"
+                                      "Coach introduces a couple Motto options (see Example Mottos below)"
+                                      "Coach sets timer for 3 minutes"
+                                      "Players brainstorm additional Motto options"
+                                      "Coach or designated Player notes options"
+                                      "Team votes on all options, winning Motto is chosen by majority"
+                                      "Practice Code/Motto Call/Response several times"
+                                      "Repeat for additional Code(s) as desired"))
+               (accordion-card #:header "Version Three: Team Brainstorm for Large Teams"
+                               #:dark? #t
+               "Follow the same steps as Version Two, but break the Team into smaller groups prior to the brainstorming stage. Each group must decide on ONE option to present to the group. Entire Team votes on all options.")
+               (accordion-card #:header "Example Mottos"
+                               #:dark? #t
+                               (ul
+                                (li "Overcome the Unknown"
+                                    (steps "CHARGE!"
+                                           "To infinity and beyond!"
+                                           "To bodly go where no one's gone before!"
+                                           "Into the UNKNOOOWNNN! (ala Frozen 2)"))
+                                (li "Be a Bug Hunter"
+                                    (steps "SMUSH!"
+                                           "Gotta catch 'em all!"
+                                           "Bug found? Don't frown!"))
+                                (li "Teach the Team"
+                                    (steps "Coders Assemble!"
+                                           "Teamwork makes the dream work!"
+                                           "Be a BOSS!")))))
               (tips "Some Players will have their heart set on a Motto that is not chosen. Prepare to reassure Players that are disappointed -- \"There were lots of cool options, I'm sorry yours didn't win\" \"It's about the whole team, not just what you want, and this was the one the team chose.\" \"It's okay! There are more Codes and Mottos to come!\""
                     "When leading a brainstorm, you may want to combine options or narrow down the list prior to voting, to simplify the process."))))
 

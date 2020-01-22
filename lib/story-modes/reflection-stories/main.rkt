@@ -6,15 +6,18 @@
  meta-story-deep-reflect
  meta-story-next-time
  meta-story-badges
- starting-review)
+ starting-review
+ review-stories)
 
 (require 
  website/bootstrap
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
- mc-classmaps/lib/rendering)
+ mc-classmaps/lib/rendering
+ website-js/components/accordion-cards)
 
 ;======== META STORIES/REFLECTIONS =========
+
 
 (define (meta-story-one-word)
   (with-tags (list reflection)
@@ -28,12 +31,13 @@
 
 (define (meta-story-reflect (topic "what we all did and learned today."))
   (with-tags (list reflection)
+    
     (story-mode "Meta Story: Reflection" 5
                 "A chance to practice those metacognition skills."
                 @story-text{
                   We're going to reflect for a few minutes on:
 
-                  @(i @topic)
+                  @(i @(maybe-add-punct topic))
 
                   Raise your hand if you have a reflection you want to share...
 
@@ -46,27 +50,35 @@
   (with-tags (list reflection)
     (story-mode "Meta Story: Deep Reflection" 10
                 "A deeper dive into the subjects, challenges, and skill-building that happened in today's class."
-                @story-text{
-                  We're going to do a "deep reflection" for a few minutes.  Can anyone tell me what a deep reflection is?
+                @story-text{@(tips "Start with a Think/Pair/Share model before a group conversation to get all students thinking and talking the topic, even if they don't all participate in the big dicussion."
+                                   "Ask follow up questions from the students to encourage deeper understanding. Can be as simple as \"Why?\""
+                                   "Other great questions: Who also felt that way?  Who also faced that challenge?  Who has advice for that?"
+                                   "This is a deep reflection, so feel free to encourage students to raise their hands to respond to each other."
+                                   "Moderate to keep the conversation respectful and productive at all times.")
+                             @(hr)
+                             We have a little extra time today to discuss today's class, specifically:
 
-                  @(coach-fills-in "facilitate a discussion about deep discussions")
+                             @(i @(maybe-add-punct topic))
 
-                  I'll point out that with a deep reflection, it's important to listen to what other people are saying.  If someone raises their hands and says, "I had some trouble getting into a flow state today because of a bug" -- then you have to actually hear and respond to that.  You're not allowed to say something random, like, "I like making video games."  
-                  
-                  Our reflection topic, which I will write on the board, is:
-                   
-                  @(i @topic)
+                             Before we get started as a big group, I would like you to turn to the person next to you and take turns sharing on this topic. I'll set the timer for 2 minutes for you to do that. Ready, set, go!
 
-                  Who would like to start us off?
+                             @(i "Students discuss for 2 minutes before Coach regains focus.")
+                             
+                             Now, as we dive deeper into our thoughts and experiences, it is important that we respect each other and have a productive conversation by:
 
-                  @(tips 
-                    "This is a deep reflection, so feel free to encourage students to raise their hands to respond to each other."
-                    "Your goal is to facilitate a productive discussion."
-                    "Ask questions like: Who also felt that way?  Who also faced that challenge?  Who has advice for that?")
-                  
+                             @(coach-fills-in "any rules or guidelines for the Team (see below).")
+
+                             Who would like to start us off?
+
+                             @(accordion-card #:header "Guideline Suggestions"
+                                              "Depending on the age, maturity and size of the Team, you may want to set some guidelines to help promote a positive and productive discussion. Such as:"
+                                              (ul (li "Raised hands")
+                                                  (li "A \"talking stick\"")
+                                                  (li "You must " (i "continue") " the conversation, not just blurt out a random, unrelated thought")
+                                                  (li "We can only speak to our own experience, no one else's")))
                 })))
 
-;TODO: functionalize this to add what to say about next week?
+
 (define (meta-story-next-time (thing-to-remember "Today, I'm going to become a better coder"))
   (with-tags (list meta-classroom)
     (story-mode "Meta Story: Next Time..." 3
@@ -80,7 +92,7 @@
 
                   Now, I want you to imagine thinking to yourself, "Hey, I have MetaCoders class today."  And I want you to imagine thinking the following:
 
-                  @thing-to-remember
+                  @(i @(maybe-add-punct thing-to-remember))
                 })))
 
 (define (meta-story-badges)
@@ -105,8 +117,21 @@
                 @story-text{
                             Who can tell me anything they remember about:
 
-                            @thing-to-review
+                            @(i @(maybe-add-punct thing-to-review))
 
                             @(tips "Guide the conversation with leading questions as needed."
                                    "Add any follow up points that the students missed after their comments.")})))
+
+(define (review-stories)
+  (list (meta-story-one-word)
+        (meta-story-reflect)
+        (meta-story-deep-reflect)
+        (meta-story-next-time)
+        (meta-story-badges)
+        (starting-review)))
+
+(module+ test
+  (require rackunit)
+  
+  (review-stories))
 

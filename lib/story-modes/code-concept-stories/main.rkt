@@ -312,14 +312,14 @@
 (define (intro-to-systems-story)
   (with-tags
       (list meta-cognition cs-concept k2 3rd-5th middle-school high-school)
-    (story-mode "Input/Output Systems in our World" 10
-                "Define a System and practice seeing everyday things as a System."
+    (story-mode "A System-atic World" 10
+                "Learning about systems and thinking about everyday things as systems."
                 (story-text (intro-to-systems-story:tips)
                             (embedded-stories (intro-to-systems-story:highlights))
                             ))))
 
 (define (intro-to-systems-story:highlights)
-  (story-mode "Input/Output Systems in our World: Story at at Glance" 10
+  (story-mode "A System-atic World: Story at at Glance" 10
               "Points for ad-libbed discussion of the Input/Output Systems in our World story."
               (story-text
                (steps (list "Ask students: Who can define the word " (b "system") "?")

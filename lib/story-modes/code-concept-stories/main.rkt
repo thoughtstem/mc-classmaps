@@ -14,7 +14,8 @@
  website-js/components/accordion-cards
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
- mc-classmaps/lib/rendering)
+ mc-classmaps/lib/rendering
+ (only-in 2htdp/image bitmap))
 
 
 
@@ -314,7 +315,8 @@
     (story-mode "Input/Output Systems in our World" 10
                 "Define a System and practice seeing everyday things as a System."
                 (story-text (embedded-stories (intro-to-systems-story:highlights))
-                            (intro-to-systems-story:tips)))))
+                            (intro-to-systems-story:tips)
+                            ))))
 
 (define (intro-to-systems-story:highlights)
   (story-mode "Input/Output Systems in our World: Story at at Glance" 10
@@ -351,7 +353,13 @@
                )))
 
 (define (intro-to-systems-story:tips)
-  (tips "Try to break one of the GAMES you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)"))
+  (tips (list "Drawing the system can help explain the different parts."
+              (accordion-card
+               #:header "Click for Example Diagram."
+               (write-image (bitmap "../../images/example-system-diagram.png"))))
+        "After this discussion, break students into smaller groups and have each group diagram a different thing as a system."
+        "For older groups, you can go into systems inside systems: since each part of a system has an input/output and so do systems themselves, can't a system be part of a larger system?"
+        "Try to break one of the games you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)")) 
 
 ;==== story collections: ADD HERE if wanted to provide to story mode page =====
 ;also will run test

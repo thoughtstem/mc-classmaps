@@ -242,8 +242,10 @@
 (define (quotation . content)
   (i content))
 
+;for "code text" in a game mode
 (define (gm-inline-pre t)
   (inline-pre #:light-text? #t t))
+
 
 ;============ TESTS =============
 

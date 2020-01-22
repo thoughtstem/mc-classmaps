@@ -4,7 +4,8 @@
          overcome-the-unknown-fable
          bug-hunter-fable
          energize-the-team-fable 
-         coa-focus)
+         coa-focus
+         all-code-of-awesomeness-fables)
 
 (require 
  website/bootstrap
@@ -420,7 +421,8 @@
 (define (all-code-of-awesomeness-fables)
   (list (overcome-the-unknown-fable)
         (bug-hunter-fable)
-        (energize-the-team-fable)))
+        (energize-the-team-fable)
+        (coa-focus)))
 
 (module+ test
   (require rackunit)

@@ -2,7 +2,12 @@
 
 (provide human-input-output-story
          debugging-a-pizza
-         debugging-a-cat) 
+         ;debugging-a-cat
+         debugging-stories
+         intro-to-systems-story
+         input-output-stories
+         all-code-concept-stories)
+;add story to collections (bottom of page) if wanting it to appear of stories page online
 
 (require 
  website/bootstrap
@@ -240,7 +245,7 @@
 
 
 
-
+;currently not provided, unfinished
 (define (debugging-a-cat)
   (story-mode "Debugging the Cat" 5
               "____ uses a debugging process to figure out why the cat won't shut up."
@@ -302,13 +307,69 @@
                                       ]}]
  })))
 
+;could split into multiple stories
+(define (intro-to-systems-story)
+  (with-tags
+      (list meta-cognition cs-concept k2 3rd-5th middle-school high-school)
+    (story-mode "Input/Output Systems in our World" 10
+                "Define a System and practice seeing everyday things as a System."
+                (story-text (embedded-stories (intro-to-systems-story:highlights))
+                            (intro-to-systems-story:tips)))))
+
+(define (intro-to-systems-story:highlights)
+  (story-mode "Input/Output Systems in our World: Story at at Glance" 10
+              "Points for ad-libbed discussion of the Input/Output Systems in our World story."
+              (story-text
+               (steps (list "Ask students: Who can define the word " (b "system") "?")
+                      (list "Many definitions, but as used in our context: "
+                            (b (i "A network of interdependent things working as one whole"))
+                            " (define the words within this definition as needed!)")
+                      (list "Pick an example system or two to explore (laptop, factory, restaurant, person...).")
+                      (list "Guide the students through breaking the example system down into parts:"
+                            (ol (li "A " (b "laptop") " is a system of hardware and software parts -- "
+                                    (i "CPU, RAM, screen, operating system, apps, keyboard..."))
+                                (li "A " (b "factory") " is a system of machines and/or people -- "
+                                    (i "makers, assemblers, quality-checkers, testers..."))
+                                (li "A " (b "restaurant") " is a system of people and equipment -- "
+                                    (i "customers, waiters, cooks, stoves, food, dishes..."))
+                                (li "A " (b "person") " is a system of systems! -- "
+                                    (i "circulatory, digestive, nervous, immune, respiratory..."))))
+                      "An entire system can be defined by input/output, sometimes multiple inputs/outputs."
+                      (list "Guide the students through defining the input(s)/output(s) of the example:"
+                            (ol (li (b "Laptop") " -- input: power, data / output: data")
+                                (li (b "Assembly Line") " -- input: raw material / output: product")
+                                (li (b "Restaurant") " -- hungry customers / satisfied customers (hopefully!) OR money / food")
+                                (li (b "Person") " -- food, water / waste OR sensory information / thoughts, ideas ...")))
+                      (list "Each " (i "part") " of a system can "(i "also") " be broken down into it's input/output(s).")
+                      (list "Guide the students through defining the input/outputs of the example:"
+                            (ol (li (b "Mouse") " -- physical movement / cursor movement, clicks, etc")
+                                (li (b "Keyboard") " -- key presses / text, shortcuts, etc")
+                                (li (b "Screen") " -- code data / images")
+                                (li (b "CPU" " -- memory data / memory data"))
+                                (li "etc")))
+                      "Repeat with other Systems.")
+               )))
+
+(define (intro-to-systems-story:tips)
+  (tips "Try to break one of the GAMES you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)"))
+
+;==== story collections: ADD HERE if wanted to provide to story mode page =====
+;also will run test
+
+(define (debugging-stories)
+  (list (debugging-a-pizza)))
+
+(define (input-output-stories)
+  (list (human-input-output-story)
+        (intro-to-systems-story)))
 
 
-
+(define (all-code-concept-stories)
+  (flatten (list (debugging-stories)
+                 (input-output-stories))))
 
 
 (module+ test
   (require rackunit)
 
-  (human-input-output-story)
-  (debugging-a-pizza))
+  (all-code-concept-stories))

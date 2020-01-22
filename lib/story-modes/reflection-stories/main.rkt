@@ -50,6 +50,14 @@
     (story-mode "Meta Story: Deep Reflection" 10
                 "A deeper dive into the subjects, challenges, and skill-building that happened in today's class."
                 @story-text{
+
+                            @(tips "Start with a Think/Pair/Share model before a group conversation to get all students thinking and talking the topic, even if they don't all participate in the big dicussion."
+                                   "Ask follow up questions from the students to encourage deeper understanding. Can be as simple as \"Why?\""
+                                   "Ask questions like: Who also felt that way?  Who also faced that challenge?  Who has advice for that?"
+                                   "This is a deep reflection, so feel free to encourage students to raise their hands to respond to each other."
+                                   "Moderate to keep the conversation respectful and productive at all times.")
+
+                           
                   We're going to do a "deep reflection" for a few minutes.  Can anyone tell me what a deep reflection is?
 
                   @(coach-fills-in "facilitate a discussion about deep discussions")
@@ -63,13 +71,13 @@
                   Who would like to start us off?
 
                   @(tips 
-                    "This is a deep reflection, so feel free to encourage students to raise their hands to respond to each other."
+                    
                     "Your goal is to facilitate a productive discussion."
-                    "Ask questions like: Who also felt that way?  Who also faced that challenge?  Who has advice for that?")
+                    )
                   
                 })))
 
-;TODO: functionalize this to add what to say about next week?
+
 (define (meta-story-next-time (thing-to-remember "Today, I'm going to become a better coder"))
   (with-tags (list meta-classroom)
     (story-mode "Meta Story: Next Time..." 3

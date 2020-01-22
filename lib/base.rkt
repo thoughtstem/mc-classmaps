@@ -40,7 +40,8 @@
  story-stub
  game-stub
 
- maybe-add-punct) 
+ maybe-add-punct
+ gm-inline-pre) 
 
 (require website/bootstrap
          website/util
@@ -240,6 +241,9 @@
 
 (define (quotation . content)
   (i content))
+
+(define (gm-inline-pre t)
+  (inline-pre #:light-text? #t t))
 
 ;============ TESTS =============
 

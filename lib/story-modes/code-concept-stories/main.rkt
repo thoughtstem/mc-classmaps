@@ -356,8 +356,8 @@
   (tips (list "Drawing the system can help explain the different parts. Here are some example diagrams: "
               (ul (li
                    (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:elevatorsystemdiagramgood.png?id=design%3Asystem_diagram" "Input/Output Diagram: Elevator"))
-                  (li (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design%3Asystem_diagram" "System Diagram: Toaster") ".")))
-        "After this discussion, break students into smaller groups and have each group diagram a different thing as a system."
+                  (li (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design%3Asystem_diagram" "System Diagram: Toaster"))))
+        "After this discussion, you can break students into smaller groups and have each group diagram a different thing as a system."
         "For older groups, you can go into systems inside systems: since each part of a system has an input/output and so do systems themselves, can't a system be part of a larger system?"
         "Try to break one of the games you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)")) 
 

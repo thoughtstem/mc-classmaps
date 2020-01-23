@@ -57,10 +57,7 @@
          ;class frame stories
          (coach-story)
          (class-intro)
-         (coa-stories)
-         (bug-hunter-fable)
-         (overcome-the-unknown-fable)
-         (energize-the-team-fable)
+         (all-code-of-awesomeness-fables)
          (intro-jam)
          (coa-focus)
          (badge-stories)
@@ -80,7 +77,7 @@
          (boids-story)
          (youtube-story)
          ;code concept stories
-         (human-input-output-story))))
+         (all-code-concept-stories))))
      string<?
      #:key story-mode-name ))
 

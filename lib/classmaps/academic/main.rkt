@@ -145,12 +145,7 @@
               intro
               (preface-game (p "Review the levels you got to last time you played this game or just jump right into the next level")
                             (chain-reaction))
-              (story-stub "The World Through Inputs and Outputs" 10
-                "Cats/animals"
-                "Houses"
-                "Bottle/Cup"
-                "Fridge"
-                "Your Room")
+              (story-with-minutes 10 (intro-to-systems-story))
               (game-with-minutes 10 (try-it-first))
               (meta-story-one-word))))
 

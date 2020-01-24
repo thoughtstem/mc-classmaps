@@ -57,9 +57,7 @@
          ;class frame stories
          (coach-story)
          (class-intro)
-         (all-code-of-awesomeness-fables)
          (intro-jam)
-         (coa-focus)
          (badge-stories)
          ;meta stories
          (meta-story-one-word)
@@ -73,10 +71,11 @@
          (first-bug-story)
          (mars-orbiter-bug-story)
          ;metacognitive stories
-         (rethinking-bugs)
          (boids-story)
          (youtube-story)
-         ;code concept stories
+
+         (all-code-of-awesomeness-fables)
+         (metacognitive-stories)
          (all-code-concept-stories))))
      string<?
      #:key story-mode-name ))

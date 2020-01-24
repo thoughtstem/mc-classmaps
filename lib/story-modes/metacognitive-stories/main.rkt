@@ -1,7 +1,10 @@
 #lang at-exp racket
 
-(provide rethinking-bugs
-         a-path-in-your-brain-story)
+(provide metacognitive-stories ;add new stories to this list (defined at end of file) for testing and for release onto website's story page
+         rethinking-bugs
+         a-path-in-your-brain-story
+         coder-skills-story)
+
 
 (require 
  website/bootstrap
@@ -31,6 +34,8 @@
                    
                 
                 })))
+
+;==== A Path In Your Brain story ====
 
 ;TODO add a SCIENCE section, explaining neurons, pathways, neuroplasticity, etc
 (define (a-path-in-your-brain-story)
@@ -118,9 +123,74 @@
     "What can we learn from this story that we can use in this class?"
     "How can knowing what happens in our brain as we learn help us learn better?")))
 
+;===========
+
+(define (coder-skills-story)
+  (with-tags
+      (list meta-cognition)
+  (story-mode "The Life and Times of a Real Coder" 10
+              "What does it really take to be a coder?"
+              (story-text "Each Chapter of this story starts by defining a primary task a coder does before generating a list of the skills required for that task. The goal being to expand the definition of what a real coder does and the list of skills a coder needs to succeed."
+                          (embedded-stories (coder-skills-story:prose))))))
+
+(define (coder-skills-story:highlights)
+  (story-mode "The Life and Times of a Real Coder: Story and a Glance" 10
+              "Plot Points for ad-libbed telling of The Life and Times... story."
+              (story-text
+               (b "Part 1: Coder and Code")
+                          (steps
+                           ""))))
+
+(define (coder-skills-story:prose)
+  (story-mode "The Life and Times of a Real Coder: Full Text" 10
+              "What does it really take to be a coder?"
+              @story-text{
+ @h5{Prologue}
+
+ Who here wants to be some kind of coder when they grow up?  Who @i{might} want to be a coder or do a job that involves coding? Who wants to do something totally different?!
+
+ Let's take a closer look at what it really takes to be the best coder -- all the different things a professional coder does and the skills it takes to be good at them. Some of these things you are already doing -- in this class or elsewhere in your life. Some of them you'll do soon! But all of these skills are valuable for all of you. Now and in the future, no matter what you end up doing!
+
+ @embedded-stories[@(coder-skills-story:ch1)
+                   @(coder-skills-story:ch2)]                       
+               
+ }))
+
+(define (coder-skills-story:ch1)
+  (story-mode "Chapter 1: The Code" 5
+              "What does a coder do? Work with code (obviously!)"
+              @story-text{
+               @(coach-asks "What does a coder do? (It's not a trick question!)" #:right-answer "Writes code! Also: reads code, edits code and debugs code.")
+
+ How many of you here are coders? If you have every written, read, editted, or debugged code (even one line!) then you are a coder. 
+                          
+ @(coach-asks "What skills does a coder, like you, need to work with code?" #:example-answers (list "knowledge of the programming language" "problem-solving skills" "organizational skills"  "logical thinking" "computational thinking" "creativity"))
+ @(coach-asks "Where else do we use these skills?" #:example-answers (list "organization -> writing essays/books" "logical thinking -> math" "problem-solving -> disagreements with friends" "creativity -> art"))
+ }))
+
+(define (coder-skills-story:ch2)
+  (story-mode "Chapter 2: The People" 5
+              "What else does a coder do? Work with people (sorry introverts!)"
+              @story-text{
+                           Coders work with code; that's obvious! But there's more to coding that just writing, reading, editing and debugging the code.
+
+ @(coach-asks "What else does a coder do?" #:right-answer "Communicate with people! Other coders, non-coders (coworkers, users, customers...)")
+
+ Now, professional coders have a bit of a reputation for being introverted -- or even anti-social! But the truth is, to be the best at coding you have to work with other people. Your code is @i{for} people. Other people will use it, build on it, and learn from it! 
+
+ @(coach-asks "What skills does a coder, like you, need to work with other people?" #:example-answers (list "verbal communication skills" "writing skills" "visual communication skills (diagrams)" "teamwork skills"))
+ @(coach-asks "Where else do we use these skills?" #:example-answers (list "sports" "class projects" "ANY workplace" "with family/friends"))
+ }))
+
+
+;add new stories to this list for testing and for release onto website's story page
+(define (metacognitive-stories)
+  (list (rethinking-bugs)
+        (a-path-in-your-brain-story)
+        (coder-skills-story)))
+
 (module+ test
   (require rackunit)
 
-  (rethinking-bugs)
-  (a-path-in-your-brain-story))
+  (metacognitive-stories))
 

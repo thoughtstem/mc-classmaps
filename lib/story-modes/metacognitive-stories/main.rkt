@@ -166,7 +166,8 @@
 (define (coder-skills-story:tips)
   (tips "This story is strongly based in discussion. Know what is important to touch on, but also let the students bring up ideas that you may not have thought of before!"
         "If possible, use visual aids/lists to keep the discussion clear and focused. Draw up on a whiteboard and/or even encourage students to draw along!"
-        "You can easily split this story by chapter over a class or several classes."))
+        "You can easily split this story by chapter over a class or several classes."
+        "Ask the students to assess their level of mastery over some/all of the skills discussed."))
 
 (define (coder-skills-story:prose)
   (story-mode "The Life and Times of a Real Coder: Full Text" 10

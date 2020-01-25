@@ -59,13 +59,6 @@
          (class-intro)
          (intro-jam)
          (badge-stories)
-         ;meta stories
-         (meta-story-one-word)
-         (meta-story-reflect)
-         (meta-story-deep-reflect)
-         (meta-story-next-time)
-         (meta-story-badges)
-         (starting-review)
          ;history
          (hello-world-story)
          (first-bug-story)
@@ -76,7 +69,8 @@
 
          (all-code-of-awesomeness-fables)
          (metacognitive-stories)
-         (all-code-concept-stories))))
+         (all-code-concept-stories)
+         (all-meta-review-stories))))
      string<?
      #:key story-mode-name ))
 

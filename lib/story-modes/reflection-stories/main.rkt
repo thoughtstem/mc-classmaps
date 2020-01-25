@@ -7,7 +7,9 @@
  meta-story-next-time
  meta-story-badges
  starting-review
- review-stories)
+ meta-stories
+ all-meta-review-stories ;add stories to this collection (end of file)
+ )
 
 (require 
  website/bootstrap
@@ -98,7 +100,7 @@
 (define (meta-story-badges)
   (with-tags (list meta-classroom)
     (story-mode "Meta Story: Badges" 5
-                "Badge ceremony!"
+                "The Badge Ceremony!"
                 @story-text{
                   It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask you how you've grown as a coder or a learner in the last three weeks.  If you can give me an answer, I'll give you this paper badge.  And that means that you'll be getting a real badge in the mail in the future!
 
@@ -122,16 +124,20 @@
                             @(tips "Guide the conversation with leading questions as needed."
                                    "Add any follow up points that the students missed after their comments.")})))
 
-(define (review-stories)
+(define (meta-stories)
   (list (meta-story-one-word)
         (meta-story-reflect)
         (meta-story-deep-reflect)
         (meta-story-next-time)
-        (meta-story-badges)
-        (starting-review)))
+        (meta-story-badges)))
+
+;add stories to this collection to be tested and shown on stories page
+(define (all-meta-review-stories)
+  (flatten (list (meta-stories)
+                 (starting-review))))
 
 (module+ test
   (require rackunit)
   
-  (review-stories))
+  (all-meta-review-stories))
 

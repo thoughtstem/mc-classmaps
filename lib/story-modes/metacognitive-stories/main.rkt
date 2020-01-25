@@ -8,9 +8,11 @@
 
 (require 
  website/bootstrap
+ website-js/components/accordion-cards
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
- mc-classmaps/lib/rendering)
+ mc-classmaps/lib/rendering
+ (only-in 2htdp/image bitmap))
 
 (define (rethinking-bugs)
   (with-tags (list debugging)
@@ -165,7 +167,9 @@
 
 (define (coder-skills-story:tips)
   (tips "This story is strongly based in discussion. Know what is important to touch on, but also let the students bring up ideas that you may not have thought of before!"
-        "If possible, use visual aids/lists to keep the discussion clear and focused. Draw up on a whiteboard and/or even encourage students to draw along!"
+        (list "If possible, use visual aids/lists to keep the discussion clear and focused. Draw up on a whiteboard and/or even encourage students to draw along. An example diagram:"
+              (accordion-card #:header "Example Diagram"
+                              (write-img (bitmap "../../images/coder-system-diagram.png"))))
         "You can easily split this story by chapter over a class or several classes."
         "Ask the students to assess their level of mastery over some/all of the skills discussed."))
 

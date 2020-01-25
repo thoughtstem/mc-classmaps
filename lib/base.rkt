@@ -41,7 +41,8 @@
  game-stub
 
  maybe-add-punct
- gm-inline-pre) 
+ gm-inline-pre
+ coach-asks) 
 
 (require website/bootstrap
          website/util
@@ -237,7 +238,7 @@
        (map li-qa content))))))
 
 (define (coach-fills-in . content)
-  (span (b "[ Coach fills in: " (u content) " ]")))
+  (span (b "[Coach fills in: " (u content) "]")))
 
 (define (quotation . content)
   (i content))
@@ -245,6 +246,17 @@
 ;for "code text" in a game mode
 (define (gm-inline-pre t)
   (inline-pre #:light-text? #t t))
+
+(define (coach-asks question #:example-answers (examples #f) #:right-answer (answer #f))
+  (span (b "[Coach asks students: " (u question) "]")
+        (if examples
+            (list (br)
+                  (i "Example answers: " (ul (map li examples))))
+            #f)
+        (if answer
+            (list (br)
+                  (i "Guide students to the answer: " (u answer)))
+            #f)))
 
 
 ;============ TESTS =============
@@ -336,7 +348,36 @@
 
   (check-elements-equal?
    (setup "save the world.")
-    (p (i (b "Set Up: ") "save the world.")))
+   (p (i (b "Set Up: ") "save the world.")))
+
+  (check-elements-equal?
+   (coach-asks "Who are you?")
+   (span (b "[Coach asks students: " (u "Who are you?") "]")))
+
+  (check-elements-equal?
+   (coach-asks "What color is the sky?" #:right-answer "Blue, duh")
+   (span (b "[Coach asks students: " (u "What color is the sky?") "]")
+         (br)
+         (i "Guide students to the answer: " (u "Blue, duh"))))
+
+  
+  (check-elements-equal?
+   (coach-asks "What?" #:example-answers (list "Huh?" "Who?" "Chicken Butt"))
+   (span (b "[Coach asks students: " (u "What?") "]")
+         (br)
+         (i "Example answers: " (ul (li "Huh?")
+                                     (li "Who?")
+                                     (li "Chicken Butt")))))
+
+  (check-elements-equal?
+   (coach-asks "Who am I?" #:example-answers (list "Coach" "Teacher" "Lame") #:right-answer "THE BEST")
+   (span (b "[Coach asks students: " (u "Who am I?") "]")
+         (br)
+         (i "Example answers: " (ul (li "Coach")
+                                     (li "Teacher")
+                                     (li "Lame")))
+         (br)
+         (i "Guide students to the answer: " (u "THE BEST"))))
   
   )
 

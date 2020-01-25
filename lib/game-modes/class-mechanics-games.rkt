@@ -91,11 +91,32 @@
 
 (define (market-time)
   (game-mode "Market" 10
-             "Everyone loves buying stuff"
+             "A chance to spend that MetaMoney and get cool prizes!"
              (game-info
-              (supplies-list)
-              (game-instructions "Note that time greatly depends on number of students. Coach steps into the role as the Shop Keeper and students can use their fake money to purchase small toys etc.")
-              (tips "Organize your Market like an Arcade"))))
+              (supplies-list "A Market"
+                             "Market Cards"
+                             "MetaMoney (for change)")
+              (game-instructions
+
+               (setup "Lay out Market Cards and put actual Market Stuff out of reach of Players")
+               (steps "Coach sets Market rules (see Suggestions below)"
+                      "Players visit Market in small groups"
+                      "One at a time, Players choose from Market Cards any purchases they wish to make"
+                      "Coach retrieves the purchase and exchanges for Player's MetaMoney"
+                      "Once a Player has finished at Market, they go back to their seat or to other set spot (ex. rug for Meta Story)")
+               (accordion-card #:header "Suggested Market Rules"
+                               #:dark? #t
+                               (steps "Wait to be called over or released to come to Market."
+                                      "You must clean up your area/close your files/wrap up your mouse/etc before you are called over to Market."
+                                      "Only unfolded MetaMoney accepted at the Market"
+                                      "Wait in line until your turn"
+                                      "Market prizes must remain unopened until after class"))
+               
+               )
+              (tips "Market is a privilege, not a right (to quote everyone's parent) -- feel free to cancel Market if Players cannot follow Market Rules or other expectations of the day."
+                    "Add any rules you need to keep the experience a positive, sane one for everyone (epecially you!)"
+                     "Note that time greatly depends on number of students, so plan accordingly."
+                    "Think of Market like an arcade's ticket-shop -- all the merch is behind the glass and you only get it after you pay!"))))
 
 
 

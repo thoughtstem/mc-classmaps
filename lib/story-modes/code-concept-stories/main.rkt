@@ -316,6 +316,9 @@
                 "Learning about systems and thinking about everyday things as systems."
                 (story-text (intro-to-systems-story:tips)
                             (embedded-stories (intro-to-systems-story:highlights))
+                            (intro-to-systems-story:questions)
+                            (br)
+                            (intro-to-systems-story:suggestions)
                             ))))
 
 (define (intro-to-systems-story:highlights)
@@ -356,10 +359,32 @@
   (tips (list "Drawing the system can help explain the different parts. Here are some example diagrams: "
               (ul (li
                    (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:elevatorsystemdiagramgood.png?id=design%3Asystem_diagram" "Input/Output Diagram: Elevator"))
-                  (li (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design%3Asystem_diagram" "System Diagram: Toaster") ".")))
-        "After this discussion, break students into smaller groups and have each group diagram a different thing as a system."
-        "For older groups, you can go into systems inside systems: since each part of a system has an input/output and so do systems themselves, can't a system be part of a larger system?"
-        "Try to break one of the games you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)")) 
+                  (li (a href: "https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design%3Asystem_diagram" "System Diagram: Toaster"))))
+        "After this discussion, you can break students into smaller groups and have each group diagram a different thing as a system."
+        "Try to break one of the games you have played recently down through the system perspective (what parts were everyone playing? what where their input/outputs? What was the output of the whole game (goal)?)"))
+
+(define (intro-to-systems-story:suggestions)
+  (accordion-card #:header "More System Examples!"
+                  "Running out of ideas? Try these on for size!"
+                  (ul (li "A School")
+                      (li "An Oven")
+                      (li "A Kitchen")
+                      (li "A Library")
+                      (li "An Amusement Park")
+                      (li "A Grocery Store")
+                      (li "A Car Wash"))))
+
+(define (intro-to-systems-story:questions)
+  (question-section
+   (comprehension-questions
+    '("How do we define the word System in this context?"
+      "A network of interdependent things working as one whole.")
+    '("How do inputs and outputs relate to systems?"
+      "A system has inputs and outputs, as do the elements within a system")
+    '("Can systems be nested? As in, can one system have another system within it?"
+      "Yes!"))
+   (creativity-questions
+    "Who can think of something that CANNOT be seen as some kind of system? Can anyone prove that IS a system?")))
 
 ;==== story collections: ADD HERE if wanted to provide to story mode page =====
 ;also will run test

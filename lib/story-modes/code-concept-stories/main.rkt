@@ -384,7 +384,8 @@
     '("Can systems be nested? As in, can one system have another system within it?"
       "Yes!"))
    (creativity-questions
-    "Who can think of something that CANNOT be seen as some kind of system? Can anyone prove that IS a system?")))
+    "Who can think of something that CANNOT be seen as some kind of system? Can anyone prove that IS a system?"
+    "How does this exercise (breaking down everyday things as systems) help us be better coders?")))
 
 ;==== story collections: ADD HERE if wanted to provide to story mode page =====
 ;also will run test

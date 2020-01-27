@@ -90,7 +90,7 @@
                   
                   Now, I want you to think about getting out of bed this morning.  Maybe you brushed your teeth, maybe not.  Maybe you had coffee, maybe not.  Maybe you did something special because today is @(coach-fills-in "day of the week").  Or maybe not.
 
-                  Now, I want you to imagine that it's one week from now.  You're getting out of bed.  Maybe you're going to brush your teeth, maybe not.  Maybe you're going to get some coffee, mabye not.  And maybe you're going to do something special because it's @(coach-fills-in "day of the week").
+                  Now, I want you to imagine that it's one week from now.  You're getting out of bed.  Maybe you're going to brush your teeth, maybe not.  Maybe you're going to get some coffee, maybe not.  And maybe you're going to do something special because it's @(coach-fills-in "day of the week").
 
                   Now, I want you to imagine thinking to yourself, "Hey, I have MetaCoders class today."  And I want you to imagine thinking the following:
 
@@ -98,18 +98,40 @@
                 })))
 
 (define (meta-story-badges)
-  (with-tags (list meta-classroom)
+  (with-tags (list meta-classroom badges)
     (story-mode "Meta Story: Badges" 5
                 "The Badge Ceremony!"
-                @story-text{
-                  It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask you how you've grown as a coder or a learner in the last three weeks.  If you can give me an answer, I'll give you this paper badge.  And that means that you'll be getting a real badge in the mail in the future!
+               (story-text (meta-story-badges:tips)
+                           (embedded-stories (meta-story-badges:highlights)
+                                             (meta-story-badges:prose))
+                           ))))
 
-                  First up is, @(coach-fills-in "name of badge-earning student from roster")!
+(define (meta-story-badges:highlights)
+  (story-mode "MS Badges: Story at a Glance" 5
+              "Plot Points for ad-libbed telling of the Badges Meta Story."
+              (story-text (steps (list "Coach describes the Badge Ceremony:"
+                                       (ul (li "When student name called, come up")
+                                           (li "Student tells Coach X things they have learned")
+                                           (li "Student receives Badge Certificate, takes a seat")))
+                                 "Coach goes through the Ceremony for each student who has earned the badge"
+                                 "Team applauds for all students at the end"
+                                 "If needed, Coach reminds other students how many more attendances until their next badge"))))
 
-                  @(tips
-                     "Remind the students who didn't get badges that they'll be getting them soon."
-                     "Strive to make the badge ceremony a time to reflect on the personal growth that everyone has experienced.  It's not about the badge; it's about what the badge represents.  Only you -- the coach -- can help nurture this attitude.")
-                })))
+(define (meta-story-badges:prose)
+  (story-mode "Meta Story Badges: Full Text" 5
+              "The Badge Ceremony!"
+               @story-text{
+                  It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask to name three things you have learned over your time here so far -- and the things you have learned must be related to making you a better coder and/or a better learner.  If you can give me an answer, I'll give you this badge certificate.  And that means that you'll be getting a real badge in the mail in the future!
+
+                  First up is, @(coach-fills-in "name of badge-earning student from roster")!}
+))
+
+(define (meta-story-badges:tips)
+  (tips "The exact ceremony outlined below is an example, you may create a unique ceremony as long as it connects the badge with what it means: the Student's growing knowledge and experience as a coder and learner."
+        "Whenever possible share the celebration with the parents: reminding students to share the certificate with their parents and proudly telling any parents of badger-earners that you interact with."
+        "Strive to make the badge ceremony a time to reflect on the personal growth that everyone has experienced.  It's not about the badge; it's about what the badge represents.  Only you -- the coach -- can help nurture this attitude."))
+
+
 
 (define (starting-review (thing-to-review "what we did last time"))
   (with-tags

@@ -1,7 +1,9 @@
 #lang at-exp racket
 
-(provide badge-stories
-         badge-story)
+(provide all-badge-stories ;add stories to this list (defined at end of file) for testing and posting on stories page
+         badge-stories
+         badge-story
+         simple-badge-story)
 
 (require 
  website/bootstrap
@@ -262,7 +264,62 @@
                        "Is Anya's brother getting good grades in college?"
                        "Will Anya get better grades in college than her brother is getting now?"))
 
-                  }))) 
+                  })))
+
+(define (simple-badge-story #:badges-awarded-today? awarded-today?)
+  (with-tags
+      (list badges meta-classroom)
+    (story-mode "Badges" 5
+                "A simple introduction to badges"
+                (story-text (simple-badge-story:tips)
+                            (embedded-stories (simple-badge-story:highlights #:badges-awarded-today? awarded-today?)
+                                              (simple-badge-story:prose #:badges-awarded-today? awarded-today?))
+                            (simple-badge-story:questions)))))
+
+(define (simple-badge-story:tips)
+  (tips "TBD"))
+
+;goals: how do you get a badge? (attending X classes, or game jam)
+;       what do badges mean? (learning, becoming a better coder)
+;       badge comparisons (military stripes, boy/girl scout merit badges, something in your classroom?, certifications, medals, trophies) 
+(define (simple-badge-story:highlights #:badges-awarded-today? awarded-today?)
+  (story-mode "Badges: Story at a Glance" 5
+              "Plot Points for ad-libbed telling of the Badges story."
+              (story-text (steps (if awarded-today?
+                                     "Some of you will be earning a badge today, the rest of you will soon."
+                                     "In this class, we will earn badges. Not yet, but soon.")
+                                 "blah blah next step"))))
+
+(define (simple-badge-story:prose #:badges-awarded-today? awarded-today?)
+  (story-mode "Badges: Full Text" 5
+              "A simple introduction to badges"
+              @story-text{@(if awarded-today?
+                               "At the end of class today we will be holding a Badge Ceremony, where some of you will be receiving your Badge certificate! If you don't get yours today, don't worry! Badges are awarded according to how many classes you have attended, so you may be just a class or to behind, which means you will be up next."
+                               "In this class, you all will be earning Badge Certificates and Badges. No one has earned one yet, but we will soon and I want you to know about them now.")
+
+                           In our class, we earn badges as we learn. 
+ }))
+
+(define (simple-badge-story:questions)
+  (question-section
+   (comprehension-questions
+    '("How are these badges different than, say, a 1st place trophy? Or a runnersup ribbon?"
+      "You aren't competing against anyone but yourself to earn them. There is not a limit on how many of you can earn them."))
+   (creativity-questions
+    "Where else do you earn badges/awards like badges for what you have achieved?"
+    )))
+
+
+;add stories to this list to be tested and added to stories page
+(define (all-badge-stories)
+  (flatten (list (badge-stories)
+                 (badge-story)
+                 (simple-badge-story #:badges-awarded-today? #t))))
+
+(module+ test
+  (require rackunit)
+
+  (all-badge-stories))
 
 
 

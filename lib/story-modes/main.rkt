@@ -70,7 +70,8 @@
          (all-code-of-awesomeness-fables)
          (metacognitive-stories)
          (all-code-concept-stories)
-         (all-meta-review-stories))))
+         (all-meta-review-stories)
+         (all-badge-stories))))
      string<?
      #:key story-mode-name ))
 

@@ -121,16 +121,14 @@
   (story-mode "Meta Story Badges: Full Text" 5
               "The Badge Ceremony!"
                @story-text{
-                  It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask to name three things you have learned over your time here so far -- and the things you have learned must be related to making you a better coder and/or a better learner.  If you can give me an answer, I'll give you this badge certificate.  And that means that you'll be getting a real badge in the mail in the future!
+                  It's time for the badge ceremony!  When I call your name, I want you to come to the front.  I'm going to ask to name three things you have learned over your time here so far -- and the things you have learned must be related to making you a better coder and/or a better learner.  If you can give me an answer, I'll give you this badge certificate and you will recieve a physical badge through the mail!
 
-                  First up is, @(coach-fills-in "name of badge-earning student from roster")!}
-))
+                  First up is, @(coach-fills-in "name of badge-earning student from roster")!}))
 
 (define (meta-story-badges:tips)
   (tips "The exact ceremony outlined below is an example, you may create a unique ceremony as long as it connects the badge with what it means: the Student's growing knowledge and experience as a coder and learner."
         "Whenever possible share the celebration with the parents: reminding students to share the certificate with their parents and proudly telling any parents of badger-earners that you interact with."
         "Strive to make the badge ceremony a time to reflect on the personal growth that everyone has experienced.  It's not about the badge; it's about what the badge represents.  Only you -- the coach -- can help nurture this attitude."))
-
 
 
 (define (starting-review (thing-to-review "what we did last time"))

@@ -3,7 +3,7 @@
 (provide all-badge-stories ;add stories to this list (defined at end of file) for testing and posting on stories page
          badge-stories
          badge-story
-         simple-badge-story)
+         badge-day-intro)
 
 (require 
  website/bootstrap
@@ -266,55 +266,74 @@
 
                   })))
 
-(define (simple-badge-story #:badges-awarded-today? awarded-today?)
+(define (badge-day-intro)
   (with-tags
       (list badges meta-classroom)
-    (story-mode "Badges" 5
-                "A simple introduction to badges"
-                (story-text (simple-badge-story:tips)
-                            (embedded-stories (simple-badge-story:highlights #:badges-awarded-today? awarded-today?)
-                                              (simple-badge-story:prose #:badges-awarded-today? awarded-today?))
-                            (simple-badge-story:questions)))))
+    (story-mode "Badges Today!" 5
+                "A reminder about badges, and what they mean, for days when some students will earn a badge."
+                (story-text (badge-day-intro:tips)
+                            (embedded-stories (badge-day-intro:highlights)
+                                              (badge-day-intro:prose))
+                            (badge-day-intro:questions)))))
 
-(define (simple-badge-story:tips)
-  (tips "TBD"))
+(define (badge-day-intro:tips)
+  (tips "Make this exciting! It's your job, as Coach, to make it clear what these Badges mean and give them a high level of importance. Do this by creating a ritual, being consistant with the meaning of the Badges (learning!), and keeping the value of the Badges (only given when earned)."
+        "If you have an alternative Badge Ceremony, be sure to describe that ritual instead!"))
 
-;goals: how do you get a badge? (attending X classes, or game jam)
-;       what do badges mean? (learning, becoming a better coder)
-;       badge comparisons (military stripes, boy/girl scout merit badges, something in your classroom?, certifications, medals, trophies) 
-(define (simple-badge-story:highlights #:badges-awarded-today? awarded-today?)
-  (story-mode "Badges: Story at a Glance" 5
+
+(define (badge-day-intro:highlights )
+  (story-mode "Badges Today: Story at a Glance" 5
               "Plot Points for ad-libbed telling of the Badges story."
-              (story-text (steps (if awarded-today?
-                                     "Some of you will be earning a badge today, the rest of you will soon."
-                                     "In this class, we will earn badges. Not yet, but soon.")
-                                 "blah blah next step"))))
+              (story-text (steps "At the end of class today, some of you will have earned a Badge!"
+                                 "We earn Badges as we learn and become better coders and better learners."
+                                 (list "Everytime you are here, you are learning. We track your " (b "attendance") " and award Badges according to that.")
+                                 (list "But it's not just about showing up, it's about " (b "learning") ".")
+                                 (list "So, as a part of the Badge Ceremony, each of you must " ( b "tell us X thing(s) you have learned") " since your last Badge/the start of class that have made you a better coder and learner.")
+                                 (list "Start thinking now, " (i "[fill in names of Badge-Earning students]") "!") 
+                                 (list "At the " (b "end of class" ) " we will have our Ceremony for the following students...")
+                                 "You will get Badge Certificates today, and if your parents help you, you will get a Badge like mine in the mail soon!"
+                                 (list "Students that have not earned this Badge yet -- you will be getting your next Badge " (b (i "[fill in number of attendances remain for said students]") "."))))))
 
-(define (simple-badge-story:prose #:badges-awarded-today? awarded-today?)
-  (story-mode "Badges: Full Text" 5
+(define (badge-day-intro:prose )
+  (story-mode "Badges Today: Full Text" 5
               "A simple introduction to badges"
-              @story-text{@(if awarded-today?
-                               "At the end of class today we will be holding a Badge Ceremony, where some of you will be receiving your Badge certificate! If you don't get yours today, don't worry! Badges are awarded according to how many classes you have attended, so you may be just a class or to behind, which means you will be up next."
-                               "In this class, you all will be earning Badge Certificates and Badges. No one has earned one yet, but we will soon and I want you to know about them now.")
+              @story-text{ At the end of class today, we will be having our @b{Badge Ceremony} where some of you will be earning your Badges! We talked briefly about Badges at the start of this session, does anyone remember anything about Badges?
 
-                           In our class, we earn badges as we learn. 
+ @b{@i{Coach clarifies/fills in any of the information below that students do not mention:}}
+
+ The Badges are symbols of our knowledge and growth: both as coders and as learners! We earn Badges as we build skills and fluencies. Now, it's hard for me to go inside your brain and measure all the new growth and neural connections that happen as we learn. So, we track how many classes you attend and award you Badges when you reach the classes Badge Goals!
+
+ During the Badge Ceremony, I will ask each of the Badge-Earners to tell us @(coach-fills-in "chosen number, between 1 and # of class attendances") things you have learned since @i{the beginning of this session/your last badge} because this isn't just about showing up, right? This is about what you have learned that has made you a better coder and a better learner.
+
+ So start thinking of those things now! Especially the students earning their badge today: @(coach-fills-in "names of badge-earners")
+
+ You will recieve a Badge Certificate today, and if your parents help you follow the intructions on the Certificate (or they have before!), you will receive a really cool badge (like mine!) in the mail!
+
+ Those of you who haven't earned this badge yet, don't worry! You will soon. @(coach-fills-in "number of attendances remaining for students yet to earn this badge")
+
  }))
 
-(define (simple-badge-story:questions)
+
+(define (badge-day-intro:questions)
   (question-section
    (comprehension-questions
+    '("How do you get the Badge as well as the Badge Certificate?"
+      "Get parent's help to follow instructions on the Badge Certificate.")
+    '("What do you need to do in the Badge Ceremony before you earn your Badge Certificate?"
+      "Tell us X things you have learned that make you a better coder and/or learner.")
     '("How are these badges different than, say, a 1st place trophy? Or a runnersup ribbon?"
       "You aren't competing against anyone but yourself to earn them. There is not a limit on how many of you can earn them."))
    (creativity-questions
     "Where else do you earn badges/awards like badges for what you have achieved?"
+    "Who has earned a Badge in a class with us before?"
+    "What can you do with these Badges?"
     )))
 
 
 ;add stories to this list to be tested and added to stories page
 (define (all-badge-stories)
   (flatten (list (badge-stories)
-                 (badge-story)
-                 (simple-badge-story #:badges-awarded-today? #t))))
+                 (badge-day-intro))))
 
 (module+ test
   (require rackunit)

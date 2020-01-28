@@ -23,7 +23,7 @@
 
 (define (class-launch-map)
   (classmap "Class Launch Map"
-            "Start your session by introducing yourself, getting to know the students, introducing the first Code of Awesomeness and writing the Hello World code of your language!"
+            "Start your session with introductions, the first Code of Awesomeness, and writing the Hello World code!"
     (list (coach-story) ;5
           (name-memory-game) ;5
           (class-intro) ;5
@@ -46,9 +46,9 @@
 (define (first-badge-map)
   (classmap "First Badges Awarded Map"
             "Award the first badge(s) of the session!"
-    (list (badge-story) ;5
+    (list (badge-day-intro) ;5
           (game-with-minutes 20 (disintegrating-code)) ;20 -- 25
-          (game-with-minutes 15 (add-pair-programming (create-a-challenge))) ;15 -- 40
+          (game-with-minutes 15 (add-pair-programming (try-it-first))) ;15 -- 40
           (game-with-minutes 10 (market-time)) ;10 -- 50
           (story-with-minutes 10 (meta-story-badges))))) ;10 -- 60
 
@@ -60,7 +60,7 @@
                   (coa-mottos-creation) ;10 -- 30
 
                   ;SWAP OUT GAME
-                  (game-with-minutes 25 (add-pair-programming (try-it-first))) ;25 -- 55
+                  (game-with-minutes 25 (add-pair-programming (create-a-challenge))) ;25 -- 55
                   (meta-story-one-word) ;5 -- 60
                   )))
 

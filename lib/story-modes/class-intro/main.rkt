@@ -14,11 +14,11 @@
   (with-tags (list meta-classroom)
     (story-mode "Course Introduction" 5
                 "Introduce the course concepts and goals: including language, gamification, and learning how to learn!"
-                @story-text{@(embedded-stories (class-intro:highlights))
-                            @(embedded-stories (class-intro:prose))
-                            @(class-intro:questions-1)
-                            @(class-intro:questions-2)
- })))
+                (story-text (class-intro:tips)
+                            (embedded-stories (class-intro:highlights)
+                                              (class-intro:prose))
+                            (class-intro:questions-1)
+                            (class-intro:questions-2)))))
 
 (define (class-intro:highlights)
   (with-tags (list meta-classroom)
@@ -79,4 +79,12 @@
     "Getting prizes is cool -- but what is the larger purpose of those prizes?"
     "Why is it important to stay motivated over a long period of time when learning new languages?"
     "If you train your brain to learn languages, how will that help you as a coder?")))
+
+(define (class-intro:tips)
+  (tips "You may also want to summarize the day's schedule so students know what to expect.  This can be especially helpful if you have a few more things to do before getting on computers, since students can get stuck \"waiting\" for this and get impatient rather than focusing on the important stories/games in the meantime."))
+
+(module+ test
+  (require rackunit)
+
+  (class-intro))
 

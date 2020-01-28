@@ -58,7 +58,6 @@
          (coach-story)
          (class-intro)
          (intro-jam)
-         (badge-stories)
          ;history
          (hello-world-story)
          (first-bug-story)

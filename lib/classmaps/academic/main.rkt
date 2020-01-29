@@ -16,6 +16,7 @@
          bugs:depth-1
          bugs:depth-1:plugged
          metacognition:depth-1
+         skills:depth-1
          inputs/outputs:depth-2
          inputs/outputs:depth-2:plugged
          bugs:depth-2
@@ -66,7 +67,7 @@
 ;| 5 min reflection S
 
 
-;==== Depth 1 inputs/outputs, bugs, language =====
+;==== Depth 1 =====
 
 (define (inputs/outputs:depth-1 #:intro (intro (story-stub "Day Intro" 5 "What are we doing today?")))
   (classmap "Intro to Inputs/Outputs"
@@ -119,8 +120,20 @@
               (game-with-minutes  10 (disintegrating-code))
               (meta-story-one-word))))
 
+(define (skills:depth-1 #:intro intro)
+  (classmap "Coder Skills"
+            "It takes more than just computer knowledge to be a coder; take a look all the different skills it takes to be the best coder in this map."
+            (list
+              intro
+              (game-with-minutes 10 (chain-reaction))
+              (story-with-minutes 10 (coder-skills-story))
+              (game-with-minutes 10 (build-a-bug-workshop))
+              (meta-story-reflect)
+             )))
+
 ;==== MODIFIED Depth 1, more coding game modes ====
 
+;unedited
 (define (bugs:depth-1:plugged #:intro intro)
   (classmap "Intro to Bugs: on-computer games only"
             "A classmap introducing the basics of bugs, with all on-computer game modes."
@@ -149,7 +162,7 @@
               (game-with-minutes 10 (try-it-first))
               (meta-story-one-word))))
 
-
+;unedited map
 (define (bugs:depth-2 #:intro intro)
   (classmap "More On Bugs"
             "A unplugged/plugged classmap on debugging skills."
@@ -294,6 +307,7 @@
 
 
 
+
 ;==== Maps in Progress ====
 
 ;unedited potential map
@@ -363,8 +377,8 @@
     (inputs/outputs:depth-2
       #:intro (story-stub "Review" 5 "What do you remember about Inputs and Outputs?")) 
 
-    (bugs:depth-2
-      #:intro (story-stub "Review" 5 "What do you remember about Bugs?")) 
+    (skills:depth-1
+      #:intro (story-stub "Review" 5 "What skills have we learned in this class so far?")) 
 
     (language:depth-2
       #:intro (story-stub "Review" 5 "What do you remember about Coding as a Language?")) 

@@ -6,6 +6,7 @@
          chain-reaction)
 
 (require website/bootstrap
+         website-js/components/accordion-cards
          "../base.rkt"
          "../tags/main.rkt"
          "../rendering.rkt"
@@ -120,7 +121,8 @@
                 (supplies-list "Optional: whiteboard for writing language definitions")
                 (game-instructions
                  
-                 (h5 (i "Level 1 -- Multiple Bot Groups"))
+                 (accordion-card #:header "Level 1 -- Multiple Bot Groups"
+                                 #:dark? #t
                  (steps "Coach splits all Players into 2 bot-groups"
                         "Coach gives each group an identifier (name) (see tips for suggestions)"
                         (list "Coach defines a language with inputs and various ouputs for the different bot groups. Include:"
@@ -128,9 +130,9 @@
                                   (li "Inputs that trigger different outputs (ex. say \"Blorp\" = A-bots crouch to the ground/B-bots turn in a circle)")
                                   (li "Inputs that trigger the same output (ex. Point = A-bots and B-bots look in pointed direction and gasp dramatically)")))
                         "Coach programs the bots using the defined language"
-                        "Repeat steps 3 and 4, adding more definitions to the language each time")
-                 (hr)
-                 (h5 (i "Level 2 -- Chain Reactions"))
+                        "Repeat steps 3 and 4, adding more definitions to the language each time"))
+                 (accordion-card #:header "Level 2 -- Chain Reactions"
+                                 #:dark? #t
                  (steps (list "Coach adds new definitions to the language that include chain reaction potential: an output is the input for another bot-group. An example:"
                               (ul (li "Thumbs up = B-bots clap 1 time")
                                   (li "say \"Beep Beep\" = A-bots give thumbs up")))
@@ -138,20 +140,20 @@
                         (list "Coach clarifies: Bots can now receive input from " (i "anywhere outside their own group") ", not just Coach")
                         "Coach programs the bots, starting simple chain reactions"
                         (list "Repeat steps 1 and 4, adding more to the language each time. An example:"
-                              (ul (li "say \"Road Runner!\" = B-bots say \"Beep Beep\""))))
-                (hr)
-                (h5 (i "Level 3 -- Infinite Loops"))
+                              (ul (li "say \"Road Runner!\" = B-bots say \"Beep Beep\"")))))
+                (accordion-card #:header "Level 3 -- Infinite Loops"
+                                #:dark? #t
                 (steps (list "Coach adds more complex definitions to the language; creating possible infinite loops. An example:"
                              (ul (li "X jump(s) = A-bots and B-bots jump (X+1) times")))
                        "Coach programs the bots"
                        "Coach starts an infinite loop"
                        "Once never-ending loop is clear to Players, Coach pauses game"
                        "Coach leads quick discussion: What just happened?"
-                       "Coach continues game, can delete loop-causing definitions or keep them in play")
-                (hr)
-                (h5 (i "Level 4 -- More Bots"))
+                       "Coach continues game, can delete loop-causing definitions or keep them in play"))
+                (accordion-card #:header "Level 4 -- More Bots"
+                                #:dark? #t
                 (steps "Coach splits groups further, into three or even four groups"
-                       "Coach adds to language accordingly, before programming bots"))
+                       "Coach adds to language accordingly, before programming bots")))
 
                 (tips "Group identifiers can be as simple as A-bots and B-bots. Or you can try colors, animals, computer-themed (ex. Android bots and iPhone/iOS bots), or anything the Players choose."
                       "Be prepared for loops before starting level 3! When a loop starts, the game will disitegrate into giggles/some amount of chaos. That's okay! Just be prepared to re-gather attention and focus back."

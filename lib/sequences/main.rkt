@@ -49,13 +49,13 @@
       #:intro (story-stub "Review" 5 "What did we do last time?")) 
 
     (inputs/outputs:depth-2
-      #:intro (story-stub "Review" 5 "What do you remember about Inputs and Outputs?")) 
+     #:intro (story-stub "Review" 5 "What do you remember about Inputs and Outputs?")) 
 
-    (bugs:depth-2
-      #:intro (story-stub "Review" 5 "What do you remember about Bugs?")) 
-
+    (skills:depth-1
+     #:intro (story-stub "Review" 5 "What skills have we learned in this class so far?"))
+     
     (language:depth-2
-      #:intro (story-stub "Review" 5 "What do you remember about Coding as a Language?")) 
+     #:intro (story-stub "Review" 5 "What do you remember about Coding as a Language?")) 
     )))
 
 (define (computational-thinking-for-lower-elementary-sequence)

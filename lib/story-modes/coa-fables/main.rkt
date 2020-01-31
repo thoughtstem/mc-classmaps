@@ -86,8 +86,6 @@
 
 
 (define (overcome-the-unknown-fable:prose)
-  (with-tags 
-    (list fable code-of-awesomeness meta-cognition)
     (story-mode "Overcome the Unknown Fable: Full Text" 10
                 "A Code of Awesomeness fable about two fish who looked the same on the outside, but whose minds were very different on the inside."
                 @story-text{
@@ -177,7 +175,7 @@
                   It's always sad when two former friends' have such different mindsets that they cannot get along. Trout stuck to her small pond, entering the same small tournaments and winning the small trophies over and over again.  She retired from tournaments early, the first time a young minnow beat her at a coding tournament.
                   
                   Catfish, on the other hand, grew to be a medium-sized fish in some of the biggest ponds in the whole world.  She went on to become one of the most famous fish coders of all time!  She traveled all over, competing in the biggest coding tournaments -- sometimes winning and sometimes losing, but always learning.
-                })))
+                }))
 
 (define (overcome-the-unknown-fable:questions)
   (question-section
@@ -197,7 +195,7 @@
 ;==== BE A BUG HUNTER ====
 
 (define (bug-hunter-fable)
-  (with-tags (list fable code-of-awesomeness debugging)
+  (with-tags (list fable code-of-awesomeness debugging meta-classroom)
     (story-mode "Be a Bug Hunter Fable" 10
                 "A Code of Awesomeness fable about two animals who have different strategies for dealing with bugs."
                 (story-text (bug-hunter-fable:tips)
@@ -263,10 +261,21 @@
 
 
 ;=== TEACH THE TEAM ====
+;need to do renaming in multiple files
+
+(define (teach-the-team-fable)
+  (with-tags (list fable code-of-awesomeness meta-classroom teamwork)
+    (story-mode "Teach the Team Fable" 10
+                "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
+                (story-text (embedded-stories (teach-the-team-fable:highlights))))))
+
+(define (teach-the-team-fable:highlights)
+  (story-mode "Teach the Team Fable: Story at a Glance" 10
+              "Plot Points for ad-libbed telling of the Teach the Team Fable."
+              (story-text (steps (list "")))))
 
 (define (energize-the-team-fable)
-  (with-tags (list fable code-of-awesomeness)
-    (story-mode "Teach the Team Fable" 10
+    (story-mode "Teach the Team Fable: Full Text " 10
                 "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
                 @story-text{
                   Once upon a time, there were two young squirrels -- one brown, the other gray.  They were friends, but the brown squirrel always seemed to do better in school -- earning more acorns than the gray squirrel.
@@ -279,7 +288,7 @@
 
                   The gray squirrel snuck closer, realizing that it had stumbled upon the brown squirrel's secret hiding place.  Peering through the trees, the gray squirrel saw the brown squirrel dig up note after note.  It was studying furiously for the big test tomorrow.
 
-                  When the brown squirrel was done studying it looked around to make sure it was alone, burried its notes, and scurried away.   The gray squirrel crept out and walked to the patch of freshly packed dirt.
+                  When the brown squirrel was done studying it looked around to make sure it was alone, buried its notes, and scurried away.   The gray squirrel crept out and walked to the patch of freshly packed dirt.
 
                   "Should I dig it up?" the gray squirrel thought to itself.  "The brown squirrel always makes better grades than I do." 
 
@@ -312,7 +321,7 @@
                       }
                     })
 
-                  The squirrel recognizes it as a note about how to code two red circles -- one on top of the other.  So it goes for several hours -- the gray squirrel digging up the brown squirrel's notes and studying them, and burrying them again.  Then it scurried away to its own secret place, where it continued studying its own notes. 
+                  The squirrel recognizes it as a note about how to code two red circles -- one on top of the other.  So it goes for several hours -- the gray squirrel digging up the brown squirrel's notes and studying them, and burying them again.  Then it scurried away to its own secret place, where it continued studying its own notes. 
 
                   The next day, all the squirrels took the coding test.  The day after that, the coding teacher -- a giant beige squirrel -- posted all the grades on the big oak tree.  The gray squirrel was pleased to see its name at the top of the list.  The brown squirrel's name was just below -- on the second line.  The giant beige teacher squirrel shook the gray squirrel's hand and gave it a bag containing two hundred acorns.
 
@@ -320,7 +329,7 @@
 
                   But all that week, the gray squirrel couldn't sleep.  It felt bad about what it had done.  It wasn't exactly stealing -- but looking at someone's code without permission just felt wrong.  
                   
-                  On the night before the next coding test, the gray squirrel crept out in the middle of the night and burried the two hundred acorns in the brown squirrel's secret place.  Not only that, the gray squirrel also dug up all of its own notes, copied each one, and burried the new notes in the brown squirrel's secret place.  
+                  On the night before the next coding test, the gray squirrel crept out in the middle of the night and buried the two hundred acorns in the brown squirrel's secret place.  Not only that, the gray squirrel also dug up all of its own notes, copied each one, and buried the new notes in the brown squirrel's secret place.  
 
                   The next day, they took the test.  And the day after that, the beige squirrel posted the results on the oak tree.  The gray squirrel was certain that, this time, the brown squirrel would be at the top of the list.  But no.
 
@@ -328,9 +337,9 @@
 
                   Now the gray squirrel felt even worse.
 
-                  So it went for the rest of the month.  The gray squirrel kept trying to make things right by burrying more notes for the brown squirrel to find -- hoping that the brown squirrel would finally be at the top of the list.  But the brown squirrel always came in second.  And the gray squirrel always came in first -- earning more and more acorns.
+                  So it went for the rest of the month.  The gray squirrel kept trying to make things right by burying more notes for the brown squirrel to find -- hoping that the brown squirrel would finally be at the top of the list.  But the brown squirrel always came in second.  And the gray squirrel always came in first -- earning more and more acorns.
 
-                  One day, when the gray squirrel was burrying more notes for the brown squirrel to find, it heard a rustling in the leaves overhead.    Suddenly, the brown squirrel lept down and shouted, "Caught you!  I @i{knew} someone had found my secret place.  I kept finding notes that I didn't remember writing."
+                  One day, when the gray squirrel was burying more notes for the brown squirrel to find, it heard a rustling in the leaves overhead.    Suddenly, the brown squirrel lept down and shouted, "Caught you!  I @i{knew} someone had found my secret place.  I kept finding notes that I didn't remember writing."
 
                   The gray squirrel confessed, telling the brown squirrel how it had dug up the notes once and then tried to make things right ever since.  "I don't understand, though," said the gray squirrel.  "I've been trying @i{help} you.  But somehow I keep coming in first."
 
@@ -385,7 +394,7 @@
 
                   The gray squirrel and the brown squirrel both noded.
 
-                  "Nope," said the teacher.  "I became the best coding teacher in the forest because  I @i{taught} the most.  Brains learn best when they teach.  When you were burrying notes for each other to find, you were teaching each other.  That means you @i{were} studying.  In fact, teaching is the best kind of studying: whoever teaches the most that learns the most."
+                  "Nope," said the teacher.  "I became the best coding teacher in the forest because  I @i{taught} the most.  Brains learn best when they teach.  When you were burying notes for each other to find, you were teaching each other.  That means you @i{were} studying.  In fact, teaching is the best kind of studying: whoever teaches the most that learns the most."
 
                   From that day forward, the gray squirrel and the brown squirrel agreed to take turns teaching each other and their fellow squirrels -- sharing their notes instead of burying and hording them.  The grades on the next test were so high that the teacher handed out two hundred bonus acorns to @i{all} the squirrels in the class.  
 
@@ -398,9 +407,10 @@
                          "Who can share an example of a time that teaching something helped them learn it?"
                          "How does teaching others relate to teamwork?"
                          "When you are learning a new language, why is it better to teach others than to learn on your own?"
-                         "Why do brains learn better when they teach?"))
+                         "Why do brains learn better when they teach?"
+                         "What are the benefits of open source software?"))
 
-                })))
+                }))
 
 
 (define (coa-focus)

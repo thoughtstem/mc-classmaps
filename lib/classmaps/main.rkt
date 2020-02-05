@@ -56,10 +56,8 @@
   (classmap "Teach the Team Map"
             "Add a new Code to your Team's Code of Awesomeness!"
             (list (starting-review "the Code(s) in our Code of Awesomeness so far") ;5
-                  (story-with-minutes 15 (energize-the-team-fable)) ;15
+                  (story-with-minutes 15 (teach-the-team-fable)) ;15
                   (coa-mottos-creation) ;10 -- 30
-
-                  ;SWAP OUT GAME
                   (game-with-minutes 25 (add-pair-programming (create-a-challenge))) ;25 -- 55
                   (meta-story-one-word) ;5 -- 60
                   )))

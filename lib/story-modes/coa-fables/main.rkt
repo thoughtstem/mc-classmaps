@@ -3,7 +3,8 @@
 (provide coa-stories
          overcome-the-unknown-fable
          bug-hunter-fable
-         energize-the-team-fable 
+         energize-the-team-fable
+         teach-the-team-fable
          coa-focus
          all-code-of-awesomeness-fables)
 
@@ -15,6 +16,21 @@
  mc-classmaps/lib/rendering
  (only-in 2htdp/image beside square))
 
+
+;Add stories here for testing and rolling out to Stories tab on site
+(define (all-code-of-awesomeness-fables)
+  (list (overcome-the-unknown-fable)
+        (bug-hunter-fable)
+        (teach-the-team-fable)
+        (energize-the-team-fable)
+        (coa-focus)))
+
+(module+ test
+  (require rackunit)
+
+  (all-code-of-awesomeness-fables))
+
+;============
 
 (define (coa-stories)
   (with-tags 
@@ -86,8 +102,6 @@
 
 
 (define (overcome-the-unknown-fable:prose)
-  (with-tags 
-    (list fable code-of-awesomeness meta-cognition)
     (story-mode "Overcome the Unknown Fable: Full Text" 10
                 "A Code of Awesomeness fable about two fish who looked the same on the outside, but whose minds were very different on the inside."
                 @story-text{
@@ -177,7 +191,7 @@
                   It's always sad when two former friends' have such different mindsets that they cannot get along. Trout stuck to her small pond, entering the same small tournaments and winning the small trophies over and over again.  She retired from tournaments early, the first time a young minnow beat her at a coding tournament.
                   
                   Catfish, on the other hand, grew to be a medium-sized fish in some of the biggest ponds in the whole world.  She went on to become one of the most famous fish coders of all time!  She traveled all over, competing in the biggest coding tournaments -- sometimes winning and sometimes losing, but always learning.
-                })))
+                }))
 
 (define (overcome-the-unknown-fable:questions)
   (question-section
@@ -197,7 +211,7 @@
 ;==== BE A BUG HUNTER ====
 
 (define (bug-hunter-fable)
-  (with-tags (list fable code-of-awesomeness debugging)
+  (with-tags (list fable code-of-awesomeness debugging meta-classroom)
     (story-mode "Be a Bug Hunter Fable" 10
                 "A Code of Awesomeness fable about two animals who have different strategies for dealing with bugs."
                 (story-text (bug-hunter-fable:tips)
@@ -263,10 +277,154 @@
 
 
 ;=== TEACH THE TEAM ====
+;need to do renaming in multiple files
 
-(define (energize-the-team-fable)
-  (with-tags (list fable code-of-awesomeness)
+(define (teach-the-team-fable)
+  (with-tags (list fable code-of-awesomeness meta-classroom teamwork)
     (story-mode "Teach the Team Fable" 10
+                "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
+                (story-text (teach-the-team-fable:tips)
+                            (embedded-stories (teach-the-team-fable:highlights)
+                                              (teach-the-team-fable:prose))
+                            (teach-the-team-fable:questions)))))
+
+(define (teach-the-team-fable:tips)
+  (tips "Try pausing the story after revealing the grades and asking the students why Wolf and so many of the other animals did better than Bear."
+        (list "Before you start, you can let the students pick the characters. Use these characteristics as guides:"
+              (ul (li "(Bear): works alone, smart")
+                  (li "(Wolf): a team player, smart"))
+              "There are other characters throughout the story (Teacher, other students) -- ask the students for new animals anytime you need one!")))
+
+(define (teach-the-team-fable:highlights)
+  (story-mode "Teach the Team Fable: Story at a Glance" 10
+              "Plot Points for ad-libbed telling of the Teach the Team Fable."
+              (story-text (steps (list "There are two students, " (b "Bear") " and " (b "Wolf") ", who are the top of their class.")
+                                 (list "They are both studying for a very challenging " (b "history test") ".")
+                                 (list "All the other students keep interrupting their studying to ask them for help and advice!"
+                                       (ul (li (b "Bear") " gets annoyed and hides away where no one can find him. He studies alone.")
+                                           (li (b "Wolf") " helps out the other students, and ends up with a whole study group.")))
+                                 (list "When the scores for the test are released, " (b "Bear") " is shocked to see that he is in the middle of the pack, with " (b "Wolf")  " and several other students with better grades than him!")
+                                 (list (b "Bear") " thinks there was some error in grading, asks the teacher."
+                                       (ul (li (i "Pause here and ask students what they think happened!"))))
+                                 (list "Teacher asks how " (b "Bear") " and " (b "Wolf") " studied. Bear and Wolf share their different tactics.")
+                                 (list "Teacher explains -- by teaching others and sharing their ideas, " (b "Wolf") " and the rest of the students gained a deeper understanding " (b "Bear") " did, studying alone.")
+                                 (list "Next time, " (b "Bear") " joins the study group and they all do better on the test.")
+                                 ))))
+
+(define (teach-the-team-fable:prose)
+  (story-mode "Teach the Team Fable: Full Text" 10
+              "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
+              @story-text{
+ Once, long ago, there was a school in the depths of the forest. All manner of forest creatures attended the Old Oak School, including two classmates: Bear and Wolf.
+
+ Bear and Wolf were the top of their class -- always getting A's in every class! But the upcoming History exam even had the two of @i{them} nervous! Ms. Badger was a very strict teacher and she had warned them many times that this test would be the toughest one so far. It had short answers, long answers, 2 essays and @i{no} multiple choice questions!
+ 
+ So Bear and Wolf gathered their notes, books and study guides and settled in their favorite study nook by the river to get to work. But it wasn't long until they had a vistor. You see, the other students were @i{also} extremely nervous about the test. And they knew Bear and Wolf were the best in the class. @i{And} it was well-known where the two liked to study...
+
+ "Ahem," Raccoon coughed quietly. Bear and Wolf looked up from their notes. "I was stuck on this one question on the study guide, the one about comparing the laws of the Red Squirrel and Grey Squirrel Clans of the early 10th century, and I hoped you might be able to help me..."
+
+ Raccoon looked back and forth between Bear and Wolf, hopefully. After a tense moment, Bear said:
+
+ "Listen, I have to study hard for this too. I don't have time to answer your questions today."
+
+ Raccoon looked pleadingly to Wolf.
+
+ "Well," Wolf said, "I think I have an extra minute. I needed a break anyhow."
+
+ Bear rolled his eyes as Wolf talked Raccoon through the question. @i{Wolf is wasting his time!} Bear thought to himself.
+
+ @(hr)
+
+ Raccoon left a little while later, thanking Wolf profusely for his help. Wolf shrugged, and turned back to his books.
+
+ But it wasn't too long until they had another vistor: Chipmunk. She couldn't remember anything about the signing of the Great River Otter Treaty! Once again, Bear refused to stop his studying. And once again, Wolf offered to help out.
+
+ After Chipmunk came Deer, then Owl and Hedgehog had some questions, then Beaver was in need of help, then Hare and Boar and Snake and @i{Moose}--
+
+ "ENOUGH!" Bear shouted. "How am I supposed to get anything done with all of you traipsing in here everytime you have a silly little question! I don't know about you, Wolf, but I am going to find somewhere with some @i{peace} and @b{quiet}!"
+
+ Bear stomped off into the forest. He stomped off to a cave, deep in the forest, holed up with his notes, books, and study guide, lit a candle and studied in silence for the next three days until the test.
+
+ @(hr)
+
+ Meanwhile, Wolf and Moose were left in the dust of Bear's departure.
+
+ "Well then." Moose declared. "As I was saying -- I just don't understand what Ms. Badger is asking here about the Era of the Redwoods! I don't have @i{anything} about any Red Woods in my notes... Only Brown and Green Woods!"
+
+ Wolf pulled some notes from his folder and began to explain. Shortly, they were joined again by Owl and Hedgehog, who overheard their discussion and were eager to hear Wolf's explaination. Then Hare and Chipmunk returned, with 2 more questions of their own, questions that Hedgehog had her own thoughts on.
+
+ Soon, their little group grew too big for the Study Nook by the river. Wolf and the other animals moved to a field nearby, where more animals joined them. Discussions sprung up all over the group as the animals shared questions, notes, thoughts and ideas. Wolf left his study guide behind, wandering through the large group, joining discussions and answering questions as needed. And so it continued for the three days leading up to the test.
+
+ @(hr)
+
+ The Big History Test came and went. The only thing now was to wait for Ms. Badger to finish grading! It seemed like @i{ages} until the day when she finally announced that she would be passing back their tests.
+
+ Bear was one of the first to get his test back (it was helpful being near the beginning of the alphabet!) and he held his breath as he looked for the final grade, in red ink --
+
+ @i{B-?!} Bear was disappointed, of course -- he rarely got anything lower than an A -- but he quickly reminded himself how difficult the test was. Bear was sure his B- still put him at the head of the class.
+
+ But then he started to hear the whispers from his classmates as they recieved their graded tests: excited whispers claiming C+'s, B-'s, even B's, B+'s! Wolf was at the top of the class with an A+!
+
+ Now this was unheard of! Wolf sometimes bested Bear, but Hedgehog? And @i{Moose}?! There must have been some kind of mistake!
+
+ "Excuse me, Ms. Badger!" Called Bear. "I think there might have been an error in my grading."
+
+ The whole class froze -- did Bear just tell @i{Ms. Badger} that she made a mistake?! 
+
+ "Is that so?" Ms. Badger walked to Bear's desk and peered at his test. She flipped through the pages. She placed the test back on his desk. "The grading is correct."
+
+ "B-But," Bear protested, "how could that be?! Owl said he also got a B-. And so did Chipmunk! Moose said he got a B+. And Wolf got an A+?! That's impossible!"
+
+ "Perhaps they studied more effectively."
+
+ "I studied non-stop for three days! It would have been more if all the others did keep interrupting Wolf and I with their silly questions." Bear glared around the room. "But I finally manage to find some peace and quiet, reviewed all my notes at least two dozen times, wrote five practice essays, made a set of 50 flash cards with dates and names -- it just doesn't make sense! What could they have done that I didn't?"
+
+ "Well," Moose said, "I don't know about all that. We all kind of ended up studying -- together."
+
+ "Yeah, I had a question about the study guide, and I asked Wolf." Said Chipmunk. "And Hedgehog was there and we ended up discussing it for a while. Then Wolf helped us both understand the differences between the two Squirrel Skirmishes. Wolf really helped us all out."
+
+ Everyone looked to Wolf, who had gotten the best grade of the whole class.
+
+ "I didn't actually have any time to study." Wolf admitted. "I am surprised I did this well. Everyone had questions and I wanted to help, so I just ended up... doing that instead."
+
+ "That's why the rest of the class excelled." Ms. Badger said to Bear. "By sharing their notes and ideas, they gained @i{more} knowledge. Wolf did this the most, and he learned the most. By teaching what he knew, and listening to what others knew and thought, Wolf built a deeper understanding of the material."
+
+ Everyone looked at Wolf, again.
+
+ "I had no idea!" Wolf said. "But come to think of it, when I was explaining things to the others, I found new details I hadn't really noticed before. Because I had to be really clear, and often someone had a question I hadn't even thought of before."
+
+ "That is how I know so much about our forest history myself." Said Ms. Badger. "Teaching others helps you learn."
+
+ @(hr)
+
+ Some time later, Wolf and his classmates were studying for the upcoming math test. They were all in the field by the river, taking turns explaining different formulas and inventing word problems for each other. Everyone was listening to Hedgehog explain how to find the area of a triangle, when they had a very unexpected visitor.
+
+ "Hello, Bear." Said Wolf.
+
+ "Hi, everyone." Said Bear. "M-May I... Do you think... Can I join your study group?"
+
+ "Of course!" Wolf said.
+
+ Bear joined the group, and took his turn teaching the team shortly after. Later that week, Bear, Wolf and the rest of the class all aced the test!
+ 
+ }))
+
+(define (teach-the-team-fable:questions)
+  (question-section
+   (comprehension-questions
+    "What was Bear's studying strategy? Wolf's? The other animals'?"
+    "Which animal had the better strategy? Why?"
+    "Why did Wolf and many of the other animals do better on the test than Bear?")
+   (creativity-questions
+    "How does this story relate to our class?"
+    "What can we do in this class to be more like Wolf?"
+    "How can we help each other learn? What 'helping' doesn't actually help our team learn?"
+    "How do you like to work on homework/study for tests?")))
+
+
+;not a COA fable currently, where should it go?
+(define (energize-the-team-fable)
+    (story-mode "Teach the Team Fable: Full Text " 10
                 "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
                 @story-text{
                   Once upon a time, there were two young squirrels -- one brown, the other gray.  They were friends, but the brown squirrel always seemed to do better in school -- earning more acorns than the gray squirrel.
@@ -279,7 +437,7 @@
 
                   The gray squirrel snuck closer, realizing that it had stumbled upon the brown squirrel's secret hiding place.  Peering through the trees, the gray squirrel saw the brown squirrel dig up note after note.  It was studying furiously for the big test tomorrow.
 
-                  When the brown squirrel was done studying it looked around to make sure it was alone, burried its notes, and scurried away.   The gray squirrel crept out and walked to the patch of freshly packed dirt.
+                  When the brown squirrel was done studying it looked around to make sure it was alone, buried its notes, and scurried away.   The gray squirrel crept out and walked to the patch of freshly packed dirt.
 
                   "Should I dig it up?" the gray squirrel thought to itself.  "The brown squirrel always makes better grades than I do." 
 
@@ -312,7 +470,7 @@
                       }
                     })
 
-                  The squirrel recognizes it as a note about how to code two red circles -- one on top of the other.  So it goes for several hours -- the gray squirrel digging up the brown squirrel's notes and studying them, and burrying them again.  Then it scurried away to its own secret place, where it continued studying its own notes. 
+                  The squirrel recognizes it as a note about how to code two red circles -- one on top of the other.  So it goes for several hours -- the gray squirrel digging up the brown squirrel's notes and studying them, and burying them again.  Then it scurried away to its own secret place, where it continued studying its own notes. 
 
                   The next day, all the squirrels took the coding test.  The day after that, the coding teacher -- a giant beige squirrel -- posted all the grades on the big oak tree.  The gray squirrel was pleased to see its name at the top of the list.  The brown squirrel's name was just below -- on the second line.  The giant beige teacher squirrel shook the gray squirrel's hand and gave it a bag containing two hundred acorns.
 
@@ -320,7 +478,7 @@
 
                   But all that week, the gray squirrel couldn't sleep.  It felt bad about what it had done.  It wasn't exactly stealing -- but looking at someone's code without permission just felt wrong.  
                   
-                  On the night before the next coding test, the gray squirrel crept out in the middle of the night and burried the two hundred acorns in the brown squirrel's secret place.  Not only that, the gray squirrel also dug up all of its own notes, copied each one, and burried the new notes in the brown squirrel's secret place.  
+                  On the night before the next coding test, the gray squirrel crept out in the middle of the night and buried the two hundred acorns in the brown squirrel's secret place.  Not only that, the gray squirrel also dug up all of its own notes, copied each one, and buried the new notes in the brown squirrel's secret place.  
 
                   The next day, they took the test.  And the day after that, the beige squirrel posted the results on the oak tree.  The gray squirrel was certain that, this time, the brown squirrel would be at the top of the list.  But no.
 
@@ -328,9 +486,9 @@
 
                   Now the gray squirrel felt even worse.
 
-                  So it went for the rest of the month.  The gray squirrel kept trying to make things right by burrying more notes for the brown squirrel to find -- hoping that the brown squirrel would finally be at the top of the list.  But the brown squirrel always came in second.  And the gray squirrel always came in first -- earning more and more acorns.
+                  So it went for the rest of the month.  The gray squirrel kept trying to make things right by burying more notes for the brown squirrel to find -- hoping that the brown squirrel would finally be at the top of the list.  But the brown squirrel always came in second.  And the gray squirrel always came in first -- earning more and more acorns.
 
-                  One day, when the gray squirrel was burrying more notes for the brown squirrel to find, it heard a rustling in the leaves overhead.    Suddenly, the brown squirrel lept down and shouted, "Caught you!  I @i{knew} someone had found my secret place.  I kept finding notes that I didn't remember writing."
+                  One day, when the gray squirrel was burying more notes for the brown squirrel to find, it heard a rustling in the leaves overhead.    Suddenly, the brown squirrel lept down and shouted, "Caught you!  I @i{knew} someone had found my secret place.  I kept finding notes that I didn't remember writing."
 
                   The gray squirrel confessed, telling the brown squirrel how it had dug up the notes once and then tried to make things right ever since.  "I don't understand, though," said the gray squirrel.  "I've been trying @i{help} you.  But somehow I keep coming in first."
 
@@ -385,7 +543,7 @@
 
                   The gray squirrel and the brown squirrel both noded.
 
-                  "Nope," said the teacher.  "I became the best coding teacher in the forest because  I @i{taught} the most.  Brains learn best when they teach.  When you were burrying notes for each other to find, you were teaching each other.  That means you @i{were} studying.  In fact, teaching is the best kind of studying: whoever teaches the most that learns the most."
+                  "Nope," said the teacher.  "I became the best coding teacher in the forest because  I @i{taught} the most.  Brains learn best when they teach.  When you were burying notes for each other to find, you were teaching each other.  That means you @i{were} studying.  In fact, teaching is the best kind of studying: whoever teaches the most that learns the most."
 
                   From that day forward, the gray squirrel and the brown squirrel agreed to take turns teaching each other and their fellow squirrels -- sharing their notes instead of burying and hording them.  The grades on the next test were so high that the teacher handed out two hundred bonus acorns to @i{all} the squirrels in the class.  
 
@@ -398,9 +556,10 @@
                          "Who can share an example of a time that teaching something helped them learn it?"
                          "How does teaching others relate to teamwork?"
                          "When you are learning a new language, why is it better to teach others than to learn on your own?"
-                         "Why do brains learn better when they teach?"))
+                         "Why do brains learn better when they teach?"
+                         "What are the benefits of open source software?"))
 
-                })))
+                }))
 
 
 (define (coa-focus)
@@ -418,15 +577,5 @@
                     "Which one shall we focus on today and why?") 
                 })))
 
-(define (all-code-of-awesomeness-fables)
-  (list (overcome-the-unknown-fable)
-        (bug-hunter-fable)
-        (energize-the-team-fable)
-        (coa-focus)))
-
-(module+ test
-  (require rackunit)
-
-  (all-code-of-awesomeness-fables))
 
 

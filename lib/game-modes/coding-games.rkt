@@ -41,8 +41,8 @@
               (game-instructions
                (steps "Coach writes the entire code & translation on the whiteboard"
                       "Players type up code as Coach does so"
-                      "Players run code"
-                      "Players erase code"
+                      "Players test their code"
+                      "Players erase their code"
                       "Coach erases 1-4 words from the code on the whiteboard (leaving parens, hyphens, other symbols)"
                       "Timer set for roughly 1 min per line of code"
                       "Players type up code, remembering what goes into the blanks"

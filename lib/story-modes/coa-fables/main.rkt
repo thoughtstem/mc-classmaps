@@ -3,7 +3,8 @@
 (provide coa-stories
          overcome-the-unknown-fable
          bug-hunter-fable
-         energize-the-team-fable 
+         energize-the-team-fable
+         teach-the-team-fable
          coa-focus
          all-code-of-awesomeness-fables)
 
@@ -272,7 +273,61 @@
 (define (teach-the-team-fable:highlights)
   (story-mode "Teach the Team Fable: Story at a Glance" 10
               "Plot Points for ad-libbed telling of the Teach the Team Fable."
-              (story-text (steps (list "")))))
+              (story-text (steps (list "There are two students, " (b "Bear") " and " (b "Wolf") ", who are the top of their class.")
+                                 (list "They are both studying for a very challenging " (b "history test") ".")
+                                 (list "All the other students keep interrupting their studying to ask them for help and advice!"
+                                       (ul (li (b "Bear") " gets annoyed and hides away where no one can find him. He studies alone.")
+                                           (li (b "Wolf") " helps out the other students, and ends up with a whole study group.")))
+                                 (list "When the scores for the test are released, " (b "Bear") " is shocked to see that he is in the middle of the pack, with " (b "Wolf")  " and several other students with better grades than him!")
+                                 ;(list (b "Bear") " thinks there was some error in grading, asks the teacher.")
+                                 ;(list "Teacher asks how " (b "Bear") " and " (b "Wolf") " studied. Bear and Wolf share their different tactics.")
+                                 
+                                 ))))
+
+(define (teach-the-team-fable:prose)
+  (story-mode "Teach the Team Fable: Full Text" 10
+              "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
+              @story-text{
+ Once, long ago, there was a school in the depths of the forest. All manner of forest creatures attended the Old Oak School, including two classmates: Bear and Wolf.
+
+ Bear and Wolf were the top of their class -- always getting A's in every class! But the upcoming History exam even had the two of @i{them} nervous! Ms. Badger was a very strict teacher and she had warned them many times that this test would be the toughest one so far. It had short answers, long answers, 2 essays and @i{no} multiple choice questions!
+ 
+ So Bear and Wolf gathered their notes, books and study guides and settled in their favorite study nook by the river to get to work. But it wasn't long until they had a vistor. You see, the other students were @i{also} extremely nervous about the test. And they knew Bear and Wolf were the best in the class. @i{And} it was well-known where the two liked to study...
+
+ "Ahem," Raccoon coughed quietly. Bear and Wolf looked up from their notes. "I was stuck on this one question on the study guide, the one about comparing the laws of the Red Squirrel and Grey Squirrel Clans of the early 10th century, and I hoped you might be able to help me..."
+
+ Raccoon looked back and forth between Bear and Wolf, hopefully. After a tense moment, Bear said:
+
+ "Listen, I have to study hard for this too. I don't have time to answer your questions today."
+
+ Raccoon looked pleadingly to Wolf.
+
+ "Well," Wolf said, "I think I have an extra minute. I needed a break anyhow."
+
+ Bear rolled his eyes as Wolf talked Raccoon through the question. @i{Wolf is wasting his time!} Bear thought to himself.
+
+ @(hr)
+
+ Raccoon left a little while later, thanking Wolf profusely for his help. Wolf shrugged, and turned back to his books.
+
+ But it wasn't too long until they had another vistor: Chipmunk. She couldn't remember anything about the signing of the Great River Otter Treaty! Once again, Bear refused to stop his studying. And once again, Wolf offered to help out.
+
+ After Chipmunk came Deer, then Owl and Hedgehog had some questions, then Beaver was in need of help, then Hare and Boar and Snake and @i{Moose}--
+
+ "ENOUGH!" Bear shouted. "How am I supposed to get anything done with all of you traipsing in here everytime you have a silly little question! I don't know about you, Wolf, but I am going to find somewhere with some @i{peace} and @b{quiet}!"
+
+ Bear stomped off into the forest. He stomped off to a cave, deep in the forest, holed up with his notes, books, and study guide, lit a candle and studied in silence for the next three days until the test.
+
+ @(hr)
+
+ Meanwhile, Wolf and Moose were left in the dust of Bear's departure.
+
+ "Well then." Moose declared. "As I was saying -- I just don't understand what Ms. Badger is asking here about the Era of the Redwoods! I don't have @i{anything} about any Red Woods in my notes... Only Brown and Green Woods!"
+
+ Wolf pulled some notes from his folder and began to explain. Shortly, they were joined again by Owl and Hedgehog, who overheard their discussion and eager to hear Wolf's explaination. Then Hare and Chimpmunk returned, with 2 more questions of their own, a question that Hedgehog had her own thoughts on.
+
+ Soon their little group grew too big for the Study Nook by the river. Wolf and the other animals moved to a field nearby, where more animals joined them. Discussions sprung up all over the group as the animals shared questions, notes, thoughts and ideas. Wolf left his study guide behind, wandering through the large group, joining discussions and answering questions as needed. And so it continued for the three days leading up to the test.
+ }))
 
 (define (energize-the-team-fable)
     (story-mode "Teach the Team Fable: Full Text " 10
@@ -431,7 +486,7 @@
 (define (all-code-of-awesomeness-fables)
   (list (overcome-the-unknown-fable)
         (bug-hunter-fable)
-        (energize-the-team-fable)
+        (teach-the-team-fable)
         (coa-focus)))
 
 (module+ test

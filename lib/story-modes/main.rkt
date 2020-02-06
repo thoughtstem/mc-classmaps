@@ -2,12 +2,8 @@
 
 (provide coa-stories
          class-intro
-         bug-hunter-fable
-         overcome-the-unknown-fable
-         energize-the-team-fable
          coach-story
          intro-jam
-         coa-focus
          all-stories
 
          (all-from-out "./authentic-engineer-stories/main.rkt")

@@ -119,8 +119,19 @@
               (game-with-minutes  10 (disintegrating-code))
               (meta-story-one-word))))
 
-
 (define (skills:depth-1 #:intro intro)
+  (classmap "Coder Skills"
+            "It takes more than just computer knowledge to be a coder; take a look all the different skills it takes to be the best coder in this map."
+            (list
+              intro
+              (game-with-minutes 10 (chain-reaction))
+              (story-with-minutes 10 (coder-skills-story))
+              (game-with-minutes 10 (build-a-bug-workshop))
+              (meta-story-reflect)
+             )))
+
+;swap to this after 2/6/2020
+#;(define (skills:depth-1 #:intro intro)
   (classmap "Intro to Coder Skills"
             "It takes more than just computer knowledge to be a coder; take a look all the different skills it takes to be the best coder in this map."
             (list

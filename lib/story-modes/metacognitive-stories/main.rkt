@@ -25,7 +25,8 @@
         (a-path-in-your-brain-story)
         (coder-skills-story)
         (coder-skills-story:just-ch1)
-        (coder-skills-story:just-ch2)))
+        (coder-skills-story:just-ch2)
+        (coder-skills-story:just-ch3)))
 
 (module+ test
   (require rackunit)

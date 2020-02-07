@@ -120,7 +120,19 @@
                (game-info
                 (supplies-list "Optional: whiteboard for writing language definitions")
                 (game-instructions
-                 
+
+                 "Move through each of the levels at a pace that makes sense for your Players. Remember: doing something once does not make one an expert, or even just capable!"
+
+                 (accordion-card #:header "Level 0 -- Being Bots"
+                                 #:dark? #t
+                 (steps (list "Coach defines a language with " (i "inputs") " (words or motions the Coach will make), and " (i "outputs") " (what the Players or \"bots\" will do when they hear/see that input). Examples:"
+                              (ul (li "Say \"Go!\" = 1 step forward")
+                                  (li "Hold both arms straight up = crouch to the ground")
+                                  (li "Say \"Reverse\" = 1 step backward")
+                                  (li "Point at bots = clap hands once")))
+                        "Coach runs several tests to make sure all bots understand"
+                        "Coach programs the bots using the defined language"
+                        "Repeat steps 1-3, adding more definitions to the language each time."))
                  (accordion-card #:header "Level 1 -- Multiple Bot Groups"
                                  #:dark? #t
                  (steps "Coach splits all Players into 2 bot-groups"
@@ -156,6 +168,7 @@
                        "Coach adds to language accordingly, before programming bots")))
 
                 (tips "Group identifiers can be as simple as A-bots and B-bots. Or you can try colors, animals, computer-themed (ex. Android bots and iPhone/iOS bots), or anything the Players choose."
+                      "Writing the language up on a whiteboard can help Players who are stuggling to understand/stay focused."
                       "Be prepared for loops before starting level 3! When a loop starts, the game will disitegrate into giggles/some amount of chaos. That's okay! Just be prepared to re-gather attention and focus back."
                       "Add a \"Hold\" and \"Run\" command -- where Coach can pause all bots, give a couple commands in a row, before \"running\" the code, having bots run those commands consecutively."
                       "Can be made into an elimination-style competitive game."))

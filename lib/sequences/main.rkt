@@ -1,7 +1,7 @@
 #lang at-exp racket
 
 (provide basic-sequence
-         computational-thinking-for-kinder-sequence
+         computational-thinking-wip-sequence
          computational-thinking-for-lower-elementary-sequence
          computational-thinking-for-upper-elementary-sequence
          all-sequences)
@@ -32,7 +32,7 @@
        ;missing -- Partner Practice Map
        (final-jam-map))))
 
-(define (computational-thinking-for-kinder-sequence)
+(define (computational-thinking-wip-sequence)
   (sequence
     "Computational Thinking Set"
 
@@ -54,8 +54,11 @@
     (skills:depth-1
      #:intro (story-stub "Review" 5 "What skills have we learned in this class so far?"))
      
-    (language:depth-2
-     #:intro (story-stub "Review" 5 "What do you remember about Coding as a Language?")) 
+    (skills:depth-2
+     #:intro (story-stub "Review" 5 "What did we learn about coder skills last time?"))
+
+    (skills:depth-3
+     #:intro (story-stub "Review" 5 "What did we learn about coder skills last time?"))
     )))
 
 (define (computational-thinking-for-lower-elementary-sequence)
@@ -105,7 +108,7 @@
 (define (all-sequences)
   (list
    (basic-sequence)
-    (computational-thinking-for-kinder-sequence)
+    (computational-thinking-wip-sequence)
     ;taken out as not to clutter the live page with unfinished sequences that are not in use
     ;(computational-thinking-for-lower-elementary-sequence)
     ;(computational-thinking-for-upper-elementary-sequence)

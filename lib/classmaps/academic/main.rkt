@@ -17,6 +17,8 @@
          bugs:depth-1:plugged
          metacognition:depth-1
          skills:depth-1
+         skills:depth-2
+         skills:depth-3
          inputs/outputs:depth-2
          inputs/outputs:depth-2:plugged
          bugs:depth-2
@@ -26,11 +28,8 @@
          bugs:intermediate
          language:intermediate
   computational-thinking-for-young-elementary-pack
-  computational-thinking-for-kinder-pack
+  computational-thinking-wip-pack
   computational-thinking-for-upper-elementary-pack)
-
-;all code-the-bot variations renamed "person-bot..." and moved to ../../game-modes/language-games.rkt
-;pattern-recognition game renamed pattern-prediction and moved to ../../game-modes/unplugged-games.rkt
 
 
 ;kinder classmap model
@@ -128,6 +127,40 @@
               (game-with-minutes 10 (chain-reaction))
               (story-with-minutes 10 (coder-skills-story))
               (game-with-minutes 10 (build-a-bug-workshop))
+              (meta-story-reflect)
+             )))
+
+;swap to this after 2/6/2020
+#;(define (skills:depth-1 #:intro intro)
+  (classmap "Intro to Coder Skills"
+            "It takes more than just computer knowledge to be a coder; take a look all the different skills it takes to be the best coder in this map."
+            (list
+              intro
+              (game-with-minutes 10 (chain-reaction))
+              (story-with-minutes 10 (coder-skills-story:just-ch1))
+              (game-with-minutes 10 (build-a-bug-workshop))
+              (meta-story-reflect)
+             )))
+
+(define (skills:depth-2 #:intro intro)
+  (classmap "More on Coder Skills"
+            "Continuing the discovery of the whole collection of skills it takes to be a coder."
+            (list
+              intro
+              (game-with-minutes 10 (chain-reaction))
+              (story-with-minutes 10 (coder-skills-story:just-ch2))
+              (game-with-minutes 10 (create-a-challenge))
+              (meta-story-one-word)
+             )))
+
+(define (skills:depth-3 #:intro intro)
+  (classmap "Coder Skills: The Final Chapter"
+            "Focusing on the most challenging part of being a coder -- coding your own brain."
+            (list
+              intro
+              (game-with-minutes 10 (chain-reaction))
+              (story-with-minutes 10 (coder-skills-story:just-ch3))
+              (game-with-minutes 10 (try-it-first))
               (meta-story-reflect)
              )))
 
@@ -363,7 +396,7 @@
 
 ; ====== MAP PACKS ========
 
-(define (computational-thinking-for-kinder-pack)
+(define (computational-thinking-wip-pack)
   (list 
     (inputs/outputs:depth-1 
       #:intro (coach-story)) 
@@ -378,13 +411,13 @@
       #:intro (story-stub "Review" 5 "What do you remember about Inputs and Outputs?")) 
 
     (skills:depth-1
-      #:intro (story-stub "Review" 5 "What skills have we learned in this class so far?")) 
+      #:intro (story-stub "Review" 5 "What skills have we learned in this class so far?"))
 
-    (language:depth-2
-      #:intro (story-stub "Review" 5 "What do you remember about Coding as a Language?")) 
-    
+    (skills:depth-2
+      #:intro (story-stub "Review" 5 "What did we learn about coder skills last time?"))
 
-
+    (skills:depth-3
+      #:intro (story-stub "Review" 5 "What did we learn about coder skills last time?"))
     #|
     (inputs/outputs:depth-3) 
     (bugs:depth-3)
@@ -435,5 +468,5 @@
 (module+ test
   (require rackunit)
 
-  (computational-thinking-for-kinder-pack))
+  (computational-thinking-wip-pack))
 

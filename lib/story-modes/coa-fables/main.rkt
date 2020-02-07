@@ -3,7 +3,6 @@
 (provide coa-stories
          overcome-the-unknown-fable
          bug-hunter-fable
-         energize-the-team-fable
          teach-the-team-fable
          coa-focus
          all-code-of-awesomeness-fables)
@@ -13,8 +12,7 @@
  website-js/components/accordion-cards
  mc-classmaps/lib/base 
  mc-classmaps/lib/tags
- mc-classmaps/lib/rendering
- (only-in 2htdp/image beside square))
+ mc-classmaps/lib/rendering)
 
 
 ;Add stories here for testing and rolling out to Stories tab on site
@@ -22,7 +20,6 @@
   (list (overcome-the-unknown-fable)
         (bug-hunter-fable)
         (teach-the-team-fable)
-        (energize-the-team-fable)
         (coa-focus)))
 
 (module+ test
@@ -45,7 +42,7 @@
                       
                    (bug-hunter-fable)
                       
-                   (energize-the-team-fable))
+                   (teach-the-team-fable))
                    
                  @(question-section
                    (comprehension-questions
@@ -422,144 +419,7 @@
     "How do you like to work on homework/study for tests?")))
 
 
-;not a COA fable currently, where should it go?
-(define (energize-the-team-fable)
-    (story-mode "Teach the Team Fable: Full Text " 10
-                "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
-                @story-text{
-                  Once upon a time, there were two young squirrels -- one brown, the other gray.  They were friends, but the brown squirrel always seemed to do better in school -- earning more acorns than the gray squirrel.
-
-                  Like all squirrels, whenever they learned something new from their teacher, they would write the information down on a tiny piece of paper.  Then, like all squirrels, they would both sneak away after school to their secret places and bury their notes for later.  
-
-                  Before big tests, squirrel students always go to their secret places alone and dig up their notes to study (and nuts to snack on).
-                  
-                  One day, the gray squirrel was sneaking off to its secret place, when suddenly it noticed another squirrel just up ahead, digging in the ground.  
-
-                  The gray squirrel snuck closer, realizing that it had stumbled upon the brown squirrel's secret hiding place.  Peering through the trees, the gray squirrel saw the brown squirrel dig up note after note.  It was studying furiously for the big test tomorrow.
-
-                  When the brown squirrel was done studying it looked around to make sure it was alone, buried its notes, and scurried away.   The gray squirrel crept out and walked to the patch of freshly packed dirt.
-
-                  "Should I dig it up?" the gray squirrel thought to itself.  "The brown squirrel always makes better grades than I do." 
-
-                  @(creativity-questions
-                     "Who owns the information in the notes -- the gray squirrel, the brown squirrel, the teacher squirrel, or someone else?"
-                     "Is it morally right for the gray squirrel to dig up another squirrel's notes?"
-                     "What if it just looks at the notes and puts it back?")
-
-                  The gray squirrel begins to dig and finds a note from the coding class.
-
-                  @(accordion-card
-                    @pre{
-                      @code{
-                        #lang racket
-                        (require 2htdp/image)
-                        (circle 40 'solid 'red)
-                      }
-                    })
-
-                  The squirrel recognizes it as a note about how to code a red circle.  It buries that note, and digs farther to find another:
-               
-                  @(accordion-card
-                    @pre{
-                      @code{
-                        #lang racket
-                        (require 2htdp/image)
-                        (above
-                          (circle 40 'solid 'red)
-                          (circle 40 'solid 'red))
-                      }
-                    })
-
-                  The squirrel recognizes it as a note about how to code two red circles -- one on top of the other.  So it goes for several hours -- the gray squirrel digging up the brown squirrel's notes and studying them, and burying them again.  Then it scurried away to its own secret place, where it continued studying its own notes. 
-
-                  The next day, all the squirrels took the coding test.  The day after that, the coding teacher -- a giant beige squirrel -- posted all the grades on the big oak tree.  The gray squirrel was pleased to see its name at the top of the list.  The brown squirrel's name was just below -- on the second line.  The giant beige teacher squirrel shook the gray squirrel's hand and gave it a bag containing two hundred acorns.
-
-                  "Well done," said the teacher squirrel.  "You've earned your bonus acorns."
-
-                  But all that week, the gray squirrel couldn't sleep.  It felt bad about what it had done.  It wasn't exactly stealing -- but looking at someone's code without permission just felt wrong.  
-                  
-                  On the night before the next coding test, the gray squirrel crept out in the middle of the night and buried the two hundred acorns in the brown squirrel's secret place.  Not only that, the gray squirrel also dug up all of its own notes, copied each one, and buried the new notes in the brown squirrel's secret place.  
-
-                  The next day, they took the test.  And the day after that, the beige squirrel posted the results on the oak tree.  The gray squirrel was certain that, this time, the brown squirrel would be at the top of the list.  But no.
-
-                  "Well done," said the teacher squirrel to the gray squirrel.  "You've earned two hundred more acorns."
-
-                  Now the gray squirrel felt even worse.
-
-                  So it went for the rest of the month.  The gray squirrel kept trying to make things right by burying more notes for the brown squirrel to find -- hoping that the brown squirrel would finally be at the top of the list.  But the brown squirrel always came in second.  And the gray squirrel always came in first -- earning more and more acorns.
-
-                  One day, when the gray squirrel was burying more notes for the brown squirrel to find, it heard a rustling in the leaves overhead.    Suddenly, the brown squirrel lept down and shouted, "Caught you!  I @i{knew} someone had found my secret place.  I kept finding notes that I didn't remember writing."
-
-                  The gray squirrel confessed, telling the brown squirrel how it had dug up the notes once and then tried to make things right ever since.  "I don't understand, though," said the gray squirrel.  "I've been trying @i{help} you.  But somehow I keep coming in first."
-
-                  The brown squirrel thought for a moment.  "You really want to make things right?" 
-
-                  The gray squirrel nodded.  
-
-                  "Then show me where @i{your} secret place is.  And promise me you won't ever come back to mine."
-
-                  @(hr)
-
-                  The day before the next test, the gray squirrel went to its secret place to begin studying.  As it dug, it began to find notes that it didn't remember hiding -- written in what looked suspiciously like the brown squirrel's handwritting.
-
-                  Like:
-
-                  @(accordion-card
-                    @pre{
-                      @code{
-                        #lang racket
-                        (require 2htdp/image)
-                        (beside
-                          (square 30 'solid 'red)
-                          (square 30 'solid 'orange)
-                          (square 30 'solid 'yellow)
-                          (square 30 'solid 'green)
-                          (square 30 'solid 'blue)
-                          (square 30 'solid 'purple))
-                      }
-                    })
-
-
-                  That one showed how to display the colors of the rainbow -- like so:
-
-                  @(write-img
-                      (beside
-                       (square 30 'solid 'red)
-                       (square 30 'solid 'orange)
-                       (square 30 'solid 'yellow)
-                       (square 30 'solid 'green)
-                       (square 30 'solid 'blue)
-                       (square 30 'solid 'purple)))
-                  
-                  There were many more -- all sorts of notes about things that the gray squirrel wouldn't otherwise have remembered. 
-
-                  The next day, the squirrels took the coding test.  And the day after, the results were posted on the old oak tree.  To the gray squirrel's surprise, the brown squirrel was at the top of the list. 
-
-                  The teacher squirrel shook the brown squirrel's hand and said, "It's been a while!  But here are your two hundred acorns."
-
-                  The gray squirrel could take it no more.  "It doesn't make sense," it said, going on to explain to the teacher what had been happening over these last few months.  "Whoever studies the most should make the best grade," said the gray squirrel.  "But that only happened the first time.  Since then, it's been backward.  When I study my notes @i{and} the brown squirrel's, I come in second.  When brown squirrel studies the my notes @i{and} its own, @i{it} comes in second."
-
-                  The teacher squirrel nodded its head wisely.  "Brains don't always work the way you might expect.  Do you think I became the best coding teacher in the forest because I studied the most?" 
-
-                  The gray squirrel and the brown squirrel both noded.
-
-                  "Nope," said the teacher.  "I became the best coding teacher in the forest because  I @i{taught} the most.  Brains learn best when they teach.  When you were burying notes for each other to find, you were teaching each other.  That means you @i{were} studying.  In fact, teaching is the best kind of studying: whoever teaches the most that learns the most."
-
-                  From that day forward, the gray squirrel and the brown squirrel agreed to take turns teaching each other and their fellow squirrels -- sharing their notes instead of burying and hording them.  The grades on the next test were so high that the teacher handed out two hundred bonus acorns to @i{all} the squirrels in the class.  
-
-                  @(question-section
-                      (comprehension-questions
-                        '("What is open source software?" 
-                          "Code that is written and given freely to other coders."))
-
-                      (creativity-questions
-                         "Who can share an example of a time that teaching something helped them learn it?"
-                         "How does teaching others relate to teamwork?"
-                         "When you are learning a new language, why is it better to teach others than to learn on your own?"
-                         "Why do brains learn better when they teach?"
-                         "What are the benefits of open source software?"))
-
-                }))
+;==========
 
 
 (define (coa-focus)

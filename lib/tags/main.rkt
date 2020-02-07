@@ -157,7 +157,10 @@
       (define young-engineer
         (tag "young engineer"
              "About young protagonists using code to solve problems relevant to young people."))
-      
+
+      (define wip
+        (tag "work in progress"
+             "This mode is still in development"))
      )
 
 ;======TAG GROUPS =====
@@ -212,7 +215,8 @@
             badges
             code-of-awesomeness
             true-story
-            young-engineer))
+            young-engineer
+            wip))
 
 
       

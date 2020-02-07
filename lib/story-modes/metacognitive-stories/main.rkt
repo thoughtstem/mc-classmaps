@@ -1,9 +1,12 @@
 #lang at-exp racket
 
-(provide metacognitive-stories ;add new stories to this list (defined at end of file) for testing and for release onto website's story page
+(provide metacognitive-stories
          rethinking-bugs
          a-path-in-your-brain-story
-         coder-skills-story)
+         coder-skills-story
+         coder-skills-story:just-ch1
+         coder-skills-story:just-ch2
+         coder-skills-story:just-ch3)
 
 
 (require 
@@ -13,6 +16,25 @@
  mc-classmaps/lib/tags
  mc-classmaps/lib/rendering
  (only-in 2htdp/image bitmap))
+
+
+
+;add new stories to this list for testing and for release onto website's story page
+(define (metacognitive-stories)
+  (list (rethinking-bugs)
+        (a-path-in-your-brain-story)
+        (coder-skills-story)
+        (coder-skills-story:just-ch1)
+        (coder-skills-story:just-ch2)))
+
+(module+ test
+  (require rackunit)
+
+  (metacognitive-stories))
+
+
+
+;-----------
 
 (define (rethinking-bugs)
   (with-tags (list debugging)
@@ -165,35 +187,35 @@
                
                           )))
 
-(define (coder-skills-story:tips)
+(define (coder-skills-story:tips #:broken-up-by-ch? [broken-up? #f])
   (tips "This story is strongly based in discussion. Know what is important to touch on, but also let the students bring up ideas that you may not have thought of before!"
         (list "If possible, use visual aids/lists to keep the discussion clear and focused. Draw up on a whiteboard and/or even encourage students to draw along. An example diagram:"
               (accordion-card #:header "Example Diagram"
                               (write-img (bitmap "../../images/coder-system-diagram.png"))))
-        "You can easily split this story by chapter over a class or several classes."
-        "Ask the students to assess their level of mastery over some/all of the skills discussed."))
+        "Ask the students to assess their level of mastery over some/all of the skills discussed."
+        "Because this story mode is driven by questions to the class, there is no additional questions noted at the end."
+        (if broken-up?
+            #f
+            "You can easily split this story by chapter over a class or several classes.")))
 
 (define (coder-skills-story:prose)
-  (story-mode "The Life and Times of a Real Coder: Full Text" 10
+  (story-mode "The Life and Times of a Real Coder: Full Text" 15
               "What does it really take to be a coder?"
               @story-text{
- @h5{Prologue}
 
+ @embedded-stories[@(coder-skills-story:prologue)
+                   @(coder-skills-story:ch1)
+                   @(coder-skills-story:ch2)
+                   @(coder-skills-story:ch3)
+                   @(coder-skills-story:epilogue)]}))
+
+(define (coder-skills-story:prologue)
+  (story-mode "The Life and Times of a Real Coder: Prologue" 5
+              "Introduction to The Life and Times of a Real Coder story."
+              @story-text{
  Who here wants to be some kind of coder when they grow up?  Who @i{might} want to be a coder or do a job that involves coding? Who wants to do something totally different?!
 
- Let's take a closer look at what it really takes to be the best coder -- all the different things a professional coder does and the skills it takes to be good at them. Some of these things you are already doing -- in this class or elsewhere in your life. Some of them you'll do soon! But all of these skills are valuable for all of you. Now and in the future, no matter what you end up doing!
-
- @embedded-stories[@(coder-skills-story:ch1)
-                   @(coder-skills-story:ch2)
-                   @(coder-skills-story:ch3)]
-
- @h5{Epilogue}
-
- When we look at all this -- all the stuff a coder does and all the skills we need to do them -- it is a lot! But the good news is that you are building these skills all over the place, not just in this class. Every time you figure out a tough homework problem all on your own, you are using your problem-solving, self-reliance, and perseverance skills. At soccer practice you are building up your teamwork, communication, and grit skills.
-
- Even in this class, we work on these skills in different ways -- stories and games involving coding, and stories and games that don't seem to have anything to do with computers and coding. We are always improving the skills and knowledge that it takes to be a great coder so you can go on to be the very best coders! Or, you can take these skills and go be awesome at any one of these other things, and more!
-               
- }))
+ Let's take a closer look at what it really takes to be the best coder -- all the different things a professional coder does and the skills it takes to be good at them. Some of these things you are already doing -- in this class or elsewhere in your life. Some of them you'll do soon! But all of these skills are valuable for all of you. Now and in the future, no matter what you end up doing!}))
 
 (define (coder-skills-story:ch1)
   (story-mode "Chapter 1: The Code" 5
@@ -236,15 +258,110 @@
 
  }))
 
+(define (coder-skills-story:epilogue)
+  (story-mode "The Life and Times of a Real Coder: Epilogue" 5
+              "The final chapter to The Life and Times of a Real Coder story."
+              @story-text{
+ When we look at all this -- all the stuff a coder does and all the skills we need to do them -- it is a lot! But the good news is that you are building these skills all over the place, not just in this class. Every time you figure out a tough homework problem all on your own, you are using your problem-solving, self-reliance, and perseverance skills. At soccer practice you are building up your teamwork, communication, and grit skills.
 
-;add new stories to this list for testing and for release onto website's story page
-(define (metacognitive-stories)
-  (list (rethinking-bugs)
-        (a-path-in-your-brain-story)
-        (coder-skills-story)))
+ Even in this class, we work on these skills in different ways -- stories and games involving coding, and stories and games that don't seem to have anything to do with computers and coding. We are always improving the skills and knowledge that it takes to be a great coder so you can go on to be the very best coders! Or, you can take these skills and go be awesome at any one of these other things, and more!}))
 
-(module+ test
-  (require rackunit)
 
-  (metacognitive-stories))
+
+;=== CODER SKILLS story, broken up into chapters ====
+;CH1
+
+(define (coder-skills-story:just-ch1)
+  (story-mode "The Life and Times of a Real Coder: Chapter 1/3" 10
+              "The first part of a three-part story, investigating all the different skills it takes to be the best coder we can be."
+              (story-text (coder-skills-story:tips #:broken-up-by-ch? #t)
+                          (embedded-stories (coder-skills-story:highlights-ch1)
+                                            (coder-skills-story:prose-ch1)))))
+
+
+(define (coder-skills-story:highlights-ch1)
+  (story-mode "The Life and Times of a Real Coder Ch1: Story at a Glance" 10
+              "Plot Points for ad-libbed telling of The Life and Times... story, prologue and Chapter 1."
+              (story-text
+               (b "Prologue")
+               (steps
+                "Who here wants to code as a job? Who wants to do something else?"
+                "Being a coder takes a lot of different skills that cna help us in lots of different fields")
+               (b "Chapter 1: The Code")
+               (steps
+                "What does a coder do? -- Write, read, edit and debug code"
+                "What skills do we need for that? -- (ex. coding knowledge, problem-solving, organization, logic, computational thinking, creativity...)"
+                "Where else are these skills useful? -- (ex. math, writing, homework, art...)"))))
+
+(define (coder-skills-story:prose-ch1)
+  (story-mode "The Life and Times of a Real Coder Ch1: Full Text" 10
+              "The first part of a three-part story, investigating all the different skills it takes to be the best coder we can be."
+              (story-text (embedded-stories (coder-skills-story:prologue)
+                                            (coder-skills-story:ch1)))))
+
+
+;CH 2
+
+(define (coder-skills-story:just-ch2)
+  (story-mode "The Life and Times of a Real Coder: Chapter 2/3" 10
+              "The second part of a three-part story, investigating all the different skills it takes to be the best coder we can be."
+              (story-text (coder-skills-story:tips #:broken-up-by-ch? #t)
+                          (embedded-stories (coder-skills-story:highlights-ch2)
+                                            (coder-skills-story:prose-ch2)))))
+
+(define (coder-skills-story:highlights-ch2)
+  (story-mode "The Life and Times of a Real Coder Ch2: Story at a Glance" 10
+              "Plot Points for ad-libbed telling of The Life and Times... story, Chapter 2."
+              (story-text
+               (b "Review")
+               (steps
+                "What did we learn about coders and the skills we need last time?")
+               (b "Chapter 2: The People")
+               (steps
+                "What else does a coder do? -- Work with people"
+                "What skills do we need for that? -- (ex. communication [verbal, written and visual], teamwork...)"
+                "Where else are these skills useful? -- (ex. school projects, sports, job, socially...)")
+              )))
+
+(define (coder-skills-story:prose-ch2)
+  (story-mode "The Life and Times of a Real Coder Ch2: Full Text" 10
+              "The second part of a three-part story, investigating all the different skills it takes to be the best coder we can be."
+              (story-text (embedded-stories (coder-skills-story:ch2)))))
+
+;CH 3
+(define (coder-skills-story:just-ch3)
+  (story-mode "The Life and Times of a Real Coder: Chapter 3/3" 10
+              "The third and final part of a three-part story, investigating all the different skills it takes to be the best coder we can be."
+              (story-text (coder-skills-story:tips #:broken-up-by-ch? #t)
+                          (embedded-stories (coder-skills-story:highlights-ch3)
+                                            (coder-skills-story:prose-ch3)))))
+
+(define (coder-skills-story:highlights-ch3)
+  (story-mode "The Life and Times of a Real Coder Ch3: Story at a Glance" 150
+              "Plot Points for ad-libbed telling of The Life and Times... story, Chapter 3 and epilogue."
+              (story-text
+               (b "Review")
+               (steps
+                "What have we learned about coders and the skills we need so far?")
+               (b "Chapter 3: The Coder")
+               (steps
+                "What else does a coder do? -- Work with own brain"
+                "Meaning: \"code\" our brain by learning, \"edit code\" by learning new things, \"debug code\" by finding and fixing false assumptions"
+                "What skills do we need for that? -- (ex. grit, self-reliance, curiosity, humility...)"
+                "Where else are these skills useful? -- (ex. sports, musical instrument, writing...)")
+               (b "In Conclusion")
+               (steps
+                "It takes a lot of different skills to be a coder"
+                "You learn and use these skills everywhere"
+                "Like in our stories and games!"))))
+
+(define (coder-skills-story:prose-ch3)
+  (story-mode "The Life and Times of a Real Coder Ch3: Full Text" 10
+              "The third and final part of a three-part story, investigating all the different skills it takes to be the best coder we can be."
+              (story-text (embedded-stories (coder-skills-story:ch3)
+                                            (coder-skills-story:epilogue)))))
+
+
+  
+
 

@@ -3,16 +3,36 @@
 (provide name-memory-game
          name-and-motion
          name-alliteration
+         compass-name-game
          name-games)
 
 (require website/bootstrap
          "../base.rkt"
          "../tags/main.rkt"
-         "../rendering.rkt")
+         "../rendering.rkt"
+         website-js/components/accordion-cards)
 
 ;Language standardization:
 ; use TEAM instead of CLASS
 ; use Player instead of STUDENT
+
+
+
+;=== add games here for testing and publishing live ===
+(define (name-games)
+  (list
+   (name-memory-game)
+   (name-and-motion)
+   (name-alliteration)
+   (compass-name-game)
+   ))
+
+
+(module+ test
+  (require rackunit)
+
+  (name-games))
+
 
 
 (define (name-memory-game)
@@ -84,23 +104,51 @@
                 (tips "Variation: As every Player adds their alliterative adjective, name and movement, the whole Team repeats all previous Players as well as the new addition."
                       "Variation: Before adding their alliterative adjective, name and movement, a Player must speed through all previous Players'.")))))
 
+(define (compass-name-game)
+  (with-tags
+      (list name-game unplugged k2 3rd-5th)
+    (game-mode "Compass Name Game" 5
+               "A multi-level name game with speed and a technological flavor."
+               (game-info
+                (supplies-list)
+                (game-instructions
+                 "Levels must be played in order."
+                 (accordion-card #:header "Level One"
+                                 #:dark? #t
+                                 (steps "Players circle up around Coach"
+                                        "Coach points to a Player in the circle"
+                                        "That Player says their name and a fact of a given type (favorite computer activity, video game, food, what they did last weekend, etc)"
+                                        "Repeat steps 2 and 3 until every Player has shared at least once, Coach speeding up/switchng up order to keep Players on their toes!"))
+                 (accordion-card #:header "Level Two"
+                                 #:dark? #t
+                                 (steps (list "Coach assigns a Player to be the " (i "Online") " Player")
+                                        "Coach points to another Player"
+                                        (list "Online Player says " (i "this") " Player's name and fact")
+                                        "Repeat steps 2 and 3 several times"
+                                        "Coach assigns a new Online Player"
+                                        "Repeat steps 2 and 3 several times"
+                                        "Repeat steps 5 and 6 multiple times"))
+                 (accordion-card #:header "Level Three"
+                                 #:dark? #t
+                                 (steps "Coach assigns an Online Player"
+                                        (list "Coach points to " (i "two") " different Players, one with each hand")
+                                        (list "Online Player says the " (i "name") " of the Player that Coach is pointing to with their " (i "left") " hand")
+                                        (list "Online Player says the " (i "fact") " of the Player that Coach is pointing to with their " (i "right") " hand")
+                                        "Repeat steps 2-4 several times before assigning a new Online Player"
+                                        "Repeat steps 2-5 multiple times")))
+                (tips (list "Additional level options:"
+                            (ul
+                             (li "Designate a Player to take over the Coach's role as 'Pointer'.")
+                             (li "Designate two 'Online' students.")
+                             (li "Run an elimination round, where 'Online' students compete to stay in the circle.")
+                             (li "Have the students come up with new favorite things.")
+                             (li "Have the students mix up their positions in the circle.")
+                             (li "Run two circles at the same time.  When students are eliminated from one, send them to the other."))))
+                ))))
+
 
 ;look thru https://www.ultimatecampresource.com/ice-breakers/name-games/
 
 
 
 
-
-
-(define (name-games)
-  (list
-   (name-memory-game)
-   (name-and-motion)
-   (name-alliteration)
-   ))
-
-
-(module+ test
-  (require rackunit)
-
-  (name-games))

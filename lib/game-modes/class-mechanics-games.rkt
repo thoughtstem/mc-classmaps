@@ -29,6 +29,11 @@
               (supplies-list "Optional: Whiteboard or other writing materials for notes")
               (game-instructions
                "Make sure you have introduced whatever Code(s) you plan to create a Motto for with a story and discussion PRIOR to this game!"
+
+               @b{GOALS of Motto Creation:}
+               @ul{@li{Students co-create a linguistic tool that you can employ throughout the class, whenever you need to nudge students to apply certain values -- i.e. tenacity (rather than fear) in debugging, eagerness (rather than avoidance) when it comes to unknown concepts, and so on.  This is also a great customized attention-getter.}
+                   @li{Students create a personal attachment to the Code of Awesomeness by creating a callback that engages them and their particular interests/sense of humor/personal story.}}
+  
                (accordion-card #:header "Version One: Quick and Easy"
                                #:dark? #t
                                (steps "Coach chooses a specific Code to create a Motto for"

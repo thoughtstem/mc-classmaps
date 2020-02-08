@@ -24,6 +24,34 @@
          "../tags/main.rkt"
          "../rendering.rkt")
 
+;=== collection list ====
+;add to this list for testing and launching on Games page
+(define (coding-games)
+  (list
+   (hello-world-beginner-game)
+   (code-anatomy)
+   (disintegrating-code)
+   (reverse-engineering)
+   (building-up)
+   (code-carousel)
+   (code-relay)
+   (code-olympics)
+   (create-a-challenge)
+   (reverse-translation)
+   (mind-meld)
+   (build-a-bug-workshop)
+   (code-connect-four)
+   (try-it-first)
+   (what-does-this-do)
+   (open-code-review)
+   ))
+
+
+(module+ test
+  (require rackunit)
+
+  (coding-games))
+
 ;Language standardization:
 ; use TEAM instead of CLASS
 ; use Player instead of STUDENT
@@ -391,30 +419,3 @@
 
 
 
-
-
-(define (coding-games)
-  (list
-   (hello-world-beginner-game)
-   (code-anatomy)
-   (disintegrating-code)
-   (reverse-engineering)
-   (building-up)
-   (code-carousel)
-   (code-relay)
-   (code-olympics)
-   (create-a-challenge)
-   (reverse-translation)
-   (mind-meld)
-   (build-a-bug-workshop)
-   (code-connect-four)
-   (try-it-first)
-   (what-does-this-do)
-   (open-code-review)
-   ))
-
-
-(module+ test
-  (require rackunit)
-
-  (coding-games))

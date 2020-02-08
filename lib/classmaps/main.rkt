@@ -16,6 +16,7 @@
          final-jam-map
          coa:bug-hunter-map
          coa:team-map
+         rubys-class-launch-map
          (all-from-out "./academic/main.rkt"))
 
 ;classmap struct: add desc or tips
@@ -93,7 +94,22 @@
           (game-with-minutes 25 (final-jam))
           (lock-game-mode (scoring-jam))
           (lock-game-mode (market-time))
-          (lock-story-mode (meta-story-badges))))) 
+          (lock-story-mode (meta-story-badges)))))
+
+
+;==== sample map for training ===
+
+(define (rubys-class-launch-map)
+  (classmap "Ruby's Awesome Class Launch Map (v3)"
+            "A variation on the Class Launch Map by Coach Ruby"
+    (list (coach-story) ;5
+          (compass-name-game) ;5
+          (class-intro) ;5
+          (story-with-minutes 15 (coa-stories)) ;15 -- 30
+          (coa-mottos-creation) ;10 --- 40
+          (hello-world-story) ;5  
+          (hello-world-beginner-game) ;10 -- 55
+          (meta-story-reflect "One UNKNOWN we OVERCAME today")))) ; 5
 
 ;===========================
 
@@ -122,9 +138,11 @@
    (computational-thinking-wip-pack)
    (computational-thinking-for-young-elementary-pack)
    (computational-thinking-for-upper-elementary-pack)
+   (rubys-class-launch-map)
    )))
 
 (module+ test
   (require rackunit)
 
-  (all-classmaps))
+  (all-classmaps)
+  (rubys-class-launch-map))

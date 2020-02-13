@@ -195,15 +195,16 @@
               (game-with-minutes 10 (try-it-first))
               (meta-story-one-word))))
 
-;unedited map
 (define (bugs:depth-2 #:intro intro)
   (classmap "More On Bugs"
-            "A unplugged/plugged classmap on debugging skills."
+            "Learn some computer science history in this map."
             (list
               intro
-              (game-with-minutes 10 (person-bot:point))
-              (story-with-minutes 10 (bug-hunter-fable))
-              (game-with-minutes 10 (build-a-bug-workshop))
+              (game-with-minutes 10 (chain-reaction))
+              (first-bug-story)
+              (game-with-minutes 10 (preface-game
+                                     (p "Follow up this activity with typing up and running the code. Hide the code and only show the description that the Players came up with for an added challenge!")
+                                     (reverse-translation)))
               (meta-story-reflect)
              )))
             

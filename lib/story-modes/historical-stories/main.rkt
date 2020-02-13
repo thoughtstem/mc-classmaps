@@ -183,14 +183,63 @@
                 }
                 )))
 
-;=== OTHER HISTORICAL STORIES ====
+;=== BUG HISTORY STORIES ====
 
 (define (first-bug-story)
-  (with-tags (list historical)
-    (story-mode "The First Computer Bug..." 5
+  (with-tags (list historical debugging)
+    (story-mode "The First Computer Bug..." 10
+                "The story of the moth in Mark II"
+                (story-text (first-bug-story:snapshot)
+                            (embedded-stories (first-bug-story:highlights)
+                                              (first-bug-story:prose))
+                            (first-bug-story:questions)
+                            (first-bug-story:tips))
+                )))
+
+(define (first-bug-story:tips)
+  (tips (list "Pull up picture of the "
+              (a href: "https://cdn.britannica.com/93/23593-050-99D22EC5/Harvard-Mark-I-Howard-Aiken-ballistics-calculations-1943.jpg" "Harvard Mark I")
+              " (not many photos/info about Mark II), and the "
+              (a href: "https://en.wikipedia.org/wiki/Grace_Hopper#/media/File:H96566k.jpg" "infamous moth") ".")
+        (list "Cool facts about the Harvard Mark I and II:"
+              (ul (li "Mark II was completed in 1944")
+                  (li "Mark I weighed over 9,000 lbs and was 51 ft long, 8 ft tall and 2 ft wide.")
+                  (li "Mark I had 60 sets of 24 switches each to manually enter data.")
+                  (li "Mark I took 6 seconds to complete a multiplication task.")
+                  (li "Mark II was completed in 1947")
+                  (li "Mark II weighed 46,000 lbs!")
+                  (li "Mark II took less than a second to complete a multiplication task.")))))
+
+(define (first-bug-story:snapshot)
+  (story-summary-and-goals
+   "Learn the story of the First Computer bug -- a literal moth! -- and the common misconceptions about the story. On the way, also learn about Grace Hopper and about the creation of some of the first computers."
+   (list "Learn about Grace Hopper, an important historical figure in CS"
+         "Connecting with CS history"
+         "Not all stories are as true as they seem!"
+         "Seeing BUGS in the \"real world\" -- something that even pros deal with")))
+
+(define (first-bug-story:highlights)
+  (story-mode "The First Computer Bug: Highlights" 10
+              "Plot Points for ad-libbed telling of the First Computer Bug story."
+              (story-text
+               (steps (list "Introduce " (b "Grace Hopper") ": computer scientist of the 40's, worked on some of the first computers -- Harvard Mark I and II.")
+                      (list "Tell the Grace-Hopper-is-the-First-Debugger " (b "myth") ":"
+                            (ul (li "Grace Hopper was trying to find the cause of a problem in the Harvard Mark II. She found a moth in the circuits! This is why we call it debugging.")))
+                      (list (b "Clarify") " the detais of what really happened:"
+                            (ul (li "Grace Hopper wasn't working on the Mark II when this happened (as should would tell everyone!)")
+                                (li "The term \"bug\" int this sense had been used in engineering for a long time -- Even Thomas Edison used it!")))
+                      (list (b "Important Epilogue") ": This doesn't lessen Grace Hopper's importance! She still:"
+                            (ul (li "Wrote some of the first glossaries and computer science texts, popularizing the term \"bug\"")
+                                (li "Invented one of the first programming languages: COBOL")
+                                (li "Co-create the Mark I and II: paving the way for all computers to come")
+                                (li "Believed and taught a similar philosophy that MetaCoders holds: Coding is Language, to be a good at coding (or math, or engineering) you must also be a good communicator")))
+                      ))))
+
+(define (first-bug-story:prose)
+    (story-mode "The First Computer Bug: Full Text" 10
                 "The story of the moth in Mark II"
                 @story-text{
-                  Grace Hopper was one of the most famous early computer scientists, a pioneer in our field, and undeniably a mathematical and linguistic genius.  Among her many accomplishments, she is often credited for the first case of literal "debugging".  The myth (which isn't true) often gets told as follows.  
+                  Grace Hopper was one of the most famous early computer scientists, a pioneer in our field, and undeniably a mathematical and linguistic genius.  Among her many accomplishments, she is often credited for the first case of literal "debugging".  The myth (which isn't true) often gets told as follows:  
                   
                   @i{One day in 1946, Grace Hopper realized that the Harvard Mark II computer (shown in pictures below) was malfunctioning.  After checking the usual sources of errors and finding nothing, she began to open up panels of her giant computer.}
 
@@ -208,44 +257,47 @@
                   
                   She was a fierce advocate for the power learning to write well, in all mediums, not just in code and symbols: When she was a college math professor, she would often have her math students write essay.  "[It is] no use trying to learn math unless [you can] communicate it with other people," she would argue.  She applied that same philsophy to her work as a hardware and software engineer.  She was a fantastic engineer with top-notch communication skills -- a crisp and clear writing style that allowed her to not just @i{be} a genuis, but to help others become geniuses.  
 
-                  So, although she didn't physically pull a moth out of the Mark II computer, she did help design the computer that the moth came out of.  During her years of designing computers and programming languages, she reached the rank of Rear Admiral in the Navy.  When she died, she received full military honors.  
+                  So, although she didn't physically pull a moth out of the Mark II computer, she did help design the computer that the moth came out of.  During her years of designing computers and programming languages, she reached the rank of Rear Admiral in the Navy.  When she died, she received full military honors.}
+                ))
 
-                  @(question-section
-                     (comprehension-questions
-                       "Who was Grace Hopper?"
-                       "Which branch of the military was Grace Hopper in?"
-                       "What is the name of the computer that the moth was found in?"
-                       '("Was the moth found before or after World War II?"
-                         "WWII ended in 1945.  The bug was found in 1946."))
-                     (creativity-questions
-                       "Why did Grace Hopper make her math students write essays?"
-                       "In what way can becoming a better writer make you better at math?"
-                       "In what way can becoming a better writer make you better at coding?"
-                       "In what way can becoming better at coding make you better at writing?"
-                       "In what way can becoming better at coding make you better at math?"))
-                }
-                )))
+(define (first-bug-story:questions)
+  (question-section
+   (comprehension-questions
+    "Who was Grace Hopper?"
+    "Which branch of the military was Grace Hopper in?"
+    "What is the name of the computer that the moth was found in?"
+    '("Was the moth found before or after World War II?"
+      "WWII ended in 1945.  The bug was found in 1946."))
+   (creativity-questions
+    "Why did Grace Hopper make her math students write essays?"
+    "In what way can becoming a better writer make you better at math?"
+    "In what way can becoming a better writer make you better at coding?"
+    "In what way can becoming better at coding make you better at writing?"
+    "In what way can becoming better at coding make you better at math?")))
+
+
+;==== mars orbiter story
 
 (define (mars-orbiter-bug-story)
   (with-tags (list historical)
     (story-mode "The Mars Orbiter Bug" 10
                 "A mission to Mars is several miles (or kilometers) off track -- leading to disaster."
                 (story-text (mars-orbiter-bug-story:snapshot)
-                            (mars-orbiter-but-story:tips)
+                            (mars-orbiter-bug-story:tips)
                             (embedded-stories (mars-orbiter-bug-story:highlights)
                                               (mars-orbiter-bug-story:prose))
                             (mars-orbiter-bug-story:questions)
                             ))))
 
-(define (mars-orbiter-but-story:tips)
+(define (mars-orbiter-bug-story:tips)
   (tips "Don't forget ask questions throughout and at the end! (see suggestions at the end)"))
 
 (define (mars-orbiter-bug-story:snapshot)
   (story-summary-and-goals
    "A true story about a famous bug that caused the loss of a Mars Orbiter -- when some coders wrote the code thinking in Metric kilometers while others were thinking and writing in Imperial miles!"
-   "Rethinking Bugs practice -- was the bug in the computer? or in the coders?"
-   "Learning some cool computer science history"
-   "Seeing BUGS in the \"real world\" -- something that even pros deal with"))
+   (list "Rethinking Bugs practice -- was the bug in the computer? or in the coders?"
+         "Learning some cool computer science history"
+         "Seeing BUGS in the \"real world\" -- something that even pros deal with")))
 
 (define (mars-orbiter-bug-story:highlights)
   (story-mode "The Mars Orbiter Bug: Highlights" 10

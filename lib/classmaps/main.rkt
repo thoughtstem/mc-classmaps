@@ -79,13 +79,13 @@
 ;What bugs are, and how we think about them.  
 (define (bugs-map)
   (classmap "All About Bugs"
-            "Dive into Story-Mode and get to know BUGS!"
-    (list (first-bug-story)
-          (mars-orbiter-bug-story)
-          (game-with-minutes 15 (add-pair-programming (build-a-bug-workshop)))
-          (rethinking-bugs)
-          (build-a-bug-workshop)
-          (meta-story-deep-reflect "what we learned about bugs today"))))
+            "Get to know BUGS and a different way of thinking about them."
+    (list ;cutting somethings, trying a less is more approach
+     ;(first-bug-story)
+     (mars-orbiter-bug-story) ; 10
+     (game-with-minutes 25 (build-a-bug-workshop)) ;25
+     (rethinking-bugs) ;15
+     (meta-story-deep-reflect "what we learned about bugs today")))) ;10
 
 (define (final-jam-map)
   (classmap "Final Jam Map"

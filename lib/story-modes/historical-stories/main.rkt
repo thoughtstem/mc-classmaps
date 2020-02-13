@@ -3,7 +3,8 @@
 (provide hello-world-story
          hello-world-story:detailed
          first-bug-story
-         mars-orbiter-bug-story)
+         mars-orbiter-bug-story
+         historical-stories)
 
 (require 
  website/bootstrap
@@ -11,6 +12,22 @@
  mc-classmaps/lib/tags
  mc-classmaps/lib/rendering
  website-js/components/accordion-cards)
+
+
+;collection for testing and posting to stories page
+
+(define (historical-stories)
+  (list (hello-world-story)
+        (hello-world-story:detailed)
+        (first-bug-story)
+        (mars-orbiter-bug-story)))
+
+(module+ test
+  (require rackunit)
+
+  (historical-stories))
+
+
 
 ;===== HELLO WORLD STORIES ===
 
@@ -211,14 +228,52 @@
 
 (define (mars-orbiter-bug-story)
   (with-tags (list historical)
-    (story-mode "The Mars Orbiter Bug" 5
+    (story-mode "The Mars Orbiter Bug" 10
+                "A mission to Mars is several miles (or kilometers) off track -- leading to disaster."
+                (story-text (mars-orbiter-bug-story:snapshot)
+                            (mars-orbiter-but-story:tips)
+                            (embedded-stories (mars-orbiter-bug-story:highlights)
+                                              (mars-orbiter-bug-story:prose))
+                            (mars-orbiter-bug-story:questions)
+                            ))))
+
+(define (mars-orbiter-but-story:tips)
+  (tips "Don't forget ask questions throughout and at the end! (see suggestions at the end)"))
+
+(define (mars-orbiter-bug-story:snapshot)
+  (story-summary-and-goals
+   "A true story about a famous bug that caused the loss of a Mars Orbiter -- when some coders wrote the code thinking in Metric kilometers while others were thinking and writing in Imperial miles!"
+   "Rethinking Bugs practice -- was the bug in the computer? or in the coders?"
+   "Learning some cool computer science history"
+   "Seeing BUGS in the \"real world\" -- something that even pros deal with"))
+
+(define (mars-orbiter-bug-story:highlights)
+  (story-mode "The Mars Orbiter Bug: Highlights" 10
+              "Plot Points for ad-libbed telling of the Mars Orbiter Bug story."
+              (story-text
+               (steps (list "The "(b "Mars Climate Orbiter") " was sent to Mars in 1998.")
+                      "The hopes for the mission was to study the atmosphere and climate of Mars and learn more about why the planet, which once was covered in water, became a desert."
+                      "After 286 days of space travel, the Orbiter got to Mars!"
+                      "But something went wrong -- it entered orbit too close to the atmosphere."
+                      "We lost contact and lost the Orbiter -- either to the surface of Mars or the depths of space. We don't know!"
+                      "What happened?"
+                      "A bug in the code written to control the Orbiter"
+                      "The code was written by many people in many places -- some of are used to the Metric system (kilometers, meters, liters, grams....) and others, the Imperial system (miles, inches, pounds...)"
+                      "What would happen if I told you to 'go forward 5' and I meant steps, but you thought I meant city blocks?"
+                      "That's what happened with the Orbiter!"
+                      ))))
+
+(define (mars-orbiter-bug-story:prose)
+    (story-mode "The Mars Orbiter Bug: Full Text" 10
                 "A mission to Mars is several miles (or kilometers) off track -- leading to disaster."
                 @story-text{
-                  The Mars Climate Orbiter left Earth one December (in 1998) and began its unmanned mission to that mysterious red planet -- which had once been covered in water.  The question on everyone's mind was: Where did Mars's water go?  Scientists had built the Mars Climate Orbiter to study the atmosphere and climate of the red planet, in hopes of figuring out where the water had gone, and what had turned that red planet from an ocean world into a desert.
+ Mars was once covered with water.  Ever since we discovered the evidence of this, the question on everyone's mind has been: Where did Mars' water go?
 
-                  The Mars Climate Oribter flew toward Mars for 286 days.  As it approached the planet, the computer began to fire its thrusters to establish an orbit around the planet.  But something went wrong.
+ In 1998, scientists launched the @b{Mars Climate Orbiter} on an unmanned mission: to study the atmosphere and climate of the red planet. Using this new information, scientists hoped to figure out where the water had gone, and what had turned that red planet from an ocean world into a desert.
 
-                  The Orbiter began to move too close to the atmosphere that it had come all this way to study.   Its engines began to fail, and communication with that $200 million dollar spaceship was lost.  To this day, we don't know where it is.  It may have been destroyed in the Martian atmosphere, or it may have continued onward, exiting the planet's gravitational pull.  It may be circling the sun to this day -- a tiny scrap of metal compared to the giant planets of the solar system.
+                  The Mars Climate Orbiter flew toward Mars for 286 days.  As it approached the planet, the computer began to fire its thrusters to establish an orbit around the planet.  But something went wrong.
+
+                  The Orbiter was too close to the atmosphere!  Its engines began to fail, and communication with that $200 million dollar spaceship was lost.  To this day, we don't know where it is.  It may have been destroyed in the Martian atmosphere, or it may have continued onward, exiting the planet's orbit.  It may be circling the sun to this day -- a tiny scrap of metal compared to the giant planets of the solar system.
 
                   Although we don't know what happened after contact was lost -- scientists and engineers back on Earth @i{do} know why the ship malfunctioned when it drew near its final destination.
 
@@ -236,27 +291,20 @@
 
                   So the numbers transmitted by one piece of software to the other were interpreted incorrectly, causing a message to be sent to the Orbiter that (accidentally) told the Orbiter to fly too close to the Martian atmosphere.  An analogy: suppose you told someone to run for 5 -- if they assumed you meant 5 miles they would run much farther than if they assumed you meant 5 kilometers. 
 
-                  Millions of dollars were lost, and a scientific mission doomed.  Most people say it happened because of a software bug.  But at MetaCoders, we know that the stories behind software bugs is more complex.  The bug caused the crash.  But what caused the bug?  
+                  Millions of dollars were lost, and a scientific mission doomed.  Most people say it happened because of a software bug.  But at MetaCoders, we know that the stories behind software bugs is more complex.  The bug caused the crash.  But what caused the bug? }))
 
-                  @(question-section
-                    (comprehension-questions
-                      "Why was the Orbiter launched?"
-                      "Did anyone die on the Orbiter?")
-                    (creativity-questions
-                      '("What caused the Mars Orbiter bug?  Whose fault is it?"
-                        "There's no clear answer to this question.  You could say that the programmer who wrote the faulty line caused the bug.  But then, the question is -- why did that programmer think they were supposed to be using non-metric units?  Why didn't the teams who wrote the two pieces of software communicate better about the units they were supposed to use?  Why does our society use two different kinds of units in the first place?  When discussing this it's mainly important to leave students with the understanding that things are more complex than they first thought.")
-                       "How do you make sure there are no bugs in your code?"
-                       "How do you think programmers make sure there are no bugs in gigantic, complicated pieces of code?"))
+(define (mars-orbiter-bug-story:questions)
+  (question-section
+   (comprehension-questions
+    "Why was the Orbiter launched?"
+    "Did anyone die on the Orbiter?")
+   (creativity-questions
+    '("What caused the Mars Orbiter bug?  Whose fault is it?"
+      "There's no clear answer to this question.  You could say that the programmer who wrote the faulty line caused the bug.  But then, the question is -- why did that programmer think they were supposed to be using non-metric units?  Why didn't the teams who wrote the two pieces of software communicate better about the units they were supposed to use?  Why does our society use two different kinds of units in the first place?  When discussing this it's mainly important to leave students with the understanding that things are more complex than they first thought.")
+    "How do you make sure there are no bugs in your code?"
+    "How do you think programmers make sure there are no bugs in gigantic, complicated pieces of code?")))
 
-                })))
+                
 
-
-(module+ test
-  (require rackunit)
-
-  (hello-world-story)
-  (hello-world-story:detailed)
-  (first-bug-story)
-  (mars-orbiter-bug-story))
 
 

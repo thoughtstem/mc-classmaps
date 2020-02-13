@@ -54,10 +54,6 @@
          (coach-story)
          (class-intro)
          (intro-jam)
-         ;history
-         (hello-world-story)
-         (first-bug-story)
-         (mars-orbiter-bug-story)
          ;metacognitive stories
          (boids-story)
          (youtube-story)
@@ -66,7 +62,8 @@
          (metacognitive-stories)
          (all-code-concept-stories)
          (all-meta-review-stories)
-         (all-badge-stories))))
+         (all-badge-stories)
+         (historical-stories))))
      string<?
      #:key story-mode-name ))
 

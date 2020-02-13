@@ -23,6 +23,8 @@
 ;===== CLASS LAUNCH GAMES =====
 
 (define (coa-mottos-creation)
+  (with-tags
+      (list unplugged)
   (game-mode "Code of Awesomeness Mottos" 10
              "Customize the Code of Awesomeness by creating a unique Motto for one or multiple Codes."
              (game-info
@@ -73,7 +75,7 @@
                                            "Teamwork makes the dream work!"
                                            "Be a BOSS!")))))
               (tips "Some Players will have their heart set on a Motto that is not chosen. Prepare to reassure Players that are disappointed -- \"There were lots of cool options, I'm sorry yours didn't win\" \"It's about the whole team, not just what you want, and this was the one the team chose.\" \"It's okay! There are more Codes and Mottos to come!\""
-                    "When leading a brainstorm, you may want to combine options or narrow down the list prior to voting, to simplify the process."))))
+                    "When leading a brainstorm, you may want to combine options or narrow down the list prior to voting, to simplify the process.")))))
 
 
 ;====== FINAL JAM =======

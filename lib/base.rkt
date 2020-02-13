@@ -199,13 +199,17 @@
    (ul
     (map li t))))
 
-(define (story-summary-and-goals sum . goals)
+(define (story-summary-and-goals sum goals)
+  (define goal-list
+    (if (list? goals)
+        goals
+        (list goals)))
   (div
    (h5 "Story Snap Shot")
    (p (b "Summary:") " " sum)
    (b "Goals and Gains:")
    (ul
-    (map li goals))
+    (map li goal-list))
   ))
 
 (require website-js/components/accordion-cards)

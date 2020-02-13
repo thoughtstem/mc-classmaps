@@ -53,12 +53,9 @@
 
     (skills:depth-1
      #:intro (story-stub "Review" 5 "What skills have we learned in this class so far?"))
-     
-    (skills:depth-2
-     #:intro (story-stub "Review" 5 "What did we learn about coder skills last time?"))
 
-    (skills:depth-3
-     #:intro (story-stub "Review" 5 "What did we learn about coder skills last time?"))
+    (bugs:depth-2
+     #:intro (story-stub "Review" 5 "What skills do we need to be a good debugger?"))
     )))
 
 (define (computational-thinking-for-lower-elementary-sequence)

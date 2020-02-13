@@ -42,7 +42,8 @@
 
  maybe-add-punct
  gm-inline-pre
- coach-asks) 
+ coach-asks
+ story-summary-and-goals) 
 
 (require website/bootstrap
          website/util
@@ -197,6 +198,15 @@
    (h5 "Tips & Tricks:")
    (ul
     (map li t))))
+
+(define (story-summary-and-goals sum . goals)
+  (div
+   (h5 "Story Snap Shot")
+   (p (b "Summary:") " " sum)
+   (b "Goals and Gains:")
+   (ul
+    (map li goals))
+  ))
 
 (require website-js/components/accordion-cards)
 (define (question-section . content)

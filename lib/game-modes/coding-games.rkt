@@ -337,7 +337,7 @@
                 (supplies-list "9 or 16 code cards"
                                "computers - 1 per Player")
                 (game-instructions
-                 (setup "Choose a set of 9 or 16 code cards with as few overlaps or contradictions as possible and arrange them into a 3x3 or 4x4 grid in a centralized location. Place the cards with the inmplementation-side (code) up for an easier game and specification-side up for a harder game.")
+                 (setup "Choose a set of 9 or 16 code cards with as few overlaps or contradictions as possible and arrange them into a 3x3 or 4x4 grid in a centralized location. Place the cards with the implementation-side (code) up for an easier game or specification-side up for a harder game.")
                
                  "Players write code independently, each trying to build an end product that matches multiple code cards on the grid -- forming a vertical, horizontal or diagonal line of cards on the grid.")
                 (tips "Can easily be made into a race against the clock or other Players on the team.")))))

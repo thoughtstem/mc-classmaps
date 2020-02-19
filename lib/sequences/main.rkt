@@ -1,6 +1,9 @@
 #lang at-exp racket
 
 (provide basic-sequence
+         basic-5-sequence
+         basic-6-sequence
+         basic-7-sequence
          computational-thinking-wip-sequence
          computational-thinking-for-lower-elementary-sequence
          computational-thinking-for-upper-elementary-sequence
@@ -15,10 +18,10 @@
   (sequence
     ;Aka: Baby Coach's First Maps!
     ;  Easter egg: If you are a coach looking at this code.  Don't worry.  You're not a baby.  You wouldn't be browsing through code on Github if you were.  :)
-    "8-week Starter Set"
+    "8-Week Starter Set"
 
     ;TODO: Say more about the scientific grounding of the maps in this sequence.
-    "This is a sequence of classmaps that is ideal for beginning coaches and for students of various levels."
+    "This is a sequence of classmaps that is ideal for beginning coaches running an 8-week course and works for students of various levels."
 
     ;TODO: Add Partner Practice map & fine tune final-jam-map
     ;  Issue: https://github.com/thoughtstem/mc-classmaps/issues/12
@@ -31,6 +34,45 @@
        (coa-focus-map)
        ;missing -- Partner Practice Map
        (final-jam-map))))
+
+(define (basic-5-sequence)
+  (sequence
+    "5-Week Starter Set"
+    "This is a sequence of classmaps that is ideal for beginning coaches running a 5-week course and works for students of various levels."
+
+    (list
+     (class-launch-map)
+     (coa:bug-hunter-map)
+     (first-badge-map)
+     (coa:team-map)
+     (final-jam-map))))
+
+(define (basic-6-sequence)
+  (sequence
+    "6-Week Starter Set"
+    "This is a sequence of classmaps that is ideal for beginning coaches running a 6-week course and works for students of various levels."
+
+    (list
+     (class-launch-map)
+     (first-badge-map)
+     (coa:bug-hunter-map)
+     (coa:team-map)
+     (coa-focus-map) ;maybe replace with Partner Practice map when complete?
+     (final-jam-map))))
+
+(define (basic-7-sequence)
+  (sequence
+    "7-Week Starter Set"
+    "This is a sequence of classmaps that is ideal for beginning coaches running a 7-week course and works for students of various levels."
+
+    (list
+     (class-launch-map)
+     (coa:bug-hunter-map)
+     (first-badge-map)
+     (coa:team-map)
+     (coa-focus-map)
+     (bugs-map);maybe replace with Partner Practice map when complete?
+     (final-jam-map))))
 
 (define (computational-thinking-wip-sequence)
   (sequence
@@ -105,7 +147,10 @@
 (define (all-sequences)
   (list
    (basic-sequence)
-    (computational-thinking-wip-sequence)
+   (computational-thinking-wip-sequence)
+   (basic-5-sequence)
+   (basic-6-sequence)
+   (basic-7-sequence)
     ;taken out as not to clutter the live page with unfinished sequences that are not in use
     ;(computational-thinking-for-lower-elementary-sequence)
     ;(computational-thinking-for-upper-elementary-sequence)

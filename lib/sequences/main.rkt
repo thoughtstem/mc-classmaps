@@ -23,7 +23,7 @@
     ;TODO: Say more about the scientific grounding of the maps in this sequence.
     "This is a sequence of classmaps that is ideal for beginning coaches running an 8-week course and works for students of various levels."
 
-    ;TODO: Add Partner Practice map & fine tune final-jam-map
+    ;TODO:  fine tune final-jam-map
     ;  Issue: https://github.com/thoughtstem/mc-classmaps/issues/12
     (list 
       (class-launch-map)
@@ -32,7 +32,7 @@
        (coa:team-map)
        (bugs-map)
        (coa-focus-map)
-       ;missing -- Partner Practice Map
+       (partner-practice-map)
        (final-jam-map))))
 
 (define (basic-5-sequence)
@@ -57,7 +57,7 @@
      (first-badge-map)
      (coa:bug-hunter-map)
      (coa:team-map)
-     (coa-focus-map) ;maybe replace with Partner Practice map when complete?
+     (partner-practice-map)
      (final-jam-map))))
 
 (define (basic-7-sequence)
@@ -71,7 +71,7 @@
      (first-badge-map)
      (coa:team-map)
      (coa-focus-map)
-     (bugs-map);maybe replace with Partner Practice map when complete?
+     (partner-practice-map)
      (final-jam-map))))
 
 (define (computational-thinking-wip-sequence)

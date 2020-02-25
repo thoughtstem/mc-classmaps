@@ -134,7 +134,7 @@
                 (game-instructions
                  (setup "Type in or copy/paste implementation from site. Run the code, then adjust the windows so you can see the result of the running code but NOT the implementation itself.")
                  (steps "Coach shows Team the result of running implementation"
-                        "Team works together to write a detailed specification of the unseen code on paper/whiteboard "
+                        "Team works together to write a detailed specification of the unseen code on paper/whiteboard"
                         "Team works together to write the code to implement the specification (and get the result they see) on paper/whiteboard"
                         "Coach or Player types up the code on the computer"
                         "Test the code"

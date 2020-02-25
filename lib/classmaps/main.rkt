@@ -16,6 +16,7 @@
          final-jam-map
          coa:bug-hunter-map
          coa:team-map
+         partner-practice-map
          rubys-class-launch-map
          (all-from-out "./academic/main.rkt"))
 
@@ -80,12 +81,24 @@
 (define (bugs-map)
   (classmap "All About Bugs"
             "Get to know BUGS and a different way of thinking about them."
-    (list ;cutting somethings, trying a less is more approach
+    (list ;cutting some things, trying a less is more approach
      ;(first-bug-story)
      (mars-orbiter-bug-story) ; 10
      (game-with-minutes 25 (build-a-bug-workshop)) ;25
      (rethinking-bugs) ;15
      (meta-story-deep-reflect "what we learned about bugs today")))) ;10
+
+(define (partner-practice-map)
+  (classmap "Partner Practice"
+            "Prepare for the Final Jam by reviewing code and practicing pair programming."
+            (list (starting-review "Final Jam") ;5
+                  (game-with-minutes 20 (add-pair-programming (reverse-translation))) ;20 -- 25
+                  (story-with-minutes 10
+                   (meta-story-reflect "coding with a partner: what's challenging? What's easier?")) ;10 -- 35
+                  (game-with-minutes 20 (add-pair-programming (building-up))) ;20 -- 55
+                  (meta-story-one-word) ;5 -- 60
+                  ))) 
+
 
 (define (final-jam-map)
   (classmap "Final Jam Map"
@@ -128,7 +141,7 @@
        (coa:team-map)
        (bugs-map)
        (coa-focus-map)
-       
+       (partner-practice-map)
        (final-jam-map)))
 
 (define (all-classmaps)

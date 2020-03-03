@@ -211,7 +211,7 @@
                   (li "Mark II took less than a second to complete a multiplication task.")))))
 
 (define (first-bug-story:snapshot)
-  (story-summary-and-goals
+  (summary-and-goals
    "Learn the story of the First Computer bug -- a literal moth! -- and the common misconceptions about the story. On the way, also learn about Grace Hopper and about the creation of some of the first computers."
    (list "Learn about Grace Hopper, an important historical figure in CS"
          "Connecting with CS history"
@@ -293,7 +293,7 @@
   (tips "Don't forget ask questions throughout and at the end! (see suggestions at the end)"))
 
 (define (mars-orbiter-bug-story:snapshot)
-  (story-summary-and-goals
+  (summary-and-goals
    "A true story about a famous bug that caused the loss of a Mars Orbiter -- when some coders wrote the code thinking in Metric kilometers while others were thinking and writing in Imperial miles!"
    (list "Rethinking Bugs practice -- was the bug in the computer? or in the coders?"
          "Learning some cool computer science history"

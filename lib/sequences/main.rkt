@@ -4,6 +4,7 @@
          basic-5-sequence
          basic-6-sequence
          basic-7-sequence
+         basic-12-sequence
          computational-thinking-wip-sequence
          computational-thinking-for-lower-elementary-sequence
          computational-thinking-for-upper-elementary-sequence
@@ -13,6 +14,10 @@
          mc-classmaps/lib/classmaps/main
          mc-classmaps/lib/game-modes/main
          mc-classmaps/lib/story-modes/main)
+
+
+;===== STARTER SETS for various # of sessions =====
+
 
 (define (basic-sequence)
   (sequence
@@ -73,6 +78,31 @@
      (coa-focus-map)
      (partner-practice-map)
      (final-jam-map))))
+
+(define (basic-12-sequence)
+  (sequence
+    "12-Week Starter Set (in progress)"
+
+    "This is a sequence of classmaps that is ideal for beginning coaches running a 12-week course and works for students of various levels."
+
+    (list 
+     (class-launch-map)
+     (coa:bug-hunter-map)
+     (first-badge-map)
+     (coa:team-map)
+     (bugs-map)
+     (coa-focus-map)
+     ;need map
+     ;need map
+     ;need map
+     ;need map
+     (partner-practice-map)
+     (final-jam-map))))
+
+
+
+
+;===== OTHER SETS ======
 
 (define (computational-thinking-wip-sequence)
   (sequence
@@ -151,6 +181,7 @@
    (basic-5-sequence)
    (basic-6-sequence)
    (basic-7-sequence)
+   (basic-12-sequence)
     ;taken out as not to clutter the live page with unfinished sequences that are not in use
     ;(computational-thinking-for-lower-elementary-sequence)
     ;(computational-thinking-for-upper-elementary-sequence)

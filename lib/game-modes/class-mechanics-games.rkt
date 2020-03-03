@@ -28,6 +28,10 @@
   (game-mode "Code of Awesomeness Mottos" 10
              "Customize the Code of Awesomeness by creating a unique Motto for one or multiple Codes."
              (game-info
+              #:summary-goals (summary-and-goals "Foster a personal connection to the Code of Awesomeness by creating a unique motto or callback for each code."
+                                                 (list "Personalize the lessons in a Code"
+                                                       "Create a shorthand for those connections through a simple phrase"
+                                                       "Practice teamwork, communication and compromise"))
               (supplies-list "Optional: Whiteboard or other writing materials for notes")
               (game-instructions
                "Make sure you have introduced whatever Code(s) you plan to create a Motto for with a story and discussion PRIOR to this game!"
@@ -81,18 +85,161 @@
 ;====== FINAL JAM =======
 
 (define (final-jam)
-  (game-mode "Final Jam" 20
-             "The end of most courses!"
+  (with-tags (list jam coding teamwork partners review competitive-option review k2 3rd-5th middle-school high-school)
+  (game-mode "Final Jam!" 20
+             "It's the Final JAM-down!"
              (game-info
-              (supplies-list)
-              (game-instructions "Students take everything they have learned and build a game or other program in the language they have been studying. Usually a partnered game."))))
+              #:summary-goals (summary-and-goals
+                               "Players pair program to code in their learned language, practicing all the skills they have learned in this course."
+                               (list "This feels like a different, special day"
+                                     "Players write working code"
+                                     "Players feel accomplished and proud of what they have done and learned"))
+              (supplies-list "computers - 1 per pair plus some spare"
+                             "code card deck"
+                             "index cards"
+                             "writing utencils"
+                             "stickers")
+              (game-instructions
+               
+               (accordion-card #:header "Pre-Jam: Bonus Point Cards"
+                               #:dark? #t
+                               (steps  "Players pair up, if not already partnered"
+                                       "Judge hands out index cards"
+                                       "Partners create their own Team Name; write it on the card"
+                                       "Partners keep card nearby, to collect bonus point stickers/total point stickers"))
+               
+               (accordion-card #:header "3rd and Up Pre-Jam: Code Card Prompts"
+                               #:dark? #t
+                               (steps (list "Judge hands out three random code cards to each Pair " (b "code-side-down"))
+                                      (list "Judge reiterates: Players can "(b"not") " flip card without paying the cost in MetaMoney")
+                                      "Judge reiterates: Players can use these cards to insprire their coding, not required"))
+
+               (accordion-card #:dark? #t
+                               #:header "Final Jam: K-2nd"
+               (steps "Judge starts a timer, set for the length of the Jam"
+                      "Judge sets a second timer, for 3 minutes"
+                      (list "Judge gives each pair a small stack of code cards, code-side-down"
+                            (ul (li "If using ratchet, make sure lang line matches the cards given")
+                                (li "Judge can swap out langs for new cards occasionally through the Jam")))
+                      "Players begin, coding the first card!"
+                      "One partner types at a time"
+                      "When 3 min timer beeps, Partners swap \"drivers\"/typists"
+                      "Judge restarts 3 min timer each time"
+                      "Judge awards stickers for every code card completed"
+                      (list "Judge supervises and:"
+                            (ul (li "Refreshes stacks of code cards, when running low")
+                                (li "Recieves MetaMoney for purchases of resources")
+                                (li "Adjusts prices for resources higher or lower to balance challenge level")
+                                (li "Adds new resources if needed")
+                                (li "Reminds players to swap drivers/typists")
+                                (li "Gives frequent time warnings")))))
+               
+               (accordion-card #:dark? #t
+                               #:header "Final Jam: 3rd and up"
+               (steps "Judge starts a timer, set for the length of the Jam"
+                      "Judge sets a second timer, for 3 minutes"
+                      "Players begin!"
+                      "One partner types at a time"
+                      "When 3 min timer beeps, Partners swap \"drivers\"/typists"
+                      "Judge restarts 3 min timer each time"
+                      (list "Judge supervises and:"
+                            (ul (li "Awards bonus points"
+                                    (li "Takes away bonus points, if needed")
+                                    (li "Recieves MetaMoney for purchases of resources")
+                                    (li "Adjusts prices for resources higher or lower to balance challenge level")
+                                    (li "Adds new resources if needed")
+                                    (li "Reminds players to swap drivers/typists")
+                                    (li "Gives frequent time warnings")))))) )
+              
+              (tips (list "Additional Resources to add may include:"
+                          (ul (li "An Asset Library -- a list of availble sprites/assets on a computer or written elsewhere")
+                 (li "A Definitions Library -- a list of available functions/definitions on a computer or written elsewhere")
+                 (li "A Code Guide -- an outline of common code structure, such as definitions. Shown to all on projector or available for checking in")))
+                    "All players should end with some running code. Assist as needed, within the given rules, even if you have to make it free to ask Coach assistance for the last 2 minutes."
+                    "You should take a strong tone in the beginning regarding The Judge Will Not Help.  But if students are struggling during the Game Jam, you can (of course) be helpful in giving hints."
+                    "K-2nd: create extra challenges for students to complete beyond the code cards as well, if needed!")))))
+
+
+
 
 (define (scoring-jam)
+  (with-tags (list jam partners competitive-option k2 3rd-5th middle-school high-school)
   (game-mode "Final Jam Scoring & Awarding" 10
-             "Students score their own creation using the following formula with the Coach's guidance."
+             "Players score their own creation using the following formula with the Coach's guidance."
              (game-info
-              (supplies-list)
-              (game-instructions "DO IT"))))
+              #:summary-goals (summary-and-goals
+                               "Players use a formula to score their own games, with Coach assistance. Coach awards MetaMoney!"
+                               (list "Focus on success, less on competition"
+                                     "Players feel accomplished!"))
+              (supplies-list "3rd and up: completed, running code"
+                             "K-2nd: total number of cards completed"
+                             "index card (same as bonus/team name cards)"
+                             "writing utencils"
+                             "MetaMoney"
+                             "OPTIONAL: whiteboard/projector for displaying formula")
+              (game-instructions
+               (accordion-card #:dark? #t
+                               #:header "Scoring for 3rd and up"
+                               (h5 "Standard Formula:")
+                               (gm-inline-pre "GAME-SCORE = (BONUSES * 5) + (NUMBER-OF-PARENTHESES + NUMBER-OF-KEYWORDS)")
+                               (br)
+                               (i "You are welcome to adjust this formula as needed (especially the Bonus * 5 for groups where you want to limit multiplication). However, it is suggested to adjust the point:dollar ratio instead.")
+                               (br)
+                               (steps "If possible: Coach displays entire formula and explains it"
+                                      (list "Coach guides Players through steps one at a time:"
+                                            (steps "Count total parens, write number down"
+                                                   "Count total keywords, write number down"
+                                                   "Add parens and keywords together"
+                                                   "Count total bonuses, write number down"
+                                                   "Multiply bonuses by 5"
+                                                   "Add bonus total and paren/keyword total"))
+                                      "Coach decides point:dollar ratio based on point range (see below)"
+                                      "Coach briefly proofs point total, awards MetaMoney to each pair"))
+               (accordion-card #:dark? #t
+                               #:header "Scoring for K to 2nd"
+                               (h5 "Standard Formula:")
+                               (gm-inline-pre "GAME-SCORE = TOTAL-CARDS-COMPLETED")
+                               (steps "Coach helps Players count up total stickers"
+                                      "Coach decides point:dollar ratio based on point range (see below)"
+                                      "Coach briefly proofs point total, awards MetaMoney to each pair"))
+               (accordion-card #:dark? #t
+                               #:header "Deciding Point:Dollar Ratio"
+                               
+                               "Players should earn roughly between 15 and 25 dollars of MetaMoney EACH during the Jam. Too little, and it feels disappointing. Too much, and you have just made Market a very difficult time for yourself!"
+                               "Adjust how much MetaMoney students receive by customizing the point:dollar ratio:"
+                               (steps "Take a look at Players' point totals to get an approximate average"
+                                      "Do some vague mental algebra: POINT-AVERAGE / ?? = ~20"
+                                      "Announce the point:dollar ratio to Players")
+                               (b "Examples:")
+                               (ul (li "Pair A has 55 points. Pair B has 43 points. Pair C has 68 points.")
+                                   (li "Approx average: 55")
+                                   (li "55 / 3 = ~18")
+                                   (li "Ratio is 3 points:1 dollar, always rounding up.")
+                                   (li "Pair A gets $19 each. Pair B gets $15 each . Pair C gets $23 each."))
+                               (ul (li "Pair A has 130 points. Pair B has 97 points. Pair C has 80 points. Pair D has 150 points.")
+                                   (li "Approx average: 125")
+                                   (li "125 / 6 = ~20")
+                                   (li "Pair A gets $22 each. Pair B gets $17 each. Pair C gets $14 each. Pair D gets $25 each."))
+                                   (ul (li (b "Low point outlier:"))
+                                       (li "Pair A has 70. Pair B has 96. But Pair C only has 30.")
+                                       (li "You choose to average at 80")
+                                       (li "80 / 4 = 20")
+                                       (li "Pair A gets $18 each. Pair B gets $24 each.")
+                                       (li "Pair C gets $8 each; but when you see they are disappointed, you quietly award them an extra $5 each for the excellent debugging you saw them do."))
+                                   (ul (li (b "High point outlier:"))
+                                       (li "Pair A has 25 points. Pair B has 36 points. But Pair C has 89 points.")
+                                       (li "You choose to average at 30")
+                                       (li "30 / 2 = 15")
+                                       (li "Pair A gets $13 each. Pair B has $18 each.")
+                                       (li "For Pair C, you decide there is a $25 max, tell the Pair, and give each $25."))
+                               (b "Additional Tips:")
+                               (ul (li "Be sure to consider the amount of money Players SPEND during the jam as well, when calculating your ratio.")
+                                   (li "You can also decide if pairs each get the total MetaMoney, or they split it. Either way, they should still end up with roughly $15-25.")
+                                   (li "If you have a pair or two with a " (b "significantly lower total") " and you felt their performance was still worth more than the dollars they would earn (they were doing well, just typing slower, had more bugs, just not as skilled yet as the rest of the group), you can either try to see it coming and balance with extra bonus points during Jam, or post-Jam give them extra bonus dollars for great debugging/great teamwork/etc. Note that if a pair was misbehaving or otherwise not earning points through their chosen behavior, it is okay if they earn less!")
+                                   (li "If you have a pair with a " (b "significantly higher total") " that will bankrupt the Market you can instate a dollar max -- no matter how many points you earn over __ you still just get the max dollars.")))
+               (tips "Mind the urge to compare points -- in many groups this is fun, but some groups may not be able to handle this competitive comparison and you will have bring attention back to everyone's individual success!"))))))
+
+
 
 ; ===== MISC ======
 

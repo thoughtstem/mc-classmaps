@@ -7,7 +7,8 @@
   (all-from-out "./story-modes/main.rkt")
   (all-from-out "./game-modes/main.rkt")
   (all-from-out "./classmaps/main.rkt")
-  (all-from-out "./sequences/main.rkt"))
+  (all-from-out "./sequences/main.rkt")
+  )
 
 (require website/bootstrap
          "./base.rkt"
@@ -16,4 +17,5 @@
          "./story-modes/main.rkt"
          "./game-modes/main.rkt"
          "./classmaps/main.rkt"
-         "./sequences/main.rkt")
+         "./sequences/main.rkt"
+         )

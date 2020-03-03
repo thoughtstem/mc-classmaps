@@ -102,7 +102,7 @@
 
 (define (final-jam-map)
   (classmap "Final Jam Map"
-            "Celebrate student progress by showcasing everything they have learned. Run the standard Jam and have an AWESOME last class!"
+            "Celebrate student progress by showcasing everything they have learned. Have an AWESOME last class!"
     (list (lock-story-mode (intro-jam))
           (game-with-minutes 25 (final-jam))
           (lock-game-mode (scoring-jam))

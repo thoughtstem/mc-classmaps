@@ -161,6 +161,10 @@
       (define wip
         (tag "work in progress"
              "This mode is still in development"))
+
+      (define jam
+        (tag "final jam"
+             "This mode is for Final Jam!"))
      )
 
 ;======TAG GROUPS =====
@@ -205,7 +209,8 @@
             name-game
             intro-new-code
             simple
-            active))
+            active
+            jam))
 
 (define misc-tags
       ;yet uncategorized tags

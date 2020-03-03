@@ -43,7 +43,7 @@
  maybe-add-punct
  gm-inline-pre
  coach-asks
- story-summary-and-goals) 
+ summary-and-goals) 
 
 (require website/bootstrap
          website/util
@@ -159,9 +159,15 @@
 
 ;potentially make supplies optional?
 ;or creat (no-supplies) func
-(define/contract (game-info supplies instructions (tips-tricks ""))
-  (->* (supplies-list? game-instructions?) (element?) element?)
+(define/contract (game-info supplies instructions (tips-tricks #f) #:summary-goals [summary-goals #f])
+  (->* (supplies-list? game-instructions?) (element? #:summary-goals element?) element?)
+  (define maybe-summary-goals?
+    (if summary-goals
+        (list summary-goals
+              (hr))
+        #f))
   (div
+   maybe-summary-goals?
    supplies
    (h5 "How to Play:")
    instructions
@@ -199,13 +205,13 @@
    (ul
     (map li t))))
 
-(define (story-summary-and-goals sum goals)
+(define (summary-and-goals sum goals)
   (define goal-list
     (if (list? goals)
         goals
         (list goals)))
   (div
-   (h5 "Story Snap Shot")
+   (h5 "Mode Summary & Goals")
    (p (b "Summary:") " " sum)
    (b "Goals and Gains:")
    (ul

@@ -20,11 +20,12 @@
   (with-tags (list fable code-of-awesomeness debugging meta-classroom)
     (story-mode "Be a Bug Hunter Fable" 10
                 "A Code of Awesomeness fable about two animals who have different strategies for dealing with bugs."
-                (story-text (bug-hunter-fable:tips)
+                (story-text (bug-hunter-fable:snapshot)
                             (embedded-stories (bug-hunter-fable:highlights)
                                               (bug-hunter-fable:prose))
                             
-                            (bug-hunter-fable:questions))
+                            (bug-hunter-fable:questions)
+                            (bug-hunter-fable:tips))
                 )))
 
 (define (bug-hunter-fable:tips)
@@ -32,6 +33,17 @@
               (ul (li "(Woodpecker): practical and level-headed.")
                   (li "(Ostrich): impulsive and anxious")))
         "For younger students, physically indicate how the houses grow throughout the story: ex. 'Woodpeckers house was THIS tall' and holding your hand at knee-height."))
+
+(define (bug-hunter-fable:snapshot)
+  (summary-and-goals
+   "Introduce the BE A BUG HUNTER Code to the Code of Awesomeness. Explore the values and ideas that this Code encompasses."
+   (list "Add a new Code to the Code of Awesomeness: Be a Bug Hunter!"
+         "Introduce the concept of a bug/debugging in coding."
+         "Discuss contrasting attitudes when it comes to facing problems."
+         "Set up a classroom norm: solve your bugs!"
+         "Relate the abstract concept (Be a Bug Hunter) to tangable actions and experiences through story."
+         "Prepare for the Code Of Awesomeness Motto Creation Game Mode")))
+
 
 (define (bug-hunter-fable:highlights)
   (story-mode "Be a Bug Hunter Fable: Story at a Glance" 10

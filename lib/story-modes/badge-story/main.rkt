@@ -284,8 +284,8 @@
 (define (badge-day-intro:snapshot)
   (summary-and-goals
    "Review information about and importance of badges in prep for awarding them at the end of class."
-   (list "Students know what a badge is and why they are getting one"
-         "Students when they get badges/badge certificates")))
+   (list "Explain what a badge is and why students are getting them"
+         "Outline when students get badges/badge certificates")))
 
 
 (define (badge-day-intro:highlights )

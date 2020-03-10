@@ -272,6 +272,7 @@
     (story-mode "Badges Today!" 5
                 "A reminder about badges, and what they mean, for days when some students will earn a badge."
                 (story-text (badge-day-intro:tips)
+                            (badge-day-intro:snapshot)
                             (embedded-stories (badge-day-intro:highlights)
                                               (badge-day-intro:prose))
                             (badge-day-intro:questions)))))
@@ -279,6 +280,12 @@
 (define (badge-day-intro:tips)
   (tips "Make this exciting! It's your job, as Coach, to make it clear what these Badges mean and give them a high level of importance. Do this by creating a ritual, being consistant with the meaning of the Badges (learning!), and keeping the value of the Badges (only given when earned)."
         "If you have an alternative Badge Ceremony, be sure to describe that ritual instead!"))
+
+(define (badge-day-intro:snapshot)
+  (summary-and-goals
+   "Review information about and importance of badges in prep for awarding them at the end of class."
+   (list "Students know what a badge is and why they are getting one"
+         "Students when they get badges/badge certificates")))
 
 
 (define (badge-day-intro:highlights )
@@ -291,7 +298,8 @@
                                  (list "So, as a part of the Badge Ceremony, each of you must " ( b "tell us X thing(s) you have learned") " since your last Badge/the start of class that have made you a better coder and learner.")
                                  (list "Start thinking now, " (i "[fill in names of Badge-Earning students]") "!") 
                                  (list "At the " (b "end of class" ) " we will have our Ceremony for the following students...")
-                                 "You will get Badge Certificates today, and if your parents help you, you will get a Badge like mine in the mail soon!"
+                                 "The first badge you earn, you will receive a badge certificate and the badge itself!"
+                                 "For the 2nd and 3rd badges, you will receive a badge certificate, and will get the badge in the mail at then end of class."
                                  (list "Students that have not earned this Badge yet -- you will be getting your next Badge " (b (i "[fill in number of attendances remain for said students]") "."))))))
 
 (define (badge-day-intro:prose )
@@ -307,7 +315,7 @@
 
  So start thinking of those things now! Especially the students earning their badge today: @(coach-fills-in "names of badge-earners")
 
- You will recieve a Badge Certificate today, and if your parents help you follow the intructions on the Certificate (or they have before!), you will receive a really cool badge (like mine!) in the mail!
+ You will recieve a Badge Certificate to show everyone that you have earned this badge. You will get (or already have gotten) the @b{first badge} with your first certificate. All other badges you earn this session will @b{come in the mail, after the last class}!
 
  Those of you who haven't earned this badge yet, don't worry! You will soon. @(coach-fills-in "number of attendances remaining for students yet to earn this badge")
 

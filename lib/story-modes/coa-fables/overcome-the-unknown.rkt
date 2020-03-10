@@ -20,16 +20,28 @@
       (list fable code-of-awesomeness meta-cognition)
   (story-mode "Overcome the Unknown Fable" 15
               "A Code of Awesomeness fable about two fish who looked the same on the outside, but whose minds were very different on the inside."
-              @story-text{@(overcome-the-unknown:tips)
+              @story-text{
+                          @(overcome-the-unknown:snapshot)
                           @(embedded-stories (overcome-the-unknown-fable:highlights)
                                              (overcome-the-unknown-fable:prose))
                           @(overcome-the-unknown-fable:questions)
+                          @(overcome-the-unknown:tips)
  })))
 
 (define (overcome-the-unknown:tips)
   (tips "For younger audiences, use a whiteboard to track the size and journeys of the two fish."
         "Yes, it is ridiculous that fish might code.  The authors know it, you know it, the audience knows it.  Use the ridiculousness to your advantage!"
         "Don't forget to engage with questions -- at the end and throughout!"))
+
+(define (overcome-the-unknown:snapshot)
+  (summary-and-goals
+   "Introduce the OVERCOME THE UNKNOWN Code to the Code of Awesomeness. Explore the values and ideas that this Code encompasses."
+   (list "Add a new Code to the Code of Awesomeness: Overcome the Unknown!"
+         "Discuss the benefits of taking on new challenges."
+         "Learn about mindsets, world-views, attitudes and how they can change our life and behavior."
+         "Set up a classroom norm: sometimes we will do stuff we haven't done before!"
+         "Relate the abstract concept (Overcome the Unknown) to tangable actions and experiences through story."
+         "Prepare for the Code Of Awesomeness Motto Creation Game Mode")))
 
 (define (overcome-the-unknown-fable:highlights)
   (with-tags

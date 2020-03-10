@@ -19,10 +19,12 @@
   (with-tags (list fable code-of-awesomeness meta-classroom teamwork)
     (story-mode "Teach the Team Fable" 10
                 "A Code of Awesomeness fable about the value of teaching others, and the paradoxical pitfall of hording ones knowledge."
-                (story-text (teach-the-team-fable:tips)
+                (story-text (teach-the-team-fable:snapshot)
                             (embedded-stories (teach-the-team-fable:highlights)
                                               (teach-the-team-fable:prose))
-                            (teach-the-team-fable:questions)))))
+                            (teach-the-team-fable:questions)
+                            (teach-the-team-fable:tips)
+                            ))))
 
 (define (teach-the-team-fable:tips)
   (tips "Try pausing the story after revealing the grades and asking the students why Wolf and so many of the other animals did better than Bear."
@@ -30,6 +32,15 @@
               (ul (li "(Bear): works alone, smart")
                   (li "(Wolf): a team player, smart"))
               "There are other characters throughout the story (Teacher, other students) -- ask the students for new animals anytime you need one!")))
+
+(define (teach-the-team-fable:snapshot)
+  (summary-and-goals
+   "Introduce the TEACH THE TEAM Code to the Code of Awesomeness. Explore the values and ideas that this Code encompasses."
+   (list "Add a new Code to the Code of Awesomeness: Teach the Team!"
+         "Discuss the benefits of sharing your knowledge."
+         "Set up a classroom norm: help each other out!"
+         "Relate the abstract concept (Teach the Team) to tangable actions and experiences through story."
+         "Prepare for the Code Of Awesomeness Motto Creation Game Mode")))
 
 (define (teach-the-team-fable:highlights)
   (story-mode "Teach the Team Fable: Story at a Glance" 10

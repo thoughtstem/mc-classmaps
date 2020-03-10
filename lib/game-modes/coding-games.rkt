@@ -77,7 +77,8 @@
                       "Round ends when timer goes off"
                       "Repeat steps 4-9 until no words are left on the board, only symbols"
                       "Last round, everything but the translation is erased from the board"))
-              (tips "Replace erased words with blanks (______) for extra clarity."
+              (tips "For Ratchet langs: create shorthand drawing for the symbols with the players. For example -- rather than trying to draw the knight icon as it looks in game, ask the players \"What can I draw that means 'knight' to us?\" Players suggest horse, sword, helmet, shield. You decide on a shield -- and draw that everytime you need a knight."
+                    "Replace erased words with blanks (______) for extra clarity."
                     "For new coders, start by erasing one word that appears two or more times in the code."
                     "Tag in an advanced student to play the Coach role!"
                     "For Ratchet code, draw symbols and erase those one at a time.")))))

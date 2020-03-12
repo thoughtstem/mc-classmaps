@@ -65,7 +65,10 @@
         (modal-body
           (map tag->html (mode-tags s))
           (hr)
-          (mode-data s))))))
+          (mode-data s))
+        (if (mode-credit s)
+            (modal-footer "Mode Created By: " (mode-credit s))
+            #f)))))
 
 
 (define (listing s)

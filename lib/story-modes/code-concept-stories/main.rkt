@@ -592,6 +592,7 @@
       (list cs-concept discussion-based 3rd-5th middle-school high-school)
     (story-mode "Hacking All Around" 15
                 "An introductory, discussion-driven conversation about hacking."
+                #:credit "Coach Emily & Coach Mona, San Diego, CA"
                 (story-text (hacking-all-around:snapshot)
                             (embedded-stories (hacking-all-around:highlights)
                                               (hacking-all-around:prose))

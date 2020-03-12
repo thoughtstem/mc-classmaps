@@ -5,7 +5,8 @@
  (except-out (struct-out game-mode) game-mode)
  (rename-out [make-story-mode story-mode])
  (except-out (struct-out story-mode) story-mode)
- (struct-out classmap)
+ (rename-out [make-classmap classmap])
+ (except-out (struct-out classmap) classmap)
  (struct-out sequence)
  classmap-minutes
  mode-minutes
@@ -28,6 +29,8 @@
  mode-summary
  mode-tags
  mode-data
+ mode-credit
+ 
  question-section
  embedded-story
  embedded-stories
@@ -52,9 +55,9 @@
          "./icons.rkt")
 
 
-(struct game-mode  (name minutes summary data tags lock-length?))
-(struct story-mode (name minutes summary data tags lock-length?))
-(struct classmap   (name summary modes))
+(struct game-mode  (name minutes summary data tags lock-length? credit))
+(struct story-mode (name minutes summary data tags lock-length? credit))
+(struct classmap   (name summary modes credit))
 (struct sequence   (name summary classmaps))
 
 (define (mode-name x)
@@ -77,6 +80,10 @@
     (game-mode-data x)
     (story-mode-data x)))
 
+(define (mode-credit x) (cond [(and (story-mode? x) (story-mode-credit x)) (story-mode-credit x)]
+                              [(and (game-mode? x) (game-mode-credit x)) (game-mode-credit x)]
+                              [else #f]))
+
 ;For now this just makes words bold.  In the future, we may want to collect vocabulary words from stories and do something more interesting with them.  Possibly make a struct later.
 (define (vocab word)
   (b class: "vocab" word))
@@ -98,13 +105,23 @@
 (define story-text? element?)
 
 
-(define/contract (make-game-mode name minutes summary data (tags '()))
-  (->* (string? number? string? game-info?) ((or/c empty? (listof string?))) game-mode?)
-  (game-mode name minutes summary data tags #f))
+(define/contract (make-game-mode name minutes summary data (tags '()) #:credit (credit #f))
+  (->* (string? number? string? game-info?)
+       ((or/c empty? (listof string?)) #:credit (or/c string? #f element?))
+       game-mode?)
+  (game-mode name minutes summary data tags #f credit))
 
-(define/contract (make-story-mode name minutes summary data (tags '()))
-  (->* (string? number? string? story-text?) ((or/c empty? (listof string?))) story-mode?)
-  (story-mode name minutes summary data tags #f))
+(define/contract (make-story-mode name minutes summary data (tags '()) #:credit (credit #f))
+  (->* (string? number? string? story-text?)
+       ((or/c empty? (listof string?)) #:credit (or/c string? #f element?))
+       story-mode?)
+  (story-mode name minutes summary data tags #f credit))
+
+(define/contract (make-classmap name summary modes #:credit (credit #f))
+  (->* (string? string? (listof (or/c story-mode? game-mode?)))
+       (#:credit (or/c string? #f element?))
+       classmap?)
+  (classmap name summary modes credit))
 
 ;==== classmap helper functions =====
 

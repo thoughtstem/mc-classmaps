@@ -165,6 +165,10 @@
       (define jam
         (tag "final jam"
              "This mode is for Final Jam!"))
+
+      (define discussion-based
+        (tag "discussion based"
+             "Story that is driving by questions and discussions more than plot."))
      )
 
 ;======TAG GROUPS =====
@@ -200,7 +204,6 @@
 (define educational-techniques-tags
       ;tags indicating specific coaching techniques utilized
       (list memorization
-            reflection
             review
             unplugged
             partners
@@ -212,15 +215,20 @@
             active
             jam))
 
+(define story-tags
+      ;tags defining different story types
+      (list discussion-based
+            reflection
+            fable
+            true-story
+            young-engineer))
+
 (define misc-tags
       ;yet uncategorized tags
       (list multi
-            fable
             meta-classroom
             badges
             code-of-awesomeness
-            true-story
-            young-engineer
             wip))
 
 

@@ -7,6 +7,7 @@
          intro-to-systems-story
          input-output-stories
          open-source-fable
+         hacking-all-around
          all-code-concept-stories)
 
 (require 
@@ -32,7 +33,8 @@
 (define (all-code-concept-stories)
   (flatten (list (debugging-stories)
                  (input-output-stories)
-                 (open-source-fable))))
+                 (open-source-fable)
+                 (hacking-all-around))))
 
 
 (module+ test
@@ -69,17 +71,27 @@
 
     (story-mode "Debugging the Pizza" 15
                 "Mia uses a debugging process to figure out why the pizza suddenly tastes like soap." 
-                @story-text{
-                            @(debugging-a-pizza-tips)
-                            @intro
-                            @(embedded-stories (debugging-a-pizza:highlights))
-                            @(embedded-stories (debugging-a-pizza:ch1 ch1-questions)) 
-                            @intermission
-                            @(embedded-stories (debugging-a-pizza:ch2 ch2-questions)) 
-                            @(embedded-stories (debugging-a-pizza:ch3 ch3-questions)) 
-                            @outro})))
+                (story-text (debugging-a-pizza:snapshot)
+                            (debugging-a-pizza:tips)
+                            intro
+                            (embedded-stories (debugging-a-pizza:highlights))
+                            (embedded-stories (debugging-a-pizza:ch1 ch1-questions)) 
+                            intermission
+                            (embedded-stories (debugging-a-pizza:ch2 ch2-questions)) 
+                            (embedded-stories (debugging-a-pizza:ch3 ch3-questions)) 
+                            outro
+                            (debugging:ending-questions)
+                           ))))
 
-(define (debugging-a-pizza-tips)
+(define (debugging-a-pizza:snapshot)
+  (summary-and-goals
+   "Learn about the debugging process in a non-computer frame -- pizza!"
+   (list "Define bug, debug"
+         "Investigate the subtle difference between problem-solving and debugging (debugging often involves FINDING the problem!)"
+         "Practice our own debugging skills"
+         "Get comfortable with the idea of bugs and debugging as part of the coding process")))
+
+(define (debugging-a-pizza:tips)
   (tips "For a shorter story, take out some of the hypotheses/tests."
         "Use the name of a student in the room instead of Mia."
         "Ask students to create their own hypotheses -- even tests (you give the result)."
@@ -264,6 +276,17 @@
 
               }))
 
+(define (debugging:ending-questions)
+  (list
+   (comprehension-questions
+    "What is a \"bug\" in coding?"
+    "What does it mean to \"debug\"?")
+    (creativity-questions
+     '("How are debugging and problem-solving the same? How are they different?"
+       "Debugging often involves similar skills, but a big part of debugging is finding the cuase of the problem, which isn't always included in problem-solving.")
+     "When is a time you debugged something? On the computer? Off the computer?"
+     "What skills do you need to be the best debugger?")))
+
 
 
 
@@ -336,12 +359,22 @@
       (list meta-cognition cs-concept k2 3rd-5th middle-school high-school)
     (story-mode "A System-atic World" 10
                 "Learning about systems and thinking about everyday things as systems."
-                (story-text (intro-to-systems-story:tips)
+                (story-text 
+                            (intro-to-systems-story:snapshot)
                             (embedded-stories (intro-to-systems-story:highlights))
                             (intro-to-systems-story:questions)
                             (br)
+                            (intro-to-systems-story:tips)
                             (intro-to-systems-story:suggestions)
                             ))))
+
+(define (intro-to-systems-story:snapshot)
+  (summary-and-goals
+   "Get the students to think creatively about systems by viewing everyday things as systems of input and outputs."
+   (list "Define input, output and system"
+         "Increase understanding of the concepts above by apply them to objects and situations both techincal and completely untechnical!"
+         "Gain more technical knowledge and greater understanding of computers"
+         "Practice good discussion skills like listening, talking one at a time, being respectful, and learning from each other.")))
 
 (define (intro-to-systems-story:highlights)
   (story-mode "A System-atic World: Story at at Glance" 10
@@ -551,4 +584,62 @@
                          "What are the benefits of open source software?"))
 
                 })))
+
+; HACKING stories
+
+(define (hacking-all-around)
+  (with-tags
+      (list cs-concept discussion-based 3rd-5th middle-school high-school)
+    (story-mode "Hacking All Around" 15
+                "An introductory, discussion-driven conversation about hacking."
+                #:credit "Coach Emily & Coach Mona, San Diego, CA"
+                (story-text (hacking-all-around:snapshot)
+                            (embedded-stories (hacking-all-around:highlights)
+                                              (hacking-all-around:prose))
+                            (hacking-all-around:tips)))))
+
+(define (hacking-all-around:snapshot)
+  (summary-and-goals
+   "Lead a discussion on hacking, ethical/unethical hacking, and how to protect yourself from malicious hackers."
+   (list "Define hacking, white-hat hacking and black-hat hacking"
+         "Increase understanding of digital security and safety"
+         "Dive in to student questions about hacking and digital safety/security"
+         "Practice good discussion skills like taking turns speaking, staying on topic, listening, and respecting thoughts/ideas/questions of others")))
+
+(define (hacking-all-around:highlights)
+  (story-mode "Hacking All Around: Highlights" 15
+              "Quick summary for reminders on how to tell this story"
+              (story-text (steps (list "Coach asks the students the following questions and guides a discussion:"
+                                       (ol @li{What is hacking?}
+                                           @li{Why do people do it?}
+                                           @li{What places and things could be hacked?}
+                                           @li{How can you protect yourself from malicious hackers?}))))))
+
+(define (hacking-all-around:prose)
+  (story-mode "Hacking All Around: Full Text" 15
+              "An introductory, discussion-driven conversation about hacking."
+              (story-text
+ (coach-asks "What is hacking?" #:right-answer "We mostly use this term to refer to the act of digital \"breaking and entering\" -- often to steal or change information stored digitally. But hacking isn't inherently bad! Many legitimate computer programmers refer to themselves as hackers who creatively enage with, alter and find new ways of using software. The terms \"white hat\" hacker and \"black hat\" hacker are often used to discriminate ethical hacking from unethical hacking.")
+(br) (br)
+ (coach-asks "Why do people hack?" #:example-answers (list "To take people's information" "To steal money" "To make new fun games out of existing games" "For revenge" "As a job, to test security" "To adapt tech for more people/more uses"))
+
+ (coach-asks "What places and things can be hacked?" #:example-answers (list "personal computers" "banks" "stores" "any company" "printers" "video games" "online accounts" "governments"))
+
+ (coach-asks "How can you protect yourself from malicious hackers?" #:example-answers (list "strong passwords that you keep secret" "using different passwords" "being thoughtful about what companies/sites/people you give information to" "being careful about what you post on social media in photos, etc" "virus protection software like McAfee, Norton, etc.")))))
+
+(define (hacking-all-around:tips)
+  (tips
+   "Likely, students will want to learn to hack after this discussion. You can deflect
+this desire by reminding them that hackers have to be excellent at reading code and
+writing code to hack! So what they are doing in class is building the skills to be a hacker."
+   (list "If students don't know what hacking is, the coach can use the following metaphor(s):"
+         (ul @li{Imagine a house. This house is your code- and you want to keep your stuff inside
+your house. A hacker is someone who walks around your house, looking for a
+mouse hole in a wall. They use the house to slip in a wire, and open your front
+door. Then they steal all of your stuff.}
+             @li{But some hackers are good people. They’re like inspectors. You can hire them to
+come look for all the mouse holes and cracks in your house. Then, since you
+know those holes are there, you can fix them.}))
+   (list "Check out " (a href:"https://xkcd.com/936/" "this XKCD webcomic") " on strong passwords, and some " (a href:"https://www.explainxkcd.com/wiki/index.php/936:_Password_Strength" "explanation for the comic here") ".")
+   "It is important not to let student obsess on the negative in this dicussion; be sure to include positive examples of hacking/hackers in the dicussion often."))
 

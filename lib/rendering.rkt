@@ -129,7 +129,10 @@
                      #:content-id (id 'contentId)) 
           (classmap-modes cm)))
 
-        (col id: (id 'contentId)))))
+        (col id: (id 'contentId))))
+      (if (classmap-credit cm)
+          (card-footer "Classmap Created by: " (classmap-credit cm))
+          #f))
      (script ()
        )))
 
@@ -229,6 +232,9 @@
   (define mode-summary (if (story-mode? s)
                            story-mode-summary
                            game-mode-summary))
+  (define mode-credit (cond [(and (story-mode? s) (story-mode-credit s)) story-mode-credit]
+                            [(and (game-mode? s) (game-mode-credit s)) game-mode-credit]
+                            [else #f]))
 
  (define bg-color (if (story-mode? s)
                       ""
@@ -246,7 +252,10 @@
   (card-header icon " " (mode-name s))
   (card-body
    (h6 class: "card-title text-muted" (i (mode-summary s)))
-   (mode-data s))))
+   (mode-data s))
+  (if mode-credit
+      (card-footer "Created By: " (mode-credit s))
+      #f)))
 
 
 (define (tag->html t)

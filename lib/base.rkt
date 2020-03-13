@@ -12,6 +12,8 @@
  mode-minutes
  game-with-minutes
  story-with-minutes
+ mode-with-minutes
+ 
  lock-story-mode
  lock-game-mode
  story-text
@@ -46,7 +48,8 @@
  maybe-add-punct
  gm-inline-pre
  coach-asks
- summary-and-goals) 
+ summary-and-goals
+ replace-last-mode) 
 
 (require website/bootstrap
          website/util
@@ -97,6 +100,11 @@
   (if (story-mode? m)
     (story-mode-minutes m)
     (game-mode-minutes m)))
+
+(define (mode-with-minutes min mode)
+  (if (story-mode? mode)
+      (story-with-minutes min mode)
+      (game-with-minutes min mode)))
 
 (define (classmap-minutes cm)
   (apply + (map mode-minutes (classmap-modes cm))))
@@ -295,12 +303,33 @@
                   (i "Guide students to the answer: " (u answer)))
             #f)))
 
+;==== Classmap helper functions ===
+
+(define/contract (replace-last-mode cm new-mode #:keep-map-length? (keep-map-length? #t))
+  (->* (classmap? (or/c story-mode? game-mode?)) (#:keep-map-length? boolean?) classmap?)
+  
+  (define maybe-minutes-changed-mode
+    (if keep-map-length?
+        (mode-with-minutes (mode-minutes (last (classmap-modes cm)))
+                           new-mode)
+        new-mode))
+  
+  (define new-modes-list
+    (flatten (list
+              (take (classmap-modes cm) (- (length (classmap-modes cm)) 1))
+              maybe-minutes-changed-mode)))
+
+  (struct-copy classmap cm
+               [modes new-modes-list]))
+
+
+
+
 
 ;============ TESTS =============
 
 (module+ test
   (require rackunit)
-
   (define test-story
     (make-story-mode "Test Story" 1 "summary"
                      @story-text{blah blah blah}))
@@ -319,7 +348,7 @@
    (span
     "Here is another story. " (b "this should be bold!")))
 
-  ;=== GAME MODE STUFF ===
+  ;game mode stuff
 
   (define test-game
     (make-game-mode "Test Game" 1 "summary"
@@ -383,10 +412,12 @@
      (li "Kick a new crater into the moon's surface")
      (li "Laugh"))))
 
+  ;setup
   (check-elements-equal?
    (setup "save the world.")
    (p (i (b "Set Up: ") "save the world.")))
 
+  ;coach-asks 
   (check-elements-equal?
    (coach-asks "Who are you?")
    (span (b "[Coach asks students: " (u "Who are you?") "]")))
@@ -397,7 +428,6 @@
          (br)
          (i "Guide students to the answer: " (u "Blue, duh"))))
 
-  
   (check-elements-equal?
    (coach-asks "What?" #:example-answers (list "Huh?" "Who?" "Chicken Butt"))
    (span (b "[Coach asks students: " (u "What?") "]")
@@ -415,9 +445,9 @@
                                      (li "Lame")))
          (br)
          (i "Guide students to the answer: " (u "THE BEST"))))
+
   
   )
-
 
 (define (story-stub title time . notes)
   (make-story-mode title time "" 

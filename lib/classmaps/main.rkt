@@ -8,7 +8,7 @@
          "./academic/main.rkt"
          "../tags.rkt")
 
-(provide all-classmaps 
+(provide all-classmaps
          class-launch-map
          coa-focus-map
          first-badge-map
@@ -124,6 +124,7 @@
           (hello-world-beginner-game) ;10 -- 55
           (meta-story-reflect "One UNKNOWN we OVERCAME today")))) ; 5
 
+
 ;===========================
 
 ;Classmaps to create:
@@ -146,7 +147,7 @@
 
 (define (all-classmaps)
  (flatten
-  (list 
+  (list
    (8-week-starter-pack)
    (computational-thinking-wip-pack)
    (computational-thinking-for-young-elementary-pack)

@@ -12,6 +12,8 @@
  mode-minutes
  game-with-minutes
  story-with-minutes
+ mode-with-minutes
+ 
  lock-story-mode
  lock-game-mode
  story-text
@@ -46,7 +48,8 @@
  maybe-add-punct
  gm-inline-pre
  coach-asks
- summary-and-goals) 
+ summary-and-goals
+ replace-last-mode) 
 
 (require website/bootstrap
          website/util
@@ -97,6 +100,11 @@
   (if (story-mode? m)
     (story-mode-minutes m)
     (game-mode-minutes m)))
+
+(define (mode-with-minutes min mode)
+  (if (story-mode? mode)
+      (story-with-minutes min mode)
+      (game-with-minutes min mode)))
 
 (define (classmap-minutes cm)
   (apply + (map mode-minutes (classmap-modes cm))))
@@ -295,12 +303,50 @@
                   (i "Guide students to the answer: " (u answer)))
             #f)))
 
+;==== Classmap helper functions ===
+
+
+(define/contract (replace-last-mode
+                  #:keep-map-length? (keep-map-length? #t)
+                  cm
+                  . new-modes)
+  (->* (classmap?)
+       (#:keep-map-length? boolean?)
+       #:rest (or/c story-mode? game-mode? (listof (or/c story-mode? game-mode?)))  classmap?)
+  
+      (define (assign-fraction-of-min m)
+        (mode-with-minutes (/ (mode-minutes (last (classmap-modes cm)))
+                              (length new-modes))
+                           m))
+  
+  
+      (define maybe-minutes-changed-modes
+        (if keep-map-length?
+            (map assign-fraction-of-min new-modes)
+            new-modes))
+  
+      (define new-modes-list
+        (flatten (list
+                  (take (classmap-modes cm) (- (length (classmap-modes cm)) 1))
+                  maybe-minutes-changed-modes)))
+
+  ;because the fractions render weirdly and I don't know how to fix that, this is an ugly work-around:
+  
+  (if (not (integer?
+            (/ (mode-minutes (last (classmap-modes cm)))
+               (length new-modes))))
+      (error "replace-last-mode error: old mode's length does not evenly divide between the new modes. Use #:keep-map-length #f and edit the modes lengths manually with (mode-with-minutes ...)")
+      (struct-copy classmap cm
+                   [modes new-modes-list])))
+
+
+
+
 
 ;============ TESTS =============
 
 (module+ test
   (require rackunit)
-
   (define test-story
     (make-story-mode "Test Story" 1 "summary"
                      @story-text{blah blah blah}))
@@ -319,7 +365,7 @@
    (span
     "Here is another story. " (b "this should be bold!")))
 
-  ;=== GAME MODE STUFF ===
+  ;game mode stuff
 
   (define test-game
     (make-game-mode "Test Game" 1 "summary"
@@ -383,10 +429,12 @@
      (li "Kick a new crater into the moon's surface")
      (li "Laugh"))))
 
+  ;setup
   (check-elements-equal?
    (setup "save the world.")
    (p (i (b "Set Up: ") "save the world.")))
 
+  ;coach-asks 
   (check-elements-equal?
    (coach-asks "Who are you?")
    (span (b "[Coach asks students: " (u "Who are you?") "]")))
@@ -397,7 +445,6 @@
          (br)
          (i "Guide students to the answer: " (u "Blue, duh"))))
 
-  
   (check-elements-equal?
    (coach-asks "What?" #:example-answers (list "Huh?" "Who?" "Chicken Butt"))
    (span (b "[Coach asks students: " (u "What?") "]")
@@ -415,9 +462,9 @@
                                      (li "Lame")))
          (br)
          (i "Guide students to the answer: " (u "THE BEST"))))
+
   
   )
-
 
 (define (story-stub title time . notes)
   (make-story-mode title time "" 

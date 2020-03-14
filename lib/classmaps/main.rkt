@@ -124,16 +124,6 @@
           (hello-world-beginner-game) ;10 -- 55
           (meta-story-reflect "One UNKNOWN we OVERCAME today")))) ; 5
 
-;====== TESTING (replace-last-map) ===== remove me
-
-#;(define (testmap-same-length)
-  (replace-last-mode (rubys-class-launch-map) (story-stub "New Story" 1 " I should be 5 minutes, not 1")))
-
-#;(define (testmap-new-length)
-  (replace-last-mode (rubys-class-launch-map) (story-stub "New Story" 1 " I should be 1 minute, not 5")
-                     #:keep-map-length? #f))
-
-
 
 ;===========================
 

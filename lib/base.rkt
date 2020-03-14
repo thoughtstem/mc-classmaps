@@ -305,22 +305,39 @@
 
 ;==== Classmap helper functions ===
 
-(define/contract (replace-last-mode cm new-mode #:keep-map-length? (keep-map-length? #t))
-  (->* (classmap? (or/c story-mode? game-mode?)) (#:keep-map-length? boolean?) classmap?)
-  
-  (define maybe-minutes-changed-mode
-    (if keep-map-length?
-        (mode-with-minutes (mode-minutes (last (classmap-modes cm)))
-                           new-mode)
-        new-mode))
-  
-  (define new-modes-list
-    (flatten (list
-              (take (classmap-modes cm) (- (length (classmap-modes cm)) 1))
-              maybe-minutes-changed-mode)))
 
-  (struct-copy classmap cm
-               [modes new-modes-list]))
+(define/contract (replace-last-mode
+                  #:keep-map-length? (keep-map-length? #t)
+                  cm
+                  . new-modes)
+  (->* (classmap?)
+       (#:keep-map-length? boolean?)
+       #:rest (or/c story-mode? game-mode? (listof (or/c story-mode? game-mode?)))  classmap?)
+  
+      (define (assign-fraction-of-min m)
+        (mode-with-minutes (/ (mode-minutes (last (classmap-modes cm)))
+                              (length new-modes))
+                           m))
+  
+  
+      (define maybe-minutes-changed-modes
+        (if keep-map-length?
+            (map assign-fraction-of-min new-modes)
+            new-modes))
+  
+      (define new-modes-list
+        (flatten (list
+                  (take (classmap-modes cm) (- (length (classmap-modes cm)) 1))
+                  maybe-minutes-changed-modes)))
+
+  ;because the fractions render weirdly and I don't know how to fix that, this is an ugly work-around:
+  
+  (if (not (integer?
+            (/ (mode-minutes (last (classmap-modes cm)))
+               (length new-modes))))
+      (error "replace-last-mode error: old mode's length does not evenly divide between the new modes. Use #:keep-map-length #f and edit the modes lengths manually with (mode-with-minutes ...)")
+      (struct-copy classmap cm
+                   [modes new-modes-list])))
 
 
 

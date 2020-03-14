@@ -18,6 +18,11 @@
 
 ;===== STARTER SETS for various # of sessions =====
 
+;Note: when adding a new starting sequence, you may want
+;to use the (replace-last-mode...) function to build in
+;badge reminders, placing the meta-story:badges in place
+;of the usual meta story
+
 
 (define (basic-sequence)
   (sequence
@@ -33,10 +38,10 @@
     (list 
       (class-launch-map)
        (coa:bug-hunter-map)
-       (first-badge-map)
+       (first-badge-map) ;earn badge 1/3
        (coa:team-map)
        (bugs-map)
-       (coa-focus-map)
+       (replace-last-mode (coa-focus-map) (meta-story-badges)) ;earn badge 2/3
        (partner-practice-map)
        (final-jam-map))))
 
@@ -48,7 +53,7 @@
     (list
      (class-launch-map)
      (coa:bug-hunter-map)
-     (first-badge-map)
+     (first-badge-map) ;could earn badge 1/2
      (coa:team-map)
      (final-jam-map))))
 
@@ -59,9 +64,9 @@
 
     (list
      (class-launch-map)
-     (first-badge-map)
+     (first-badge-map) ;could earn badge 1/3
      (coa:bug-hunter-map)
-     (coa:team-map)
+     (replace-last-mode (coa:team-map) (meta-story-badges)) ;could earn badge 2/3
      (partner-practice-map)
      (final-jam-map))))
 
@@ -73,9 +78,9 @@
     (list
      (class-launch-map)
      (coa:bug-hunter-map)
-     (first-badge-map)
+     (first-badge-map) ;could earn badge 1/3
      (coa:team-map)
-     (coa-focus-map)
+     (replace-last-mode (coa-focus-map) (meta-story-badges)) ;could earn badge 2/3
      (partner-practice-map)
      (final-jam-map))))
 
@@ -88,12 +93,12 @@
     (list 
      (class-launch-map)
      (coa:bug-hunter-map)
-     (first-badge-map)
      (coa:team-map)
+     (first-badge-map) ; could earn badge 1/3
      (bugs-map)
      (coa-focus-map)
      ;need map
-     ;need map
+     ;need map ; could earn badge 2/3
      ;need map
      ;need map
      (partner-practice-map)
